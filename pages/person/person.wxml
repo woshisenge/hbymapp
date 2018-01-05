@@ -1,0 +1,119 @@
+<!--pages/person/person.wxml-->
+<view wx:if="{{role==1}}">
+<view class="head">
+  <view class="head-left">
+    <view class='image'><image src="{{logo}}" bindtap="chooseImageTap"></image></view>
+    <view class='text'>
+      <view class='text-top'><text>{{nickname}}</text></view>
+      <view class='text-bottom' wx:if="{{role == 1}}"><text>{{vipname}}</text></view>
+    </view>
+  </view>
+  <view class="head-right">
+    <view class='number'>{{completeCount}}<text style="font-size:60rpx">%</text></view>
+    <view class='texts'>资料完整度</view>
+  </view>
+</view>
+<view class="center" wx:if="{{role == 1}}">
+  <view class="center-left" bindtap='toExaminee'>
+    <view class='numbers'>{{examScore}}分</view>
+    <view class="img">
+      <image src="/images/pen.png" style="width:30rpx;height:30rpx"></image> 
+      <text>预估分</text>
+    </view>
+  </view>
+  <view class='center-right' bindtap='toPocket'>
+    <view class='numbers'>{{valiablePocket}}个</view>
+    <view class="img">
+      <image src="/images/money.png" style="width:30rpx;height:30rpx"></image> 
+      <text>金币/积分</text>
+    </view>
+  </view>
+</view>
+<view class="weui-panel">
+  <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+              <navigator url="/pages/person/basics/basics" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__hd"><image src="/images/me01.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                  <view class="weui-cell__bd weui-cell_primary">
+                      <view>基础信息</view>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+              <navigator url="../person/information/information" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__hd"><image src="/images/me02.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                  <view class="weui-cell__bd weui-cell_primary">
+                      <view>考生信息</view>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+              <navigator url="../person/goods/goods" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__hd"><image src="/images/tb03.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                  <view class="weui-cell__bd weui-cell_primary">
+                      <view>我的物品</view>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+              <navigator url="../person/security/security" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__hd"><image src="/images/tb04.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                  <view class="weui-cell__bd weui-cell_primary">
+                      <view>账户安全</view>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+              <navigator url="../person/power/power" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__hd"><image src="/images/tb05.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                  <view class="weui-cell__bd weui-cell_primary">
+                      <view>账户权限</view>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+          </view>
+      </view>
+  </view>
+</view>
+</view>
+<view wx:elif="{{role==2}}">
+  <view class="head">
+  <image src="/images/banner.png"></image>
+  <view class="head-left">
+    <view class='image'><image src="{{logo2}}" style="width:130rpx;height:130rpx;" bindtap="chooseImageTap"></image></view>
+    <view class='text'>
+      <view class='text-top'><text>{{nickname2}}</text></view>
+    </view>
+  </view>
+  <view class="head-right">
+    <view class='number'>{{completeCount2}}%</view>
+    <view class='texts'>信息完整度</view>
+  </view>
+</view>
+<view class="weui-panel">
+  <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+              <navigator url="/pages/person/tbasics/tbasics" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__hd"><image src="/images/me01.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                  <view class="weui-cell__bd weui-cell_primary">
+                      <view>基础信息</view>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+              <navigator url="../person/goods/goods" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__hd"><image src="/images/tb03.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                  <view class="weui-cell__bd weui-cell_primary">
+                      <view>我的物品</view>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+              <navigator url="../person/security/security" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                  <view class="weui-cell__hd"><image src="/images/tb04.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                  <view class="weui-cell__bd weui-cell_primary">
+                      <view>账号安全</view>
+                  </view>
+                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+          </view>
+      </view>
+  </view>
+</view>
+</view>

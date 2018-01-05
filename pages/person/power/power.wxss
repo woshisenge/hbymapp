@@ -1,0 +1,12 @@
+/* pages/person/power/power.wxss */
+.head{
+  margin:3% 3% 0 3%;
+  font-size:28rpx;
+}
+.page{
+  margin-top:3%;
+}
+.weui-grid__icon{
+  width:150rpx;
+  height:150rpx;
+}

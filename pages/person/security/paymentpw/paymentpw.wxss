@@ -1,0 +1,4 @@
+/* pages/person/security/paymentpw/paymentpw.wxss */
+.weui-cells{
+  font-size:30rpx;
+}

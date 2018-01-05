@@ -1,0 +1,42 @@
+<!--pages/person/power/power.wxml-->
+<view wx:if="{{isReg && isLoaded}}">
+  <view class='head'>
+    <text>尊敬的<text style='color:orange'>{{vipname}}</text>，您可享受到如下服务：</text>
+  </view>
+  <view class="page">
+    <view class="page__bd">
+        <view class="weui-grids">
+          <block wx:for="{{grids}}" wx:key="{{index}}">
+            <navigator url="{{item.url}}" class="weui-grid" hover-class="weui-grid_active">
+              <image class="weui-grid__icon" src="{{item.src}}"></image>
+              <view class="weui-grid__label">{{item.title}}</view>
+            </navigator>
+          </block>
+        </view>
+    </view>
+  </view>
+</view>
+<form bindsubmit='formSubmitForReg' wx:if="{{!isReg && isLoaded}}">
+  <view class="weui-cells__title">您当前身份属于普通会员，请购买黄金会员后提升权限</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">卡号</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入15位卡号" name="NUMBER"/>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">激活码</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" type='password' placeholder="请输入10位激活码" name="PASSWORD"/>
+      </view>
+    </view>
+  </view>
+  <button class="weui-btn" type="primary" form-type='submit'>激活</button>
+</form>

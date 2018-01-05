@@ -1,0 +1,18 @@
+/* pages/person/basics/basics.wxss */
+.weui-cell_primary{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: space-between;
+}
+.picker{
+  height:48rpx;
+  text-align: right;
+}
+.weui-cells{
+  font-size:28rpx;
+  
+}
+picker{
+  width:77%;
+}

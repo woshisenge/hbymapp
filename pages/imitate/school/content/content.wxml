@@ -1,0 +1,6 @@
+<!--pages/imitate/school/content/content.wxml-->
+<checkbox-group bindchange="checkboxChange">
+  <label class="checkbox" wx:for="{{school}}">
+    <checkbox value="{{item.NAME}}" checked="{{item.checked}}"/>{{item.NAME}}
+  </label>
+</checkbox-group>

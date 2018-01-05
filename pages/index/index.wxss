@@ -1,0 +1,140 @@
+.flex-x{
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+}
+.flex-y{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200rpx;
+}
+.navigation-box{
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  text-align:center;
+  padding: 10px 0;
+}
+.navigation{
+  width: 25%;
+  margin-bottom: 15px;
+  /* height: 100px; */
+}
+.tpia{
+  width: 45rpx;
+  height: 45rpx; 
+}
+.navigation-text{
+  font-size: 25rpx;
+}
+/* 公告 开始 */
+.notice{
+  padding: 0rpx 35rpx;
+  border-top: 20rpx solid #F7F7F7;
+  border-bottom: 20rpx solid #F7F7F7;
+  display: flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content: flex-start;
+  position: relative;
+}
+.notices{
+  background-color:#FEFDA1;
+  padding: 0rpx 35rpx;
+  border-top: 20rpx solid #F7F7F7;
+  border-bottom: 20rpx solid #F7F7F7;
+  display: flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content: flex-start;
+  position: relative;
+}
+.more1{
+  font-size:50rpx;
+  color:rgb(90,180,170);
+  position: absolute;
+  right: 20rpx;
+}
+.icon{
+  width: 35rpx;
+  height: 35rpx;
+  margin-top:4rpx;
+  margin-right:8rpx;
+
+}
+ .swiper_container {
+  height: 55rpx;
+  width: 80%;
+}
+
+.swiper_item {
+  font-size: 25rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 2px;
+  color: #5AB4AA;
+  padding-top:10rpx;
+  padding-left:5rpx;
+} 
+/* 公告 结束 */
+/* 更多 开始 */
+.more{
+  font-size:25rpx;
+  position: absolute;
+  top: 10rpx;
+  right: 20rpx; 
+}
+/* 更多 结束 */
+/* 高考动态 开始 */
+.news{
+  width: 30%;
+  height: 150rpx;
+  padding: 0 25rpx; 
+}
+.headlines{
+  width: 70%;
+  padding: 0 25rpx;
+  font-size: 30rpx;
+}
+.line{
+  width:100%;
+  border-top:1rpx solid #EEEEEE;
+  margin:20rpx 0;
+}
+.time-t{
+  color: #B5936D;
+}
+/* 高考动态 结束 */
+
+/* 线下活动 开始 */
+ .activity{
+    width: 30%;
+    padding: 10rpx;  
+} 
+/* 线下活动 结束 */
+.footer{
+  width: 100%;
+  height:80rpx;
+}

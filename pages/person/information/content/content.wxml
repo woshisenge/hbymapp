@@ -1,0 +1,19 @@
+<!--pages/person/information/content/content.wxml-->
+<view class="page">
+    <view class="page__bd">
+      <view class="weui-cells weui-cells_after-title">
+      <block wx:for="{{provinceObjs}}" wx:key="{{item.DIC_ID}}">
+             <view class="weui-cell" bindtap="select" id="{{item.DIC_ID}}">
+                <view class="weui-cell__bd" >{{item.NAME}}</view>
+                <view class="weui-cell__ft"></view>
+            </view> 
+         <!-- <radio-group class="radio-group" bindchange="radioChange">
+          <label class="radio" class="weui-cell weui-check__label" wx:for="{{provinceObjs}}">
+            <radio value="{{item.DIC_ID}}" checked="{{item.checked}}"/>{{item.NAME}}
+          </label>
+        </radio-group>  -->
+        </block>
+      </view>
+  
+    </view>
+</view>

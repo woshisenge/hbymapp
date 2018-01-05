@@ -1,0 +1,113 @@
+ <!-- 轮播图 开始  -->
+ <import src="../../wxParse/wxParse.wxml" />
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+  <block wx:for="{{imgUrls}}" wx:key="">
+    <swiper-item>
+      <image src="{{item}}" style='width:100%;height:100%;' class="slide-image"/>
+    </swiper-item>
+  </block>
+</swiper>   
+<!-- 轮播图 结束 -->
+<!-- 导航 链接 开始 -->
+<view class='navigation-box'>
+  <view class='navigation' bindtap="consultation">
+    <image class="tpia" src='../../images/consultation.png'></image> 
+    <view class='navigation-text'>院校咨询</view>
+  </view>
+  <view class='navigation' bindtap='teacher'>
+    <image class="tpia" src='../../images/guidance.png'></image> 
+    <view class='navigation-text'>名师指导</view>
+  </view>
+  <view class='navigation' bindtap="school">
+    <image class="tpia" src='../../images/colleges.png'></image> 
+    <view class='navigation-text'>院校库</view>
+  </view>
+  <view class='navigation' bindtap="major">
+    <image class="tpia" src='../../images/major.png'></image> 
+    <view class='navigation-text'>专业库</view>
+  </view>
+  <view class='navigation' bindtap="analog">
+    <image class="tpia" src='../../images/Fill.png'></image> 
+    <view class='navigation-text'>模拟填报</view>
+  </view>
+  <view class='navigation' bindtap="intelligence">
+    <image class="tpia" src='../../images/Intelligence.png'></image> 
+    <view class='navigation-text'>智能推荐</view>
+  </view>
+  <view class='navigation' bindtap='test'>
+    <image class="tpia" src='../../images/character.png'></image> 
+    <view class='navigation-text'>性格测试</view>
+  </view>
+  <view class='navigation' bindtap='phone'>
+    <image class="tpia" src='../../images/service.png'></image> 
+    <view class='navigation-text'>在线客服</view>
+  </view>
+</view>
+<!-- 导航 链接 结束 -->
+
+<!-- 公告 开始 -->
+ <view class='notices' hidden='{{!notice || notice.length == 0}}'> 
+   <image class="icon" src='/images/notice.png'></image> 
+  <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+     <block wx:for="{{notice}}" wx:key="title">
+       <view>
+         <swiper-item>
+           <view class="swiper_item" data-id="{{item.NEWS_ID}}" bindtap="noticecontent">
+              {{item.ABSTRACT?item.ABSTRACT:item.TITLE}}
+           </view>
+         </swiper-item>
+       </view>
+     </block>
+    </swiper>
+    <text class="more1" bindtap="noticemore">×</text>
+ </view> 
+<!-- 公告 结束-->
+
+<!-- 高考动态 开始 -->
+<view class="notice">
+  <image class='icon' src='../../images/dynamic.png'></image>
+  <view style='font-size:30rpx;'>高考动态</view>
+  <span class="more" style="font-size:25rpx;" bindtap="newsmore">更多></span>
+</view>
+<view style='padding:15rpx 0;'>
+  <block wx:for="{{news}}" wx:key="">
+  <view style='display:flex;flex-direction:row;' bindtap="news" data-id="{{item.NEWS_ID}}">
+    <view class='news'>
+      <image src='{{item.IMGURL}}' style='width:100%;height:100%;'></image>
+    </view>
+    <view class='headlines'>
+      <view style='height:40px;'>{{item.TITLE}}</view>
+      <view class="flex-x" style='margin-top:40rpx;'>
+        <view class='flex-x' style='margin-right: 20rpx;'>
+          <image class='icon' src='../../images/time.png'></image>
+          <span class='time-t'>{{item.MODIFYTIME}}</span>
+        </view>
+        <view class='flex-x'>
+          <image class='icon' src='../../images/browse.png'></image>
+          <span class='time-t'>{{item.VIEWCOUNT}}</span>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='line'></view>
+  </block>
+</view>
+<!-- 高考动态 结束 -->
+
+<!-- 线下活动 开始 -->
+<view class="notice">
+  <image class='icon' src='../../images/line.png'></image>
+  <view style='font-size:30rpx;;'>线下活动</view>
+  <span class="more" style="font-size:25rpx;" bindtap="activitymore">更多></span>
+</view>
+<view class='flex-x' style='padding: 15rpx;'>
+  <block wx:for="{{activity}}" wx:key="">
+  <view class='activity' bindtap='activity' data-id="{{item.NEWS_ID}}">
+    <image src='{{item.IMGURL}}' style='width:100%;height:150rpx;'></image>
+    <view style="font-size:25rpx;">{{item.TITLE}}</view>
+  </view>
+  </block>
+</view>
+<view class='footer'></view>
+<!-- 线下活动 结束 -->

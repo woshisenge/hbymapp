@@ -1,0 +1,4 @@
+/* pages/person/security/loginpw/loginpw.wxss */
+.weui-cells{
+  font-size:30rpx;
+}

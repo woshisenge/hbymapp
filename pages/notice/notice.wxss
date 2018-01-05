@@ -1,0 +1,60 @@
+/* pages/notice/notice.wxss */
+.flex-x{
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+}
+.flex-y{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.news{
+  width: 30%;
+  height: 150rpx;
+  padding: 0 25rpx; 
+}
+.headlines{
+  width: 70%;
+  padding: 0 25rpx;
+  font-size: 25rpx;
+}
+.time-t{
+  color: #B5936D;
+}
+.icon{
+  width: 35rpx;
+  height: 35rpx;
+  margin-top:4rpx;
+  margin-right:8rpx;
+
+}
+.content{
+  width:90%;
+  font-size:28rpx;
+  margin:0 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height:22px;
+}
+.left{
+  width:17%;
+
+}
+.center{
+  width:53%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  letter-spacing:2px;
+ 
+}
+.right{
+  width:30%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size:25rpx;
+}

@@ -1,0 +1,20 @@
+.text{
+  width:100%;
+  margin-top:20rpx;
+}
+text{
+  text-align: center;
+  display: block;
+}
+.flex-warp{
+  display: flex;
+  flex-direction:row;
+}
+
+.formbox{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+

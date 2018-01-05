@@ -1,0 +1,135 @@
+<view class="page__bd">
+    <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+            <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">搜索</view>
+            </label>
+        </view>
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="setSearchStorage">搜索</view>
+    </view>  
+</view>
+<view class="header">
+  <view class="header-left" bindtap='hot'>热度<view class="class-after {{hot?'.rotate_180':''}}" ></view></view>
+  <view class="header-center" bindtap='grade'>名称<view class="class-after {{grade?'rotate_180':'.'}}" ></view></view>
+  <view class="header-right" bindtap="tap_ch">
+  <view class="verta"></view>                       
+    <text>筛选</text>
+    <image src="/images/select.png" style='width:30rpx;height:30rpx;'></image>
+  </view>
+ 
+</view> 
+<view class="cue"><text>共找到<text style='color:rgb(90,180,170)'>{{num}}</text>所院校</text></view> 
+<view class="page1" hidden="{{hidden}}" bindtap="close_ch"></view>
+<scroll-view scroll-y class="page" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" style="width:{{width}}%" >
+<view class="page-body">
+  <view class='demo-text-0'><text>筛选</text></view>
+  <view class="demo-text-1"><text>地区</text><view class="weui-cell__ft_in-access {{showView?'':'.rotate_90'}}" bindtap='changeArrow'></view></view>
+  <view class="demo-text-2">
+    <checkbox-group bindchange="changeProvince">  
+        <view class="service_selection2">  
+          <block wx:for="{{provinces}}" wx:key="NAME" wx:for-index="i" wx:if="{{i<6}}"> 
+             <label class="checkbox {{item.checked?'is_checked':''}}"> 
+              <checkbox value="{{i}}" checked="{{checked}}" hidden="false" />{{item.NAME}}
+              </label>    
+          </block>  
+        </view>
+        <view class="service_selection2" hidden='{{showView}}' >
+          <block wx:for="{{provinces}}" wx:key="NAME" wx:for-index="i" wx:if="{{i>=6}}" >   
+              <label class="checkbox {{item.checked?'is_checked':''}}" >
+                <checkbox value="{{i}}" checked="{{checked}}" hidden="false" />{{item.NAME}}
+              </label>    
+          </block>  
+        </view>  
+    </checkbox-group> 
+  </view>
+</view>
+<view class="page-body">
+  <view class="demo-text-1">批次</view>
+  <view class="demo-text-2">
+    <checkbox-group bindchange="changeArrangment">  
+        <view class="service_selection1">  
+          <block wx:for="{{arrangments}}" wx:key="NAME" >   
+              <label class="checkbox {{item.checked?'is_checked':''}}">  
+                <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
+              </label>  
+          </block>  
+        </view>  
+    </checkbox-group> 
+  </view>
+</view>
+<view class="page-body">
+  <view class="demo-text-1"><text>类型</text><view class="weui-cell__ft_in-access {{showView1?'':'.rotate_90'}}" bindtap='changeArrow1'></view></view>
+  <view class="demo-text-2">
+    <checkbox-group bindchange="changeSubjecttype">  
+        <view class="service_selection1">  
+          <block wx:for="{{subjecttypes}}" wx:key="NAME" wx:for-index="i" wx:if="{{i<6}}">
+              <label class="checkbox {{item.checked?'is_checked':''}}">  
+                <checkbox value="{{i}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
+              </label>    
+          </block>  
+        </view>  
+        <view class="service_selection1" hidden='{{showView1}}'>  
+          <block wx:for="{{subjecttypes}}" wx:key="NAME" wx:for-index="i" wx:if="{{i>=6}}">
+              <label class="checkbox {{item.checked?'is_checked':''}}">  
+                <checkbox value="{{i}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
+              </label>    
+          </block>  
+        </view>  
+  </checkbox-group> 
+  </view>
+</view>
+<view class="page-body">
+  <view class="demo-text-1"><text>属性</text><view bindtap='changeArrow2'></view></view>
+  <view class="demo-text-2">
+    <checkbox-group bindchange="changeProperty"> 
+        <view class="service_selection1" >   
+        <block wx:for="{{properties}}" wx:key="NAME" wx:key="NAME" wx:for-index="i" > 
+              <label class="checkbox {{item.checked?'is_checked':''}}">  
+                <checkbox value="{{i}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
+              </label>
+          </block>
+          </view>
+  </checkbox-group>
+  </view>
+ </view>
+ <view class="page-body1" style="width:100%;height:100rpx;">
+ </view>
+<view class="flex-warp">
+  <view class="flex-item"><button class="weui-btn" type="primary" bindtap='reset_search'>重置</button></view>
+  <view class="flex-item"><button class="weui-btn" type="primary" bindtap='close_ch'>完成</button></view>
+</view> 
+</scroll-view>
+<!-- 院校列表 -->
+<block wx:for="{{schools}}" wx:key="SCHOOL_ID" wx:for-item="school"> 
+  <view class="flex-wrps" bindtap='teacher' data-id="{{school.SCHOOL_ID}}" >
+    <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+        <image class="weui-media-box__thumb" src="{{school.HEADURL}}" />
+      </view>
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view>
+          <text>{{school.NAME}}</text>
+          <image wx:for="{{school.properties}}" class='icon-property' src="/images/icon/{{item.DIC_ID}}.png"></image>
+        </view>
+        <view class="weui-media-box__desc">
+          <text>入驻人数：{{school.TEACOUNT}}人</text><text>地区：{{school.PROVINCE_VALUE}}</text>
+        </view>
+        <view class="weui-media-box__desc">
+          <image wx:for="{{school.subjecttypes}}"  class='icon-subjecttype' src="/images/icon/{{item.DIC_ID}}.png"></image>
+        </view>  
+      </view>
+    </view>
+  </view> 
+</block>
+<view class="weui-loadmore" hidden='{{!isLoadingMore}}'>
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+</view>

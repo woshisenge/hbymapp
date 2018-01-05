@@ -1,0 +1,4 @@
+/* pages/intelligence/content/content.wxss */
+.child{
+  color:#999999;
+}

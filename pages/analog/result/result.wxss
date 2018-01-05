@@ -1,0 +1,4 @@
+/* pages/analog/analogs/result/result.wxss */
+.child{
+  color:#999999;
+}

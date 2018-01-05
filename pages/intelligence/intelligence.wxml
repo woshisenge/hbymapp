@@ -1,0 +1,66 @@
+<!--pages/intelligence/intelligence.wxml-->
+<view class="head">
+  <image src="{{banner}}"></image>
+</view>
+<view class="content1">
+  <view class="content1-left">
+    <text style="color:rgb(125,216,202);font-size:30rpx;">我的分数：{{examinee.EXAMSCORE? examinee.EXAMSCORE : 0}}分</text>
+    <text style="color:#333333;font-size:28rpx;">{{examinee.EXAMAREA_VALUE? examinee.EXAMAREA_VALUE : ''}}　{{examinee.MAJORTYPE_VALUE? examinee.MAJORTYPE_VALUE : ''}}</text>
+  </view>
+  <view class="content1-right" bindtap='toExaminee'>
+    <image src="../../../images/icon01.png" style="width:60rpx;height:60rpx;"></image>
+    <text>设置</text>
+  </view>
+</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">批次</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{batch}}" range-key='NAME'>
+        <view>{{batch[index].NAME}}</view>
+      </picker>
+      </view>
+  </view>
+  <view bindtap='toProvince' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">地区</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">
+        <view>{{provinces != '' ? provinces : '不限'}}</view>
+      </view>
+  </view>
+  <view bindtap='toSubjecttype' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">类型</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">
+        <view>{{subjecttypes != '' ? subjecttypes : '不限'}}</view>
+      </view>
+  </view>
+  <view bindtap='toProperties' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">属性</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">
+        <view>{{properties != '' ? properties : '不限'}}</view> 
+      </view>
+  </view>
+  <view bindtap='toMajors' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">专业</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access">
+        <view>{{majors != '' ? majors : '不限'}}</view>
+      </view>
+  </view>
+</view>
+<button class="weui-btn" type="primary" bindtap='result'>智能推荐</button>
+<view class='footer'>
+  <view class='footer1'>
+    <icon type="warn" size="23" color="#F43530"></icon><text>重要提示：</text>
+  </view>
+  <view class="footer2">
+    1、本系统提供高考志愿填报智能模拟功能，不等同于实际的网上志愿填报。建议考生在填报志愿时，结合本系统的推荐来完善志愿表；
+  </view>
+  <view class="footer2">
+    2、您正在使用的是河北考生志愿填报智能模拟系统，提供“普通类文理的本科一、本科二批”的志愿填报模拟功能，该功能主要数据来源参考与各省市出版的填报指南以及各本科专科院系官网的历年数据；
+  </view>
+  <view class="footer2">
+    3、当前版本使用的数据已经更新至2017年最新数据；
+  </view>
+  <view class='footer2'>
+    4、本系统推荐结果仅限参考，在正式填报时，以教育考试院公布的最新招生计划为准，具体情况请根据当年招生政策自行判断。
+  </view>
+</view>

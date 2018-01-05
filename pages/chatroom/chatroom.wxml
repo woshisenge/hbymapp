@@ -1,0 +1,90 @@
+<view class="main">
+    <view wx:if="{{recordStatus != RecordStatus.HIDE}}" class="modal modal-record" bindtap="toggleRecordModal">
+        <view class="modal-body" catchtap="toggleWithoutAction">
+            <text class="desc">{{RecordDesc[recordStatus]}}</text>
+            <view class="dot" catchtouchstart="handleRecording" catchtouchmove="handleRecordingMove"
+                  catchtouchend="handleRecordingCancel" catchtouchcancel="handleRecordingCancel">
+                <image class="icon-mic" src="/images/mic@2x.png"/>
+            </view>
+        </view>
+    </view>
+<scroll-view scroll-y="true" class="scroll_view" class="{{ view }}" bindtap="cancelEmoji" scroll-into-view="{{ chatRecords.length > 0 ? 'rec_' + chatRecords[chatRecords.length - 1].REC_ID : '' }}"  >
+    <view class="message" wx:for="{{ chatRecords }}" wx:key="" id="rec_{{ item.REC_ID }}">
+      <view class="main" class="{{ item.style }}">
+        <view class="time">
+          <text>{{item.CREATETIME}}</text>
+        </view>
+        <view class="user">
+          <text>{{ name }}</text>
+        </view> 
+        <image class="avatar" src="/images/number.png"/>
+        <view class="msg">
+            <view class="template" wx:for="{{ item.CONTENT }}" wx:key="">
+              <template is="{{ item.type }}" data="{{ item }}"/>
+            </view>
+        </view>
+      </view>
+    </view>
+</scroll-view>
+
+    <template name="txt">
+        <text style="float: left;margin-top: 2px;">{{ item.data }}</text>
+    </template>
+    
+    <template name="emoji">
+        <image class="avatar" src="{{'/images/faces/' + item.data }}"
+               style="width: 25px;height: 25px;margin: 0 0 2px 0;float: left;"/>
+    </template>
+    <view class="room_bar">
+        <form bindreset="cleanInput">
+            <view class="f-row">
+                <input wx:if="{{!showRecordHandler}}" class="f news" type="text" value="{{ inputMessage }}"
+                       placeholder="输入新消息" placeholder-style="color:#CFCFCF;padding-left:5px;" bindinput="bindMessage"/>
+                <button wx:else class="f btn-recording" catchtouchstart="handleRecording"
+                        catchtouchend="handleRecordingCancel" catchtouchcancel="handleRecordingCancel">按住 说话
+                </button>
+                <view class="open_emoji" bindtap="openEmoji">
+                  <image src="/images/Emoji.png"/>
+                </view>
+                <button class="send_btn" bindtap="sendMessage" formType="reset">发送</button>
+            </view>
+        </form>
+        
+        <swiper class="emoji_list" class="{{ show }}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"
+                interval="{{interval}}" duration="{{duration}}">
+            <block>
+                <swiper-item>
+                    <view class="emoji_item">
+                        <image wx:for="{{ emojiObj.map1 }}" src="{{ emojiObj.path + item }}" wx:key=""
+                               bindtap="sendEmoji" data-emoji="{{ index }}"/>
+                    </view>
+                    <view class="emoji_item">
+                        <image wx:for="{{ emojiObj.map2 }}" src="{{ emojiObj.path + item }}" wx:key=""
+                               bindtap="sendEmoji" data-emoji="{{ index }}"/>
+                    </view>
+                    <view class="emoji_item">
+                        <image wx:for="{{ emojiObj.map3 }}" src="{{ emojiObj.path + item }}" wx:key=""
+                               bindtap="sendEmoji" data-emoji="{{ index }}"/>
+                    </view>
+                </swiper-item>
+            </block>
+            <block class="second">
+                <swiper-item>
+                    <view class="emoji_item">
+                        <image wx:for="{{ emojiObj.map4 }}" src="{{ emojiObj.path + item }}" wx:key=""
+                               bindtap="sendEmoji" data-emoji="{{ index }}"/>
+                    </view>
+                    <view class="emoji_item">
+                        <image wx:for="{{ emojiObj.map5 }}" src="{{ emojiObj.path + item }}" wx:key=""
+                               bindtap="sendEmoji" data-emoji="{{ index }}"/>
+                    </view>
+                    <view class="emoji_item">
+                        <image wx:for="{{ emojiObj.map6 }}" src="{{ emojiObj.path + item }}" wx:key=""
+                               bindtap="sendEmoji" data-emoji="{{ index }}"/>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+        </view>
+      </view>
+

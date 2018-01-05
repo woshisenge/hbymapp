@@ -1,0 +1,70 @@
+<view class="page">
+<form bindsubmit="formSubmit">
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd weui-cell_primary">
+          <text>考试类型</text>
+          <picker bindchange="bindPickerChange" value="{{majortypeIndex}}" range="{{majortypeObjs}}" range-key='NAME' id="MAJORTYPE" name="MAJORTYPE">
+              <view class='picker'>{{majortypeObjs[majortypeIndex].NAME}}</view>
+            </picker>
+      </view>
+  </view>   
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd weui-cell_primary" bindtap='region'>
+          <text>考生所在地</text>
+          <text class="picker" id="province">{{province}}</text>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view> 
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd weui-cell_primary">
+          <text>年级</text>
+          <picker bindchange="bindPickerChange" value="{{gradeIndex}}" range="{{gradeObjs}}" range-key='NAME' id="GRADE" name="GRADE">
+        <view class='picker'>{{gradeObjs[gradeIndex].NAME}}</view>
+      </picker>
+      </view>
+  </view> 
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">高考成绩</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="预估成绩" type='number' value='{{user.EXAMSCORE}}' name='EXAMSCORE'/>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__tips">*该成绩用于模拟填报、智能推荐等相关功能</view>
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">一模成绩</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="暂无" type='number' value='{{user.FIRSTMOCK}}' name='FIRSTMOCK'/>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">二模成绩</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="暂无" type='number' value='{{user.SECONDMOCK}}' name='SECONDMOCK'/>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">三模成绩</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="暂无" type='number' value='{{user.THIRDMOCK}}' name='THIRDMOCK'/>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__tips">*该成绩用于高校检索查询</view>
+<button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
+</form>
+</view>
+

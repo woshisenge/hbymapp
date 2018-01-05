@@ -1,0 +1,45 @@
+/* pages/major/majorcontent/content/content.wxss */
+page{
+  background-color: #EEEEEE;
+}
+.page{
+  width: 94%;
+  margin: 0 3%;
+  font-size:28rpx;
+}
+.content{
+  margin-top: 3%;
+  background-color:white;
+}
+.top{
+  padding:2% 0 2% 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+.top image{
+  width:50rpx;
+  height:50rpx;
+}
+.center{
+  padding:10rpx 0 5% 2%;
+  display: flex;
+  flex-direction: column;
+}
+.center text{
+  margin-top:3%;
+}
+.text{
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+}
+.texts{
+  color:red;
+  text-align: right;
+}

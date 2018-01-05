@@ -1,0 +1,10 @@
+/* pages/contacts/contacts.wxss */
+
+.weui-navbar__item{
+  padding:10rpx;
+
+}
+.titles{
+  text-align: right;
+  font-size:30rpx;
+}

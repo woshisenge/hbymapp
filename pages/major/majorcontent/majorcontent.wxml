@@ -1,0 +1,10 @@
+<!--pages/major/majorcontent/majorcontent.wxml-->
+<view class="weui-cells__title">{{parentName}} > {{name}}</view>
+<view class="weui-cells weui-cells_after-title">
+  <block wx:for="{{major}}" wx:key="">
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" data-id="{{item.DIC_ID}}" bindtap="content">
+      <view class="weui-cell__bd">{{item.NAME}}</view>
+      <view class="weui-cell__ft"></view>
+  </view>
+  </block>
+</view>

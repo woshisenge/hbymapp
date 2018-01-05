@@ -1,0 +1,21 @@
+<!--pages/activity/activity.wxml-->
+<block wx:for="{{activity}}" wx:key="">
+<view class="content" data-id='{{item.NEWS_ID}}' bindtap='activity'>
+  <view class="head"><text>{{item.TITLE}}</text></view>
+  <view class='center'>
+    <block wx:for="{{item.images}}" wx:key="" wx:for-item="image">
+      <image src="{{image}}"></image>   
+    </block> 
+  </view>
+  <view class="footer">
+    <view class='flex-x'>
+      <image class='icon' src='../../images/time.png'></image>
+      <span class='time-t'>{{item.MODIFYTIME}}</span>
+    </view>
+    <view class='flex-x2'>
+      <image class='icon' src='../../images/browse.png'></image>
+      <span class='time-t'>{{item.VIEWCOUNT}}</span>
+    </view>
+  </view>
+</view>
+</block>

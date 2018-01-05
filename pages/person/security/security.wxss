@@ -1,0 +1,59 @@
+/* pages/person/security/security.wxss */
+.page{
+  margin:3% 3% 0 3%;
+  font-size:28rpx;
+}
+.head{
+  display: flex;
+  flex-direction: row;
+}
+.icons{
+  width:50rpx;
+  height:50rpx;
+}
+.icons image{
+  width:100%;
+  height:100%;
+}
+.content{
+  margin-top:3%;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.image{
+  width:10%;
+  height:70rpx;
+}
+.title{
+  width:17%;
+}
+.title-left{
+  font-weight:bold;
+}
+.texts{
+  width:46%;
+}
+.texts text{
+  font-size:20rpx;
+}
+.button{
+  width:25%;
+  font-size:18rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+button[size="mini"]{
+  padding:0 0.5em;
+  
+}
+.image image{
+  width:100%;
+  height:100%;
+}
+.line{
+  width:100%;
+  border-top:1rpx solid #CCCCCC;
+  margin-top:30rpx;
+}

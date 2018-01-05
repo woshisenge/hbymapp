@@ -1,0 +1,114 @@
+<!--pages/school/schoolcontent/schoolcontent.wxml-->
+<import src="../../../wxParse/wxParse.wxml" />
+<view class="banner">
+  <image src='/images/school.jpg'></image>
+</view>
+<view class='logo'>
+  <view class='logo-left'>
+     <image src="{{logo}}"></image>  
+  </view>
+  <view class='logo-right'>
+    <view class='logo-text'>
+      <text>{{name}}</text> 
+    </view>
+    <view class='logo-image'>
+      <image wx:for="{{properties}}" class='icon-property' src="/images/icon/{{item.DIC_ID}}.png"></image>
+      <image wx:for="{{subjecttypes}}" class='icon-subject' src="/images/icon/{{item.DIC_ID}}.png"></image>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title"></view>
+<view class="weui-cells weui-cells_after-title" bindtap='contentshow'>
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+            <image src="{{icon1}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">学校简介</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access {{ !showView? '': 'rotate_90'}}"></view>
+    </view>
+    <view class="{{showView?'show':'hide'}}">
+      <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+    </view>
+</view>
+<view class='message'>
+  <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+              <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+    </view>
+  </view>
+  <view class="weui-tab__panel">
+    <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__hd">
+                <image src="{{icon}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+            </view>
+            <view class="weui-cell__bd">河北省</view>
+            <view class="weui-cell__ft">
+              <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key='NAME' data-id="{{school_id}}" id="{{array[index].DIC_ID}}">
+                <view>{{array[index].NAME}}</view>
+              </picker>
+            </view>
+        </view>
+      </view>
+      <view class='center'>
+        <view class='center-item'>年份</view>
+        <view class='center-item'>批次</view>
+        <view class='center-item'>最高分</view>
+        <view class='center-item'>最低分</view>
+        <view class='center-item'>招生人数</view>
+      </view>
+      <block wx:for="{{grade}}" wx:key="">
+      <view class='bottom'>
+        <view class='bottom-item'>
+          <text>{{item.YEAR_VALUE}}</text>
+        </view>
+        <view class='bottom-item'>
+          <text>{{item.ARRANGMENT_VALUE}}</text>
+        </view>
+        <view class='bottom-item'>
+          <text>{{item.MAXSCORE}}</text>
+        </view>
+        <view class='bottom-item'>
+          <text>{{item.MINSCORE}}</text>
+        </view>
+        <view class='bottom-item'>
+          <text>{{item.ENTERCOUNT}}</text>
+        </view>
+      </view>
+      </block>
+    </view>
+    <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">学校类别</view>
+        <view class="weui-cell__ft">{{types}}</view>
+      </view>
+      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">学校类型</view>
+        <view class="weui-cell__ft"><image wx:for="{{subjecttypes}}" class='icon-subject' src="/images/icon/{{item.DIC_ID}}.png"></image></view>
+      </view>
+      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">所在地</view>
+          <view class="weui-cell__ft ">{{region}}</view>
+      </view>
+      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">创建时间</view>
+          <view class="weui-cell__ft ">{{date}}</view>
+      </view>
+      <view url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">隶属于</view>
+          <view class="weui-cell__ft ">{{subject}}</view>
+      </view>
+    </view>
+    <view class="weui-tab__content" hidden="{{activeIndex != 2}}">  
+      <view class='top'>
+        <image src="/images/tb20.png"></image>
+        <text>学校资料</text>
+      </view>
+    </view>
+  </view>
+</view>

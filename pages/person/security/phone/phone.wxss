@@ -1,0 +1,4 @@
+/* pages/person/security/phone/phone.wxss */
+.weui-cells{
+  font-size:30rpx;
+}

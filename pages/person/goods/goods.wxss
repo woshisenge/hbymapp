@@ -1,0 +1,49 @@
+/* pages/person/goods/goods.wxss */
+.page{
+  display: flex;
+  flex-wrap:wrap;
+  margin:0 3% 0 3%;
+  justify-content: space-between;
+  font-size:25rpx;
+}
+.content{
+  width:33%;
+  height:220rpx;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+image{
+  width:50%;
+  height:110rpx;
+}
+.contents{
+  width:33%;
+  height:220rpx;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left:1rpx solid #CCCCCC;
+  border-right:1rpx solid #CCCCCC;
+}
+.contentss{
+  width:33%;
+  height:220rpx;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right:1rpx solid #CCCCCC;
+}
+.line{
+  width:100%;
+  height:1rpx;
+  border-top:1rpx solid #CCCCCC;
+}
+.lines{
+  width:34%;
+  height:1rpx;
+  border-top:1rpx solid #CCCCCC;
+}

@@ -1,0 +1,28 @@
+<!--pages/analog/analogs/result/content/content.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">{{results[0].NAME}}</view>
+  </view>
+  <view class="page_bd">
+    <view class='center'>
+      <view class='center-item'>年份</view>
+      <view class='center-item'>最高分</view>
+      <view class='center-item'>最低分</view>
+      <view class='center-item'>录取人数</view>
+    </view>
+    <view class='bottom'>
+      <view class='bottom-item'>
+        <text wx:for="{{results}}" wx:key="item.MJSCORE_ID">{{item.YEAR_VALUE}}</text>
+      </view>
+      <view class='bottom-item'>
+        <text wx:for="{{results}}" wx:key="item.MJSCORE_ID">{{item.MAXSCORE}}</text>
+      </view>
+      <view class='bottom-item'>
+        <text wx:for="{{results}}" wx:key="item.MJSCORE_ID">{{item.MINSCORE}}</text>
+      </view>
+      <view class='bottom-item'>
+        <text wx:for="{{results}}" wx:key="item.MJSCORE_ID">{{item.ENTERCOUNT}}</text>
+      </view>
+    </view>
+  </view>
+</view>

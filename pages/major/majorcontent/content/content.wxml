@@ -1,0 +1,32 @@
+<!--pages/major/majorcontent/content/content.wxml-->
+<import src="/wxParse/wxParse.wxml" />
+<view class='page'>
+  <view class='content'>
+    <view class='top'>
+      <image src="/images/info.png"></image>
+      <text>基本信息</text>
+    </view>
+    <view class='center'>
+      <text>专业名称：　{{name}}</text>
+      <text>专业代码：　{{code}}</text>
+    </view>
+  </view>
+  <view class='content'>
+    <view class='top'>
+      <image src="/images/tb-major.png"></image>
+      <text>专业介绍</text>
+    </view>
+    <view class='center'>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+  </view>
+  <view class='content'>
+    <view class='top'>
+      <image src="/images/class.png"></image>
+      <text>主要课程</text>
+    </view>
+    <view class='center'>
+      {{subject}}
+    </view>
+  </view>
+</view>

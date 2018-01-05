@@ -1,0 +1,25 @@
+<view class='header'>
+   <image src="{{src1}}"></image>
+</view>
+<view class='header-bottom'>
+   <view class="header-bottom-left"><image src="{{logo}}"></image></view>
+   <view class="header-bottom-right">
+    <text>{{name}}</text>
+    <view class='map'>{{region}}　|　{{types}}　</view>
+  </view>
+</view>
+<block wx:for="{{teacher}}" wx:key="">
+<view class="weui-panel__bd" bindtap='chat' data-id="{{item.USER_ID}}">
+  <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
+      </view>
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{item.NICKNAME}}</view>
+          <view class="weui-media-box__desc">
+          {{item.JOBTYPE}}
+          </view>
+      </view>
+  </view>
+</view>
+</block>

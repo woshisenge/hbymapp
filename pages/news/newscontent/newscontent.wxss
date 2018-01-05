@@ -1,0 +1,13 @@
+/* pages/news/newscontent/newscontent.wxss */
+
+ @import "../../../wxParse/wxParse.wxss";
+.content{
+  width:94%;
+  margin:3% 3% 0 3%;
+  font-size:28rpx;
+}
+.heads{
+  margin-top:35rpx;
+  font-size:25rpx;
+  color:#999999;
+}

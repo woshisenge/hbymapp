@@ -1,0 +1,26 @@
+/* pages/analog/analogs/content/content.wxss */
+checkbox-group{
+  margin-top:20rpx;
+}
+.service_selection {    
+  background: #fff;  
+  width:100%;
+  display:flex;
+  flex-wrap: wrap;
+} 
+.service_selection label {  
+  border: 1px solid rgb(90,180,170);
+  color:rgb(90,180,170);
+  width:22%;
+  height:80rpx;
+  font-size: 28rpx;  
+  border-radius: 4px; 
+  margin:0 4% 4% 4%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}  
+.service_selection .is_checked {  
+  background-color:rgb(90,180,170);
+  color:white; 
+}  

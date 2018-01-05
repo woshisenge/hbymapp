@@ -1,0 +1,4 @@
+/* pages/major/majorcontent/majorcontent.wxss */
+.weui-cells__title{
+  font-size:24rpx;
+}

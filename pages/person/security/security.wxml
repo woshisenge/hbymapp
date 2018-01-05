@@ -1,0 +1,50 @@
+<!--pages/person/security/security.wxml-->
+<view class="page">
+  <view class='head'>
+    <view class='icons'><image src="../../../images/tb06.png"></image></view>
+    <view class='text'><text>您的账号存在安全风险，建议立即优化一下5项</text></view>
+  </view>
+  <view class='content'>
+    <view class="image"><image src="../../../images/tb07.png"></image></view>
+    <view class='title'><text class='title-left'>登录密码</text><text style="font-size:25rpx;">已设置</text></view>
+    <view class='texts'><text>建议使用含字母、数字、特殊符号的组合。</text></view>
+    <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini" bindtap="loginpw">修改密码</button></view>
+  </view>
+</view>
+<view class='line'></view>
+<view class="page">
+  <view class='content'>
+    <view class="image"><image src="../../../images/tb08.png"></image></view>
+    <view class='title'><text class='title-left'>支付密码</text><text style="font-size:25rpx;"><text wx:if='{{isTrade}}'>已</text><text wx:if='{{!isTrade}}'>未</text>设置</text></view>
+    <view class='texts'><text>请确保支付密码与登录密码不同。</text></view>
+    <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini" bindtap="paymentpw">修改密码</button></view>
+  </view>
+</view>
+<view class='line'></view>
+<view class="page">
+  <view class='content'>
+    <view class="image"><image src="../../../images/tb09.png"></image></view>
+    <view class='title'><text class='title-left'>手机绑定</text><text style="font-size:25rpx;"><text wx:if='{{isPhone}}'>已</text><text wx:if='{{!isPhone}}'>未</text>设置</text></view>
+    <view class='texts'><text>绑定手机后，您即可享受丰富的手机服务，如手机找回密码等。</text></view>
+    <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini" bindtap='phone'>修改手机</button></view>
+  </view>
+</view>
+<view class='line'></view>
+<view class="page">
+  <view class='content'>
+    <view class="image"><image src="../../../images/tb11.png"></image></view>
+    <view class='title'><text class='title-left'>邮箱绑定</text><text style="font-size:25rpx;"><text wx:if='{{isEmail}}'>已</text><text wx:if='{{!isEmail}}'>未</text>设置</text></view>
+    <view class='texts'><text>验证邮箱可以用好找回密码，并能享受其他定制服务。</text></view>
+    <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini" bindtap='email' wx:if='{{!isEmail}}'>绑定邮箱</button></view>
+  </view>
+</view>
+<view class='line'></view>
+<view class="page">
+  <view class='content'>
+    <view class="image"><image src="../../../images/tb10.png"></image></view>
+    <view class='title'><text class='title-left'>实名认证</text><text style="font-size:25rpx;"><text wx:if='{{isRealName}}'>已</text><text wx:if='{{!isRealName}}'>未</text>设置</text></view>
+    <view class='texts'><text>用于提升账号的安全性和信任级别。认证后的账号不能修改认证信息。</text></view>
+    <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini" bindtap='authentication' wx:if='{{!isRealName}}'>实名认证</button></view>
+  </view>
+</view>
+<view class='line'></view>

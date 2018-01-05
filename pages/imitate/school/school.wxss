@@ -1,0 +1,7 @@
+/* pages/imitate/school/school.wxss */
+.weui-cells:before {
+  border-top:0;
+}
+.weui-cell__bd{
+  color:#999;
+}

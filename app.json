@@ -1,0 +1,80 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/intelligence/result/content/content",
+    "pages/intelligence/result/result",
+    "pages/consult/consult",
+    "pages/consult/consultlist/consultlist",
+    "pages/analog/analog",
+    "pages/login/login",
+    "pages/contacts/contacts",
+    "pages/person/person",
+    "pages/notice/notice",
+    "pages/news/news",
+    "pages/activity/activity",
+    "pages/news/newscontent/newscontent",
+    "pages/person/basics/basics",
+    "pages/person/information/information",
+    "pages/person/goods/goods",
+    "pages/person/security/security",
+    "pages/person/power/power",
+    "pages/notice/noticecontent/noticecontent",
+    "pages/school/school",
+    "pages/intelligence/intelligence",
+    "pages/person/security/loginpw/loginpw",
+    "pages/person/security/paymentpw/paymentpw",
+    "pages/person/security/phone/phone",
+    "pages/person/security/email/email",
+    "pages/person/security/authentication/authentication",
+    "pages/intelligence/region/region",
+    "pages/intelligence/mold/mold",
+    "pages/intelligence/attribute/attribute",
+    "pages/major/major",
+    "pages/major/majorcontent/majorcontent",
+    "pages/major/majorcontent/content/content",
+    "pages/school/schoolcontent/schoolcontent",
+    "pages/activity/content/content",
+    "pages/analog/content/content",
+    "pages/analog/result/result",
+    "pages/analog/result/content/content",
+    "pages/chatroom/chatroom",
+    "pages/intelligence/major/major",
+    "pages/person/tbasics/tbasics",
+    "pages/register/register",
+    "pages/person/information/content/content",
+    "pages/imitate/school/school",
+    "pages/imitate/school/content/content",
+    "pages/imitate/imitate",
+    "pages/person/goods/payment/payment"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#5AB4AA",
+    "navigationBarTitleText": "铭邦高考志愿网",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#5AB4AA",
+    "list": [
+      {
+        "pagePath": "pages/contacts/contacts",
+        "text": "联系人",
+        "iconPath": "images/contact.png",
+        "selectedIconPath": "images/contacts.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "images/homepages.png",
+        "selectedIconPath": "images/homepage.png"
+      },
+      {
+        "pagePath": "pages/person/person",
+        "text": "我的",
+        "iconPath": "images/personals.png",
+        "selectedIconPath": "images/personal.png"
+      }
+    ]
+  }
+}

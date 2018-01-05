@@ -1,0 +1,29 @@
+<view style='padding:15rpx 0;'>
+  <block wx:for="{{news}}" wx:key="">
+  <view style='display:flex;flex-direction:row;' bindtap='notice' data-id='{{item.NEWS_ID}}'>
+    <view class='news'>
+      <image src='{{item.IMGURL}}' style='width:100%;height:100%;'></image>
+    </view>
+    <view class='headlines'>
+      <view style='height:40px;'>{{item.TITLE}}</view>
+      <view class="flex-x" style='margin-top:40rpx;'>
+        <view class='flex-x' style='margin-right: 20rpx;'>
+          <image class='icon' src='../../images/time.png'></image>
+          <span class='time-t'>{{item.MODIFYTIME}}</span>
+        </view>
+        <view class='flex-x'>
+          <image class='icon' src='../../images/browse.png'></image>
+          <span class='time-t'>{{item.VIEWCOUNT}}</span>
+        </view>
+      </view>
+    </view>
+  </view>
+  </block>
+  <block wx:for="{{notice}}" wx:key="">
+<view class="content" bindtap='notice' data-id='{{item.NEWS_ID}}'>
+  <view class='left'>【标题】</view>
+  <view class="center"><text>{{item.TITLE}}</text></view>
+  <view class="right">{{item.CREATETIME}}</view>
+</view>
+</block>
+</view>

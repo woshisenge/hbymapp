@@ -1,0 +1,17 @@
+<!--pages/analog/analogs/result/result.wxml-->
+<view class='page'>
+  <view class='page_bd'>
+    <block wx:for="{{results}}" wx:for-item="school" wx:key="*this">
+      <view class="weui-cells__title"></view>
+      <view class="weui-cells weui-cells_after-title">
+        <view bindtap="show" class="weui-cell weui-cell_access" hover-class="weui-cell_active" id='{{school[0].SCHOOL_ID}}'>
+            <view class="weui-cell__bd">{{school[0].NAME}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access {{!school[0].checked? '' : 'rotate_90'}}"></view>
+        </view>
+        <view bindtap='toDetails' class="weui-cell weui-cell_access child" hidden='{{!school[0].checked}}' hover-class="weui-cell_active" wx:for="{{school}}" id='{{school[0].SCHOOL_ID}}_{{item.MAJOR_ID}}_{{item.chance}}'>
+          <view class="weui-cell__bd">{{item.MJNAME}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,4 @@
+/* pages/person/security/authentication/authentication.wxss */
+.weui-cells{
+  font-size:30rpx;
+}
