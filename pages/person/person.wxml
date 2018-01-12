@@ -5,7 +5,7 @@
     <view class='image'><image src="{{logo}}" bindtap="chooseImageTap"></image></view>
     <view class='text'>
       <view class='text-top'><text>{{nickname}}</text></view>
-      <view class='text-bottom' wx:if="{{role == 1}}"><image src="{{vip}}" style='width:175rpx;height:100rpx'></image></view>
+      <view class='text-bottom' wx:if="{{role == 1}}"><image src="{{vip}}" style='width:90rpx;height:45rpx'></image></view>
     </view>
   </view>
   <view class="head-right">

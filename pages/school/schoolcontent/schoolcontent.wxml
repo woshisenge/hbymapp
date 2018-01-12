@@ -12,11 +12,12 @@
       <text>{{name}}</text> 
     </view>
     <view class='logo-image'>
-      <image wx:for="{{properties}}" class='icon-property' src="/images/icon/{{item.DIC_ID}}.png"></image>
       <image wx:for="{{subjecttypes}}" class='icon-subject' src="/images/icon/{{item.DIC_ID}}.png"></image>
+      <image wx:for="{{properties}}" class='icon-property' src="/images/icon/{{item.DIC_ID}}.png"></image>
     </view>
   </view>
 </view>
+<view class="content">
 <view class="weui-cells__title"></view>
 <view class="weui-cells weui-cells_after-title" bindtap='contentshow'>
     <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
@@ -111,4 +112,5 @@
       </view>
     </view>
   </view>
+</view>
 </view>

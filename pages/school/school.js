@@ -499,7 +499,8 @@ Page({
       provinces: provinces,
       subjecttypes: subjecttypes,
       arrangments: arrangments,
-      properties: properties
+      properties: properties,
+      checked: false
     });
 
     that.clearCurPage();

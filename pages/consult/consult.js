@@ -128,7 +128,7 @@ Page({
       that.setData({
         provinces: res.data
       })
-    })
+    }) 
     
   },
   changeArrow:function(){
@@ -170,7 +170,7 @@ Page({
   },
   changeArrangment: function (e) {
     var that = this;
-    var arrangments = this.data.arrangments;
+    var arrangments = that.data.arrangments;
     var checkArr = e.detail.value;
     for (var i = 0; i < arrangments.length; i++) {
       if (checkArr.indexOf(i + "") != -1) {
@@ -179,7 +179,7 @@ Page({
         arrangments[i].checked = false;
       }
     }
-    this.setData({
+    that.setData({
       arrangments: arrangments
     });
 
@@ -188,7 +188,7 @@ Page({
   }, 
   changeSubjecttype: function (e) {
     var that = this;
-    var subjecttypes = this.data.subjecttypes;
+    var subjecttypes = that.data.subjecttypes;
     var checkArr = e.detail.value;
     for (var i = 0; i < subjecttypes.length; i++) {
         if (checkArr.indexOf(i + "") != -1) {
@@ -197,7 +197,7 @@ Page({
           subjecttypes[i].checked = false;
         }
       }
-    this.setData({
+    that.setData({
       subjecttypes: subjecttypes
     });
 
@@ -206,7 +206,7 @@ Page({
   }, 
   changeProperty: function (e) {
     var that = this;
-    var properties = this.data.properties;
+    var properties = that.data.properties;
     var checkArr = e.detail.value;
     for (var i = 0; i < properties.length; i++) {
       if (checkArr.indexOf(i + "") != -1) {
@@ -215,7 +215,7 @@ Page({
         properties[i].checked = false;
       }
     }
-    this.setData({
+    that.setData({
       properties: properties
     });
 
@@ -224,7 +224,7 @@ Page({
   },
   changeProvince: function (e) {
     var that = this;
-    var provinces = this.data.provinces;
+    var provinces = that.data.provinces;
     var checkArr = e.detail.value;
     for (var i = 0; i < provinces.length; i++) {
       if (checkArr.indexOf(i + "") != -1) {
@@ -233,7 +233,7 @@ Page({
         provinces[i].checked = false;
       }
     }
-    this.setData({
+    that.setData({
       provinces: provinces
     });
     
@@ -491,7 +491,8 @@ Page({
       provinces: provinces,
       subjecttypes: subjecttypes,
       arrangments: arrangments,
-      properties: properties
+      properties: properties,
+      checked:false
     });
 
     that.clearCurPage();

@@ -35,18 +35,14 @@
   <view class="demo-text-2">
     <checkbox-group bindchange="changeProvince">  
         <view class="service_selection2">  
-          <block wx:for="{{provinces}}" wx:key="NAME" wx:for-index="i" wx:if="{{i<6}}"> 
-             <label class="checkbox {{item.checked?'is_checked':''}}"> 
-              <checkbox value="{{i}}" checked="{{checked}}" hidden="false" />{{item.NAME}}
-              </label>    
-          </block>  
+             <label class="checkbox {{item.checked?'is_checked':''}}"  wx:for="{{provinces}}" wx:key="NAME" wx:for-index="i" wx:if="{{i<6}}"> 
+              <checkbox value="{{i}}"  hidden="false" checked="{{checked}}" />{{item.NAME}}
+              </label>      
         </view>
-        <view class="service_selection2" hidden='{{showView}}' >
-          <block wx:for="{{provinces}}" wx:key="NAME" wx:for-index="i" wx:if="{{i>=6}}" >   
-              <label class="checkbox {{item.checked?'is_checked':''}}" >
-                <checkbox value="{{i}}" checked="{{checked}}" hidden="false" />{{item.NAME}}
-              </label>    
-          </block>  
+        <view class="service_selection2" hidden='{{showView}}' >  
+              <label class="checkbox {{item.checked?'is_checked':''}}"  wx:for="{{provinces}}" wx:key="NAME" wx:for-index="i" wx:if="{{i>=6}}" >
+                <checkbox value="{{i}}"  hidden="false" checked="{{checked}}" />{{item.NAME}}
+              </label>      
         </view>  
     </checkbox-group> 
   </view>
@@ -55,12 +51,10 @@
   <view class="demo-text-1">批次</view>
   <view class="demo-text-2">
     <checkbox-group bindchange="changeArrangment">  
-        <view class="service_selection1">  
-          <block wx:for="{{arrangments}}" wx:key="NAME" >   
-              <label class="checkbox {{item.checked?'is_checked':''}}">  
-                <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
-              </label>  
-          </block>  
+        <view class="service_selection1">    
+              <label class="checkbox {{item.checked?'is_checked':''}}"  wx:for="{{arrangments}}" wx:key="NAME" wx:for-index="i" wx:if="{{i<2}}">  
+                <checkbox value="{{i}}"  hidden="false" checked="{{checked}}" />{{item.NAME}}  
+              </label>
         </view>  
     </checkbox-group> 
   </view>
@@ -69,19 +63,15 @@
   <view class="demo-text-1"><text>类型</text><view class="weui-cell__ft_in-access {{showView1?'':'.rotate_90'}}" bindtap='changeArrow1'></view></view>
   <view class="demo-text-2">
     <checkbox-group bindchange="changeSubjecttype">  
-        <view class="service_selection1">  
-          <block wx:for="{{subjecttypes}}" wx:key="NAME" wx:for-index="i" wx:if="{{i<6}}">
-              <label class="checkbox {{item.checked?'is_checked':''}}">  
-                <checkbox value="{{i}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
-              </label>    
-          </block>  
+        <view class="service_selection1">
+              <label class="checkbox {{item.checked?'is_checked':''}}"  wx:for="{{subjecttypes}}" wx:key="NAME" wx:for-index="i" wx:if="{{i<6}}">  
+                <checkbox value="{{i}}"  hidden="false" checked="{{checked}}" />{{item.NAME}}  
+              </label>  
         </view>  
-        <view class="service_selection1" hidden='{{showView1}}'>  
-          <block wx:for="{{subjecttypes}}" wx:key="NAME" wx:for-index="i" wx:if="{{i>=6}}">
-              <label class="checkbox {{item.checked?'is_checked':''}}">  
-                <checkbox value="{{i}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
-              </label>    
-          </block>  
+        <view class="service_selection1" hidden='{{showView1}}'>
+              <label class="checkbox {{item.checked?'is_checked':''}}"   wx:for="{{subjecttypes}}" wx:key="NAME" wx:for-index="i" wx:if="{{i>=6}}">  
+                <checkbox value="{{i}}"  hidden="false"  checked="{{checked}}"/>{{item.NAME}}  
+              </label>  
         </view>  
   </checkbox-group> 
   </view>
@@ -92,8 +82,8 @@
     <checkbox-group bindchange="changeProperty"> 
         <view class="service_selection1" >   
         <block wx:for="{{properties}}" wx:key="NAME" wx:key="NAME" wx:for-index="i" > 
-              <label class="checkbox {{item.checked?'is_checked':''}}">  
-                <checkbox value="{{i}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
+              <label class="checkbox {{item.checked?'is_checked':''}}" >  
+                <checkbox value="{{i}}"  hidden="false"  checked="{{checked}}" />{{item.NAME}}  
               </label>
           </block>
           </view>

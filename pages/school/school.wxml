@@ -37,14 +37,14 @@
         <view class="service_selection2">  
           <block wx:for="{{provinces}}" wx:key="NAME" wx:for-index="i" wx:if="{{i<6}}">  
               <label class="checkbox {{item.checked?'is_checked':''}}" >
-                <checkbox value="{{i}}" hidden="true"/>{{item.NAME}}
+                <checkbox value="{{i}}" hidden="false" checked='{{checked}}'/>{{item.NAME}}
               </label>    
           </block>  
         </view>  
         <view class="service_selection2" hidden="{{showView}}">  
           <block wx:for="{{provinces}}" wx:key="NAME" wx:for-index="i" wx:if="{{i>=6}}">   
               <label class="checkbox {{item.checked?'is_checked':''}}" >
-                <checkbox value="{{i}}" hidden="true"/>{{item.NAME}}
+                <checkbox value="{{i}}" hidden="false" checked='{{checked}}'/>{{item.NAME}}
               </label>    
           </block>  
         </view>  
@@ -56,9 +56,9 @@
   <view class="demo-text-2">
     <checkbox-group bindchange="changeArrangment">  
         <view class="service_selection1">  
-          <block wx:for="{{arrangments}}" wx:key="NAME" >   
+          <block wx:for="{{arrangments}}" wx:key="NAME" wx:for-index="i" wx:if="{{i<2}}">   
               <label class="checkbox {{item.checked?'is_checked':''}}">  
-                <checkbox value="{{index}}" checked="{{checked}}" hidden="false" />{{item.NAME}}  
+                <checkbox value="{{index}}" checked="{{checked}}" hidden="false"/>{{item.NAME}}  
               </label>  
           </block>  
         </view>  

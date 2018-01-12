@@ -35,7 +35,7 @@ Page({
     });
     var school = that.data.school;
     for (var i = 0; i < school.length; i++) {
-      if (school[i].NAME.indexOf(that.data.inputVal) > 0) {
+      if (school[i].NAME.indexOf(that.data.inputVal) >= 0) {
         school[i].checked = false;
       }
       else {
@@ -48,7 +48,6 @@ Page({
     });
   },
   setSearchStorage: function (e) {
-    var that = this;
     
     
   },
