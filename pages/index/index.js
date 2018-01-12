@@ -29,10 +29,11 @@ Page({
   },
   noticecontent:function(e){
     var a = e.currentTarget.dataset.id;
-    utils.navigateTo("/pages/notice/noticecontent/noticecontent",{a:a})
+      utils.navigateTo("/pages/notice/noticecontent/noticecontent",{a:a})
   },
   //事件处理函数
   bindViewTap: function() {
+    
     wx.navigateTo({
       url: '../logs/logs'
     })
@@ -74,8 +75,9 @@ Page({
       if(res.data) {//是vip
         utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", true, function(result) {
           if (result.data) {
+            
             //完成考生信息的完善
-            utils.navigateTo("/pages/analog/analog");
+            utils.navigateTo("/pages/imitate/imitate");
           }
           else{
             utils.showError("请完善考生信息");
@@ -93,7 +95,8 @@ Page({
         utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", true, function (result) {
           if (result.data) {
             //完成考生信息的完善
-            utils.navigateTo("/pages/intelligence/intelligence");
+            
+              utils.navigateTo("/pages/intelligence/intelligence");
           }
           else {
             utils.showError("请完善考生信息");
@@ -107,10 +110,12 @@ Page({
     
   },
   school:function(){
+    var that = this;
     utils.navigateTo("../school/school")
   },
   major:function(){
-    utils.navigateTo("../major/major")
+    
+      utils.navigateTo("../major/major")
   },
   noticemore:function(e){
     var that = this;
@@ -130,9 +135,11 @@ Page({
     utils.showError("系统正在维护中，该功能暂时无法使用~！")
   },
   newsmore:function(){
-    utils.navigateTo("../news/news")
+    
+      utils.navigateTo("../news/news")
   },
   activitymore:function(){
+    
     utils.navigateTo("../activity/activity")
   },
   news:function(e){

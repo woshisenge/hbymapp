@@ -1,11 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/intelligence/result/content/content",
     "pages/intelligence/result/result",
     "pages/consult/consult",
     "pages/consult/consultlist/consultlist",
-    "pages/analog/analog",
     "pages/login/login",
     "pages/contacts/contacts",
     "pages/person/person",
@@ -29,12 +27,12 @@
     "pages/intelligence/region/region",
     "pages/intelligence/mold/mold",
     "pages/intelligence/attribute/attribute",
+    "pages/intelligence/result/content/content",
     "pages/major/major",
     "pages/major/majorcontent/majorcontent",
     "pages/major/majorcontent/content/content",
     "pages/school/schoolcontent/schoolcontent",
     "pages/activity/content/content",
-    "pages/analog/content/content",
     "pages/analog/result/result",
     "pages/analog/result/content/content",
     "pages/chatroom/chatroom",
@@ -44,8 +42,10 @@
     "pages/person/information/content/content",
     "pages/imitate/school/school",
     "pages/imitate/school/content/content",
+    "pages/person/goods/payment/payment",
+    "pages/imitate/school/major/major",
     "pages/imitate/imitate",
-    "pages/person/goods/payment/payment"
+    "pages/person/member/member"
   ],
   "window": {
     "backgroundTextStyle": "light",

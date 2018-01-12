@@ -1,20 +1,20 @@
 // pages/intelligence/content/content.js
 var util = require('../../../utils/util.js');
-var sliderWidth = 96;
+// var sliderWidth = 96;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabs: ["冲", "稳", "保","垫"],
-    activeIndex: 0,
-    sliderOffset: 0,
-    sliderLeft: 0,
     listChong: [],
     listWen: [],
     listBao: [],
-    listDian: []
+    listDian: [],
+    MAJORTYPE:"",
+    ARRANGMENT_ID:"",
+    MAJORTYPE_VALUE:"",
+    buttonClicked: false
   },
 
   /**
@@ -22,34 +22,33 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
-        });
-      }
-    });
-
+    that.setData({
+      MAJORTYPE: options.MAJORTYPE,
+      ARRANGMENT_ID: options.ARRANGMENT_ID,
+      MAJORTYPE_VALUE: options.MAJORTYPE_VALUE
+    })
     util.sendRequest("/wechat/applet/report/reporting", options, "POST", true, function(res){
+      console.log(res)
       var listChong = res.listChong;
       var listWen = res.listWen;
       var listBao = res.listBao;
       var listDian = res.listDian;
+      if (listChong == "" && listWen == "" && listBao == "" && listDian == "") {
+        util.showError("根据您选择的条件查询，暂无数据！")
+    }
+    else{
+        var listChongOut = that.groupBySchool(listChong);
+        var listWenOut = that.groupBySchool(listWen);
+        var listBaoOut = that.groupBySchool(listBao);
+        var listDianOut = that.groupBySchool(listDian);
 
-      var listChongOut = that.groupBySchool(listChong);
-      var listWenOut = that.groupBySchool(listWen);
-      var listBaoOut = that.groupBySchool(listBao);
-      var listDianOut = that.groupBySchool(listDian);
-
-      that.setData({
-        listChong: listChongOut,
-        listWen: listWenOut,
-        listBao: listBaoOut,
-        listDian: listDianOut
-      });
-
-      console.log(that.data.listChong);
+        that.setData({
+          listChong: listChongOut,
+          listWen: listWenOut,
+          listBao: listBaoOut,
+          listDian: listDianOut
+        });
+    }
     });
   },
   groupBySchool: function(list) {
@@ -80,12 +79,6 @@ Page({
     });
 
     return listOut;
-  },
-  tabClick: function (e) {
-    this.setData({
-      sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
-    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -135,75 +128,25 @@ Page({
   onShareAppMessage: function () {
   
   },
-  showChong: function (e) {
-    var that = this;
-    var curId = e.currentTarget.dataset.id;
-    var results = that.data.listChong;
-    results.forEach(function (element) {
-      if (element.SCHOOL_ID == curId) {
-        if (element.checked)
-          element.checked = false;
-        else
-          element.checked = true;
-      }
-    });
-    that.setData({
-      listChong: results
-    })
-  },
-  showWen: function (e) {
-    var that = this;
-    var curId = e.currentTarget.dataset.id;
-    var results = that.data.listWen;
-    results.forEach(function (element) {
-      if (element.SCHOOL_ID == curId) {
-        if (element.checked)
-          element.checked = false;
-        else
-          element.checked = true;
-      }
-    });
-    that.setData({
-      listWen: results
-    })
-  },
-  showBao: function (e) {
-    var that = this;
-    var curId = e.currentTarget.dataset.id;
-    var results = that.data.listBao;
-    results.forEach(function (element) {
-      if (element.SCHOOL_ID == curId) {
-        if (element.checked)
-          element.checked = false;
-        else
-          element.checked = true;
-      }
-    });
-    that.setData({
-      listBao: results
-    })
-    
-  },
-  showDian: function (e) {
-    var that = this;
-    var curId = e.currentTarget.dataset.id;
-    var results = that.data.listDian;
-    results.forEach(function (element) {
-      if (element.SCHOOL_ID == curId) {
-        if (element.checked)
-          element.checked = false;
-        else
-          element.checked = true;
-      }
-    });
-    that.setData({
-      listDian: results
-    })
-  },
   toDail:function(e){
+    var that = this;
     var curId = e.currentTarget.id;
-    curId = curId.split("_");
-    var param = { SCHOOL_ID: curId[0], MAJOR_ID: curId[1]};
-    util.navigateTo("/pages/intelligence/result/content/content", param);
+    var major = e.currentTarget.dataset.id;
+    var img = e.currentTarget.dataset.name;
+    var advice = e.currentTarget.dataset.class;
+    var majors= "";
+    var majorName = "";
+    for(var i=0;i<major.length;i++){
+      majors += major[i].MAJOR_ID + ',';
+      majorName += major[i].MJNAME +','
+    }
+    if (majors != "") {
+      majors = majors.substring(0, majors.length - 1);
+      majorName = majorName.substring(0, majorName.length - 1);
+    }
+    if (!that.data.buttonClicked) {
+      util.buttonClicked(that);
+    util.navigateTo("/pages/intelligence/result/content/content", { SCHOOL_ID: curId, MAJORTYPE: that.data.MAJORTYPE, major: majors, majorName: majorName, ARRANGMENT_ID: that.data.ARRANGMENT_ID,MAJORTYPE_VALUE:that.data.MAJORTYPE_VALUE,img:img,advice:advice});
+  }
   }
 })

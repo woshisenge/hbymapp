@@ -1,41 +1,112 @@
 /* pages/analog/analogs/result/content/content.wxss */
+.banner{
+  width:100%;
+  height:300rpx;
+  position: absolute;
+  z-index: -1;
+  top:0
+}
+.banner image{
+  width:100%;
+  height:100%;
+  
+}
 .top{
-  width:96%;
-  margin-left:4%;
+  margin:80rpx 10% 30rpx 10%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  font-size:28rpx;
-}
-.top image{
-  width:30rpx;
-  height:30rpx;
-}
-.center{
-  width:100%;
-  display: flex;
-  flex-direction: row;
-  font-size:28rpx;
-  background-color: rgb(90,180,170);
   color:white;
 }
-.center-item{
-  width:25%;
+.top-right{
+  margin-left:5%;
+  
+}
+.top-right-1{
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size:35rpx;
+  margin-bottom: 10rpx;
+  margin-top:-30rpx;
+}
+.top-right-2{
+  display: flex;
+  flex-direction: row ;
+  justify-content: space-between;
+  align-items: center;
+}
+.top-right-2 text{
+  font-weight: bold;
+  margin-right:15rpx;
+}
+.top-2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right:3%;
+  margin-top:40rpx;
+}
+.top-2-left{
+  width:88%;
+  height:100rpx;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  
+}
+.top-2-left text{
+  padding-left:8%;
+  width:100%;
+}
+.weui-flex__item{
+  padding:10rpx 0;
+}
+.placeholder{
+  text-align: center;
+}
+.page__bd_spacing{
+  background-color: white;
+}
+.whole{
+  width:100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;  
+   border-bottom:1rpx solid #EEEEEE;
+}
+.left{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  width:25%;
+  
+}
+.left text{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding:0rpx 0rpx 0rpx 30rpx;
+}
+.center{
+  width:60%;
+  border-right:1rpx solid #EEEEEE; 
+  border-left:1rpx solid #EEEEEE;
+}
+.right{
+  width:15%;
+  
+}
+.right text{
+  display:flex;
   justify-content: center;
   align-items: center;
 }
-.bottom{
-  width:100%;
-  margin-top:20rpx;
-  display: flex;
-  flex-direction: row;
-  font-size:28rpx;
-  background-color: white;
-}
-.bottom-item{
-  width:25%;
+.year{
   display: flex;
   flex-direction: column;
   justify-content: center;

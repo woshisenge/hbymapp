@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    anyChecked: false
+    anyChecked: false,
+    buttonClicked: false
   },
   serviceValChange: function (e) {
     var strRes = "";
@@ -134,5 +135,11 @@ Page({
     prevPage.data["subjecttypes"] = "";
     prevPage.data["subjecttypes_id"] = "";
     prevPage.setData(prevPage.data);
+    if (!that.data.buttonClicked) {
+      util.buttonClicked(that);
+      wx.navigateBack({
+        delta: 1
+      });
+    }
   }
 })

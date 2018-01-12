@@ -51,7 +51,6 @@
 }
 .text-bottom{
   font-size:25rpx;
-  background-color:orange;
 }
 .head-right{
   width:45%;

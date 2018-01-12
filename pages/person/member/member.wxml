@@ -1,0 +1,25 @@
+<!--pages/person/member/member.wxml-->
+<form bindsubmit='formSubmitForReg'>
+  <view class="weui-cells__title">您当前身份为<text style="color:orange">{{vipname}}</text>,请购买会员后提升权限</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">卡号</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入15位卡号" name="NUMBER"/>
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+          <view class="weui-label">激活码</view>
+      </view>
+      <view class="weui-cell__bd">
+          <input class="weui-input" type='password' placeholder="请输入10位激活码" name="PASSWORD"/>
+      </view>
+    </view>
+  </view>
+  <button class="weui-btn" type="primary" form-type='submit'>激活</button>
+</form>

@@ -107,7 +107,7 @@
     <view class="weui-tab__content" hidden="{{activeIndex != 2}}">  
       <view class='top'>
         <image src="/images/tb20.png"></image>
-        <text>学校资料</text>
+        <text>招生简章</text>
       </view>
     </view>
   </view>

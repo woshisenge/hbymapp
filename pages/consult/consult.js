@@ -57,15 +57,6 @@ Page({
     that.clearCurPage();
     that.pullSchoolInfos(true);
   },
-  select:function(){
-    var that = this;
-    util.sendRequest('/wechat/applet/school/gethasteachers', { NAME: that.data.inputVal }, 'POST', false, function (res) {
-
-      that.setData({
-        schools: that.toDto(res.data.results)
-      });
-    })
-  },
   compare:function (property){
     return function(a, b) {
       var value1 = a[property];

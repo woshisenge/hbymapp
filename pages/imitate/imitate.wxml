@@ -24,318 +24,107 @@
       <view class="" hidden="{{activeIndex != 0}}">
       <form bindsubmit='b1Submit'>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">志愿A</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b1Schools_1" >
+                <view class="weui-cell__bd" >志愿A</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b1Schools_1_name}} </view>
+            </view>
         </view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b1Schools_2">
                 <view class="weui-cell__bd">志愿B</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b1Schools_2_name}}</view>
+            </view>
         </view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b1Schools_3">
                 <view class="weui-cell__bd">志愿C</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b1Schools_3_name}}</view>
+            </view>
         </view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b1Schools_4">
                 <view class="weui-cell__bd">志愿D</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b1Schools_4_name}}</view>
+            </view>
         </view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b1Schools_5">
                 <view class="weui-cell__bd">志愿E</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
-        </view>
-      </form>
-          <!-- <view class="weui-cells__title">志愿A</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b1Schools_1_index}}" range="{{b1Schools}}" range-key='NAME' id="b1Schools_1">
-                    <view>{{b1Schools[b1Schools_1_index].NAME? b1Schools[b1Schools_1_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b1Schools_1_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b1Schools_1_major == ''? '请选择专业' : b1Schools_1_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-        </view>
-        <view class="weui-cells__title">志愿B</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b1Schools_2_index}}" range="{{b1Schools}}" range-key='NAME' id="b1Schools_2">
-                    <view>{{b1Schools[b1Schools_2_index].NAME? b1Schools[b1Schools_2_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b1Schools_2_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b1Schools_2_major == ''? '请选择专业' : b1Schools_2_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-        </view>
-        <view class="weui-cells__title">志愿C</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b1Schools_3_index}}" range="{{b1Schools}}" range-key='NAME' id="b1Schools_3">
-                    <view>{{b1Schools[b1Schools_3_index].NAME? b1Schools[b1Schools_3_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b1Schools_3_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b1Schools_3_major == ''? '请选择专业' : b1Schools_3_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-        </view>
-        <view class="weui-cells__title">志愿D</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b1Schools_4_index}}" range="{{b1Schools}}" range-key='NAME' id="b1Schools_4">
-                    <view>{{b1Schools[b1Schools_4_index].NAME? b1Schools[b1Schools_4_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b1Schools_4_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b1Schools_4_major == ''? '请选择专业' : b1Schools_4_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-        </view>
-        <view class="weui-cells__title">志愿E</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b1Schools_5_index}}" range="{{b1Schools}}" range-key='NAME' id="b1Schools_5">
-                    <view>{{b1Schools[b1Schools_5_index].NAME? b1Schools[b1Schools_5_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b1Schools_5_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b1Schools_5_major == ''? '请选择专业' : b1Schools_5_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b1Schools_5_name}}</view>
             </view>
         </view>
         <view class='content4'> 
-          <button class="button2" type="primary" form-type='submit' style="background-color:rgb(90,180,170);color:white" bindtap='start'>确认</button>
+          <button class="button2" type="primary" form-type='submit' style="background-color:rgb(90,180,170);color:white">确认</button>
         </view>
-        </form> -->
+      </form>
       </view>               
       <view class="" hidden="{{activeIndex != 1}}">
         <form bindsubmit='b2Submit'>
           <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b2Schools_1">
                 <view class="weui-cell__bd">志愿A</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b2Schools_1_name}}</view>
+            </view>
           </view>
           <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b2Schools_2">
                 <view class="weui-cell__bd">志愿B</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b2Schools_2_name}}</view>
+            </view>
           </view>
           <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b2Schools_3">
                 <view class="weui-cell__bd">志愿C</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b2Schools_3_name}}</view>
+            </view>
         </view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b2Schools_4">
                 <view class="weui-cell__bd">志愿D</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b2Schools_4_name}}</view>
+            </view>
         </view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b2Schools_5">
                 <view class="weui-cell__bd">志愿E</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b2Schools_5_name}}</view>
+            </view>
         </view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b2Schools_6">
                 <view class="weui-cell__bd">志愿F</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b2Schools_6_name}}</view>
+            </view>
         </view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b2Schools_7">
                 <view class="weui-cell__bd">志愿G</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b2Schools_7_name}}</view>
+            </view>
         </view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b2Schools_8">
                 <view class="weui-cell__bd">志愿H</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b2Schools_8_name}}</view>
+            </view>
         </view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b2Schools_9">
                 <view class="weui-cell__bd">志愿I</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b2Schools_9_name}}</view>
+            </view>
         </view>
         <view class="weui-cells weui-cells_after-title">
-            <navigator url="/pages/imitate/school/school" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='school' id="b2Schools_10">
                 <view class="weui-cell__bd">志愿J</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
-            <!-- <view class="weui-cells__title">志愿A</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b2Schools_1_index}}" range="{{b2Schools}}" range-key='NAME' id="b2Schools_1">
-                    <view>{{b2Schools[b2Schools_1_index].NAME? b2Schools[b2Schools_1_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b2Schools_1_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b2Schools_1_major == ''? '请选择专业' : b2Schools_1_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{b2Schools_10_name}}</view>
             </view>
         </view>
-        <view class="weui-cells__title">志愿B</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b2Schools_2_index}}" range="{{b2Schools}}" range-key='NAME' id="b2Schools_2">
-                    <view>{{b2Schools[b2Schools_2_index].NAME? b2Schools[b2Schools_2_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b2Schools_2_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b2Schools_2_major == ''? '请选择专业' : b2Schools_2_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-        </view>
-        <view class="weui-cells__title">志愿C</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b2Schools_3_index}}" range="{{b2Schools}}" range-key='NAME' id="b2Schools_3">
-                    <view>{{b2Schools[b2Schools_3_index].NAME? b2Schools[b2Schools_3_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b2Schools_3_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b2Schools_3_major == ''? '请选择专业' : b2Schools_3_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-        </view>
-        <view class="weui-cells__title">志愿D</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b2Schools_4_index}}" range="{{b2Schools}}" range-key='NAME' id="b2Schools_4">
-                    <view>{{b2Schools[b2Schools_4_index].NAME? b2Schools[b2Schools_4_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b2Schools_4_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b2Schools_4_major == ''? '请选择专业' : b2Schools_4_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-        </view>
-        <view class="weui-cells__title">志愿E</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b2Schools_5_index}}" range="{{b2Schools}}" range-key='NAME' id="b2Schools_5">
-                    <view>{{b2Schools[b2Schools_5_index].NAME? b2Schools[b2Schools_5_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b2Schools_5_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b2Schools_5_major == ''? '请选择专业' : b2Schools_5_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-        </view>
-            <view class="weui-cells__title">志愿F</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b2Schools_6_index}}" range="{{b2Schools}}" range-key='NAME' id="b2Schools_6">
-                    <view>{{b2Schools[b2Schools_6_index].NAME? b2Schools[b2Schools_6_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b2Schools_6_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b2Schools_6_major == ''? '请选择专业' : b2Schools_6_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-        </view>
-        <view class="weui-cells__title">志愿G</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b2Schools_7_index}}" range="{{b2Schools}}" range-key='NAME' id="b2Schools_7">
-                    <view>{{b2Schools[b2Schools_7_index].NAME? b2Schools[b2Schools_7_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b2Schools_7_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b2Schools_7_major == ''? '请选择专业' : b2Schools_7_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-        </view>
-        <view class="weui-cells__title">志愿I</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b2Schools_8_index}}" range="{{b2Schools}}" range-key='NAME' id="b2Schools_8">
-                    <view>{{b2Schools[b2Schools_8_index].NAME? b2Schools[b2Schools_8_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b2Schools_8_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b2Schools_8_major == ''? '请选择专业' : b2Schools_8_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-        </view>
-        <view class="weui-cells__title">志愿J</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b2Schools_9_index}}" range="{{b2Schools}}" range-key='NAME' id="b2Schools_9">
-                    <view>{{b2Schools[b2Schools_9_index].NAME? b2Schools[b2Schools_9_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b2Schools_9_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b2Schools_9_major == ''? '请选择专业' : b2Schools_9_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-        </view>
-        <view class="weui-cells__title">志愿K</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">
-                  <picker bindchange="bindPickerChange" value="{{b2Schools_10_index}}" range="{{b2Schools}}" range-key='NAME' id="b2Schools_10">
-                    <view>{{b2Schools[b2Schools_10_index].NAME? b2Schools[b2Schools_10_index].NAME : '请选择院校'}}</view>
-                  </picker>
-                </view>
-            </view>
-            <view bindtap='bindMajorSelect' id='b2Schools_10_major' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                <view class="weui-cell__bd">{{b2Schools_10_major == ''? '请选择专业' : b2Schools_10_major}}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view> -->
-        </view>
-        
-        </form>
-      </view>
-      <view class='content4'> 
+        <view class='content4'> 
           <button class="button2" type="primary" form-type='submit' style="background-color:rgb(90,180,170);color:white">确认</button>
         </view>
+        </form>
+      </view>
     </view>
   </view>
 </view>

@@ -367,7 +367,18 @@ var showSuccess = function () {
     duration: 2000
   })
 }
-
+/*解决连续跳转bug
+ */
+var  buttonClicked = function(self) {
+  self.setData({
+    buttonClicked: true
+  })
+  setTimeout(function () {
+    self.setData({
+      buttonClicked: false
+    })
+  }, 800)
+}
 /**
  * 保留当前页面，跳转到应用内的某个页面，使用wx.navigateBack可以返回到原页面。
  * url：跳转页面url
@@ -689,5 +700,6 @@ module.exports = {
   getCurrentDate: getCurrentDate,
   EmojiObj: EmojiObj,
   Emoji: Emoji,
-  parseEmoji: parseEmoji
+  parseEmoji: parseEmoji,
+  buttonClicked: buttonClicked
 }

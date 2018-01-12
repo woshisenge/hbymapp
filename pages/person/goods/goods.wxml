@@ -1,16 +1,16 @@
 <!--pages/person/goods/goods.wxml-->
 <view class='page'>
-  <view class='content' bindtap='pay'>
-    <image src="/images/tb12.png"></image>
+  <view class='content'>
+    <image src="/images/tb12.png" bindtap="pay"></image>
     <text >金币</text>
     <text>剩余金币：{{pocket.BALANCE}}个</text> 
   </view>
-  <view class='contents'>
+  <view class='contents' bindtap="consult">
      <image src="/images/tb13.png"></image>
      <text>院校咨询卡</text>
      <text>院校咨询卡：{{pocket.yxzxk}}张</text> 
   </view>
-  <view class='content'>
+  <view class='content' bindtap="analog">
      <image src="/images/tb14.png"></image>
      <text>模拟填报卡</text>
      <text>模拟填报卡：{{pocket.mntbk}}张</text> 
@@ -18,7 +18,7 @@
 </view>
 <view class="line"></view>
 <view class='page'>
-  <view class='contentss'>
+  <view class='contentss' bindtap="intelligence">
      <image src="/images/tb15.png"></image>
      <text>智能推荐卡</text>
      <text>智能推荐卡：{{pocket.zntjk}}张</text> 

@@ -2,3 +2,16 @@
 .child{
   color:#999999;
 }
+.weui-cells:before {
+  border-top:0;
+}
+.weui-cells:after{
+  border-bottom:0;
+
+} 
+.weui-cell__hd{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}                           

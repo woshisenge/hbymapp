@@ -7,7 +7,8 @@ Page({
    */
   data: {
     anyChecked: false,
-    majors: []
+    majors: [],
+    buttonClicked: false
   },
   serviceValChange: function (e) {
     var strRes = "";
@@ -135,5 +136,11 @@ Page({
     prevPage.data["majors"] = "";
     prevPage.data["majors_id"] = "";
     prevPage.setData(prevPage.data);
+    if (!that.data.buttonClicked) {
+      util.buttonClicked(that);
+      wx.navigateBack({
+        delta: 1
+      });
+    }
   }
 })

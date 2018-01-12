@@ -18,7 +18,8 @@ Page({
     majors_id: "",
     examinee: {},
     arrangment_id: "hjj4e5vr0c",
-    banner: util.setStaticUrl("/static/ymplant/img/sye/banner/zbanner.jpg")
+    MAJORTYPE:"",
+    MAJORTYPE_VALUE:""
   },
   bindPickerChange: function (e) {
     var that = this;
@@ -34,7 +35,7 @@ Page({
     util.confirm({
       content: "确定要进行智能推荐？此次操作需消耗一张智能推荐卡",
       confirmFn: function () {
-        util.navigateTo("/pages/intelligence/result/result", { MAJOR: that.data.majors_id, PROVINCE: that.data.provinces_id, SUBJECTTYPE: that.data.subjecttypes_id, SCPROPERTY: that.data.properties_id, ARRANGMENT_ID: that.data.arrangment_id });
+        util.navigateTo("/pages/intelligence/result/result", { MAJOR: that.data.majors_id, PROVINCE: that.data.provinces_id, SUBJECTTYPE: that.data.subjecttypes_id, SCPROPERTY: that.data.properties_id, ARRANGMENT_ID: that.data.arrangment_id, MAJORTYPE: that.data.MAJORTYPE, MAJORTYPE_VALUE: that.data.MAJORTYPE_VALUE });
       }
     });
   },
@@ -74,7 +75,9 @@ Page({
     var that = this;
     util.sendRequest("/wechat/applet/user/getstudentexaminee", {}, "POST", true, function (res) {
       that.setData({
-        examinee: res
+        examinee: res,
+        MAJORTYPE: res.MAJORTYPE,
+        MAJORTYPE_VALUE: res.MAJORTYPE_VALUE
       });
     });
   },

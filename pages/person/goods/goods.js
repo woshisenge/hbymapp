@@ -18,6 +18,15 @@ Page({
   pay:function(){
      util.navigateTo("/pages/person/goods/payment/payment")
   },
+  consult:function(){
+    util.showError("系统正在维护中，该功能暂时无法使用~！")
+  },
+  intelligence:function(){
+    util.showError("系统正在维护中，该功能暂时无法使用~！")
+  },
+  analog:function(){
+    util.showError("系统正在维护中，该功能暂时无法使用~！")
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

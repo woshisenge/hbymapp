@@ -6,8 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    results: [],
-    chance: 0
+    results:[],
+    subject:"",
+    checked:false,
+    img:"chong",
+    advice:"极大"
   },
 
   /**
@@ -15,15 +18,67 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    util.sendRequest("/wechat/applet/major/getmajorbyschool", options, "POST", true, function (res) {
-      console.log(res);
+    var arrId = options.ARRANGMENT_ID;
+    var style = "";
+    if (arrId == "hjj4e5vr0c"){
+      style = "本一"
+    } 
+    else{
+      style = "本二"
+    }
+    if(options.major != null){
+      options.major = options.major.split(",");
+    }
+    if (options.majorName != null) {
+      options.majorName = options.majorName.split(",");
+    }
+    var major = options.major;
+    
+    for (var i = 0; i < major.length; i++){
+      util.sendRequest("/wechat/applet/major/getmajorbyschool", { SCHOOL_ID: options.SCHOOL_ID, MAJOR_ID:major[i]},"POST",true,function(res){
+        var results = that.data.results;
+        if(res.data.length > 0) {
+          var mjname = res.data[0].MJNAME;
+          var majorObj = {MJNAME: mjname, scores: res.data};
+          results.push(majorObj);
+        }
+        that.setData({
+          results: results
+        });
+      })
+    }
+    util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: options.SCHOOL_ID}, "POST", true, function (res) {
       that.setData({
-        results: res.data,
-        chance: options.chance
+        logo: util.setStaticUrl(res.HEADURL),
+        name:res.NAME,
+        types: res.SCTYPE_VALUE,
+        region: res.PROVINCE_VALUE,
+        properties: res.properties,
+        subjecttypes: res.subjecttypes
       });
     });
+    util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID: options.SCHOOL_ID, MAJORTYPE_ID: options.MAJORTYPE},"POST",true,function(res){
+      var result = res.data;
+      result.forEach(function(obj){
+        if (obj.ARRANGMENT_ID == arrId){
+          obj.checked = false;
+        }
+        else{
+          obj.checked = true;
+        }
+      })
+       that.setData({
+         grade: result
+       })
+    });
+    that.setData({
+      subject: options.MAJORTYPE_VALUE,
+      style : style,
+      img:options.img,
+      advice:options.advice
+    })
   },
-
+ 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

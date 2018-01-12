@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    anyChecked: false
+    anyChecked: false,
+    buttonClicked: false
   },
   serviceValChange: function (e) {
     var strRes = "";
@@ -137,5 +138,11 @@ Page({
     prevPage.data["provinces"] = "";
     prevPage.data["provinces_id"] = "";
     prevPage.setData(prevPage.data);
+    if (!that.data.buttonClicked) {
+      util.buttonClicked(that);
+      wx.navigateBack({
+        delta: 1
+      });
+    }
   }
 })

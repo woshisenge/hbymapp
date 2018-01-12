@@ -20,7 +20,7 @@ Page({
     isVip: false,
     //用户身份
     role: 0,
-    vipname: "普通会员"
+    vip: "/images/icon/putong.png"
   },
 
   /**
@@ -80,19 +80,20 @@ Page({
       var role=res.data
       if(role==1){
         util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function(obj){
+          console.log(obj.data)
           if(obj.data == "UA") {
             that.setData({
-              vipname: "白银会员"
+              vip: "/images/icon/baiyin.png"
             });
           }
           else if(obj.data == "UB") {
             that.setData({
-              vipname: "黄金会员"
+              vip: "/images/icon/gold.png"
             });
           }
           else if(obj.data == "UC") {
             that.setData({
-              vipname: "黑钻会员"
+              vip: "/images/icon/svip.png"
             });
           }
         });

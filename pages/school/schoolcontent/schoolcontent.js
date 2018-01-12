@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: ["录取", "基本信息","学校资料"],
+    tabs: ["录取", "基本信息","招生简章"],
     activeIndex: 0,
     index:0,
     ckecked:true,
@@ -28,7 +28,7 @@ Page({
     var that=this
     var id=options.a
     util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: id }, "POST", true, function (res) {
-      console.log(res)
+      
       that.setData({
         subjecttypes: res.subjecttypes,
         properties: res.properties,
@@ -42,17 +42,13 @@ Page({
         address:res.ADDRESS
       })
     })
-    // util.sendRequest("/wechat/applet/school/getfaculty",{SCHOOL_ID:id},"POST",true,function(res){
-    //   var article=res.CONTENT;
-    //   WxParse.wxParse('article', 'html', article, that, 5);
-    // })
+    
     util.sendRequest("/wechat/applet/school/getintroduction", { SCHOOL_ID: id }, "POST", true, function (res) {
-      console.log(res);
+      
       var content = res.CONTENT;
       WxParse.wxParse('content', 'html', content, that, 5);
     })
     util.sendRequest("/wechat/applet/dictionary/get", { code:"MAJORTYPE"},"POST",true,function(res){
-      console.log(res.data)
       that.setData({
         array:res.data
       })

@@ -15,9 +15,11 @@
         </view>
     </view>
   </view>
+  <button class="weui-btn" type="primary" bindtap="pay" id="{{vipname}}" hidden='{{checked}}' >提升权限</button>
+
 </view>
 <form bindsubmit='formSubmitForReg' wx:if="{{!isReg && isLoaded}}">
-  <view class="weui-cells__title">您当前身份属于普通会员，请购买黄金会员后提升权限</view>
+  <view class="weui-cells__title">您当前身份属于普通会员，请购买会员后提升权限</view>
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">

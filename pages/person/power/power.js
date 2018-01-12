@@ -7,7 +7,7 @@ Page({
    */
   data: {
     grids: [
-      { src: '/images/quanxian01.png', title: '模拟填报',url:"/pages/analog/analog" },
+      { src: '/images/quanxian01.png', title: '模拟填报', url: "/pages/imitate/imitate" },
       { src: '/images/quanxian02.png', title: '智能推荐',url:"/pages/intelligence/intelligence" },
       { src: '/images/quanxian03.png', title: '院校咨询',url:"/pages/consult/consult" },
       { src: '/images/quanxian04.png', title: '专家咨询'},
@@ -16,40 +16,16 @@ Page({
     ],
     isReg: false,
     isLoaded: false,
-    vipname: "普通会员"
+    vipname: "普通会员",
+    checked:false,
+    vip:"UA"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    util.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function(res){
-      that.setData({
-        isLoaded: true,
-        isReg: res.data
-      });
-
-      if(that.data.isReg) {
-        util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
-          if (obj.data == "UA") {
-            that.setData({
-              vipname: "白银会员"
-            });
-          }
-          else if (obj.data == "UB") {
-            that.setData({
-              vipname: "黄金会员"
-            });
-          }
-          else if (obj.data == "UC") {
-            that.setData({
-              vipname: "黑钻会员"
-            });
-          }
-        });
-      }
-    });
+    
   },
 
   /**
@@ -63,7 +39,41 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    util.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function (res) {
+      console.log(res)
+      that.setData({
+        isLoaded: true,
+        isReg: res.data
+      });
+
+      if (that.data.isReg) {
+        util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
+          console.log(obj.data)
+          if (obj.data == "UA") {
+            that.setData({
+              vipname: "白银会员",
+              vip: obj.data,
+              checked: false
+            });
+          }
+          else if (obj.data == "UB") {
+            that.setData({
+              vipname: "黄金会员",
+              vip: obj.data,
+              checked: false
+            });
+          }
+          else if (obj.data == "UC") {
+            that.setData({
+              vipname: "黑钻会员",
+              vip: obj.data,
+              checked: true
+            });
+          }
+        });
+      }
+    });
   },
 
   /**
@@ -99,6 +109,10 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  pay:function(e){
+    var vipname = e.currentTarget.id;
+    util.navigateTo("/pages/person/member/member",{vipname:vipname})
   },
   formSubmitForReg: function(e) {
     util.sendRequest("/wechat/applet/user/vip", e.detail.value, "POST", true, function(res){

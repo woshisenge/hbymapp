@@ -1,0 +1,11 @@
+/* pages/imitate/school/major/major.wxss */
+.weui-cells:before {
+  border-top:0;
+}
+.weui-cell-bds{
+  -webkit-box-flex:1;
+  -webkit-flex:1;
+  flex:1;
+  background-color:#999999;
+  color:white;
+}

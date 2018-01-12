@@ -2,3 +2,10 @@
 .child{
   color:#999999;
 }
+.weui-cells:before {
+  border-top:0;
+}
+.weui-cells:after{
+  border-bottom:0;
+
+}  
