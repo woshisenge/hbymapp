@@ -56,8 +56,6 @@ Page({
   },
   school:function(e){
     var that = this;
-    
-   
     var index = that.data.activeIndex;
     var school_id = e.currentTarget.id;
     var major_id = school_id.replace("Schools","Schools_major");
@@ -81,8 +79,8 @@ Page({
    */
   onShow: function () {
     var that = this;
-    console.log(that.data.param)
     util.sendRequest("/wechat/applet/user/getstudentexaminee", {}, "POST", true, function (res) {
+      console.log(res)
       that.setData({
         examinee: res,
         MAJORTYPE: res.MAJORTYPE,

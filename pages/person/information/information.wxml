@@ -13,7 +13,7 @@
       <view class="weui-cell__hd"></view>
       <view class="weui-cell__bd weui-cell_primary">
           <text>考生所在地</text>
-          <text class="picker" id="province">河北省</text>
+          <text>{{province}}</text>
       </view>
       <view class="weui-cell__ft"></view>
   </view> 

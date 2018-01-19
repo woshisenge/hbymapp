@@ -2,12 +2,11 @@
 var util=require("../../../utils/util")
 var WxParse = require('../../../wxParse/wxParse.js');
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    tabs: ["录取", "基本信息","招生简章"],
+    tabs: ["录取", "基本信息","学校简介"],
     activeIndex: 0,
     index:0,
     ckecked:true,
@@ -28,7 +27,6 @@ Page({
     var that=this
     var id=options.a
     util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: id }, "POST", true, function (res) {
-      
       that.setData({
         subjecttypes: res.subjecttypes,
         properties: res.properties,
@@ -42,7 +40,6 @@ Page({
         address:res.ADDRESS
       })
     })
-    
     util.sendRequest("/wechat/applet/school/getintroduction", { SCHOOL_ID: id }, "POST", true, function (res) {
       
       var content = res.CONTENT;
@@ -54,8 +51,17 @@ Page({
       })
     })
     util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID: id, MAJORTYPE_ID: 'gjv044girc'}, "POST", true, function (res) {
+      var grade = res.data;
+      grade.forEach(function(element){
+        if (element.MinPM == null){
+          element.MinPM = ""
+        }
+        if (element.MaxPM == null){
+          element.MaxPM = ""
+        }
+      })
       that.setData({
-        grade: res.data
+        grade: grade
       })
     })
   },
@@ -64,13 +70,21 @@ Page({
     that.setData({
       showView: (!that.data.showView)
     })
-    
   },
   bindPickerChange: function (e) {
     var that = this
     var a = e.currentTarget.dataset.id
     var id = that.data.array[e.detail.value].DIC_ID
     util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID : a, MAJORTYPE_ID : id },"POST",true,function(res){
+      var grade = res.data;
+      grade.forEach(function (element) {
+        if (element.MinPM == null) {
+          element.MinPM = ""
+        }
+        if (element.MaxPM == null) {
+          element.MaxPM = ""
+        }
+      })
       that.setData({
         grade:res.data
       })

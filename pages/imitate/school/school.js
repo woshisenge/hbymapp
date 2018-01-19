@@ -52,8 +52,8 @@ Page({
     var major_4_id = that.data.major_4_id;
     var major_5_id = that.data.major_5_id;
     var major_6_id = that.data.major_6_id;
-      util.navigateTo("/pages/imitate/school/major/major", { school_id: school_id, id: id, major_1_id: major_1_id, major_2_id: major_2_id, major_3_id: major_3_id, major_4_id: major_4_id, major_5_id: major_5_id, major_6_id: major_6_id })
-    
+      util.navigateTo("/pages/imitate/school/major/major", { school_id: school_id, id: id, major_1_id: major_1_id, major_2_id: major_2_id, major_3_id: major_3_id, major_4_id: major_4_id, major_5_id: major_5_id, major_6_id: major_6_id,index:that.data.index })
+     
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

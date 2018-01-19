@@ -50,24 +50,25 @@
   padding-bottom: 20rpx;
 }
 .text-bottom{
-  font-size:25rpx;
+  font-size:28rpx;
 }
 .head-right{
   width:45%;
   height:300rpx;
-  margin:0 3%;
+  margin:0 3%; 
   color:white;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 .number{
   font-size:120rpx;
-  margin-top:25rpx;
+  /* margin-top:25rpx; */
 }
 .texts{
   font-size:36rpx;
-  margin-top:-20rpx;
+   margin-top:-20rpx; 
 }
 .center{
   width:100%;

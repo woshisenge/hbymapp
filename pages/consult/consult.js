@@ -451,7 +451,7 @@ Page({
     that.setSearchParam();
     
     util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
-      console.log(res)
+    
       that.setData({
         schools: that.setResults(res.data.results, isClear),
         num: res.data.totalRecord

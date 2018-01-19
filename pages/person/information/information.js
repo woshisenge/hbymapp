@@ -1,7 +1,6 @@
 // pages/person/information/information.js
 var util = require('../../../utils/util')
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -12,13 +11,8 @@ Page({
     majortypeIndex:0,
     gradeIndex: 0,
     user: {},
-    province:"",
-    province_id: ""
-
-  },
-  region:function(e){
-    var that = this;
-    util.navigateTo("/pages/person/information/content/content",{key: that.data.province_id})
+    province:"河北省",
+    province_id:"province3"
   },
   formSubmit: function(e) {
     e.detail.value.MAJORTYPE = this.data.majortypeObjs[e.detail.value.MAJORTYPE].DIC_ID;
@@ -54,11 +48,6 @@ Page({
       });
     });
 
-     util.sendRequest("/wechat/applet/dictionary/get", { code: "PROVINCE" }, "POST", true, function (res) {
-       that.setData({
-         provinceObjs: res.data
-       });
-     });
 
     util.sendRequest("/wechat/applet/dictionary/get", { code: "GRADE" }, "POST", true, function (res) {
       that.setData({
@@ -81,14 +70,6 @@ Page({
         }
       });
 
-      that.data.provinceObjs.forEach(function (element, index) {
-        if (element.DIC_ID == res.EXAMAREA) {
-          that.setData({
-            province: element.NAME,
-            province_id: element.DIC_ID
-          });
-        }
-      });
 
       that.data.gradeObjs.forEach(function (element, index) {
         if (element.DIC_ID == res.GRADE) {

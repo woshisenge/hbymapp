@@ -107,13 +107,13 @@
       <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
         <view>
           <text>{{school.NAME}}</text>
-          <image wx:for="{{school.properties}}" class='icon-property' src="/images/icon/{{item.DIC_ID}}.png"></image>
+          <image wx:for="{{school.properties}}" wx:key="" class='icon-property' src="/images/icon/{{item.DIC_ID}}.png"></image>
         </view>
         <view class="weui-media-box__desc">
           <text>入驻人数：{{school.TEACOUNT}}人</text><text>地区：{{school.PROVINCE_VALUE}}</text>
         </view>
         <view class="weui-media-box__desc">
-          <image wx:for="{{school.subjecttypes}}"  class='icon-subjecttype' src="/images/icon/{{item.DIC_ID}}.png"></image>
+          <image wx:for="{{school.subjecttypes}}" wx:key="" class='icon-subjecttype' src="/images/icon/{{item.DIC_ID}}.png"></image>
         </view>  
       </view>
     </view>

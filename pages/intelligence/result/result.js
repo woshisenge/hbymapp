@@ -28,7 +28,6 @@ Page({
       MAJORTYPE_VALUE: options.MAJORTYPE_VALUE
     })
     util.sendRequest("/wechat/applet/report/reporting", options, "POST", true, function(res){
-      console.log(res)
       var listChong = res.listChong;
       var listWen = res.listWen;
       var listBao = res.listBao;

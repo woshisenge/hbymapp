@@ -418,8 +418,6 @@ Page({
       param.GRADE=that.data.grade;
     else
       delete param.GRADE;
-
-    console.log(param);
     that.setData({
       searchParam: param
     });

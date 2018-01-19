@@ -12,11 +12,9 @@
 .news{
   width: 30%;
   height: 150rpx;
-  padding: 0 25rpx; 
 }
 .headlines{
   width: 70%;
-  padding: 0 25rpx;
   font-size: 25rpx;
 }
 .time-t{

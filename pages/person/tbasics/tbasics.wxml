@@ -27,27 +27,48 @@
       </picker>
       </view>
   </view>
-  <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active" url='/pages/person/security/authentication/authentication'>
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd weui-cell_primary">
+          <text>职务</text>
+          <input type='text' name='JOBTYPE' value='{{user.JOBTYPE}}'style="text-align:right" />
+      </view>
+  </view>
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd weui-cell_primary">
+          <text>院校名称</text>
+          <input type='text' name='SCNAME' value='{{user.SCNAME}}'style="text-align:right" />
+      </view>
+  </view>
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd weui-cell_primary">
+          <text>工作年限</text>
+          <input type='text' name='JOBDATE_VALUE' value='{{user.JOBDATE_VALUE}}'style="text-align:right" />
+      </view>
+  </view>
+  <!-- <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active" url='/pages/person/security/authentication/authentication'>
       <view class="weui-cell__hd"></view>
       <view class="weui-cell__bd weui-cell_primary">
           <text>实名认证</text><text>{{user.IDCARD}}</text>
       </view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator>
-  <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active" url='/pages/person/security/email/email'>
+  </navigator> -->
+  <!-- <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active" url='/pages/person/security/email/email'>
       <view class="weui-cell__hd"></view>
       <view class="weui-cell__bd weui-cell_primary">
           <text>邮箱设置</text><text>{{user.EMAIL}}</text>
       </view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator>
-  <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active" url='/pages/person/security/phone/phone'>
+  </navigator> -->
+  <!-- <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active" url='/pages/person/security/phone/phone'>
       <view class="weui-cell__hd"></view>
       <view class="weui-cell__bd weui-cell_primary">
           <text>手机号设置</text><text>{{user.PHONE}}</text>
       </view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-  </navigator> 
+  </navigator>  -->
   <button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
 </form>
 </view>

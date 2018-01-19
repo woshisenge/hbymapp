@@ -122,7 +122,6 @@ Page({
     var name = e.currentTarget.dataset.id;
     var index = e.currentTarget.dataset.name;
     var parentName = that.data.major[index].NAME;
-    console.log(parentName)
     util.navigateTo("/pages/major/majorcontent/majorcontent", { a: curId, name: name, parentName: parentName});
   },
   toDetail: function (e) {
@@ -131,7 +130,6 @@ Page({
     var name = e.currentTarget.dataset.id;
     var index = e.currentTarget.dataset.name;
     var parentName = that.data.zmajor[index].NAME;
-    console.log(parentName)
     util.navigateTo("/pages/major/majorcontent/majorcontent", { a: curId, name: name, parentName: parentName });
   }
 })

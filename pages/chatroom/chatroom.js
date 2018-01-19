@@ -191,7 +191,6 @@ Page({
         inputMessage: '',
         userMessage: ''
       });
-      console.log(that.data.chatRecords);
     });
   },
   openEmoji: function () {

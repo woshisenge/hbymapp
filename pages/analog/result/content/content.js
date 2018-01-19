@@ -28,8 +28,6 @@ Page({
         style: "本二"
       })
     }
-    console.log(options)
-    console.log(arrId)
     util.sendRequest("/wechat/applet/school/getschoolinfo",{SCHOOL_ID:options.school_id}, "POST", true, function(res){
       that.setData({
         logo: util.setStaticUrl(res.HEADURL),
@@ -42,7 +40,6 @@ Page({
     })
     util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID: options.school_id, MAJORTYPE_ID: options.MAJORTYPE }, "POST", true, function (res) {
       var result = res.data;
-      console.log(res.data)
       result.forEach(function (obj) {
         if (obj.ARRANGMENT_ID == arrId) {
           obj.checked = false;
@@ -55,19 +52,37 @@ Page({
         grade: result
       })
     });
-    util.sendRequest("/wechat/applet/report/zy", options, "POST", true, function(res){
-      var results = res.data
-      for (var i = 0; i < results.length; i++){
-        if(i == options.id){
-          that.setData({
-            results: results[i]
-          });
+    var major = options.scores.split(",");
+    var chance = options.chance.split(",");
+    for (var i=0; i < major.length;i++){
+      util.sendRequest("/wechat/applet/major/getmajorbyschool", { SCHOOL_ID: options.school_id, MAJOR_ID: major[i] }, "POST", true, function (res) {
+        var results = that.data.results;
+        if (res.data.length > 0) {
+          var mjname = res.data[0].MJNAME;
+          var majorObj = { MJNAME: mjname, scores: res.data };
+          chance.forEach(function(element){
+             majorObj.chance = element
+          })
+          results.push(majorObj);
         }
-      }
-      that.setData({
-        subject: options.subject
+        that.setData({
+          results: results
+        });
       })
-    });
+    }
+    // util.sendRequest("/wechat/applet/report/zy", options, "POST", true, function(res){
+    //   var results = res.data
+    //   for (var i = 0; i < results.length; i++){
+    //     if(i == options.id){
+    //       that.setData({
+    //         results: results[i]
+    //       });
+    //     }
+    //   }
+    //   that.setData({
+    //     subject: options.subject
+    //   })
+    // });
   },
   toDto: function (list) {
     if (!list) return list;

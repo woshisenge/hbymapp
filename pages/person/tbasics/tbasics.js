@@ -1,7 +1,6 @@
 // pages/person/basics/basics.js
 var util = require('../../../utils/util')
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -9,7 +8,7 @@ Page({
     sexObjs: [],
     sexIndex: 0,
     birthday: "",
-    user: { NICKNAME: "", SEX: "", BIRTHDAY: "", IDCARD: "", EMAIL: "", PHONE: "" }
+    user: { NICKNAME: "", SEX: "", BIRTHDAY: "", JOBTYPE: "", SCNAME: "", JOBDATE_VALUE:""}
   },
   bindPickerChange: function (e) {
     this.setData({
@@ -24,7 +23,6 @@ Page({
   formSubmit: function (e) {
     e.detail.value.SEX = this.data.sexObjs[e.detail.value.SEX].DIC_ID;
     util.sendRequest("/plant/teacher/api/basic", e.detail.value, "POST", true, function (res) {
-      console.log(res)
       wx.navigateBack({
         delta: 1
       });
@@ -42,7 +40,7 @@ Page({
       });
 
       util.sendRequest("/wechat/applet/user/getteachercomplete", {}, "POST", true, function (res) {
-        var userTmp = { NICKNAME: "", SEX: "11", BIRTHDAY: "1990-12-12", IDCARD: "未设置", EMAIL: "未设置", PHONE: "未设置" };
+        var userTmp = { NICKNAME: "", SEX: "11", BIRTHDAY: "1990-12-12", JOBTYPE: "", SCNAME: "", JOBDATE_VALUE: "" };
         if (res.NICKNAME) {
           userTmp.NICKNAME = res.NICKNAME;
         }
@@ -65,16 +63,16 @@ Page({
           });
         }
 
-        if (res.IDCARD) {
-          userTmp.IDCARD = res.IDCARD.substring(0, 3) + "*****" + res.IDCARD.substring(15, 18);
+        if (res.JOBTYPE) {
+          userTmp.JOBTYPE = res.JOBTYPE;
         }
 
-        if (res.EMAIL) {
-          userTmp.EMAIL = res.EMAIL.substring(0, 2) + "*********";
+        if (res.SCNAME) {
+          userTmp.SCNAME = res.SCNAME;
         }
 
-        if (res.PHONE) {
-          userTmp.PHONE = res.PHONE.substring(0, 3) + "****" + res.PHONE.substring(7, 11);
+        if (res.JOBDATE_VALUE) {
+          userTmp.JOBDATE_VALUE = res.JOBDATE_VALUE;
         }
 
         that.setData({

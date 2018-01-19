@@ -16,7 +16,6 @@ Page({
   onLoad: function (options) {
     var that=this;
     var id=options.a;
-    console.log(id)
     util.sendRequest("/wechat/applet/major/getmajordetails", { MAJOR_ID:id},"POST",true,function(res){
       that.setData({
         name: res.NAME,

@@ -77,10 +77,10 @@ Page({
   getUserInfo: function() {
     var that = this;
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res)     {
+      console.log(res.data)
       var role=res.data
       if(role==1){
         util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function(obj){
-          console.log(obj.data)
           if(obj.data == "UA") {
             that.setData({
               vip: "/images/icon/baiyin.png"
@@ -113,7 +113,8 @@ Page({
           that.setData({
             logo2: util.setStaticUrl(obj.complete.HEADURL),
             completeCount2: obj.completeCount,
-            nickname2: obj.complete.NICKNAME ? obj.complete.NICKNAME : "暂无"
+            nickname2: obj.complete.NICKNAME ? obj.complete.NICKNAME : "暂无",
+            scname: obj.complete.SCNAME ? obj.complete.SCNAME : "暂无"
           })
         })
       }

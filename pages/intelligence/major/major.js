@@ -1,14 +1,16 @@
 // pages/intelligence/major/major.js
 var util = require('../../../utils/util.js');
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     anyChecked: false,
     majors: [],
-    buttonClicked: false
+    buttonClicked: false,
+    inputShowed: false,
+    inputVal: "",
+    check:false
   },
   serviceValChange: function (e) {
     var strRes = "";

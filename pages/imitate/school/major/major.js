@@ -9,8 +9,6 @@ Page({
     id:"",
     checked:false,
     param:{}
-    
-    
   },
 
   /**
@@ -19,12 +17,19 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.setData({
-      id:options.id
+      id:options.id,
     })
-    
-   
-    util.sendRequest("/wechat/applet/report/getmajors", { SCHOOL_ID: options.school_id }, "POST", true, function (res) {
-      var results = res.majors
+    console.log(options)
+   var index = options.index;
+   var arrId="";
+   if(index == 0){
+     arrId = "hjj4e5vr0c"
+   }
+   else{
+     arrId = "bdhsl11qtb"
+   }
+   util.sendRequest("/wechat/applet/report/getmajors", { SCHOOL_ID: options.school_id, ARRANGMENT_ID: arrId}, "POST", true, function (res) {
+      var results = res.majors;
       for (var value in options) {
         for (var i = 0; i < results.length;i++){
           if (options[value] == results[i].DIC_ID){
@@ -35,13 +40,11 @@ Page({
       that.setData({
         major: results
       })
-
-    })
+    })                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
   },
   major:function(e){
     var that = this;
     var curId = e.currentTarget.id;
- 
     var id = that.data.id
     var major = that.data.major
     var valueStr = "";

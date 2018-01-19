@@ -81,6 +81,25 @@ Page({
     var param= that.data.param;
     param.id = curId;
     param.school_id = school_id;
+    var result = that.data.results;
+    var scores = "";
+    var chance = "";
+    for (var i = 0; i < result.length; i++) {
+      if (i == curId) {
+        result[i].forEach(function(obj){
+          scores += obj.MAJOR_ID + ",";
+          chance += obj.chance + ","
+        })
+      }
+    }
+    if (scores != ""){
+      scores = scores.substring(0, scores.length - 1);
+    }
+    if (chance != "") {
+      chance = chance.substring(0, chance.length - 1);
+    }
+    param.scores = scores;
+    param.chance = chance;
     util.navigateTo("/pages/analog/result/content/content",param);
   }
 })

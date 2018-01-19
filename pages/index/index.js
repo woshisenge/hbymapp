@@ -19,7 +19,11 @@ Page({
     autoplay: true,
     interval: 2000,
     duration: 1000,
-    circular: true
+    circular: true,
+    vip:"",
+    zntjk:"",
+    mntbk:"",
+    role:""
     // 首页轮播图 开始
 
     // 公告 开始
@@ -33,7 +37,6 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
-    
     wx.navigateTo({
       url: '../logs/logs'
     })
@@ -59,6 +62,22 @@ Page({
         notice: that.toDto(res.data.results)
       });
     })
+    utils.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
+      that.setData({
+        vip: obj.data
+      })
+    })
+    utils.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
+      that.setData({
+        mntbk: res.mntbk,
+        zntjk: res.zntjk
+      })
+    })
+    utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res) {
+      that.setData({
+        role:res.data
+      })
+    })
   },
   consultation:function(){
     utils.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function(res){
@@ -71,32 +90,18 @@ Page({
     
   },
   analog:function(){
-    utils.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function(res){
-      if(res.data) {//是vip
-        utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", true, function(result) {
+    var that = this;
+    var vip = that.data.vip;
+    if(that.data.role != 1){
+      utils.showError("只有学生方可模拟填报")
+    }
+    else{
+      if ( that.data.mntbk != 0 || vip == "UC" ) {//模拟填报卡不为0
+        utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", true, function (result) {
+          console.log(result)
           if (result.data) {
-            
             //完成考生信息的完善
             utils.navigateTo("/pages/imitate/imitate");
-          }
-          else{
-            utils.showError("请完善考生信息");
-          }
-        });
-      }
-      else{
-        utils.showError("请先激活黄金会员权限");
-      }
-    });
-  },
-  intelligence:function(){
-    utils.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function (res) {
-      if (res.data) {//是vip
-        utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", true, function (result) {
-          if (result.data) {
-            //完成考生信息的完善
-            
-              utils.navigateTo("/pages/intelligence/intelligence");
           }
           else {
             utils.showError("请完善考生信息");
@@ -104,10 +109,32 @@ Page({
         });
       }
       else {
-        utils.showError("请先激活黄金会员权限");
+        utils.showError("您当前智能填报卡0张，请前往商城充值购买或激活已有会员")
       }
-    });
-    
+    }
+  },
+  intelligence:function(){
+    var that = this;
+    var vip = that.data.vip;
+    if (that.data.role != 1) {
+      utils.showError("只有学生方可智能推荐！")
+    }
+    else{
+      if (that.data.zntjk != 0 || vip == "UC") {//模拟填报卡不为0
+        utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", true, function (result) {
+          if (result.data) {
+            //完成考生信息的完善
+            utils.navigateTo("/pages/intelligence/intelligence");
+          }
+          else {
+            utils.showError("请完善考生信息");
+          }
+        });
+      }
+      else {
+        utils.showError("您当前智能推荐卡为0张，请前往商城充值购买或激活已有会员")
+    }
+    }
   },
   school:function(){
     var that = this;
@@ -132,7 +159,7 @@ Page({
     utils.showError("系统正在维护中，该功能暂时无法使用~！")
   },
   test:function(){
-    utils.showError("系统正在维护中，该功能暂时无法使用~！")
+    utils.showError("系统正在维护中，如需使用请登录电脑端！")
   },
   newsmore:function(){
     
@@ -164,5 +191,8 @@ Page({
   },
   onLoad:function(e) {
     
+  },
+  onShareAppMessage: function () {
+
   },
 });

@@ -12,7 +12,6 @@
     <view class="weui-tab__panel">
       <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
         <block wx:for="{{major}}" wx:key="" wx:for-item="major" wx:for-index="indexs" >
-        <view class="weui-cells__title"></view>
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='show' data-id="{{major.DIC_ID}}">
                 <view class="weui-cell__bd">{{major.NAME}}</view>
@@ -27,7 +26,6 @@
       </view>
       <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
         <block wx:for="{{zmajor}}" wx:key="" wx:for-item="zmajor"  wx:for-index="indexss">
-        <view class="weui-cells__title"></view>
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='zshow' data-id="{{zmajor.DIC_ID}}">
                 <view class="weui-cell__bd">{{zmajor.NAME}}</view>

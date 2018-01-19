@@ -87,7 +87,6 @@ Page({
       util.showError("未同意遵守服务条款不可注册账号");
       return false;
     }
-    console.log(e);
     var param = e.detail.value;
     if(param.USERNAME == ""){
       util.showError("用户名不能为空");
