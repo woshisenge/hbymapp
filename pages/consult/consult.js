@@ -7,7 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
     hidden:true,
     width:0,
     checked:false,

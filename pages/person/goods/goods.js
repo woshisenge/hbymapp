@@ -31,7 +31,25 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    var that = this;
+    util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
+      if (that.data.role == "UC") {
+        that.setData({
+          BALANCE: res.BALANCE + "个",
+          yxzxk: "无限",
+          mntbk: "无限",
+          zntjk: "无限"
+        })
+      }
+      else {
+        that.setData({
+          BALANCE: res.BALANCE + "个",
+          yxzxk: res.yxzxk + "张",
+          mntbk: res.mntbk + "张",
+          zntjk: res.zntjk + "张"
+        });
+      }
+    });
   },
 
   /**
@@ -39,31 +57,12 @@ Page({
    */
   onShow: function () {
     var that = this;
-    var role = "";
     util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
       that.setData({
         role:obj.data
       })
     })
-    util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
-      console.log(res)
-      if(that.data.role == "UC"){
-        that.setData({
-          BALANCE: res.BALANCE + "个",
-          yxzxk: "无限",
-          mntbk: "无限",
-          zntjk: "无限"
-        })
-      } 
-      else{
-        that.setData({
-          BALANCE: res.BALANCE +"个",
-          yxzxk: res.yxzxk + "张",
-          mntbk: res.mntbk + "张",
-          zntjk: res.zntjk + "张"
-        });      
-      }
-    });
+    
   },
 
   /**

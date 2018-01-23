@@ -65,12 +65,6 @@
   background-color: #EDEDED;
   border-radius: 4px;
 }
-.f-row{
-  width:100%;
-  display:flex;
-  flex-direction:row;
-
-}
 .msg text {
   line-height: 1.5;
 }
@@ -123,7 +117,7 @@
 }
 
 .send_btn {
-  width: 40px;
+  width: 10%;
   height: 30px;
   line-height: 30px;
   font-size: 14px;
@@ -149,13 +143,13 @@
 }
 
 .news {
-  width: 79%;
+  width: 72%;
   height: 30px;
   border: 1px solid #CFCFCF;
   border-radius: 5px;
   font-size: 14px;
   padding-left: 4px;
-  margin: 4px 2px 4px 6px;
+  margin: 4px 2px 4px 6px; 
 }
 
 .emoj {
@@ -177,7 +171,7 @@
 }
 
 .showEmoji {
-  margin-top: 30px;
+  margin-top: 20rpx;
   width: 100%;
   height: 145px;
   background-color: #dddddd;
@@ -210,10 +204,8 @@
 
 .open_emoji{
   width: 8%;
-  height: 60rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height:60rpx; 
+  margin-left:15rpx;
 }
 .open_emoji image{
   width:100%;

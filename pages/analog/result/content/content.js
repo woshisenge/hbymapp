@@ -1,7 +1,6 @@
 // pages/analog/analogs/result/content/content.js
 var util = require('../../../../utils/util.js')
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -9,7 +8,6 @@ Page({
     results: [],
     chance: 0
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -70,19 +68,9 @@ Page({
         });
       })
     }
-    // util.sendRequest("/wechat/applet/report/zy", options, "POST", true, function(res){
-    //   var results = res.data
-    //   for (var i = 0; i < results.length; i++){
-    //     if(i == options.id){
-    //       that.setData({
-    //         results: results[i]
-    //       });
-    //     }
-    //   }
-    //   that.setData({
-    //     subject: options.subject
-    //   })
-    // });
+    that.setData({
+        subject: options.subject
+      })
   },
   toDto: function (list) {
     if (!list) return list;
@@ -116,14 +104,12 @@ Page({
   onHide: function () {
   
   },
-
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
   
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -137,7 +123,6 @@ Page({
   onReachBottom: function () {
   
   },
-
   /**
    * 用户点击右上角分享
    */

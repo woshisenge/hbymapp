@@ -170,7 +170,6 @@ Page({
       util.showError("消息不能为空");
       return;
     }
-
     var that = this;
     util.sendRequest("/wechat/applet/chat/sendMessage", {USER_ID: that.data.ruser_id, MESSAGE: that.data.userMessage}, "POST", true, function(res){
       var record = {

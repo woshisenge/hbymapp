@@ -48,7 +48,6 @@ Page({
       })
     })
     util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: id }, "POST", true, function (res) {
-
       that.setData({
         subjecttypes: res.subjecttypes,
         properties: res.properties,
@@ -62,9 +61,7 @@ Page({
         address: res.ADDRESS
       })
     })
-
     util.sendRequest("/wechat/applet/school/getintroduction", { SCHOOL_ID: id }, "POST", true, function (res) {
-
       var content = res.CONTENT;
       WxParse.wxParse('content', 'html', content, that, 5);
     })
@@ -113,7 +110,6 @@ Page({
         })
       } 
     });
-
   },
   contentshow: function () {
     var that = this

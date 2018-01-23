@@ -77,7 +77,6 @@ Page({
   getUserInfo: function() {
     var that = this;
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res)     {
-      console.log(res.data)
       var role=res.data
       if(role==1){
         util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function(obj){
@@ -109,7 +108,6 @@ Page({
       }
       if(role==2){
         util.sendRequest("/wechat/applet/user/basic_teacher", {}, "POST", false, function (obj) {
-          console.log(obj)
           that.setData({
             logo2: util.setStaticUrl(obj.complete.HEADURL),
             completeCount2: obj.completeCount,

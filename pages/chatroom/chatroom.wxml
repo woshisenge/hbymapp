@@ -38,11 +38,7 @@
     <view class="room_bar">
         <form bindreset="cleanInput">
             <view class="f-row">
-                <input wx:if="{{!showRecordHandler}}" class="f news" type="text" value="{{ inputMessage }}"
-                       placeholder="输入新消息" placeholder-style="color:#CFCFCF;padding-left:5px;" bindinput="bindMessage"/>
-                <button wx:else class="f btn-recording" catchtouchstart="handleRecording"
-                        catchtouchend="handleRecordingCancel" catchtouchcancel="handleRecordingCancel">按住 说话
-                </button>
+                <input class="f news" type="text" value="{{ inputMessage }}"  placeholder="输入新消息" placeholder-style="color:#CFCFCF;padding-left:5px;" bindinput="bindMessage"/>
                 <view class="open_emoji" bindtap="openEmoji">
                   <image src="/images/Emoji.png"/>
                 </view>
