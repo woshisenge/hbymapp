@@ -13,7 +13,7 @@
 		  <view class="weui-tab__panel">
 			  <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
 			  <block wx:for="{{teacher}}" wx:key="">
-				<view bindtap='toChat' class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" id='{{item.RUSER_ID}}'>
+				<view bindtap='toChat' class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" id='{{item.RUSER_ID}}' data-id="{{item.count}}">
         <view class="weui-cell">
                 <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
                     <image src="{{item.TEAHEADURL}}" style="width: 50px; height: 50px; display: block"/>

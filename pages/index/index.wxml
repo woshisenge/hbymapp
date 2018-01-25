@@ -110,4 +110,5 @@
   </block>
 </view>
 <view class='footer'></view>
+<view class="page__desc"></view>
 <!-- 线下活动 结束 -->

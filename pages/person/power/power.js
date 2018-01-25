@@ -71,7 +71,6 @@ Page({
   onShow: function () {
     var that = this;
     util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
-      console.log(obj)
     if (obj.data == "UA") {
       that.setData({
         vipname: "白银会员",

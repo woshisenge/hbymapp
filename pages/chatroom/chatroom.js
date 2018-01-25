@@ -64,10 +64,12 @@ Page({
     });
     
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function(role){
+      console.log(role)
       that.setData({
         role: role.data
       });
       util.sendRequest("/wechat/applet/chat/getchatrecs", { USER_ID: options.user_id }, "POST", true, function (res) {
+        console.log(res)
         if (res.chatRecords) {
           res.chatRecords.forEach(function (element) {
             if (element.SUSER_ID == that.data.suser_id) {
@@ -165,7 +167,6 @@ Page({
   },
   //***************** 录音 end ***************************
   sendMessage: function () {
-
     if (!this.data.userMessage.trim()) {
       util.showError("消息不能为空");
       return;
