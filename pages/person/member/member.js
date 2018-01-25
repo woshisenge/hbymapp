@@ -70,20 +70,24 @@ Page({
   },
   formSubmitForReg: function (e) {
     util.sendRequest("/wechat/applet/user/vip", e.detail.value, "POST", true, function (res) {
-      console.log(res)
-      var vip = res.CARD_PURPOSE;
-      var vipname = "";
-      if (vip == "UB"){
-        vipname = "黄金会员"
-      }
-      else if(vip == "UC"){
-        vipname = "黑钻会员"
-      }
-      var pages = getCurrentPages();
-      var prevPage = pages[pages.length - 2];  //上一个页面
-      prevPage.data[vipname] = vipname;
-      prevPage.data[vip] = vip;
-      prevPage.setData(prevPage.data);
+      // console.log(res)
+      // var vip = res.CARD_PURPOSE;
+      // var vipname = "";
+      // if (vip == "UA") {
+      //   vipname = "白银会员"
+      // }
+      // else if (vip == "UB"){
+      //   vipname = "黄金会员"
+      // }
+      // else if(vip == "UC"){
+      //   vipname = "黑钻会员"
+      // }
+      // console.log(vip)
+      // var pages = getCurrentPages();
+      // var prevPage = pages[pages.length - 2];  //上一个页面
+      // prevPage.data[vipname] = vipname;
+      // prevPage.data[vip] = vip;
+      // prevPage.setData(prevPage.data);
       util.showSuccess();
       wx.navigateBack({
         delta: 1

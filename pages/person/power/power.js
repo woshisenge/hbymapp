@@ -14,11 +14,9 @@ Page({
       { src: '/images/quanxian6.png', title: '性格测试', url: "" }, 
       { src: '/images/quanxian7.png', title: '名师大讲堂', url: "" },
     ],
-    isReg: false,
-    isLoaded: false,
     vipname: "普通会员",
     checked:false,
-    vip:"UA"
+    vip:""
   },
 
   /**
@@ -26,11 +24,11 @@ Page({
    */
   onLoad: function (options) {
     
+    
   },
   power:function(e){
     var that = this;
     var grid = that.data.grids;
-    console.log(that.data.grids);
     var url = e.currentTarget.id;
     if (url != ""){
       util.navigateTo(url)
@@ -43,7 +41,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var that = this;
+    var that =this;
     util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
       var vip = that.data.vip;
       var grid = that.data.grids;
@@ -72,31 +70,27 @@ Page({
    */
   onShow: function () {
     var that = this;
-        util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
-          console.log(obj.data)
-          if (obj.data == "UA") {
-            that.setData({
-              vipname: "白银会员",
-              checked: false
-            });
-          }
-          else if (obj.data == "UB") {
-            that.setData({
-              vipname: "黄金会员",
-              checked: false
-            });
-          }
-          else if (obj.data == "UC") {
-            that.setData({
-              vipname: "黑钻会员",
-              checked: true
-            });
-          }
-          that.setData({
-            vip:obj.data
-          })
-        });
-        
+    util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
+      console.log(obj)
+    if (obj.data == "UA") {
+      that.setData({
+        vipname: "白银会员",
+        checked: false
+      })
+    }
+    else if (obj.data == "UB") {
+      that.setData({
+        vipname: "黄金会员",
+        checked: false
+      })
+    }
+    else if (obj.data == "UC") {
+      that.setData({
+        vipname: "黑钻会员",
+        checked: true
+      })
+    }
+    })
   },
 
   /**

@@ -47,3 +47,12 @@ image{
   height:1rpx;
   border-top:1rpx solid #CCCCCC;
 }
+.pay{
+  font-size:25rpx;
+  height:22px;
+  width:45px;
+  border:1px solid rgb(90,180,170);
+  color:rgb(90,180,170);
+  border-radius: 5rpx;
+  text-align: center;
+}

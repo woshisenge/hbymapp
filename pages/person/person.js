@@ -16,11 +16,10 @@ Page({
     valiablePocket: 0,
     //昵称
     nickname: "",
-    //是否为vip
-    isVip: false,
     //用户身份
     role: 0,
-    vip: "/images/icon/putong.png"
+    vipname: "/images/icon/putong.png",
+    vip:""
   },
 
   /**
@@ -82,19 +81,22 @@ Page({
         util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function(obj){
           if(obj.data == "UA") {
             that.setData({
-              vip: "/images/icon/baiyin.png"
+              vipname: "/images/icon/baiyin.png"
             });
           }
           else if(obj.data == "UB") {
             that.setData({
-              vip: "/images/icon/gold.png"
+              vipname: "/images/icon/gold.png"
             });
           }
           else if(obj.data == "UC") {
             that.setData({
-              vip: "/images/icon/svip.png"
+              vipname: "/images/icon/svip.png"
             });
           }
+          that.setData({
+            vip:obj.data
+          })
         });
         util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (obj) {
           that.setData({
@@ -154,6 +156,16 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  goods:function(){
+    var that= this;
+    var role = that.data.vip;
+    util.navigateTo("/pages/person/goods/goods", { role: role})
+  },
+  power:function(){
+    var that = this;
+    var role = that.data.vip;
+    util.navigateTo("/pages/person/power/power", { role: role})
   },
   toExaminee: function() {
     util.navigateTo("/pages/person/information/information");

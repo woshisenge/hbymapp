@@ -48,7 +48,6 @@ Page({
   onLoad: function (options) {
     var that=this;
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE' }, 'POST', false, function (res) {
-      
       if (options.provinces && options.provinces != "") {
         var arr = options.provinces.split(",");
         res.data.forEach(function(element){

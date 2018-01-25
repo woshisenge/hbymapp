@@ -62,6 +62,7 @@ Page({
     var that=this
     util.sendRequest("/wechat/applet/user/getrole",{},"POST",true,function(role){
       util.sendRequest("/wechat/applet/chat/getcontactors", {}, "POST", true, function (res) {
+        console.log(res.students)
         that.setData({
           teacher:that.toDto(res.teachers),
           student: that.toDto(res.students),

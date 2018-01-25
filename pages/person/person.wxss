@@ -109,3 +109,14 @@
 .weui-cell_primary{
   font-size:28rpx;
 }
+.pay{
+  font-size:25rpx;
+  height:22px;
+  width:45px;
+  border:1px solid rgb(90,180,170);
+  color:rgb(90,180,170);
+  border-radius: 5rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

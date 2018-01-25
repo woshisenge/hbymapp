@@ -13,27 +13,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-  },
-  pay:function(){
-     util.navigateTo("/pages/person/goods/payment/payment")
-  },
-  consult:function(){
-    util.showError("系统正在维护中，该功能暂时无法使用~！")
-  },
-  intelligence:function(){
-    util.showError("系统正在维护中，该功能暂时无法使用~！")
-  },
-  analog:function(){
-    util.showError("系统正在维护中，该功能暂时无法使用~！")
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
     var that = this;
     util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
-      if (that.data.role == "UC") {
+      if (options.role == "UC") {
         that.setData({
           BALANCE: res.BALANCE + "个",
           yxzxk: "无限",
@@ -51,17 +33,33 @@ Page({
       }
     });
   },
+  pay:function(e){
+    var id = e.currentTarget.id
+     util.navigateTo("/pages/person/goods/payment/payment",{id:id})
+  },
+  consult:function(e){
+    var id = e.currentTarget.id
+    util.navigateTo("/pages/person/goods/payment/payment", { id:id })
+  },
+  intelligence:function(e){
+    var id = e.currentTarget.id
+    util.navigateTo("/pages/person/goods/payment/payment", { id:id })
+  },
+  analog:function(e){
+    var id = e.currentTarget.id
+    util.navigateTo("/pages/person/goods/payment/payment", { id:id })
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    
+  },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
-    util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
-      that.setData({
-        role:obj.data
-      })
-    })
     
   },
 

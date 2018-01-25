@@ -31,16 +31,17 @@
 			  <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
 				<block wx:for="{{expecter}}" wx:key="">
 				<view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-				  <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-					  <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
-				  </view>
-				  <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-					  <view class="weui-media-box__title">{{item.NICKNAME}}</view>
-					  <view class="weui-media-box__desc">{{item.PROVINCE_VALUE}}</view>
-				  </view>
-				  <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-					  <view class="weui-media-box__title titles">{{item.isOnline?'在线':'离线'}}</view>
-				  </view>
+				  <view class="weui-cell">
+                <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                    <image src="{{item.TEAHEADURL}}" style="width: 50px; height: 50px; display: block"/>
+                    <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{item.count == 0}}" hidden="true"></view>
+                    <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:else>{{item.count}}</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <view>{{item.school.NAME}}</view>
+                    <!-- <view style="font-size: 13px;color: #888888;">{{item.isOnline?'在线':'离线'}}</view> -->
+                </view>
+            </view>
 			  </view>
 			  </block>
 			  </view>
@@ -50,16 +51,17 @@
 	<view wx:if="{{role==2 || role==3}}">
 	  <block wx:for="{{student}}" wx:key="">
 		<view bindtap='toChat' class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" id='{{item.RUSER_ID}}'>
-		  <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-			  <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
-		  </view>
-		  <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-			  <view class="weui-media-box__title">{{item.NICKNAME}}</view>
-			  <view class="weui-media-box__desc">{{item.PROVINCE_VALUE}}</view>
-		  </view>
-		  <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-			  <view class="weui-media-box__title titles">{{item.isOnline?'在线':'离线'}}</view>
-		  </view>
+		  <view class="weui-cell">
+                <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                    <image src="{{item.HEADURL}}" style="width: 50px; height: 50px; display: block"/>
+                    <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{item.count == 0}}" hidden="true"></view>
+                    <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:else>{{item.count}}</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <view>{{item.NICKNAME}}</view>
+                    <!-- <view style="font-size: 13px;color: #888888;">{{item.isOnline?'在线':'离线'}}</view> -->
+                </view>
+            </view>
 	  </view>
 	  </block>
 	</view>

@@ -1,3 +1,4 @@
+ <view wx:if="{{id == 1}}"> 
 <view class="page">
     <view class="page__hd">
         <view class="page__title">充值金币</view>
@@ -13,3 +14,52 @@
     </view>
     </view>
 </view>
+ </view> 
+ <view wx:elif="{{id == 2}}">
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">购买院校咨询卡</view>
+    </view>
+    <view class="page__bd">
+    <view class='content'>
+      <block wx:for="{{grid2}}" wx:key="" wx:for-item="grid">
+        <view class='grid' bindtap="payment1" id='{{grid.title}}' data-id="rs4cu5jnkv">
+          <view class='grid-top'>{{grid.title}}张</view>
+          <view class='grid-bottom'>售价{{grid.money}}金币</view>
+        </view>
+      </block>
+    </view>
+    </view>
+</view>
+</view> 
+
+ <view class="page" wx:elif="{{id==3}}">
+    <view class="page__hd">
+        <view class="page__title">充值金币</view>
+    </view>
+    <view class="page__bd">
+    <view class='content'>
+      <block wx:for="{{grid}}" wx:key="" wx:for-item="grid">
+        <view class='grid' bindtap="payment" id='{{grid.money}}'>
+          <view class='grid-top'>{{grid.title}}金币</view>
+          <view class='grid-bottom'>售价{{grid.money/100}}元</view>
+        </view>
+      </block>
+    </view>
+    </view>
+</view>
+<view class="page" wx:elif="{{id==4}}">
+    <view class="page__hd">
+        <view class="page__title">充值金币</view>
+    </view>
+    <view class="page__bd">
+    <view class='content'>
+      <block wx:for="{{grid}}" wx:key="" wx:for-item="grid">
+        <view class='grid' bindtap="payment" id='{{grid.money}}'>
+          <view class='grid-top'>{{grid.title}}金币</view>
+          <view class='grid-bottom'>售价{{grid.money/100}}元</view>
+        </view>
+      </block>
+    </view>
+    </view>
+</view> 
