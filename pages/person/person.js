@@ -110,11 +110,13 @@ Page({
       }
       if(role==2){
         util.sendRequest("/wechat/applet/user/basic_teacher", {}, "POST", false, function (obj) {
+          console.log(obj)
           that.setData({
             logo2: util.setStaticUrl(obj.complete.HEADURL),
             completeCount2: obj.completeCount,
             nickname2: obj.complete.NICKNAME ? obj.complete.NICKNAME : "暂无",
-            scname: obj.complete.SCNAME ? obj.complete.SCNAME : "暂无"
+            scname: obj.complete.SCNAME ? obj.complete.SCNAME : "暂无",
+            numbers: obj.totalScore ? obj.totalScore : "5"
           })
         })
       }

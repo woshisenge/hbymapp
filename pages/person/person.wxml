@@ -85,7 +85,7 @@
     </view>
   </view>
   <view class="head-right">
-    <view class='number' style='font-size:80rpx'>90分</view>
+    <view class='number' style='font-size:80rpx'>{{numbers}}星</view>
     <view class='texts'style='font-size:30rpx'>评价</view>
   </view>
 </view>

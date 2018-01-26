@@ -159,7 +159,7 @@ Page({
     utils.showError("系统正在维护中，该功能暂时无法使用~！")
   },
   test:function(){
-    utils.showError("系统正在维护中，如需使用请登录电脑端！")
+    utils.navigateTo("/pages/character/character")
   },
   newsmore:function(){
     

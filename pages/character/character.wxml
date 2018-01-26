@@ -1,0 +1,12 @@
+<!--pages/character/character.wxml-->
+<!-- <button class="weui-btn" type="primary" bindtap='test'>开始测试</button> -->
+<view class="banner">
+  <image src="/images/test.png"></image>
+</view>
+<view class='text'>
+  <text>通过职业性格测评，每个人都能通过职业测评的结果，</text>
+  <text>来更加了解自己的职业性格，职业兴趣，</text>
+  <text>发挥自己的潜能，天赋</text>
+  <text class="transform">>></text>
+  <view class='start'>开始测试</view>
+</view>

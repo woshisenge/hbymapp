@@ -1,0 +1,3 @@
+<!--pages/character/test/test.wxml-->
+<progress percent="80" show-info active />
+<view></view>

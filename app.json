@@ -45,7 +45,9 @@
     "pages/person/goods/payment/payment",
     "pages/imitate/school/major/major",
     "pages/imitate/imitate",
-    "pages/person/member/member"
+    "pages/person/member/member",
+    "pages/character/character",
+    "pages/character/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
