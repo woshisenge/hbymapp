@@ -59,18 +59,21 @@ Page({
         var teacher = res.teachers;
         if(teacher){
           teacher.forEach(function (element) {
-            element.timeList.forEach(function (obj) {
-              obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME))
-            })
+            if (element.timeList){
+              element.timeList.forEach(function (obj) {
+                obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME))
+              })
+            }
           })
         }
-        
         var student = res.students;
         if(student){
           student.forEach(function (element) {
-            element.timeList.forEach(function (obj) {
-              obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME))
-            })
+            if (element.timeList){
+              element.timeList.forEach(function (obj) {
+                obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME))
+              })
+            }
           })
         }
         
