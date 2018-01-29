@@ -17,8 +17,8 @@ Page({
     ],
     indicatorDots: false,
     autoplay: true,
-    interval: 2000,
-    duration: 1000,
+    interval: 4000,
+    duration: 2000,
     circular: true,
     vip:"",
     zntjk:"",
@@ -152,13 +152,13 @@ Page({
     });
   },
   phone:function(){
-    utils.showError("系统正在维护中，该功能暂时无法使用~！")
+    // utils.navigateTo("/pages/teacher/teacher")
   },
   teacher:function(){
-    utils.showError("系统正在维护中，该功能暂时无法使用~！")
+    utils.navigateTo("/pages/table/table")
   },
   test:function(){
-    utils.navigateTo("/pages/character/character")
+    // utils.navigateTo("/pages/video/video")
   },
   newsmore:function(){
       utils.navigateTo("../news/news")

@@ -51,6 +51,7 @@ Page({
       })
     })
     util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID: id, MAJORTYPE_ID: 'gjv044girc'}, "POST", true, function (res) {
+      console.log(res)
       var grade = res.data;
       grade.forEach(function(element){
         if (element.MinPM == null){

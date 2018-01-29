@@ -10,7 +10,9 @@ Page({
     role: 0,
     inputShowed: false,
     inputVal: "",
-    checked:false
+    checked:false,
+    s_teacher:[],
+    s_student:[]
   },
   showInput: function () {
     this.setData({
@@ -18,9 +20,20 @@ Page({
     });
   },
   hideInput: function () {
-    this.setData({
+    var that = this;
+    var teacher = that.data.teacher;
+    var student = that.data.student;
+    teacher.forEach(function(element){
+      element.checked = false;
+    })
+    student.forEach(function (element) {
+      element.checked = false;
+    })
+    that.setData({
       inputVal: "",
-      inputShowed: false
+      inputShowed: false,
+      teacher:teacher,
+      student:student
     });
   },
   clearInput: function () {
@@ -42,9 +55,18 @@ Page({
         teacher[i].checked = true;
       }
     }
-
+    var student = that.data.student;
+    for (var i = 0; i < student.length; i++) {
+      if (student[i].school.NAME.indexOf(that.data.inputVal) >= 0) {
+        student[i].checked = false;
+      }
+      else {
+        student[i].checked = true;
+      }
+    }
     that.setData({
-      teacher: teacher
+      teacher: teacher,
+      student: student
     });
   },
   /**
@@ -109,11 +131,9 @@ Page({
             }
           })
         }
-
         that.setData({
           teacher: that.toDto(teacher),
-          student: that.toDto(student),
-          expecter: that.toDto(res.expecters)
+          student: that.toDto(student)
         })
       })
       that.setData({

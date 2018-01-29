@@ -12,8 +12,9 @@
       <icon class="weui-icon-search" type="search" size="14"></icon>
       <view class="weui-search-bar__text">搜索</view>
     </label>
+    
     </view>
-    <!-- <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="setSearchStorage">搜索</view>-->
+    <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
   </view>   
 <view  stytle=" overflow-x: hidden; overflow-y: auto; " wx:if="{{role == 1}}">
   <view class="message_list">

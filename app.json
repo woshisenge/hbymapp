@@ -47,7 +47,10 @@
     "pages/imitate/imitate",
     "pages/person/member/member",
     "pages/character/character",
-    "pages/character/test/test"
+    "pages/character/test/test",
+    "pages/table/table",
+    "pages/video/video",
+    "pages/teacher/teacher"
   ],
   "window": {
     "backgroundTextStyle": "light",

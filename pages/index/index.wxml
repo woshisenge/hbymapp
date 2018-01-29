@@ -12,36 +12,36 @@
 <!-- 导航 链接 开始 -->
 <view class='navigation-box'> 
   <view class='navigation' bindtap="consultation">
-    <image class="tpia" src='../../images/consultation.png'></image> 
+    <image class="tpia" src='/images/consultation.png'></image> 
     <view class='navigation-text'>院校咨询</view>
   </view>
   <view class='navigation' bindtap='teacher'>
-    <image class="tpia" src='../../images/guidance.png'></image> 
+    <image class="tpia" src='/images/grade.png'></image> 
     <view class='navigation-text'>一分一档</view>
   </view>
   <view class='navigation' bindtap="school">
-    <image class="tpia" src='../../images/colleges.png'></image> 
+    <image class="tpia" src='/images/colleges.png'></image> 
     <view class='navigation-text'>院校库</view>
   </view>
   <view class='navigation' bindtap="major">
-    <image class="tpia" src='../../images/major.png'></image> 
+    <image class="tpia" src='/images/major.png'></image> 
     <view class='navigation-text'>专业库</view>
   </view>
   <view class='navigation' bindtap="analog">
-    <image class="tpia" src='../../images/Fill.png'></image> 
+    <image class="tpia" src='/images/Fill.png'></image> 
     <view class='navigation-text'>模拟填报</view>
   </view>
   <view class='navigation' bindtap="intelligence">
-    <image class="tpia" src='../../images/Intelligence.png'></image> 
+    <image class="tpia" src='/images/Intelligence.png'></image> 
     <view class='navigation-text'>智能推荐</view>
   </view>
    <view class='navigation' bindtap='test'>
-    <image class="tpia" src='../../images/character.png'></image> 
-    <view class='navigation-text'>专家讲堂</view>
+    <image class="tpia" src='/images/guidance.png'></image> 
+    <view class='navigation-text'>名师指导</view>             
   </view>
   <view class='navigation' bindtap='phone'>
-    <image class="tpia" src='../../images/service.png'></image> 
-    <view class='navigation-text'>在线客服</view>
+    <image class="tpia" src='/images/video.png'></image> 
+    <view class='navigation-text'>铭邦讲堂</view>
   </view> 
 </view>
 <!-- 导航 链接 结束 -->

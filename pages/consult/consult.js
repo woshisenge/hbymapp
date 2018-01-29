@@ -349,7 +349,6 @@ Page({
     else {
       param.currentPage = 2;
     }
-
     that.setData({
       searchParam: param
     });
@@ -396,7 +395,6 @@ Page({
     });
     if (property_search != "") property_search = property_search.substring(0, property_search.length - 1);
     param.PROPERTY = property_search;
-
     if (that.data.inputVal)
       param.NAME = that.data.inputVal;
 

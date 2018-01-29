@@ -86,7 +86,7 @@ Page({
           }
           else if(obj.data == "UC") {
             that.setData({
-              vipname: "/images/icon/svip.png"
+              vipname: "/images/icon/gold.png"
             });
           }
           that.setData({
