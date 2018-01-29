@@ -29,7 +29,7 @@
           </view>
           <view class="item_right">
                 <view><text class="time">{{item.timeList[0].CREATETIME}}</text></view>
-                <view class="mark" wx:if="{{item.count>0}}"><text class="text">{{item.count}}</text></view>
+                <view class="mark" wx:if="{{item.count>0}}"><text class="text">{{item.count}}</text></view> 
             </view>
         </view>
       </view>
@@ -49,7 +49,7 @@
              <text class="s_title">{{item.NICKNAME}}</text> 
           </view>
           <view class="item_right">
-                <view><text class="time">{{item.time}}</text></view>
+                <view><text class="time">{{item.timeList[0].CREATETIME}}</text></view>
                 <view class="mark" wx:if="{{item.count>0}}"><text class="text">{{item.count}}</text></view>
             </view>
         </view>
