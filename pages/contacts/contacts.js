@@ -90,17 +90,23 @@ Page({
         console.log(res)
         console.log(res.teachers)
         var teacher = res.teachers;
-        res.teachers.forEach(function(element){
-          element.timeList.forEach(function(obj){
-            obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME))
+        if(teacher){
+          teacher.forEach(function (element) {
+            element.timeList.forEach(function (obj) {
+              obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME))
+            })
           })
-        })
+        }
+        
         var student = res.students;
-        res.students.forEach(function (element) {
-          element.timeList.forEach(function (obj) {
-            obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME))
+        if(student){
+          student.forEach(function (element) {
+            element.timeList.forEach(function (obj) {
+              obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME))
+            })
           })
-        })
+        }
+        
         that.setData({
           teacher:that.toDto(teacher),
           student: that.toDto(student),
