@@ -1,0 +1,54 @@
+/* pages/table/table.wxss */
+.top{
+  width:94%;
+  margin:30rpx 3% 20rpx 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.top-left{
+  width:40%;
+  height:50rpx;
+  background-color:#94f5fe;
+  text-align: center;
+}
+.top-right{
+  width:40%;
+  height:50rpx;
+  background-color:#a7dec0;
+}
+.year{
+  font-size:28rpx;
+  text-align: center;
+}
+.content{
+  margin-top:50rpx;
+}
+.weui-navbar{
+  border:0;
+  width:70%;
+}
+.weui-navbar__item{
+  border:1rpx solid rgb(90,180,170);
+  color:rgb(90,180,170);
+  padding:5rpx;
+}
+.weui-navbar__item.weui-bar__item_on{
+  background-color:rgb(90,180,170);
+  color:white;
+}
+.color{
+  background-color:#eeeeee;
+}
+.border{
+  border-right:1rpx solid #CCCCCC;
+}
+.underline{
+  border-bottom:1rpx solid #EEEEEE;
+  border-right:1rpx solid #EEEEEE;
+}
+.placeholder{
+  text-align: center;
+  padding:8rpx;
+}

@@ -84,7 +84,8 @@
 
 .item_right {
   padding-top: 13rpx;
-  overflow: hidden;
+  padding-right:250rpx;
+  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
   align-items: center;
