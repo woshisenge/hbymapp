@@ -1,3 +1,12 @@
 <!--pages/character/test/test.wxml-->
 <progress percent="80" show-info active />
-<view></view>
+<view class='content'>
+  <view class='title'>
+    <image src="/images/dati.png"></image>
+    <text>1、当你要外出一整天，你会</text>
+  </view>
+  <view class='option'>
+    <view class='options'>A、计划你要做什么和在什么时候做</view>
+    <view class='options'>B、说去就去</view>
+  </view>
+</view>

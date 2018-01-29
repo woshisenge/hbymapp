@@ -33,22 +33,6 @@ Page({
       }
     });
   },
-  pay:function(e){
-    var id = e.currentTarget.id
-     util.navigateTo("/pages/person/goods/payment/payment",{id:id})
-  },
-  consult:function(e){
-    var id = e.currentTarget.id
-    util.navigateTo("/pages/person/goods/payment/payment", { id:id })
-  },
-  intelligence:function(e){
-    var id = e.currentTarget.id
-    util.navigateTo("/pages/person/goods/payment/payment", { id:id })
-  },
-  analog:function(e){
-    var id = e.currentTarget.id
-    util.navigateTo("/pages/person/goods/payment/payment", { id:id })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

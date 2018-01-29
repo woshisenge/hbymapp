@@ -1,5 +1,5 @@
 <!--pages/character/character.wxml-->
-<!-- <button class="weui-btn" type="primary" bindtap='test'>开始测试</button> -->
+<!-- <button class="weui-btn" type="primary" >开始测试</button> -->
 <view class="banner">
   <image src="/images/test.png"></image>
 </view>
@@ -8,5 +8,5 @@
   <text>来更加了解自己的职业性格，职业兴趣，</text>
   <text>发挥自己的潜能，天赋</text>
   <text class="transform">>></text>
-  <view class='start'>开始测试</view>
+  <view class='start' bindtap='test'>开始测试</view>
 </view>

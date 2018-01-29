@@ -109,7 +109,7 @@ Page({
         });
       }
       else {
-        utils.showError("您当前智能填报卡0张，请前往商城充值购买或激活已有会员")
+        utils.showError("您当前智能填报卡0张，请激活已有会员")
       }
     }
   },
@@ -132,7 +132,7 @@ Page({
         });
       }
       else {
-        utils.showError("您当前智能推荐卡为0张，请前往商城充值购买或激活已有会员")
+        utils.showError("您当前智能推荐卡为0张，请激活已有会员")
     }
     }
   },
@@ -141,7 +141,6 @@ Page({
     utils.navigateTo("../school/school")
   },
   major:function(){
-    
       utils.navigateTo("../major/major")
   },
   noticemore:function(e){
@@ -162,7 +161,6 @@ Page({
     utils.navigateTo("/pages/character/character")
   },
   newsmore:function(){
-    
       utils.navigateTo("../news/news")
   },
   activitymore:function(){

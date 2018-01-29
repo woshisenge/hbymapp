@@ -56,7 +56,7 @@
               <view class="weui-agree__checkbox-icon">
                   <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
               </view>
-              我已阅读并同意遵守<navigator url="" class="weui-agree__link"> 《铭邦高考志愿网会员服务条款》</navigator>
+              我已阅读并同意遵守<navigator url="" class="weui-agree__link"> 《铭邦高考规划平台会员服务条款》</navigator>
           </view>
       </label>
   </checkbox-group>

@@ -10,14 +10,14 @@
 </swiper>   
 <!-- 轮播图 结束 -->
 <!-- 导航 链接 开始 -->
-<view class='navigation-box'>
+<view class='navigation-box'> 
   <view class='navigation' bindtap="consultation">
     <image class="tpia" src='../../images/consultation.png'></image> 
     <view class='navigation-text'>院校咨询</view>
   </view>
   <view class='navigation' bindtap='teacher'>
     <image class="tpia" src='../../images/guidance.png'></image> 
-    <view class='navigation-text'>名师指导</view>
+    <view class='navigation-text'>一分一档</view>
   </view>
   <view class='navigation' bindtap="school">
     <image class="tpia" src='../../images/colleges.png'></image> 
@@ -35,14 +35,14 @@
     <image class="tpia" src='../../images/Intelligence.png'></image> 
     <view class='navigation-text'>智能推荐</view>
   </view>
-  <view class='navigation' bindtap='test'>
+   <view class='navigation' bindtap='test'>
     <image class="tpia" src='../../images/character.png'></image> 
-    <view class='navigation-text'>性格测试</view>
+    <view class='navigation-text'>专家讲堂</view>
   </view>
   <view class='navigation' bindtap='phone'>
     <image class="tpia" src='../../images/service.png'></image> 
     <view class='navigation-text'>在线客服</view>
-  </view>
+  </view> 
 </view>
 <!-- 导航 链接 结束 -->
 

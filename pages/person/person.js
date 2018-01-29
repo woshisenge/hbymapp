@@ -84,11 +84,6 @@ Page({
               vipname: "/images/icon/baiyin.png"
             });
           }
-          else if(obj.data == "UB") {
-            that.setData({
-              vipname: "/images/icon/gold.png"
-            });
-          }
           else if(obj.data == "UC") {
             that.setData({
               vipname: "/images/icon/svip.png"

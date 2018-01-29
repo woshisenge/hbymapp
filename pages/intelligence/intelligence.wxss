@@ -63,3 +63,7 @@ button[type="primary"] {
 .footer2{
   padding:20rpx 20rpx 0 20rpx;
 }
+.blank{
+  width:100%;
+  height:200rpx;
+}

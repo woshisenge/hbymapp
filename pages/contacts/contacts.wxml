@@ -1,68 +1,60 @@
 <!--pages/contacts/contacts.wxml-->
-<view class='page_bd'>
-	<view wx:if="{{role == 1}}">
-		<view class="weui-tab">
-		  <view class="weui-navbar">
-			  <block wx:for="{{tabs}}" wx:key="*this">
-				  <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-					  <view class="weui-navbar__title">{{item}}</view>
-				  </view>
-			  </block>
-			  <view class="weui-navbar__slider" style="left: {{sliderLeft}}px;transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
-		  </view>
-		  <view class="weui-tab__panel">
-			  <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-			  <block wx:for="{{teacher}}" wx:key="">
-				<view bindtap='toChat' class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" id='{{item.RUSER_ID}}' data-id="{{item.count}}">
-        <view class="weui-cell">
-                <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-                    <image src="{{item.TEAHEADURL}}" style="width: 50px; height: 50px; display: block"/>
-                    <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{item.count == 0}}" hidden="true"></view>
-                    <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:else>{{item.count}}</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <view>{{item.school.NAME}}</view>
-                    <!-- <view style="font-size: 13px;color: #888888;">{{item.isOnline?'在线':'离线'}}</view> -->
-                </view>
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+       <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+       <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+       <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+    </view>
+    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+      <icon class="weui-icon-search" type="search" size="14"></icon>
+      <view class="weui-search-bar__text">搜索</view>
+    </label>
+    </view>
+    <!-- <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="setSearchStorage">搜索</view>-->
+  </view>   
+<view  stytle=" overflow-x: hidden; overflow-y: auto; " wx:if="{{role == 1}}">
+  <view class="message_list">
+    <block wx:for="{{teacher}}" wx:key="">
+      <view id='{{item.RUSER_ID}}' bindtap='toChat' hidden="{{item.checked}}">
+        <view class="item" >
+          <view class="item-left">
+            <image src="{{item.TEAHEADURL}}" class="image"/>
+          </view>
+          <view class="item-middle">
+            <view><text class="title">{{item.school.NAME}}</text></view>
+            <view><text class="message">{{item.TEANICKNAME}}</text></view>
+          </view>
+          <view class="item_right">
+                <view><text class="time">{{item.timeList[0].CREATETIME}}</text></view>
+                <view class="mark" wx:if="{{item.count>0}}"><text class="text">{{item.count}}</text></view>
             </view>
-			  </view>
-			  </block>
-			  </view>
-			  <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-				<block wx:for="{{expecter}}" wx:key="">
-				<view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-				  <view class="weui-cell">
-                <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-                    <image src="{{item.TEAHEADURL}}" style="width: 50px; height: 50px; display: block"/>
-                    <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{item.count == 0}}" hidden="true"></view>
-                    <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:else>{{item.count}}</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <view>{{item.school.NAME}}</view>
-                    <!-- <view style="font-size: 13px;color: #888888;">{{item.isOnline?'在线':'离线'}}</view> -->
-                </view>
+        </view>
+      </view>
+      <view  class="line"></view>
+    </block>
+  </view>
+</view>
+<view  stytle=" overflow-x: hidden; overflow-y: auto; " wx:if="{{role==2 || role==3}}">
+  <view class="message_list">
+    <block wx:for="{{student}}" wx:key="">
+      <view id='{{item.RUSER_ID}}' bindtap='toChat'>
+        <view class="item" >
+          <view class="item-left">
+            <image src="{{item.HEADURL}}" class="image"/>
+          </view>
+          <view class="s_middle">
+             <text class="s_title">{{item.NICKNAME}}</text> 
+          </view>
+          <view class="item_right">
+                <view><text class="time">{{item.time}}</text></view>
+                <view class="mark" wx:if="{{item.count>0}}"><text class="text">{{item.count}}</text></view>
             </view>
-			  </view>
-			  </block>
-			  </view>
-		  </view>
-	  </view>
-	</view>
-	<view wx:if="{{role==2 || role==3}}">
-	  <block wx:for="{{student}}" wx:key="">
-		<view bindtap='toChat' class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" id='{{item.RUSER_ID}}'>
-		  <view class="weui-cell">
-                <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
-                    <image src="{{item.HEADURL}}" style="width: 50px; height: 50px; display: block"/>
-                    <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:if="{{item.count == 0}}" hidden="true"></view>
-                    <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;" wx:else>{{item.count}}</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <view>{{item.NICKNAME}}</view>
-                    <!-- <view style="font-size: 13px;color: #888888;">{{item.isOnline?'在线':'离线'}}</view> -->
-                </view>
-            </view>
-	  </view>
-	  </block>
-	</view>
+        </view>
+      </view>
+      <view  class="line"></view>
+    </block>
+  </view>
 </view>

@@ -7,32 +7,54 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: ["老师", "专家"],
-    activeIndex: 0,
-    sliderOffset: 0,
-    sliderLeft: 0,
-    role: 0
+    role: 0,
+    inputShowed: false,
+    inputVal: "",
+    checked:false
   },
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
+  },
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+  },
+  clearInput: function () {
+    this.setData({
+      inputVal: ""
+    });
+  },
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
+    var that = this;
+    var teacher = that.data.teacher;
+    for (var i = 0; i < teacher.length; i++) {
+      if (teacher[i].school.NAME.indexOf(that.data.inputVal) >= 0) {
+        teacher[i].checked = false;
+      }
+      else {
+        teacher[i].checked = true;
+      }
+    }
 
+    that.setData({
+      teacher: teacher
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
-        });
-      }
-    });
+
   },
-  tabClick: function (e) {
-    this.setData({
-      sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
-    });
+  setSearchStorage:function(){
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -52,6 +74,9 @@ Page({
       if (obj.TEAHEADURL) {
         obj.TEAHEADURL = util.setStaticUrl(obj.TEAHEADURL);
       }
+      if (obj.CREATETIME) {
+        obj.CREATETIME = util.formatDate(new Date(obj.CREATETIME));
+      }
     });
     return list;
   },
@@ -62,8 +87,16 @@ Page({
     var that=this
     util.sendRequest("/wechat/applet/user/getrole",{},"POST",true,function(role){
       util.sendRequest("/wechat/applet/chat/getcontactors", {}, "POST", true, function (res) {
+        console.log(res)
+        console.log(res.teachers)
+        var teacher = res.teachers;
+        res.teachers.forEach(function(element){
+          element.timeList.forEach(function(obj){
+            obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME))
+          })
+        })
         that.setData({
-          teacher:that.toDto(res.teachers),
+          teacher:that.toDto(teacher),
           student: that.toDto(res.students),
           expecter: that.toDto(res.expecters)
         })

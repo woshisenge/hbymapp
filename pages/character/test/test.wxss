@@ -1,1 +1,28 @@
 /* pages/character/test/test.wxss */
+.content{
+  width:100%;
+  
+}
+.title{
+  width:80%;
+  margin:80rpx 10%;
+  font-size:35rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.title image{
+  width:50rpx;
+  height:50rpx;
+}
+.option{
+  width:80%;
+  margin:120rpx 10%;
+  color:#333;
+}
+.options{
+  border:1rpx solid #CCCCCC;
+  margin-top:20rpx;
+  padding:10rpx 30rpx;
+}
