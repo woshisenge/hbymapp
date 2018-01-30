@@ -8,10 +8,13 @@ Page({
   data: {
     inputShowed: false,
     inputVal: "",
-    array: ['2017', '2016', '2015'],
+    array: ["2017","2016"],
     index: 0,
-    tabs: ["文科", "理科"],
-    activeIndex: 0
+    tabs: ['文科','理科'],
+    activeIndex: 0,
+    grade:[],//分数结果
+    isLoadingMore: false,//是否加载更多
+    searchParam: { currentPage: 1 }//搜索参数
   },
   bindPickerChange: function (e) {
     this.setData({
@@ -19,6 +22,8 @@ Page({
     })
   },
   tabClick: function (e) {
+    var activeIndex = e.currentTarget.id;
+    if (activeIndex)
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id
@@ -50,9 +55,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    util.sendRequest("/wechat/applet/school/getRanking", { MAJORTYPE_ID: "gjv044girc", YEAR_ID:"cj7e0oa8n1"},"POST",true,function(res){
-      console.log(res)
-    })
+    that.pullGradeInfos();
   },
 
   /**
@@ -94,7 +97,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    if (!this.data.isLoadingMore) {
+      this.setData({
+        isLoadingMore: true
+      });
+
+      this.pullGradeInfos();
+    }  
   },
 
   /**
@@ -102,5 +111,97 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  //将页码置0
+  clearCurPage: function () {
+    var that = this;
+    var param = that.data.searchParam;
+    param.currentPage = 0;
+
+    that.setData({
+      searchParam: param
+    });
+  },
+  //页码翻页
+  addCurPage: function () {
+    var that = this;
+    var param = that.data.searchParam;
+    if (param.currentPage) {
+      param.currentPage = parseInt(param.currentPage) + 1;
+    }
+    else {
+      param.currentPage = 2;
+    }
+    that.setData({
+      searchParam: param
+    });
+  },
+  // 设置参数
+  setSearchParam: function () {
+    var that = this;
+    var param = that.data.searchParam;
+    if(that.data.activeIndex == 0){
+      param.MAJORTYPE_ID = "gjv044girc";
+    }
+    if (that.data.activeIndex == 1){
+      param.MAJORTYPE_ID = "r6j4mh69be"
+    }
+    if(that.data.index == 0){
+      param.YEAR_ID = "1mwv56c01z"
+    }
+    if (that.data.index == 1){
+      param.YEAR_ID = "qlkgccxzz4"
+    }
+    that.setData({
+      searchParam: param
+    })
+  },
+  /**
+   * 更新参数
+   */
+  reloadSearchParam: function (param) {
+    var that = this;
+    var paramObj = that.data.searchParam;
+    if (!paramObj.currentPage) paramObj.currentPage = 1;
+
+    if (paramObj.currentPage <= param.totalPage) {
+      that.addCurPage();//后台页码从0开始，前台页码从1开始
+
+      that.setData({
+        searchParam: paramObj
+      });
+    }
+
+  },
+  setResults(list, isClear) {
+    var that = this;
+    var oldList = isClear ? [] : that.data.grade;
+    var newList = [];
+    newList.forEach(function (index, element) {
+      oldList.push(index);
+    });
+    
+    return oldList;
+  },
+  /**
+   * 拉取新数据
+   */
+  pullGradeInfos: function (isClear) {
+    var that = this;
+
+    that.setSearchParam();
+
+    util.sendRequest('/wechat/applet/school/getranking', that.data.searchParam, 'POST', false, function (res) {
+
+      that.setData({
+        grade: that.setResults(res.data, isClear),
+      });
+
+      that.reloadSearchParam(res.data);
+
+      that.setData({
+        isLoadingMore: false
+      });
+    });
   }
 })

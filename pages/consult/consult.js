@@ -436,7 +436,7 @@ Page({
     newList.forEach(function(index, element){
       oldList.push(index);
     });
-
+    
     return oldList;
   },
   /**
