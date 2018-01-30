@@ -11,9 +11,9 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     // 首页轮播图 开始
     imgUrls: [
-      utils.setStaticUrl("/static/ymplant/img/sye/banner/banner4.jpg"),
-      utils.setStaticUrl("/static/ymplant/img/sye/banner/banner5.jpg"),
-      utils.setStaticUrl("/static/ymplant/img/sye/banner/6.jpg"),
+      utils.setStaticUrl("/static/ymplant/img/sye/banner/4.jpg"),
+      utils.setStaticUrl("/static/ymplant/img/sye/banner/2.png"),
+      utils.setStaticUrl("/static/ymplant/img/sye/banner/3.jpg"),
     ],
     indicatorDots: false,
     autoplay: true,
