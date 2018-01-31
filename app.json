@@ -50,7 +50,8 @@
     "pages/character/test/test",
     "pages/table/table",
     "pages/video/video",
-    "pages/teacher/teacher"
+    "pages/teacher/teacher",
+    "pages/person/improve/improve"
   ],
   "window": {
     "backgroundTextStyle": "light",

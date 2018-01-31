@@ -1,32 +1,20 @@
 <!--pages/person/person.wxml-->
 <view wx:if="{{role==1}}">
 <view class="head">
-  <view class="head-left">
-    <view class='image'><image src="{{logo}}" bindtap="chooseImageTap"></image></view>
-    <view class='text'>
-      <view class='text-top'><text>{{nickname}}</text></view>
-      <view class='text-bottom' wx:if="{{role == 1}}"><image src="{{vipname}}" style='width:90rpx;height:45rpx'></image></view>
+  <view class="head-top">
+    <view class="image">
+      <image src="{{logo}}" bindtap="chooseImageTap"></image>
     </view>
-  </view>
-  <view class="head-right">
-    <view class='number'>{{completeCount}}<text style="font-size:60rpx">%</text></view>
-    <view class='texts'>资料完整度</view>
-  </view>
-</view>
-<view class="center" wx:if="{{role == 1}}">
-  <view class="center-left" bindtap='toExaminee'>
-    <view class='numbers'>{{examScore}}分</view>
-    <view class="img">
-      <image src="/images/pen.png" style="width:30rpx;height:30rpx"></image> 
-      <text>预估分</text>
-    </view>
-  </view>
-  <view class='center-right' bindtap='toPocket'>
-    <view class='numbers'>{{valiablePocket}}个</view>
-    <!-- <view class="pay">去购买</view> -->
-    <view class="img">
-      <image src="/images/money.png" style="width:30rpx;height:30rpx"></image>
-      <text>金币/积分</text>
+    <view class="name">
+      <view class="nickname">
+        <text>{{nickname}}</text>
+        <view wx:if=""><image src="/images/vip.png" style='width:64rpx;height:32rpx'></image></view>
+      </view>
+      <view class='message'>
+        <view class="message-text">{{region}}</view><view class="line"></view>
+        <view class="message-text">{{subject}}</view><view class="line"></view>
+        <view class="message-text">{{grade}}分</view>
+      </view>
     </view>
   </view>
 </view>
@@ -65,7 +53,7 @@
               <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="power">
                   <view class="weui-cell__hd"><image src="/images/tb05.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
                   <view class="weui-cell__bd weui-cell_primary">
-                      <view>账户权限</view>
+                      <view>升级成会员</view>
                   </view>
                   <view class="weui-cell__ft weui-cell__ft_in-access"></view>
               </view>
@@ -76,16 +64,19 @@
 </view>
 <view wx:elif="{{role==2}}">
   <view class="head">
-  <view class="head-left">
-    <view class='image'><image src="{{logo2}}" style="width:130rpx;height:130rpx;" bindtap="chooseImageTap"></image></view>
-    <view class='text'>
-      <view class='text-top'><text style='font-size:35rpx'>{{nickname2}}</text></view>
-      <view class='text-bottom' wx:if="{{role == 2}}"><text>{{scname}}</text></view>
+  <view class="head-top">
+    <view class="image">
+      <image src="{{logo}}" bindtap="chooseImageTap"></image>
     </view>
-  </view>
-  <view class="head-right">
-    <view class='number' style='font-size:80rpx'>{{numbers}}星</view>
-    <view class='texts'style='font-size:30rpx'>评价</view>
+    <view class="name">
+      <view class="nickname">
+        <text>{{nickname2}}</text>
+      </view>
+      <view class='message'>
+        <view class="message-text">{{scname}}</view><view class="line"></view>
+        <view class="message-text">{{work}}</view>
+      </view>
+    </view>
   </view>
 </view>
 <view class="weui-panel">

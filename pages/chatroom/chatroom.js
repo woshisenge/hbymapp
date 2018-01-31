@@ -69,7 +69,7 @@ Page({
         role: role.data
       });
       util.sendRequest("/wechat/applet/chat/getchatrecs", { USER_ID: options.user_id }, "POST", true, function (res) {
-        console.log(res)
+        
         if (res.chatRecords) {
           res.chatRecords.forEach(function (element) {
             if (element.SUSER_ID == that.data.suser_id) {
@@ -125,7 +125,7 @@ Page({
                 REC_ID: util.getUUID(),
                 SUSER_ID: that.data.suser_id,
                 RUSER_ID: that.data.ruser_id,
-                ISREAD: true,
+                ISREAD: false,
                 CREATETIME: util.getCurrentTime(),
                 style: "recmsg"
               }
@@ -146,6 +146,10 @@ Page({
     });
   },
   onUnload: function() {
+    wx.reLaunch({
+      url: '/pages/contacts/contacts'
+    })
+
   },
   onShow: function () {
     /*var that = this
@@ -173,14 +177,17 @@ Page({
     }
     var that = this;
     util.sendRequest("/wechat/applet/chat/sendMessage", {USER_ID: that.data.ruser_id, MESSAGE: that.data.userMessage}, "POST", true, function(res){
+     
       var record = {
         REC_ID: util.getUUID(),
         SUSER_ID: that.data.suser_id,
         RUSER_ID: that.data.ruser_id,
-        ISREAD: true,
+        ISREAD: false,
         CREATETIME: util.getCurrentTime(),
         style: "self"
+      
       }
+      
 
       record.CONTENT = util.parseEmoji(that.data.userMessage);
       var chatRecords = that.data.chatRecords;

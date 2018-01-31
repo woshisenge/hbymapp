@@ -1,7 +1,7 @@
 <!--pages/person/goods/goods.wxml-->
 <view class='page'>
-  <view class='content'>
-    <image src="/images/tb12.png"></image>
+  <view class='content' bindtap="pay"> 
+    <image src="/images/tb12.png" ></image>
     <text >金币</text>
     <text>剩余金币：{{BALANCE}}</text> 
   </view>

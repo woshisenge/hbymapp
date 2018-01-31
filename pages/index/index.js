@@ -11,9 +11,10 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     // 首页轮播图 开始
     imgUrls: [
-      utils.setStaticUrl("/static/ymplant/img/sye/banner/4.jpg"),
+      utils.setStaticUrl("/static/ymplant/img/sye/banner/1.jpg"),
       utils.setStaticUrl("/static/ymplant/img/sye/banner/2.png"),
       utils.setStaticUrl("/static/ymplant/img/sye/banner/3.jpg"),
+      utils.setStaticUrl("/static/ymplant/img/sye/banner/4.jpg"),
     ],
     indicatorDots: false,
     autoplay: true,
@@ -155,7 +156,15 @@ Page({
     // utils.navigateTo("/pages/teacher/teacher")
   },
   teacher:function(){
-    utils.navigateTo("/pages/table/table")
+    utils.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function (res) {
+      if(res.data == true){
+        utils.navigateTo("/pages/table/table")
+      }
+      else{
+        utils.showError("您当前暂无权限访问，请激活会员！")
+      }
+    })
+    
   },
   test:function(){
     // utils.navigateTo("/pages/video/video")

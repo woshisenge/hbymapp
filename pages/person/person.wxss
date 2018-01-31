@@ -2,28 +2,24 @@
 .head{
   width:100%;
   /* margin:3% 3% 0 3%; */
-  height:300rpx;
+  height:150rpx;
   display:flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   background-color:rgb(90,180,170);
 }
-
-.head-left{
-  width:45%;
-  margin-left:3%;
-  height: 300rpx;
-  font-size:28rpx;
-  display: flex;
+.head-top{
+  width:88%;
+  margin:100rpx 2% 0 10%;
+  display:flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 .image{
   width:140rpx;
   height:140rpx;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center; 
   border-radius: 50%;
@@ -33,90 +29,44 @@
   width:132rpx;
   height:132rpx;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-.text{
-  width:50%;
-  height:200rpx;
-  color: white;
+.name{
+  height:120rpx;
+  margin-left:30rpx;
+  padding-top:30rpx;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+}
+.nickname{
+  display: flex;
+  flex-direction: row;
   align-items: center;
-}
-.text-top{
-  padding-bottom: 20rpx;
-}
-.text-bottom{
-  font-size:28rpx;
-}
-.head-right{
-  width:45%;
-  height:300rpx;
-  margin:0 3%; 
+  font-size:32rpx;
   color:white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding-left:28rpx;
 }
-.number{
-  font-size:120rpx;
-  /* margin-top:25rpx; */
-}
-.texts{
-  font-size:36rpx;
-   margin-top:-20rpx; 
-}
-.center{
-  width:100%;
-  height:135rpx;
-  display: flex;
-  flex-direction: row;
-  background-color:white;
-}
-.center-left{
-  width:50%;
-  height:135rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.center-right{
-  width:50%;
-  height:135rpx;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.img{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.img text{
-  font-size:25rpx;
+.nickname image{
   margin-left:15rpx;
 }
-.numbers{
-  font-size:40rpx;
-  color:#FF6666;
+.message{
+  /* margin-top:20rpx; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center; 
+}
+.message-text{
+  padding:0 28rpx;
+  color:rgb(90,180,170);
 }
 .weui-cell_primary{
   font-size:28rpx;
 }
-.pay{
-  font-size:25rpx;
-  height:22px;
-  width:45px;
-  border:1px solid rgb(90,180,170);
-  color:rgb(90,180,170);
-  border-radius: 5rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.weui-panel{
+  margin-top:80rpx;
+}
+.line{
+  height:25rpx;
+  border:1rpx solid rgb(90,180,170); 
 }
