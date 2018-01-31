@@ -1,4 +1,4 @@
-// pages/person/goods/goods.js
+// pages/person/improve/improve.js
 var util = require('../../../utils/util')
 Page({
 
@@ -6,46 +6,52 @@ Page({
    * 页面的初始数据
    */
   data: {
-    role:""
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  
+  },
+  pay:function(e){
     var that = this;
-    console.log(options.role)
-    util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
-      if (options.role == "UC") {
-        that.setData({
-          BALANCE: res.BALANCE + "个",
-          yxzxk: "无限",
-          mntbk: "无限",
-          zntjk: "无限"
-        })
-      }
-      else {
-        that.setData({
-          BALANCE: res.BALANCE + "个",
-          yxzxk: res.yxzxk + "张",
-          mntbk: res.mntbk + "张",
-          zntjk: res.zntjk + "张"
-        });
-      }
-    });
+    var a = e.currentTarget.id
+    util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: a }, "POST", true, function (res) {
+      console.log(res)
+      var nonceStr = res.data.nonceStr;
+      var packageStr = res.data.packageStr;
+      var paySign = res.data.paySign;
+      var signType = res.data.signType;
+      var timeStamp = res.data.timeStamp;
+      wx.requestPayment({
+        timeStamp: timeStamp,
+        nonceStr: nonceStr,
+        package: packageStr,
+        signType: signType,
+        paySign: paySign,
+        success: function (obj) {
+          util.showSuccess();
+        },
+        fail: function (obj) {
+          util.showError("发起支付失败");
+        }
+      })
+    })  
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+  
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+  
   },
 
   /**
@@ -81,8 +87,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  pay:function(){
-    util.navigateTo("/pages/person/goods/payment/payment")
-  },
+  }
 })

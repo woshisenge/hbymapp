@@ -10,7 +10,9 @@ Page({
     buttonClicked: false,
     inputShowed: false,
     inputVal: "",
-    check:false
+    check:false,
+    strRes:"",
+    strResId:""
   },
   serviceValChange: function (e) {
     var strRes = "";
@@ -32,18 +34,25 @@ Page({
     }
     if (strRes != "") strRes = strRes.substring(0, strRes.length - 1);
     if (strResId != "") strResId = strResId.substring(0, strResId.length - 1);
-
+    this.setData({
+      majors: majors,
+      anyChecked: false,
+      strResId: strResId,
+      strRes: strRes
+    });
+  }, 
+  confirm:function(){
+    var that = this;
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2];  //上一个页面
 
-    prevPage.data["majors"] = strRes;
-    prevPage.data["majors_id"] = strResId;
+    prevPage.data["majors"] = that.data.strRes;
+    prevPage.data["majors_id"] = that.data.strResId;
     prevPage.setData(prevPage.data);
-    this.setData({
-      majors: majors,
-      anyChecked: false
-    });
-  }, 
+    wx:wx.navigateBack({
+      delta: 1,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

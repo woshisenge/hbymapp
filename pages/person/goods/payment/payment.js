@@ -12,18 +12,11 @@ Page({
               { title: '200', money: '2000' },
               { title: '500', money: '5000' },
               { title: '1000', money: '10000' },],
-      grid2: [{ title: '1', money: '5' },
-              { title: '5', money: '25' },
-              { title: '10', money: '50' },
-              { title: '20', money: '100' },
-              { title: '50', money: '250' },
-              { title: '100', money: '500' },],
       nonceStr:"",
       packageStr:"",
       paySign:"",
       signType:"",
-      timeStamp:"",
-      id:""
+      timeStamp:""
   },
 
   /**
@@ -59,16 +52,7 @@ Page({
             util.showError("发起支付失败");
           }
         })
-    })
-    
-  },
-  payment1:function(e){
-    var a = e.currentTarget.id;
-    var id = e.currentTarget.dataset.id;
-    util.sendRequest("/wechat/applet/user/buycard", { count:a,itemType:id,price:"-5" }, "POST", true, function (res) {
-      console.log(res)
-        util.showSuccess()
-    })
+    })  
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

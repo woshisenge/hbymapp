@@ -10,9 +10,9 @@ Page({
       { src: '/images/quanxian01.png', title: '模拟填报', url: "/pages/imitate/imitate" },
       { src: '/images/quanxian02.png', title: '智能推荐',url:"/pages/intelligence/intelligence" },
       { src: '/images/quanxian03.png', title: '院校咨询',url:"/pages/consult/consult" },
-      { src: '/images/quanxian04.png', title: '专家咨询', url:""},
-      { src: '/images/quanxian06.png', title: '一分一档表', url: "" }, 
-      { src: '/images/quanxian07.png', title: '名师大讲堂', url: "" },
+      { src: '/images/quanxian04.png', title: '专家咨询', url:"/pages/teacher/teacher"},
+      { src: '/images/quanxian06.png', title: '一分一档表', url: "/pages/table/table" }, 
+      { src: '/images/quanxian07.png', title: '名师大讲堂', url: "/pages/video/video" },
     ],
     vipname: "普通会员",
     checked:false,
@@ -58,9 +58,15 @@ Page({
         grids[2].src = "/images/quanxian3.png";
         grids[2].url = ""
       }
-      if (vip == "") {
-        grids[3].src = "/images/quanxian4.png";
-        grids[3].url = ""
+    });
+    util.sendRequest("/wechat/applet/user/isvip",{},"POST",true,function(res){
+      if(res.data == false){
+        grgrids[3].src = "/images/quanxian5.png";
+        grids[3].url = "",
+        grgrids[4].src = "/images/quanxian6.png";
+        grids[4].url = "",
+        grgrids[5].src = "/images/quanxian7.png";
+        grids[5].url = ""
       }
     })
   },

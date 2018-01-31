@@ -15,16 +15,21 @@
                   <view class="weui-search-bar__text">搜索</view>
               </label>
           </view>
-          <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+           <!-- <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>  -->
+           <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="setSearchStorage">搜索</view>
       </view>
       <view class="top">
         <view class='top-left'>
           <text class='region'>河北省</text>
         </view>
-         <view class='top-right'> 
-          <picker class='year' bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-            <view class="date">{{array[index]}}</view>
+         <view class='top-right' > 
+          <picker bindchange="bindPickerChange" class='year'  value="{{index}}" range="{{array}}">
+            <view class="date">
+              <text>{{array[index]}}</text>
+              <image class='down' src="/images/triangle.png"></image>
+            </view>
           </picker>
+          
          </view>  
       </view>
       <view class='content'>
@@ -40,21 +45,25 @@
               <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
                 <view class="weui-flex color">
                   <view class="weui-flex__item border"><view class="placeholder">分数</view></view>
-                  <view class="weui-flex__item"><view class="placeholder">排名</view></view>
+                  <view class="weui-flex__item border"><view class="placeholder">排名</view></view>
+                  <view class="weui-flex__item"><view class="placeholder">区间人数</view></view>
                 </view>
                 <view class="weui-flex underline" wx:for="{{grade}}" wx:key="">
                   <view class="weui-flex__item"><view class="placeholder">{{item.SCORE}}</view></view>
                   <view class="weui-flex__item"><view class="placeholder">{{item.TOTALCOUNT}}</view></view>
+                  <view class="weui-flex__item"><view class="placeholder">{{item.COUNT}}人</view></view>
                 </view>
               </view>
               <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
                 <view class="weui-flex color">
                   <view class="weui-flex__item border"><view class="placeholder">分数</view></view>
-                  <view class="weui-flex__item"><view class="placeholder">排名</view></view>
+                  <view class="weui-flex__item border"><view class="placeholder">排名</view></view>
+                  <view class="weui-flex__item"><view class="placeholder">区间人数</view></view>
                 </view>
-                <view class="weui-flex underline">
-                  <view class="weui-flex__item"><view class="placeholder">677</view></view>
-                  <view class="weui-flex__item"><view class="placeholder">12345</view></view>
+                <view class="weui-flex underline" wx:for="{{grade}}" wx:key="">
+                  <view class="weui-flex__item"><view class="placeholder">{{item.SCORE}}</view></view>
+                  <view class="weui-flex__item"><view class="placeholder">{{item.TOTALCOUNT}}</view></view>
+                  <view class="weui-flex__item"><view class="placeholder">{{item.COUNT}}人</view></view>
                 </view>
               </view>
           </view>

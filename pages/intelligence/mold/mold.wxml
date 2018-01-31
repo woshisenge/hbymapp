@@ -23,4 +23,5 @@
     </view>
 	</view>
 </view>
+<button bindtap="confirm" class="weui-btn btn" type="primary">确定</button>
 

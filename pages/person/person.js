@@ -18,7 +18,6 @@ Page({
     nickname: "",
     //用户身份
     role: 0,
-    vipname: "/images/icon/putong.png",
     vip:""
   },
 
@@ -76,30 +75,21 @@ Page({
   getUserInfo: function() {
     var that = this;
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res)     {
+      util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
+        that.setData({
+          vip:obj.data
+        })
+      })
       var role=res.data
-      if(role==1){
-        util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function(obj){
-          if(obj.data == "UA") {
-            that.setData({
-              vipname: "/images/icon/baiyin.png"
-            });
-          }
-          else if(obj.data == "UC") {
-            that.setData({
-              vipname: "/images/icon/gold.png"
-            });
-          }
-          that.setData({
-            vip:obj.data
-          })
-        });
+      if(role==1){   
         util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (obj) {
+          console.log(obj)
           that.setData({
             logo: util.setStaticUrl(obj.complete.HEADURL),
-            completeCount: obj.completeCount,
-            nickname: obj.complete.NICKNAME ? obj.complete.NICKNAME : "暂无",
-            examScore: obj.examinee.EXAMSCORE ? obj.examinee.EXAMSCORE : 0,
-            valiablePocket: obj.pocket.BALANCE ? obj.pocket.BALANCE : 0
+            region: obj.complete.EXAMAREA_VALUE ? obj.complete.EXAMAREA_VALUE : "暂无",
+            subject: obj.complete.MAJORTYPE_VALUE ? obj.complete.MAJORTYPE_VALUE : "暂无",
+            grade: obj.complete.EXAMSCORE ? obj.complete.EXAMSCORE : "暂无",
+            nickname: obj.complete.NICKNAME ? obj.complete.NICKNAME : "暂无"
           });
         });
       }
@@ -108,10 +98,9 @@ Page({
           console.log(obj)
           that.setData({
             logo2: util.setStaticUrl(obj.complete.HEADURL),
-            completeCount2: obj.completeCount,
             nickname2: obj.complete.NICKNAME ? obj.complete.NICKNAME : "暂无",
             scname: obj.complete.SCNAME ? obj.complete.SCNAME : "暂无",
-            numbers: obj.totalScore ? obj.totalScore : "5"
+            work: obj.complete.JOBDATE_VALUE ? obj.complete.JOBDATE_VALUE : "暂无"
           })
         })
       }
@@ -161,8 +150,18 @@ Page({
   },
   power:function(){
     var that = this;
-    var role = that.data.vip;
-    util.navigateTo("/pages/person/power/power", { role: role})
+    wx.showModal({
+      content: '是否已经购买会员卡？',
+      confirmText: "立即购买",
+      cancelText: "已购买",
+      success: function (res) {
+        if (res.confirm) {
+          util.navigateTo("/pages/person/improve/improve")
+        } else {
+          util.navigateTo("/pages/person/member/member")
+        }
+      }
+    });
   },
   toExaminee: function() {
     util.navigateTo("/pages/person/information/information");
