@@ -1,1 +1,13 @@
 /* pages/video/video.wxss */
+.section{
+  width:96%;
+  margin:5rpx 15rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.video{
+  width:45%;
+  height:324rpx;
+}

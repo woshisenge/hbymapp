@@ -8,7 +8,7 @@
     <view class="name">
       <view class="nickname">
         <text>{{nickname}}</text>
-        <view wx:if=""><image src="/images/vip.png" style='width:64rpx;height:32rpx'></image></view>
+        <image wx:if="{{isVip}}" src="/images/vip.png" style='width:64rpx;height:32rpx'></image>
       </view>
       <view class='message'>
         <view class="message-text">{{region}}</view><view class="line"></view>

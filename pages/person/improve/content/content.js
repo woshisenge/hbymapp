@@ -1,17 +1,32 @@
+// pages/person/improve/content/content.js
+var util = require('../../../../utils/util.js')
 Page({
-  onReady: function (res) {
-    this.videoContext = wx.createVideoContext('myVideo')
-  },
-  inputValue: '',
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    src: ''
+  
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
   
   },
+  activate:function(){
+    util.sendRequest("/wechat/applet/user/activate", {}, "POST", false, function (obj) {
+      console.log(res)
+    })
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  
+  },
+
   /**
    * 生命周期函数--监听页面显示
    */
