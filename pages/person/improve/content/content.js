@@ -18,6 +18,7 @@ Page({
       })
   },
   activate:function(){
+    var that = this;
     util.sendRequest("/wechat/applet/user/activate", {USER_ID:that.data.user_id}, "POST", false, function (obj) {
       console.log(obj)
     })
