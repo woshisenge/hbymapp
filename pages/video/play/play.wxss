@@ -1,0 +1,5 @@
+/* pages/video/play/play.wxss */
+.video{
+  width:96%;
+  margin:15rpx 2% 0 2%;
+}

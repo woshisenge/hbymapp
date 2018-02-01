@@ -12,10 +12,13 @@ Page({
    * 生命周期函数--监听页面加载
    */    
   onLoad: function (options) {
-  
+      var that = this;
+      that.setData({
+        user_id: options.user_id
+      })
   },
   activate:function(){
-    util.sendRequest("/wechat/applet/user/activate", {}, "POST", false, function (obj) {
+    util.sendRequest("/wechat/applet/user/activate", {USER_ID:that.data.user_id}, "POST", false, function (obj) {
       console.log(obj)
     })
   },
