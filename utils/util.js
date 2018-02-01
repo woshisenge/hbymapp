@@ -133,7 +133,7 @@ var toComplete = function () {
   if(pages[pages.length - 1].route != "pages/login/login"){
     switchTab({
       url: '/pages/index/index',
-      successFn: function () { navigateTo('/pages/login/login'); }
+      successFn: function () { redirectTo('/pages/login/login'); }
     })
   }
 }

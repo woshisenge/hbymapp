@@ -14,12 +14,13 @@ Page({
   onLoad: function (options) {
       var that = this;
       that.setData({
-        user_id: options.user_id
+        user_id: options.user_id,
+        OUT_TRADE_NO: options.OUT_TRADE_NO
       })
   },
   activate:function(){
     var that = this;
-    util.sendRequest("/wechat/applet/user/activate", {USER_ID:that.data.user_id}, "POST", false, function (obj) {
+    util.sendRequest("/wechat/applet/user/activate", { USER_ID: that.data.user_id, OUT_TRADE_NO: that.data.OUT_TRADE_NO }, "POST", false, function (obj) {
       console.log(obj)
     })
   },
