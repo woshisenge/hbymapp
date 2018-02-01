@@ -18,7 +18,8 @@ Page({
     nickname: "",
     //用户身份
     role: 0,
-    vip:""
+    vip:"",
+    isVip:""
   },
 
   /**
@@ -74,6 +75,11 @@ Page({
    */
   getUserInfo: function() {
     var that = this;
+    util.sendRequest("/wechat/applet/user/isvip",{},"POST",false,function(res){
+       that.setData({
+         isVip:res.data
+       })
+    })
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res)     {
       util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
         that.setData({

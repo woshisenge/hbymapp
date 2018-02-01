@@ -58,7 +58,7 @@
   position: relative;
   padding: 5px 10px;
   max-width: calc(85% - 40px);
-  font-size: 12px;
+  font-size: 14px;
   overflow: hidden;
   text-align: left;
   word-break: break-all;
@@ -107,26 +107,23 @@
 .room_bar {
   width: 100%;
   height: auto;
-  border-top: 1px solid #CFCFCF;
   background-color: #FFFFFF;
   position: fixed;
   left: 0;
-  bottom: 0;
+  bottom: 15rpx;
   z-index: 1;
   
 }
-
-.send_btn {
-  width: 10%;
-  height: 30px;
-  line-height: 30px;
-  font-size: 14px;
-  color: #000;
-  padding: 0;
+button{
+  font-size:24rpx;
+  padding:0 20rpx;
   margin: 4px 8px auto auto;
-  background-color: #fff;
-}
+  background-color:#EEEEEE;
 
+}
+.weui-btn{
+  margin:0;
+}
 .audio {
   width: 4.5%;
   height: 40%;
@@ -136,20 +133,21 @@
   margin-left: 10px;
 }
 .f-row{
-  width:100%;
+  width:90%;
+  margin:0 5%;
+  height:auto;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-
 .news {
-  width: 72%;
-  height: 30px;
-  border: 1px solid #CFCFCF;
+  width: 70%;
+  border-bottom: 1px solid #DDDDDD;
   border-radius: 5px;
   font-size: 14px;
-  padding-left: 4px;
-  margin: 4px 2px 4px 6px; 
+  padding: 4px 10rpx 10rpx 8rpx;
+  margin: 4px 6px 4px 6px; 
 }
 
 .emoj {
@@ -203,9 +201,8 @@
 }
 
 .open_emoji{
-  width: 8%;
+  width: 60rpx;
   height:60rpx; 
-  margin-left:15rpx;
 }
 .open_emoji image{
   width:100%;

@@ -33,6 +33,7 @@ Page({
         paySign: paySign,
         success: function (obj) {
           util.showSuccess();
+          util.navigateTo("/pages/person/improve/content/content")
         },
         fail: function (obj) {
           util.showError("发起支付失败");

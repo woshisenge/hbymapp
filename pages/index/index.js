@@ -153,7 +153,7 @@ Page({
     });
   },
   phone:function(){
-    // utils.navigateTo("/pages/teacher/teacher")
+    utils.navigateTo("/pages/video/video")
   },
   teacher:function(){
     utils.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function (res) {
@@ -167,7 +167,7 @@ Page({
     
   },
   test:function(){
-    // utils.navigateTo("/pages/video/video")
+    
   },
   newsmore:function(){
       utils.navigateTo("../news/news")
