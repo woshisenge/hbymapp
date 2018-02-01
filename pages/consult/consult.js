@@ -1,5 +1,6 @@
 // pages/consult/consult.js
 var util = require('../../utils/util.js');
+
 var widthTimer = null;
 var id;
 Page({
