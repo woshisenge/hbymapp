@@ -52,7 +52,8 @@
     "pages/video/video",
     "pages/teacher/teacher",
     "pages/person/improve/improve",
-    "pages/person/improve/content/content"
+    "pages/person/improve/content/content",
+    "pages/video/play/play"
   ],
   "window": {
     "backgroundTextStyle": "light",

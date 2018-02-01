@@ -13,18 +13,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+      var that = this;
+      that.setData({
+        user_id:options.user_id
+      })
   },
   pay:function(e){
     var that = this;
     var a = e.currentTarget.id
     util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: a }, "POST", true, function (res) {
       console.log(res)
-      var nonceStr = res.data.nonceStr;
-      var packageStr = res.data.packageStr;
-      var paySign = res.data.paySign;
-      var signType = res.data.signType;
-      var timeStamp = res.data.timeStamp;
+      var nonceStr = res.prePayReSign.nonceStr;
+      var packageStr = res.prePayReSign.packageStr;
+      var paySign = res.prePayReSign.paySign;
+      var signType = res.prePayReSign.signType;
+      var timeStamp = res.prePayReSign.timeStamp;
       wx.requestPayment({
         timeStamp: timeStamp,
         nonceStr: nonceStr,
@@ -33,7 +36,7 @@ Page({
         paySign: paySign,
         success: function (obj) {
           util.showSuccess();
-          util.navigateTo("/pages/person/improve/content/content")
+          util.navigateTo("/pages/person/improve/content/content",{id:res.OUT_TRADE_NO,user_id:that.data.user_id})
         },
         fail: function (obj) {
           util.showError("发起支付失败");

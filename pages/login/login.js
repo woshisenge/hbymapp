@@ -24,8 +24,9 @@ Page({
     });
   },
   showTopTips:function(){
-    util.sendRequest('/wechat/applet/api/relation', { USERNAME: this.data.username, PASSWORD: this.data.password }, "POST", true, function (){
+    util.sendRequest('/wechat/applet/api/relation', { USERNAME: this.data.username, PASSWORD: this.data.password }, "POST", true, function (res){
       util.login();
+      // util.redirectTo()
     });
   }
 })

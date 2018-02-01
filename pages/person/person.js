@@ -19,7 +19,8 @@ Page({
     //用户身份
     role: 0,
     vip:"",
-    isVip:""
+    isVip:"",
+    user_id:""
   },
 
   /**
@@ -95,7 +96,8 @@ Page({
             region: obj.complete.EXAMAREA_VALUE ? obj.complete.EXAMAREA_VALUE : "暂无",
             subject: obj.complete.MAJORTYPE_VALUE ? obj.complete.MAJORTYPE_VALUE : "暂无",
             grade: obj.complete.EXAMSCORE ? obj.complete.EXAMSCORE : "暂无",
-            nickname: obj.complete.NICKNAME ? obj.complete.NICKNAME : "暂无"
+            nickname: obj.complete.NICKNAME ? obj.complete.NICKNAME : "暂无",
+            user_id: obj.complete.USER_ID
           });
         });
       }
@@ -162,7 +164,7 @@ Page({
       cancelText: "已购买",
       success: function (res) {
         if (res.confirm) {
-          util.navigateTo("/pages/person/improve/improve")
+          util.navigateTo("/pages/person/improve/improve",{user_id:that.data.user_id})
         } else {
           util.navigateTo("/pages/person/member/member")
         }
