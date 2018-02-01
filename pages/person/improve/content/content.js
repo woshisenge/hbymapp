@@ -15,7 +15,7 @@ Page({
       var that = this;
       that.setData({
         user_id: options.user_id,
-        OUT_TRADE_NO: options.OUT_TRADE_NO
+        OUT_TRADE_NO: options.id
       })
   },
   activate:function(){
