@@ -167,7 +167,7 @@ Page({
     
   },
   test:function(){
-    
+    utils.navigateTo("/pages/activity/activity")
   },
   newsmore:function(){
       utils.navigateTo("../news/news")

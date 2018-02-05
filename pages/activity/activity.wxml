@@ -5,7 +5,7 @@
   <view class='center'>
     <block wx:for="{{item.images}}" wx:key="" wx:for-item="image">
       <image src="{{image}}"></image>   
-    </block> 
+    </block>
   </view>
   <view class="footer">
     <view class='flex-x'>

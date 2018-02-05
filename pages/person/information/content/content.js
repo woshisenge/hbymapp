@@ -17,7 +17,6 @@ Page({
     //options里有key这个键，控制对勾
     var that=this;
     util.sendRequest("/wechat/applet/dictionary/get", { code: "PROVINCE" }, "POST", true, function (res) {
-      console.log(res)
       that.setData({
         provinceObjs: res.data
       });

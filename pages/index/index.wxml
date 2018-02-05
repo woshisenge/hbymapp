@@ -37,7 +37,7 @@
   </view>
    <view class='navigation' bindtap='test'>
     <image class="tpia" src='/images/guidance.png'></image> 
-    <view class='navigation-text'>名师指导</view>             
+    <view class='navigation-text'>线下咨询会</view>             
   </view>
   <view class='navigation' bindtap='phone'>
     <image class="tpia" src='/images/video.png'></image> 
@@ -45,7 +45,6 @@
   </view> 
 </view>
 <!-- 导航 链接 结束 -->
-
 <!-- 公告 开始 -->
  <view class='notices' hidden='{{!notice || notice.length == 0}}'> 
    <image class="icon" src='/images/notice.png'></image> 
@@ -94,7 +93,6 @@
   </block>
 </view>
 <!-- 高考动态 结束 -->
-
 <!-- 线下活动 开始 -->
 <view class="notice">
   <image class='icon' src='../../images/line.png'></image>

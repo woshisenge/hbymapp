@@ -2,4 +2,4 @@
 <view class='banner'>
   <image src="/images/banner-vip.jpg"></image>
 </view>
-<view class='btn' bindtap='pay' id="10"><text class='text'>立即购买</text></view>
+<view class='btn' bindtap='pay' id="39800"><text class='text'>立即购买</text></view>

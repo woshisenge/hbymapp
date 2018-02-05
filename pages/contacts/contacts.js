@@ -109,8 +109,6 @@ Page({
     var that = this
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (role) {
       util.sendRequest("/wechat/applet/chat/getcontactors", {}, "POST", true, function (res) {
-        console.log(res)
-        console.log(res.teachers)
         var teacher = res.teachers;
         if (teacher) {
           teacher.forEach(function (element) {

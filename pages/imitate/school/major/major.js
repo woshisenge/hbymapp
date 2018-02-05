@@ -19,7 +19,6 @@ Page({
     that.setData({
       id:options.id,
     })
-    console.log(options)
    var index = options.index;
    var arrId="";
    if(index == 0){

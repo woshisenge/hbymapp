@@ -212,7 +212,6 @@ Page({
 
     that.setSearchParam();
     util.sendRequest('/wechat/applet/school/getrankings', that.data.searchParam, 'POST', false, function (res) {
-      console.log(res)
       that.setData({
         grade: that.setResults(res.data.results, isClear),
       });

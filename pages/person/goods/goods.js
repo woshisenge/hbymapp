@@ -14,7 +14,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    console.log(options.role)
     util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
       if (options.role == "UC") {
         that.setData({

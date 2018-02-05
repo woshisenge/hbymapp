@@ -80,7 +80,6 @@ Page({
   onShow: function () {
     var that = this;
     util.sendRequest("/wechat/applet/user/getstudentexaminee", {}, "POST", true, function (res) {
-      console.log(res)
       that.setData({
         examinee: res,
         MAJORTYPE: res.MAJORTYPE,

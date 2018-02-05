@@ -27,13 +27,11 @@ Page({
       that.setData({
         id:options.id
       })
-      // console.log(that.data.id)
   },
   payment:function(e){
     var that=this;
     var a=e.currentTarget.id
     util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL:a},"POST",true,function(res){
-      console.log(res)
         var nonceStr = res.data.nonceStr;
         var packageStr = res.data.packageStr;
         var paySign = res.data.paySign;

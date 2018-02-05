@@ -34,7 +34,6 @@ Page({
     var that=this;
     
     util.sendRequest('/wechat/applet/news/get', {NEWSTYPE: "23wtostpu8"}, 'POST', false, function (res) {
-      console.log(res.data.results)
       var contents = that.toDto(res.data.results);
       var imgReg = new RegExp("<img.*src\\s*=\\s*(.*?)[^>]*?>", "ig");
       var srcReg = new RegExp("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)", "ig");

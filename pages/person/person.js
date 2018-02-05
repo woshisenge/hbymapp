@@ -27,7 +27,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
   },
   chooseImageTap: function () {
     let _this = this;
@@ -81,16 +80,22 @@ Page({
          isVip:res.data
        })
     })
-    util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res)     {
-      util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
-        that.setData({
-          vip:obj.data
-        })
+    util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
+      var vip = obj.data;
+      if(vip == "UC"){
+        vip = 1
+      }
+      else{
+        vip = 0
+      }
+      that.setData({
+        vip: obj.data
       })
+    })
+    util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res)     {      
       var role=res.data
       if(role==1){   
         util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (obj) {
-          console.log(obj)
           that.setData({
             logo: util.setStaticUrl(obj.complete.HEADURL),
             region: obj.complete.EXAMAREA_VALUE ? obj.complete.EXAMAREA_VALUE : "暂无",
@@ -103,7 +108,6 @@ Page({
       }
       if(role==2){
         util.sendRequest("/wechat/applet/user/basic_teacher", {}, "POST", false, function (obj) {
-          console.log(obj)
           that.setData({
             logo2: util.setStaticUrl(obj.complete.HEADURL),
             nickname2: obj.complete.NICKNAME ? obj.complete.NICKNAME : "暂无",

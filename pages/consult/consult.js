@@ -419,7 +419,6 @@ Page({
   reloadSearchParam: function(param) {
       var that = this;
       var paramObj = that.data.searchParam;
-      console.log(param)
       if (!paramObj.currentPage) paramObj.currentPage = 1;
 
       if (paramObj.currentPage <= param.totalPage){
@@ -448,7 +447,6 @@ Page({
     var that = this;
 
     that.setSearchParam();
-    console.log(that.data.searchParam)
     util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
     
       that.setData({

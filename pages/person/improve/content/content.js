@@ -20,9 +20,10 @@ Page({
   },
   activate:function(){
     var that = this;
-    util.sendRequest("/wechat/applet/user/activate", { USER_ID: that.data.user_id, OUT_TRADE_NO: that.data.OUT_TRADE_NO }, "POST", false, function (obj) {
-      console.log(obj)
-    })
+    var OUT_TRADE_NO = that.data.OUT_TRADE_NO
+    
+    
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

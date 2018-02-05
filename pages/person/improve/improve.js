@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    user_id:"",
+    OUT_TRADE_NO:""
   },
 
   /**
@@ -22,7 +23,7 @@ Page({
     var that = this;
     var a = e.currentTarget.id
     util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: a }, "POST", true, function (res) {
-      console.log(res)
+      var OUT_TRADE_NO = res.OUT_TRADE_NO
       var nonceStr = res.prePayReSign.nonceStr;
       var packageStr = res.prePayReSign.packageStr;
       var paySign = res.prePayReSign.paySign;
@@ -35,13 +36,27 @@ Page({
         signType: signType,
         paySign: paySign,
         success: function (obj) {
-          util.showSuccess();
-          util.navigateTo("/pages/person/improve/content/content",{id:res.OUT_TRADE_NO,user_id:that.data.user_id})
+            util.sendRequest("/wechat/applet/user/activate", { USER_ID: that.data.user_id, OUT_TRADE_NO: OUT_TRADE_NO }, "POST", false, function (obj) {
+              wx.showModal({
+                content: '支付完成',
+                showCancel:false,
+                confirmText:"确定",
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.navigateBack({
+                      delta: 1,
+                    })
+                  }
+                }
+              })
+            });
+            
         },
         fail: function (obj) {
-          util.showError("发起支付失败");
+          util.showError("发起支付失败");                   
         }
       })
+      
     })  
   },
   /**

@@ -44,7 +44,6 @@ Page({
     var that = this;
     util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
       var vip = that.data.vip;
-      console.log(vip)
       var grids = that.data.grids;
       if (res.mntbk == 0 && vip != "UC") {
         grids[0].src = "/images/quanxian1.png";
@@ -77,7 +76,6 @@ Page({
   onShow: function () {
     var that = this;
     util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
-      console.log(obj.data)
     if (obj.data == "UA") {
       that.setData({
         vipname: "白银会员",
