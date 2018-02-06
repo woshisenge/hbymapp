@@ -58,6 +58,7 @@
             <view class="weui-flex__item"><view class="placeholder">年份</view></view>
             <view class="weui-flex__item"><view class="placeholder">最高分</view></view>
             <view class="weui-flex__item"><view class="placeholder">最低分</view></view>
+            <view class="weui-flex__item"><view class="placeholder">排名</view></view>
             <view class="weui-flex__item"><view class="placeholder">录取数</view></view>
         </view>
         </view>
@@ -72,6 +73,7 @@
             <view class="weui-flex__item year"><view class="placeholder" >{{score.YEAR_VALUE}}</view></view>
             <view class="weui-flex__item year"><view class="placeholder" >{{score.MAXSCORE}}</view></view>
             <view class="weui-flex__item year"><view class="placeholder" >{{score.MINSCORE}}</view></view>
+            <view class="weui-flex__item year"><view class="placeholder" >{{score.maxScoreTotalCount}}~{{score.minScoreTotalCount}}</view></view> 
             <view class="weui-flex__item year"><view class="placeholder">{{score.MSORT}}</view></view>     
         </view>  
         </view>

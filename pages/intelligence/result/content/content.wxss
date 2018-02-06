@@ -81,7 +81,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;  
-  width:40%;
+  width:20%;
 }
 .left text{
   display:flex;
@@ -90,7 +90,7 @@
   padding:0rpx 0rpx 0rpx 30rpx;
 }
 .right{
-  width:60%;
+  width:80%;
   border-left:1rpx solid #EEEEEE;
 }
 .year{

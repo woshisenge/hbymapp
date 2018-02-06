@@ -54,6 +54,9 @@ Page({
     });
 
   },
+  toExaminee:function(){
+    util.navigateTo("/pages/person/information/information")
+  },
   school:function(e){
     var that = this;
     var index = that.data.activeIndex;

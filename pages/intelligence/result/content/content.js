@@ -33,9 +33,9 @@ Page({
       options.majorName = options.majorName.split(",");
     }
     var major = options.major;
-    
     for (var i = 0; i < major.length; i++){
       util.sendRequest("/wechat/applet/major/getmajorbyschool", { SCHOOL_ID: options.SCHOOL_ID, MAJOR_ID:major[i]},"POST",true,function(res){
+        console.log(res)
         var results = that.data.results;
         if(res.data.length > 0) {
           var mjname = res.data[0].MJNAME;
