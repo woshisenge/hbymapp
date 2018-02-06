@@ -45,7 +45,7 @@
               <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
                 <view class="weui-flex color">
                   <view class="weui-flex__item border"><view class="placeholder">分数</view></view>
-                  <view class="weui-flex__item border"><view class="placeholder">排名</view></view>
+                  <view class="weui-flex__item border"><view class="placeholder">分数排名</view></view>
                   <view class="weui-flex__item"><view class="placeholder">区间人数</view></view>
                 </view>
                 <view class="weui-flex underline" wx:for="{{grade}}" wx:key="">
@@ -75,3 +75,4 @@
     <view class="weui-loading"></view>
     <view class="weui-loadmore__tips">正在加载</view>
 </view>
+<view class='white'></view>

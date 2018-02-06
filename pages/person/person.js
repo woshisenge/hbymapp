@@ -89,7 +89,7 @@ Page({
         vip = 0
       }
       that.setData({
-        vip: obj.data
+        vip: vip
       })
     })
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res)     {      
@@ -178,7 +178,4 @@ Page({
   toExaminee: function() {
     util.navigateTo("/pages/person/information/information");
   },
-  toPocket: function() {
-    util.navigateTo("/pages/person/goods/goods");
-  }
 })

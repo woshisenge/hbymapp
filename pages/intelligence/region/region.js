@@ -49,7 +49,7 @@ Page({
     prevPage.data["provinces"] = that.data.strRes;
     prevPage.data["provinces_id"] = that.data.strResId;
     prevPage.setData(prevPage.data);
-    wx:wx.navigateBack({
+    wx.navigateBack({
       delta: 1,
     })
   },

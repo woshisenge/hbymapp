@@ -42,3 +42,11 @@
   transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
 }
+.white{
+  width:100%;
+  height:50rpx;
+}
+.whites{
+  width:100%;
+  height:150rpx;
+}

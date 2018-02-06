@@ -5,7 +5,7 @@
     <text style="color:#333333;font-size:28rpx;">{{examinee.EXAMAREA_VALUE? examinee.EXAMAREA_VALUE : ''}}　{{examinee.MAJORTYPE_VALUE? examinee.MAJORTYPE_VALUE : ''}}</text>
   </view>
   <view class="content1-right" bindtap='toExaminee'>
-    <image src="../../../images/icon01.png" style="width:60rpx;height:60rpx;"></image>
+    <image src="/images/icon01.png" style="width:60rpx;height:60rpx;"></image>
     <text>设置</text>
   </view>
 </view>

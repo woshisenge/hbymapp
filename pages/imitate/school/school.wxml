@@ -46,3 +46,4 @@
   </view>
   <button class="weui-btn" type="primary" bindtap='back'>确定</button>
 </view>
+<view class='white'></view>

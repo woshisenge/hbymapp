@@ -48,7 +48,7 @@ Page({
     prevPage.data["properties"] = that.data.strRes;
     prevPage.data["properties_id"] = that.data.strResId;
     prevPage.setData(prevPage.data);
-    wx:wx.navigateBack({
+    wx.navigateBack({
       delta: 1,
     })
   },

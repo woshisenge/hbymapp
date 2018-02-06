@@ -100,7 +100,7 @@ Page({
   },
   teacher:function(e){
     var a = e.currentTarget.dataset.id;
-    util.navigateTo('../consult/consultlist/consultlist', { a: a })
+    util.navigateTo('/pages/consult/consultlist/consultlist', { a: a })
   },
   /**
    * 生命周期函数--监听页面加载

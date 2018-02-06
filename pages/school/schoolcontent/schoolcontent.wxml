@@ -37,7 +37,9 @@
                 <image src="{{icon}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
             </view>
             <view class="weui-cell__bd">河北省</view>
+            <view style='color:rgb(90,180,170)'>点击切换文理科->　</view>
             <view class="weui-cell__ft">
+            
               <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key='NAME' data-id="{{school_id}}" id="{{array[index].DIC_ID}}">
                 <view>{{array[index].NAME}}</view>
               </picker>

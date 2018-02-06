@@ -49,7 +49,7 @@ Page({
     prevPage.data["majors"] = that.data.strRes;
     prevPage.data["majors_id"] = that.data.strResId;
     prevPage.setData(prevPage.data);
-    wx:wx.navigateBack({
+    wx.navigateBack({
       delta: 1,
     })
   },

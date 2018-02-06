@@ -124,6 +124,15 @@ Page({
   },
   b1Submit: function () {
     var that = this;
+    if (that.data.b1Schools_1_id == ""
+      || that.data.b1Schools_2_id == ""
+      || that.data.b1Schools_3_id == ""
+      || that.data.b1Schools_4_id == ""
+      || that.data.b1Schools_5_id == "") {
+      util.showError("院校选项不能为空");
+      return false;
+    }
+    else{
     util.confirm({
       content: "确定要进行模拟填报？此次操作需消耗一张模拟填报卡",
       confirmFn: function () {
@@ -140,23 +149,7 @@ Page({
         var b1Schools_major_4_id = that.data.b1Schools_major_4_id;
         var b1Schools_major_5_id = that.data.b1Schools_major_5_id;
 
-        if (b1Schools_1_id == ""
-          || b1Schools_2_id == ""
-          || b1Schools_3_id == ""
-          || b1Schools_4_id == ""
-          || b1Schools_5_id == "") {
-          util.showError("院校选项不能为空");
-          return false;
-        }
-
-        if (b1Schools_major_1_id == ""
-          || b1Schools_major_2_id == ""
-          || b1Schools_major_3_id == ""
-          || b1Schools_major_4_id == ""
-          || b1Schools_major_5_id == "") {
-          util.showError("专业选项不能为空");
-          return false;
-        }
+        
         var param = {};
         param.school1 = b1Schools_1_id;
         param.zye1 = b1Schools_major_1_id;
@@ -181,9 +174,24 @@ Page({
         util.navigateTo("/pages/analog/result/result", param);
       }
     });
+    }
   },
   b2Submit: function () {
     var that = this;
+    if (b2Schools_1_id == ""
+      || b2Schools_2_id == ""
+      || b2Schools_3_id == ""
+      || b2Schools_4_id == ""
+      || b2Schools_5_id == ""
+      || b2Schools_6_id == ""
+      || b2Schools_7_id == ""
+      || b2Schools_8_id == ""
+      || b2Schools_9_id == ""
+      || b2Schools_10_id == "") {
+      util.showError("院校选项不能为空");
+      return false;
+    }
+    else{
     util.confirm({
       content: "确定要进行模拟填报？此次操作需消耗一张模拟填报卡",
       confirmFn: function () {
@@ -209,34 +217,6 @@ Page({
         var b2Schools_major_8_id = that.data.b2Schools_major_8_id;
         var b2Schools_major_9_id = that.data.b2Schools_major_9_id;
         var b2Schools_major_10_id = that.data.b2Schools_major_10_id;
-
-        if (b2Schools_1_id == ""
-          || b2Schools_2_id == ""
-          || b2Schools_3_id == ""
-          || b2Schools_4_id == ""
-          || b2Schools_5_id == ""
-          || b2Schools_6_id == ""
-          || b2Schools_7_id == ""
-          || b2Schools_8_id == ""
-          || b2Schools_9_id == ""
-          || b2Schools_10_id == "") {
-          util.showError("院校选项不能为空");
-          return false;
-        }
-
-        if (b2Schools_major_1_id == ""
-          || b2Schools_major_2_id == ""
-          || b2Schools_major_3_id == ""
-          || b2Schools_major_4_id == ""
-          || b2Schools_major_5_id == ""
-          || b2Schools_major_6_id == ""
-          || b2Schools_major_7_id == ""
-          || b2Schools_major_8_id == ""
-          || b2Schools_major_9_id == ""
-          || b2Schools_major_10_id == "") {
-          util.showError("专业选项不能为空");
-          return false;
-        }
         var param = {};
         param.school1 = b2Schools_1_id;
         param.zye1 = b2Schools_major_1_id;
@@ -277,5 +257,6 @@ Page({
         util.navigateTo("/pages/analog/result/result", param);
       }
     });
+    }
   },
 })

@@ -15,7 +15,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
-      if (options.role == "UC") {
+      if (options.role == 1) {
         that.setData({
           BALANCE: res.BALANCE + "个",
           yxzxk: "无限",

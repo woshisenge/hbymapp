@@ -12,3 +12,4 @@
    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
 </view>
+<view class='white'></view>

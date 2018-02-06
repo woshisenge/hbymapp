@@ -1,6 +1,6 @@
 <!--pages/person/member/member.wxml-->
 <form bindsubmit='formSubmitForReg'>
-  <view class="weui-cells__title">您当前身份为<text style="color:orange">{{vipname}}</text>,请购买会员后提升权限</view>
+  <view class="weui-cells__title">请升级会员</view>
   <view class="weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">

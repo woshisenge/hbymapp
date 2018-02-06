@@ -38,7 +38,7 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../logs/logs'
     })
   },
@@ -153,7 +153,8 @@ Page({
     });
   },
   phone:function(){
-    utils.navigateTo("/pages/video/video")
+    utils.showError("视频正在录制中，稍后为您展示！")
+    // utils.navigateTo("/pages/video/video")
   },
   teacher:function(){
     utils.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function (res) {
