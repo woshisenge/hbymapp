@@ -3,8 +3,8 @@
 <form bindsubmit="formSubmit">
 <view class="page__bd">
 <view class="weui-cells__title">1.绑定手机即可直接通过短信安全验证进行操作</view>
-<view class="weui-cells__title">2.更改手机是，请通过安全验证的重新输入新手机号码</view>
-<view class="weui-cells__title">3.受到安全验证码时，请在10分钟内完成验证</view>
+<view class="weui-cells__title">2.更改手机时，请重新输入新手机号码</view>
+<view class="weui-cells__title">3.收到安全验证码时，请在1分钟内完成验证</view>
 <view class="weui-cells weui-cells_after-title">
 <view class="weui-cell weui-cell_input">
     <view class="weui-cell__hd">

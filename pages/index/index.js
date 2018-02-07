@@ -86,7 +86,7 @@ Page({
         utils.showError("请先登录账号");
         return false;
       }
-      utils.navigateTo("../consult/consult")
+      utils.navigateTo("/pages/consult/consult")
     });
     
   },
@@ -139,10 +139,10 @@ Page({
   },
   school:function(){
     var that = this;
-    utils.navigateTo("../school/school")
+    utils.navigateTo("/pages/school/school")
   },
   major:function(){
-      utils.navigateTo("../major/major")
+      utils.navigateTo("/pages/major/major")
   },
   noticemore:function(e){
     var that = this;
@@ -171,19 +171,19 @@ Page({
     utils.navigateTo("/pages/activity/activity")
   },
   newsmore:function(){
-      utils.navigateTo("../news/news")
+      utils.navigateTo("/pages/news/news")
   },
   activitymore:function(){
     
-    utils.navigateTo("../activity/activity")
+    utils.navigateTo("/pages/activity/activity")
   },
   news:function(e){
     var a = e.currentTarget.dataset.id;
-    utils.navigateTo('../news/newscontent/newscontent', { a: a })
+    utils.navigateTo('/pages/news/newscontent/newscontent', { a: a })
   },
   activity:function(e){
     var a = e.currentTarget.dataset.id;
-    utils.navigateTo('../activity/content/content', { a: a })
+    utils.navigateTo('/pages/activity/content/content', { a: a })
   },
   toDto: function (list) {
     if (!list) return list;

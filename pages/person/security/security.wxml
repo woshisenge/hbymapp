@@ -12,15 +12,15 @@
   </view>
 </view>
 <view class='line'></view>
-<view class="page">
+<!-- <view class="page">
   <view class='content'>
     <view class="image"><image src="../../../images/tb08.png"></image></view>
     <view class='title'><text class='title-left'>支付密码</text><text style="font-size:25rpx;"><text wx:if='{{isTrade}}'>已</text><text wx:if='{{!isTrade}}'>未</text>设置</text></view>
     <view class='texts'><text>请确保支付密码与登录密码不同。</text></view>
     <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini" bindtap="paymentpw">修改密码</button></view>
   </view>
-</view>
-<view class='line'></view>
+</view> -->
+<!-- <view class='line'></view> -->
 <view class="page">
   <view class='content'>
     <view class="image"><image src="../../../images/tb09.png"></image></view>
@@ -30,7 +30,7 @@
   </view>
 </view>
 <view class='line'></view>
-<view class="page">
+<!-- <view class="page">
   <view class='content'>
     <view class="image"><image src="../../../images/tb11.png"></image></view>
     <view class='title'><text class='title-left'>邮箱绑定</text><text style="font-size:25rpx;"><text wx:if='{{isEmail}}'>已</text><text wx:if='{{!isEmail}}'>未</text>设置</text></view>
@@ -38,7 +38,7 @@
     <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini" bindtap='email' wx:if='{{!isEmail}}'>绑定邮箱</button></view>
   </view>
 </view>
-<view class='line'></view>
+<view class='line'></view> -->
 <view class="page">
   <view class='content'>
     <view class="image"><image src="../../../images/tb10.png"></image></view>

@@ -10,7 +10,7 @@ Page({
   },
   activity:function(e){
     var a = e.currentTarget.dataset.id
-    util.navigateTo('../activity/content/content', { a: a })
+    util.navigateTo('/pages/activity/content/content', { a: a })
   },
   toDto: function (list) {
     if (!list) return list;

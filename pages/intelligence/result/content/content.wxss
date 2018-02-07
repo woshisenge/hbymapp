@@ -60,7 +60,12 @@
   width:100%;
 }
 .weui-flex__item{
+  width:21%;
   padding:10rpx 0;
+}
+.weui-flex__items{
+  padding:10rpx 0;
+  width:37%;
 }
 .placeholder{
   text-align: center;
@@ -94,8 +99,5 @@
   border-left:1rpx solid #EEEEEE;
 }
 .year{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }

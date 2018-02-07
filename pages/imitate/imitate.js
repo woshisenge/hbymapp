@@ -181,16 +181,16 @@ Page({
   },
   b2Submit: function () {
     var that = this;
-    if (b2Schools_1_id == ""
-      || b2Schools_2_id == ""
-      || b2Schools_3_id == ""
-      || b2Schools_4_id == ""
-      || b2Schools_5_id == ""
-      || b2Schools_6_id == ""
-      || b2Schools_7_id == ""
-      || b2Schools_8_id == ""
-      || b2Schools_9_id == ""
-      || b2Schools_10_id == "") {
+    if (that.data.b2Schools_1_id == ""
+      || that.data.b2Schools_2_id == ""
+      || that.data.b2Schools_3_id == ""
+      || that.data.b2Schools_4_id == ""
+      || that.data.b2Schools_5_id == ""
+      || that.data.b2Schools_6_id == ""
+      || that.data.b2Schools_7_id == ""
+      || that.data.b2Schools_8_id == ""
+      || that.data.b2Schools_9_id == ""
+      || that.data.b2Schools_10_id == "") {
       util.showError("院校选项不能为空");
       return false;
     }

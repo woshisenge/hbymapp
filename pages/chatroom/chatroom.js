@@ -146,9 +146,6 @@ Page({
     });
   },
   onUnload: function() {
-    wx.reLaunch({
-      url: '/pages/contacts/contacts'
-    })
 
   },
   onShow: function () {

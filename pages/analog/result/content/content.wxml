@@ -39,7 +39,7 @@
             <view class="weui-flex__item"><view class="placeholder" wx:for="{{grade}}" wx:key="" hidden='{{item.checked}}'>{{item.ENTERCOUNT}}</view></view>
         </view>
     </view>
-    <view style="background-color:white">
+    <view style="background-color:white;margin-top:20rpx">
     <view class="page__bd page__bd_spacing">
       <view class="weui-flex">
             <view class="weui-flex__item"><view class="placeholder" style='text-align:left'>专业招生计划及历年数据：</view></view>
@@ -55,11 +55,10 @@
             </view>
           </view>
           <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder">年份</view></view>
-            <view class="weui-flex__item"><view class="placeholder">最高分</view></view>
-            <view class="weui-flex__item"><view class="placeholder">最低分</view></view>
-            <view class="weui-flex__item"><view class="placeholder">排名</view></view>
-            <view class="weui-flex__item"><view class="placeholder">录取数</view></view>
+            <view class="weui-flex__item2"><view class="placeholder">年份</view></view>
+            <view class="weui-flex__item1"><view class="placeholder">分数</view></view>
+            <view class="weui-flex__items"><view class="placeholder">排名</view></view>
+            <view class="weui-flex__item2"><view class="placeholder">录取</view></view>
         </view>
         </view>
       </view>
@@ -70,11 +69,10 @@
       <view class='center'>
         <view class="page__bd page__bd_spacing" wx:for="{{item.scores}}" wx:for-item="score" wx:key="">
           <view class="weui-flex">
-            <view class="weui-flex__item year"><view class="placeholder" >{{score.YEAR_VALUE}}</view></view>
-            <view class="weui-flex__item year"><view class="placeholder" >{{score.MAXSCORE}}</view></view>
-            <view class="weui-flex__item year"><view class="placeholder" >{{score.MINSCORE}}</view></view>
-            <view class="weui-flex__item year"><view class="placeholder" >{{score.maxScoreTotalCount}}~{{score.minScoreTotalCount}}</view></view> 
-            <view class="weui-flex__item year"><view class="placeholder">{{score.MSORT}}</view></view>     
+            <view class="weui-flex__item2 year"><view class="placeholder" >{{score.YEAR_VALUE}}</view></view>
+            <view class="weui-flex__item1 year"><view class="placeholder" >{{score.MINSCORE}}~{{score.MAXSCORE}}</view></view>
+            <view class="weui-flex__items year"><view class="placeholder" >{{score.MAXSCORETOTALCOUNT}}~{{score.MINSCORETOTALCOUNT}}</view></view> 
+            <view class="weui-flex__item2 year"><view class="placeholder">{{score.MSORT}}</view></view>     
         </view>  
         </view>
       </view>

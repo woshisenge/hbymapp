@@ -14,7 +14,9 @@ Page({
     activeIndex: 0,
     grade: [],//分数结果
     isLoadingMore: false,//是否加载更多
-    searchParam: { currentPage: 1 }//搜索参数
+    searchParam: { currentPage: 1 },//搜索参数
+    color:"color",
+    scrolltop:1200
   },
   bindPickerChange: function (e) {
     var that = this;
@@ -70,6 +72,8 @@ Page({
 
     that.clearCurPage();
     that.pullGradeInfos(true);
+  },
+  upper:function(){
   },
   /**
    * 生命周期函数--监听页面加载

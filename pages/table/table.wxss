@@ -67,6 +67,14 @@
 .color{
   background-color:#eeeeee;
 }
+.colors{
+  background-color:#eeeeee;
+   position:fixed; 
+   top:0;
+   flex:1;
+   display:-webkit-box;
+   width:100%;
+}
 .border{
   border-right:1rpx solid #CCCCCC;
 }

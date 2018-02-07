@@ -55,6 +55,14 @@ Page({
     for (var i=0; i < major.length;i++){
       util.sendRequest("/wechat/applet/major/getmajorbyschool", { SCHOOL_ID: options.school_id, MAJOR_ID: major[i] }, "POST", true, function (res) {
         console.log(res)
+        res.data.forEach(function(element){
+          if (element.MINSCORETOTALCOUNT == null){
+            element.MINSCORETOTALCOUNT = ""
+          }
+          if (element.MAXSCORETOTALCOUNT == null) {
+            element.MAXSCORETOTALCOUNT = ""
+          }
+        })
         var results = that.data.results;
         if (res.data.length > 0) {
           var mjname = res.data[0].MJNAME;

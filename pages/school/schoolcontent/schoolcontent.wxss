@@ -171,6 +171,6 @@
 }
 picker{
   border:1rpx solid #CCCCCC;
-  padding:0 15rpx;
+  padding:5rpx 15rpx;
   color:#666;
 }

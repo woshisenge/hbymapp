@@ -3,7 +3,7 @@
 <form bindsubmit="formSubmit">
 <view class="page__bd">
 <view class="weui-cells__title">1.请牢记登录密码</view>
-<view class="weui-cells__title">2.如果丢失密码，可以通过绑定的手机或邮箱找到</view>
+<view class="weui-cells__title">2.如果丢失密码，可以通过绑定的手机找到</view>
 <view class="weui-cells weui-cells_after-title">
 <view class="weui-cell weui-cell_input">
     <view class="weui-cell__hd">

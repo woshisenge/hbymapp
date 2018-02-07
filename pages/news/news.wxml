@@ -1,6 +1,6 @@
 
 <block wx:for="{{news}}" wx:key="" id="{{index}}" >
-<view class='content'>
+<view class='content' bindtap='news' id="{{item.NEWS_ID}}">
   <view class='content-left'>
     <image src="{{item.IMGURL}}"></image>
   </view>

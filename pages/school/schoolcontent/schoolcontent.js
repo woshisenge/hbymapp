@@ -41,7 +41,6 @@ Page({
       })
     })
     util.sendRequest("/wechat/applet/school/getintroduction", { SCHOOL_ID: id }, "POST", true, function (res) {
-      
       var content = res.CONTENT;
       WxParse.wxParse('content', 'html', content, that, 5);
     })
