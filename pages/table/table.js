@@ -16,7 +16,8 @@ Page({
     isLoadingMore: false,//是否加载更多
     searchParam: { currentPage: 1 },//搜索参数
     color:"color",
-    scrolltop:1200
+    scrolltop:1200,
+    text:true
   },
   bindPickerChange: function (e) {
     var that = this;
@@ -45,7 +46,7 @@ Page({
     var that = this;
     that.setData({
       inputVal: "",
-      inputShowed: false
+      inputShowed: false,
     });
     
   },
@@ -55,7 +56,8 @@ Page({
     param.SCORE = "";
     that.setData({
       inputVal: "",
-      inputShowed: false
+      inputShowed: false,
+      text:true
     });
     that.clearCurPage();
     that.pullGradeInfos(true);
@@ -69,7 +71,9 @@ Page({
   },
   setSearchStorage: function () {
     var that = this;
-
+    that.setData({
+      text:false
+    })
     that.clearCurPage();
     that.pullGradeInfos(true);
   },

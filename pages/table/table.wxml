@@ -50,7 +50,7 @@
                   
                 </view>
                 <view class="weui-flex underline" wx:for="{{grade}}" wx:key="">     
-                <view class="weui-flex__item" wx:if="{{index == 0}}"><view class="placeholder">{{item.SCORE}}分及以上</view></view>
+                <view class="weui-flex__item" wx:if="{{index == 0}}"><view class="placeholder">{{item.SCORE}}{{text ? '分及以上':''}}</view></view>
                   <view class="weui-flex__item" wx:else><view class="placeholder">{{item.SCORE}}</view></view>
                   
                   <view class="weui-flex__item"><view class="placeholder">{{item.COUNT}}人</view></view>

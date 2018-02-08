@@ -14,7 +14,10 @@ Page({
     array: [],
     icon1: "/images/yuanxiao.png",
     grade:[],
-    vip:""
+    vip:"",
+    checked: true,
+    check: true,
+    school_id: ""
   },
 
   tabClick: function (e) {
@@ -70,6 +73,18 @@ Page({
         array: res.data
       })
     })
+    util.sendRequest("/wechat/applet/school/getplanandrules", { SCHOOL_ID: id, SUBTITLE: "招生章程" }, "POST", true, function (res) {
+      console.log(res.data)
+      that.setData({
+        rule: res.data
+      })
+    });
+    util.sendRequest("/wechat/applet/school/getplanandrules", { SCHOOL_ID: id, SUBTITLE: "招生计划" }, "POST", true, function (res) {
+      console.log(res.data)
+      that.setData({
+        plan: res.data
+      })
+    })
     util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID: id, MAJORTYPE_ID: 'gjv044girc' }, "POST", true, function (res) {
       var grade = res.data;
       grade.forEach(function (element) {
@@ -84,6 +99,30 @@ Page({
         grade: res.data
       })
     })
+  },
+  rule: function () {
+    var that = this;
+    that.setData({
+      checked: !that.data.checked
+    })
+  },
+  plan: function () {
+    var that = this;
+    that.setData({
+      check: !that.data.check
+    })
+  },
+  ruleContent: function (e) {
+    var that = this;
+    var id = e.currentTarget.id;
+    var school_id = that.data.school_id;
+    util.navigateTo("/pages/school/schoolcontent/rule/rule", { id: id, school_id: school_id })
+  },
+  planContent: function (e) {
+    var that = this;
+    var id = e.currentTarget.id;
+    var school_id = that.data.school_id;
+    util.navigateTo("/pages/school/schoolcontent/plan/plan", { id: id, school_id: school_id })
   },
   chat: function (e) {
     var that = this
@@ -111,6 +150,7 @@ Page({
       } 
     });
   },
+
   contentshow: function () {
     var that = this
     that.setData({

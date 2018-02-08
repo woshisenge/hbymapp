@@ -12,7 +12,10 @@ Page({
     ckecked:true,
     icon:"/images/address.png",
     array:[],
-    icon1: "/images/yuanxiao.png"
+    icon1: "/images/yuanxiao.png",
+    checked:true,
+    check:true,
+    school_id:""
   },
  
   tabClick: function (e) {
@@ -26,6 +29,9 @@ Page({
   onLoad: function (options) {
     var that=this
     var id=options.a
+    that.setData({
+      school_id:options.a
+    })
     util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: id }, "POST", true, function (res) {
       that.setData({
         subjecttypes: res.subjecttypes,
@@ -43,6 +49,18 @@ Page({
     util.sendRequest("/wechat/applet/school/getintroduction", { SCHOOL_ID: id }, "POST", true, function (res) {
       var content = res.CONTENT;
       WxParse.wxParse('content', 'html', content, that, 5);
+    });
+    util.sendRequest("/wechat/applet/school/getplanandrules", { SCHOOL_ID: id,SUBTITLE:"招生章程"}, "POST", true, function (res) {
+      console.log(res.data)
+      that.setData({
+        rule:res.data
+      })
+    });
+    util.sendRequest("/wechat/applet/school/getplanandrules", { SCHOOL_ID: id, SUBTITLE: "招生计划" }, "POST", true, function (res) {
+      console.log(res.data)
+      that.setData({
+        plan: res.data
+      })
     })
     util.sendRequest("/wechat/applet/dictionary/get", { code:"MAJORTYPE"},"POST",true,function(res){
       that.setData({
@@ -63,6 +81,30 @@ Page({
         grade: grade
       })
     })
+  },
+  rule:function(){
+    var that =this;
+    that.setData({
+      checked:!that.data.checked
+    })
+  },
+  plan:function(){
+    var that = this;
+    that.setData({
+      check: !that.data.check
+    })
+  },
+  ruleContent:function(e){
+    var that = this;
+    var id = e.currentTarget.id;
+    var school_id = that.data.school_id;
+    util.navigateTo("/pages/school/schoolcontent/rule/rule",{id:id,school_id:school_id})
+  },
+  planContent:function(e){
+    var that = this;
+    var id = e.currentTarget.id;
+    var school_id = that.data.school_id;
+    util.navigateTo("/pages/school/schoolcontent/plan/plan", { id: id, school_id: school_id })
   },
   contentshow:function(){
     var that=this

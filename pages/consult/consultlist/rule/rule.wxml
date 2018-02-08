@@ -1,0 +1,15 @@
+<!--pages/school/schoolcontent/rule/rule.wxml-->
+<import src="../../../../wxParse/wxParse.wxml" />
+<view class='content' wx:for="{{content}}" wx:key = "{{item.TITLE}}">
+  <view class="head">
+    <text>{{item.TITLE}}</text>
+  </view>
+  <view class="heads">
+    <text class="text1">编辑：铭邦小哥</text>　|　
+    <text class="text2">时间：{{item.MODIFYTIME}}</text>
+  </view>
+  <view class="center">
+   <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+</view>
+<view class='white'></view>

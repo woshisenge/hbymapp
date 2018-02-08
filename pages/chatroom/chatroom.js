@@ -64,7 +64,6 @@ Page({
     });
     
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function(role){
-      console.log(role)
       that.setData({
         role: role.data
       });

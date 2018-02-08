@@ -1,31 +1,17 @@
 <view class='section'>
-    <view class='section-item'>
-      <image class='images' src="/images/0001.jpg" bindtap='play'></image>
-      <text>自主招生讲堂系列</text>
-      <view class='time'>
-        <view class='date'>
-          <image src="/images/time.png" style="width:34rpx;height:34rpx"></image>
-          <text class='text'>2018-01-31</text>
-        </view>
-        <view class='count'>
-          <image src="/images/browse.png" style="width:34rpx;height:34rpx"></image>
-          <text class='text'>322次</text>
-        </view>
+  <view class='section-item' wx:for="{{video}}" wx:key="" bindtap='play' id="{{item.NEWS_ID}}">
+    <image class='images' src="{{item.IMGURL}}" ></image>
+    <text>{{item.TITLE}}</text>
+    <view class='time'>
+      <view class='date'>
+        <image src="/images/time.png" style="width:34rpx;height:34rpx"></image>
+        <text class='text'>{{item.MODIFYTIME}}</text>
+      </view>
+      <view class='count'>
+        <image src="/images/browse.png" style="width:34rpx;height:34rpx"></image>
+        <text class='text'>{{item.VIEWCOUNT}}</text>
       </view>
     </view>
-  <view class='section-item'>
-      <image class='images' src="/images/0001.jpg" ></image>
-      <text>自主招生讲堂系列</text>
-      <view class='time'>
-        <view class='date'>
-          <image src="/images/time.png" style="width:34rpx;height:34rpx"></image>
-          <text class='text'>2018-01-31</text>
-        </view>
-        <view class='count'>
-          <image src="/images/browse.png" style="width:34rpx;height:34rpx"></image>
-          <text class='text'>322次</text>
-        </view>
-      </view>
   </view>
-</view>
+</view> 
 <view class='white'></view>

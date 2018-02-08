@@ -1,20 +1,39 @@
 var util = require("../../utils/util")
 Page({
-  onReady: function (res) {
-    this.videoContext = wx.createVideoContext('myVideo')
-  },
-  inputValue: '',
+  // onReady: function (res) {
+  //   this.videoContext = wx.createVideoContext('myVideo')
+  // },
+  // inputValue: '',
   data: {
     src: ''
   },
-  play:function(){
-    util.navigateTo("/pages/video/play/play")
+  play:function(e){
+    var id = e.currentTarget.id
+    util.navigateTo("/pages/video/play/play",{id:id})
+  },
+  toDto: function (list) {
+    if (!list) return list;
+    list.forEach(function (obj) {
+      if (obj.IMGURL) {
+        obj.IMGURL = util.setStaticUrl(obj.IMGURL);
+      }
+      if (obj.MODIFYTIME) {
+        obj.MODIFYTIME = util.formatDate(new Date(obj.MODIFYTIME));
+      }
+    });
+    return list;
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    util.sendRequest("/wechat/applet/news/expertvideo", {SUBTITLE:"专家视频"}, "POST", true, function (res) {
+      console.log(res.data)
+      that.setData({
+        video:that.toDto(res.data)
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面显示

@@ -69,6 +69,42 @@ Page({
       student: student
     });
   },
+  // 监听下拉刷新
+  onPullDownRefresh: function () {
+    var that = this
+    util.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (role) {
+      util.sendRequest("/wechat/applet/chat/getcontactors", {}, "POST", true, function (res) {
+        var teacher = res.teachers;
+        if (teacher) {
+          teacher.forEach(function (element) {
+            if (element.timeList) {
+              element.timeList.forEach(function (obj) {
+                obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME))
+              })
+            }
+          })
+        }
+        var student = res.students;
+        if (student) {
+          student.forEach(function (element) {
+            if (element.timeList) {
+              element.timeList.forEach(function (obj) {
+                obj.CREATETIME = util.formatTime(new Date(obj.CREATETIME))
+              })
+            }
+          })
+        }
+        that.setData({
+          teacher: that.toDto(teacher),
+          student: that.toDto(student)
+        })
+      })
+      that.setData({
+        role: role.data
+      });
+    })
+    wx.stopPullDownRefresh()
+  },
   /**
    * 生命周期函数--监听页面加载
    */

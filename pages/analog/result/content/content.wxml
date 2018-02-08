@@ -33,10 +33,10 @@
         </view>
         
         <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder" wx:for="{{grade}}" wx:key="" hidden='{{item.checked}}'>{{item.YEAR_VALUE}}</view></view>
-            <view class="weui-flex__item"><view class="placeholder" wx:for="{{grade}}" wx:key="" hidden='{{item.checked}}'> {{item.MAXSCORE}}</view></view>
-            <view class="weui-flex__item"><view class="placeholder" wx:for="{{grade}}" wx:key="" hidden='{{item.checked}}'>{{item.MINSCORE}}</view></view>
-            <view class="weui-flex__item"><view class="placeholder" wx:for="{{grade}}" wx:key="" hidden='{{item.checked}}'>{{item.ENTERCOUNT}}</view></view>
+            <view class="weui-flex__item"><view class="placeholder" wx:for="{{grade}}" wx:key="{{item.YEAR_VALUE}}" hidden='{{item.checked}}'>{{item.YEAR_VALUE}}</view></view>
+            <view class="weui-flex__item"><view class="placeholder" wx:for="{{grade}}" wx:key="{{item.MAXSCORE}}" hidden='{{item.checked}}'> {{item.MAXSCORE}}</view></view>
+            <view class="weui-flex__item"><view class="placeholder" wx:for="{{grade}}" wx:key="{{item.MINSCORE}}" hidden='{{item.checked}}'>{{item.MINSCORE}}</view></view>
+            <view class="weui-flex__item"><view class="placeholder" wx:for="{{grade}}" wx:key="{{item.ENTERCOUNT}}" hidden='{{item.checked}}'>{{item.ENTERCOUNT}}</view></view>
         </view>
     </view>
     <view style="background-color:white;margin-top:20rpx">

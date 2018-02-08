@@ -41,7 +41,7 @@
             <view class="open_emoji" bindtap="openEmoji">
                   <image src="/images/Emoji.png"/>
                 </view>
-                <textarea type="text" value="{{ inputMessage }}" bindinput="bindMessage" fixed='true' auto-height='true' class='news'></textarea>
+                <textarea type="text" value="{{ inputMessage }}" bindinput="bindMessage" fixed='true' auto-height='true' show-confirm-bar="false" class='news'></textarea>
                 <button class="weui-btn mini-btn" bindtap="sendMessage" formType="reset">发送</button>
                 <!-- <button class="send_btn" >发送</button> -->
             </view>

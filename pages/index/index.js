@@ -24,7 +24,8 @@ Page({
     vip:"",
     zntjk:"",
     mntbk:"",
-    role:""
+    role:"",
+    buttonClicked: false
     // 首页轮播图 开始
 
     // 公告 开始
@@ -81,14 +82,17 @@ Page({
     })
   },
   consultation:function(){
+    var that = this;
     utils.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function(res){
       if(!res.data){
         utils.showError("请先登录账号");
         return false;
       }
+      if(!that.data.buttonClicked) {
+        utils.buttonClicked(that);
       utils.navigateTo("/pages/consult/consult")
+      }
     });
-    
   },
   analog:function(){
     var that = this;
@@ -153,8 +157,7 @@ Page({
     });
   },
   phone:function(){
-    utils.showError("视频正在录制中，稍后为您展示！")
-    // utils.navigateTo("/pages/video/video")
+    utils.navigateTo("/pages/video/video")
   },
   teacher:function(){
     utils.sendRequest("/wechat/applet/user/isvip", {}, "POST", true, function (res) {

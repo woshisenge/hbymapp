@@ -42,8 +42,8 @@
   /* height: 100px; */
 }
 .tpia{
-  width: 45rpx;
-  height: 45rpx; 
+  width: 50rpx;
+  height: 50rpx; 
 }
 .navigation-text{
   font-size: 25rpx;
