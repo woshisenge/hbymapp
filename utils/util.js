@@ -516,7 +516,6 @@ var confirm = function (option) {
     }
   });
 }
-
 var switchTab = function (options) {
   options.url = options.url ? options.url : "";
   options.success = options.successFn ? options.successFn : function () { };

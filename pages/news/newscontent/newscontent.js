@@ -28,7 +28,6 @@ Page({
   onLoad: function (options) {
     var that=this;
     var id =options.a;
-    console.log(options.a)
     util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb" }, 'POST', false, function (res) {
       var news = that.toDto(res.data.results);
       var imgReg = new RegExp("<img.*src\\s*=\\s*(.*?)[^>]*?>", "ig");

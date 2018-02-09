@@ -1,7 +1,10 @@
 // pages/video/play/play.js
 var util = require("../../../utils/util")
 Page({
-
+  onReady: function (res) {
+    this.videoContext = wx.createVideoContext('myVideo')
+  },
+  inputValue: '',
   /**
    * 页面的初始数据
    */
@@ -14,7 +17,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    console.log(options.id)
     var id = options.id;
 
     util.sendRequest("/wechat/applet/news/expertvideoplaybyid", { NEWS_ID:id, SUBTITLE: "专家视频" }, "POST", true, function (res) {

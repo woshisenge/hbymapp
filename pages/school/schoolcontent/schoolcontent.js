@@ -51,13 +51,13 @@ Page({
       WxParse.wxParse('content', 'html', content, that, 5);
     });
     util.sendRequest("/wechat/applet/school/getplanandrules", { SCHOOL_ID: id,SUBTITLE:"招生章程"}, "POST", true, function (res) {
-      console.log(res.data)
+      
       that.setData({
         rule:res.data
       })
     });
     util.sendRequest("/wechat/applet/school/getplanandrules", { SCHOOL_ID: id, SUBTITLE: "招生计划" }, "POST", true, function (res) {
-      console.log(res.data)
+      
       that.setData({
         plan: res.data
       })

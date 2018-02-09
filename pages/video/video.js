@@ -29,7 +29,6 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.sendRequest("/wechat/applet/news/expertvideo", {SUBTITLE:"专家视频"}, "POST", true, function (res) {
-      console.log(res.data)
       that.setData({
         video:that.toDto(res.data)
       })

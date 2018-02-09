@@ -1,5 +1,5 @@
 <!--pages/table/table.wxml-->
-<view class="page" >
+<view class="page">
     <view class="page__bd">
       <view class="weui-search-bar">
           <view class="weui-search-bar__form">
@@ -43,9 +43,9 @@
           </view>
           <view class="weui-tab__panel" >
               <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-                <view class="weui-flex {{color}}">
+                <view class="weui-flex {{color ? 'color': 'colors'}}">
                   <view class="weui-flex__item border"><view class="placeholder">分数</view></view>
-                  <view class="weui-flex__item"><view class="placeholder">同分人数</view></view>
+                  <view class="weui-flex__item"><view class="placeholder">人数</view></view>
                   <view class="weui-flex__item border"><view class="placeholder">位次</view></view>
                   
                 </view>
@@ -58,14 +58,14 @@
                 </view>
               </view>
               <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-                <view class="weui-flex {{color}}">
+                <view class="weui-flex {{color ? 'color': 'colors'}}">
                   <view class="weui-flex__item border"><view class="placeholder">分数</view></view>
                   
-                  <view class="weui-flex__item"><view class="placeholder">同分人数</view></view>
+                  <view class="weui-flex__item"><view class="placeholder">人数</view></view>
                   <view class="weui-flex__item border"><view class="placeholder">位次</view></view>
                 </view>
                 <view class="weui-flex underline" wx:for="{{grade}}" wx:key="">
-                  <view class="weui-flex__item" wx:if="{{index == 0}}"><view class="placeholder">{{item.SCORE}}分及以上</view></view>
+                  <view class="weui-flex__item" wx:if="{{index == 0}}"><view class="placeholder">{{item.SCORE}}{{text ? '分及以上':''}}</view></view>
                   <view class="weui-flex__item" wx:else><view class="placeholder">{{item.SCORE}}</view></view>
                   
                   <view class="weui-flex__item"><view class="placeholder">{{item.COUNT}}人</view></view>

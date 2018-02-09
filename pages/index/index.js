@@ -11,10 +11,10 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     // 首页轮播图 开始
     imgUrls: [
-      utils.setStaticUrl("/static/ymplant/img/sye/banner/1.jpg"),
-      utils.setStaticUrl("/static/ymplant/img/sye/banner/2.png"),
-      utils.setStaticUrl("/static/ymplant/img/sye/banner/3.jpg"),
-      utils.setStaticUrl("/static/ymplant/img/sye/banner/4.jpg"),
+      utils.setStaticUrl("/static/ymplant/img/sye/banner/01.jpg"),
+      utils.setStaticUrl("/static/ymplant/img/sye/banner/02.jpg"),
+      utils.setStaticUrl("/static/ymplant/img/sye/banner/03.jpg"),
+      utils.setStaticUrl("/static/ymplant/img/sye/banner/04.png"),
     ],
     indicatorDots: false,
     autoplay: true,
@@ -103,7 +103,6 @@ Page({
     else{
       if ( that.data.mntbk != 0 || vip == "UC" ) {//模拟填报卡不为0
         utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", true, function (result) {
-          console.log(result)
           if (result.data) {
             //完成考生信息的完善
             utils.navigateTo("/pages/imitate/imitate");

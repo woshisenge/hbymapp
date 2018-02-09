@@ -159,7 +159,7 @@
                 <view class="weui-cell__bd">招生计划</view>
                 <view class="weui-cell__ft weui-cell__ft_in-access {{check ? '':'rotate_90'}}"></view>
             </view>
-            <view class="weui-cells weui-cells_after-title" wx:for="{{plan}}" wx:key="{{item.TITLE}}" hidden='{{check}}' bindtap="planContent" id="{{item.ARTICLE_ID}}">
+            <view class="weui-cells weui-cells_after-title" wx:for="{{plan}}" wx:key="{{item.TITLE}}" hidden='{{check}}' id="{{item.ARTICLE_ID}}">
             <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
                 <view class="weui-cell__bd">{{item.TITLE}}</view>
                 <view class="weui-cell__ft weui-cell__ft_in-access"></view>

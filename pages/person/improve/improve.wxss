@@ -24,10 +24,10 @@ page{
 }
 .text{
   width:90%;
-  margin:9rem 5% 0 5%;
-  background-color:rgb(254,68,4);
+  margin:16rem 5% 0 5%;
+  background-color:#F4F6DB;
   text-align: center;
   padding:20rpx 0;
-  color:white;
+  color:rgb(228,119,36);
   border-radius: 10rpx;
 }

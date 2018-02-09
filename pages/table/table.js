@@ -15,7 +15,7 @@ Page({
     grade: [],//分数结果
     isLoadingMore: false,//是否加载更多
     searchParam: { currentPage: 1 },//搜索参数
-    color:"color",
+    color:true,
     scrolltop:1200,
     text:true
   },
@@ -50,6 +50,7 @@ Page({
     });
     
   },
+  
   clearInput: function () {
     var that = this;
     var param = that.data.searchParam;
@@ -77,7 +78,11 @@ Page({
     that.clearCurPage();
     that.pullGradeInfos(true);
   },
-  upper:function(){
+  scroll:function(){
+    var that = this;
+    that.setData({
+      color:!that.data.color
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -128,7 +133,7 @@ Page({
   onReachBottom: function () {
     if (!this.data.isLoadingMore) {
       this.setData({
-        isLoadingMore: true
+        isLoadingMore: true,
       });
 
       this.pullGradeInfos();

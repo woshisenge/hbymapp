@@ -166,12 +166,17 @@ Page({
       content: '是否已经购买会员卡？',
       confirmText: "立即购买",
       cancelText: "已购买",
+      cancelColor: "#3CC51F",
       success: function (res) {
         if (res.confirm) {
           util.navigateTo("/pages/person/improve/improve",{user_id:that.data.user_id})
-        } else {
+        } 
+        if (res.cancel){
           util.navigateTo("/pages/person/member/member")
         }
+      },
+      fail:function(){
+
       }
     });
   },
