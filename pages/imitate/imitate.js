@@ -137,7 +137,7 @@ Page({
     }
     else{
     util.confirm({
-      content: "确定要进行模拟填报？此次操作需消耗一张模拟填报卡",
+      content: "确定要进行模拟填报？非付费会员需消耗一张模拟填报卡",
       confirmFn: function () {
         var b1Schools_1_id = that.data.b1Schools_1_id;
         var b1Schools_2_id = that.data.b1Schools_2_id;
@@ -196,7 +196,7 @@ Page({
     }
     else{
     util.confirm({
-      content: "确定要进行模拟填报？此次操作需消耗一张模拟填报卡",
+      content: "确定要进行模拟填报？非付费会员需消耗一张模拟填报卡",
       confirmFn: function () {
         var b2Schools_1_id = that.data.b2Schools_1_id;
         var b2Schools_2_id = that.data.b2Schools_2_id;

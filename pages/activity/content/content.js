@@ -16,8 +16,8 @@ Page({
     var that=this
     var id=options.a;
     util.sendRequest("/wechat/applet/news/getnewsbyid",{ NEWS_ID:id },"POST",false,function(res){
-      var imgReg = new RegExp("<img.*?src\\s*=\\s*(.*?)[^>]*?>", "ig");
-      var srcReg = new RegExp("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)", "ig");
+      var imgReg = /<img.*?(?:>|\/>)/gi;
+      var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;
       var article=res.CONTENT;
       res.MODIFYTIME = util.formatDate(new Date(res.MODIFYTIME))
       var arr;

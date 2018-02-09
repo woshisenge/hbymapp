@@ -6,7 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
   },
   activity:function(e){
     var a = e.currentTarget.dataset.id
@@ -31,12 +30,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;
     
-    util.sendRequest('/wechat/applet/news/get', {NEWSTYPE: "23wtostpu8"}, 'POST', false, function (res) {
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var that = this;
+
+    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "23wtostpu8" }, 'POST', false, function (res) {
       var contents = that.toDto(res.data.results);
-      var imgReg = new RegExp("<img.*src\\s*=\\s*(.*?)[^>]*?>", "ig");
-      var srcReg = new RegExp("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)", "ig");
+      var imgReg = /<img.*?(?:>|\/>)/gi;
+      var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;
       for (var i = 0; i < contents.length; i++) {
         var content = contents[i].CONTENT;
         var images = new Array();
@@ -58,19 +70,6 @@ Page({
         activity: contents
       });
     })
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
   },
 
   /**

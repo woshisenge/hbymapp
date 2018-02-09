@@ -33,12 +33,7 @@ Page({
 
   },
   onLoad: function (options) {
-    var that=this;
-    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb"}, 'POST', false, function (res) {
-      that.setData({
-        news: that.toDto(res.data.results)
-      });
-    })  
+    
   },
   news:function(e){
     var a = e.currentTarget.id
@@ -55,7 +50,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb" }, 'POST', false, function (res) {
+      that.setData({
+        news: that.toDto(res.data.results)
+      });
+    })  
   },
 
   /**

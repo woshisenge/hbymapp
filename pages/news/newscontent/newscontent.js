@@ -28,30 +28,27 @@ Page({
   onLoad: function (options) {
     var that=this;
     var id =options.a;
-    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb" }, 'POST', false, function (res) {
-      var news = that.toDto(res.data.results);
-      var imgReg = new RegExp("<img.*src\\s*=\\s*(.*?)[^>]*?>", "ig");
-      var srcReg = new RegExp("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)", "ig");
-      for(var i=0;i<news.length;i++){
-        if(news[i].NEWS_ID == id){
-          var article=news[i].CONTENT;
-          var arr;
-          var results;
-          var srcs = new Set();
-          while(arr = imgReg.exec(article)){
-            srcs.add(srcReg.exec(arr[0])[1]);
-            srcReg.lastIndex = 0;
-          }
-          srcs.forEach(function(element){
-            article = article.replace(element, util.setStaticUrl(element));
-          });
-           WxParse.wxParse('article', 'html', article, that, 5);
-           that.setData({
-             content: news[i]
-           })
-           
-        } 
+    util.sendRequest('/wechat/applet/news/getnewsbyid', { NEWS_ID: id }, 'POST', false, function (res) {
+      
+      var imgReg = /<img.*?(?:>|\/>)/gi;
+      var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;
+      var article = res.CONTENT;
+      res.MODIFYTIME = util.formatDate(new Date(res.MODIFYTIME))
+      var arr;
+      var results;
+      var srcs = new Set();
+      while (arr = imgReg.exec(article)) {
+        srcs.add(srcReg.exec(arr[0])[1]);
+        srcReg.lastIndex = 0;
       }
+      srcs.forEach(function (element) {
+        article = article.replace(element, util.setStaticUrl(element));
+      });
+      WxParse.wxParse('article', 'html', article, that, 20);
+      that.setData({
+        content: res
+      })
+
   })
     
   },

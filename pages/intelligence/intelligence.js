@@ -33,7 +33,7 @@ Page({
   result:function(){
     var that = this;
     util.confirm({
-      content: "确定要进行智能推荐？此次操作需消耗一张智能推荐卡",
+      content: "确定要进行智能推荐？非付费会员需消耗一张智能推荐卡",
       confirmFn: function () {
         util.navigateTo("/pages/intelligence/result/result", { MAJOR: that.data.majors_id, PROVINCE: that.data.provinces_id, SUBJECTTYPE: that.data.subjecttypes_id, SCPROPERTY: that.data.properties_id, ARRANGMENT_ID: that.data.arrangment_id, MAJORTYPE: that.data.MAJORTYPE, MAJORTYPE_VALUE: that.data.MAJORTYPE_VALUE });
       }
