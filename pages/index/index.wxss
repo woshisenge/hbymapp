@@ -50,7 +50,7 @@
 }
 /* 公告 开始 */
 .notice{
-  padding: 0rpx 35rpx;
+  padding: 10rpx 35rpx;
   border-top: 20rpx solid #F7F7F7;
   border-bottom: 20rpx solid #F7F7F7;
   display: flex;
@@ -58,6 +58,7 @@
   align-items:center;
   justify-content: flex-start;
   position: relative;
+  background-color: white;
 }
 .notices{
   background-color:#FEFDA1;

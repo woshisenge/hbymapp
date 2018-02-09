@@ -51,7 +51,7 @@ Page({
    */
   onShow: function () {
     var that = this;
-    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb" }, 'POST', false, function (res) {
+    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb" }, 'POST', true, function (res) {
       that.setData({
         news: that.toDto(res.data.results)
       });
