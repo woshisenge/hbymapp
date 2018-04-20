@@ -96,7 +96,7 @@ Page({
         content: '本系统付费功能仅供河北考生使用，请确认是否为河北考生？（虚拟商品一经售出概不退换）',
         success: function (res) {
           if (res.confirm) {
-    util.sendRequest("/plant/wxrecharge/preferentialActivitie_CheckPhone",{PHONE1:that.data.PHONE1,PHONE2:that.data.PHONE2},"POST",true,function(res){
+            util.sendRequest("/plant/wxrecharge/preferentialActivitie_CheckPhone", { USER_ID: that.data.user_id,PHONE1:that.data.PHONE1,PHONE2:that.data.PHONE2,},"POST",true,function(res){
       wx.showModal({
         title: '提示',
         content: res.data,
