@@ -87,6 +87,7 @@ Page({
     var a = e.currentTarget.id;
     console.log(that.data.PHONE1)
     console.log(that.data.PHONE2)
+    console.log(that.data.user_id)
     if (that.data.PHONE1 == "" || that.data.PHONE2 == ""){
       util.showError("手机号不能为空！")
     } 
@@ -96,14 +97,14 @@ Page({
         content: '本系统付费功能仅供河北考生使用，请确认是否为河北考生？（虚拟商品一经售出概不退换）',
         success: function (res) {
           if (res.confirm) {
-            util.sendRequest("/plant/wxrecharge/preferentialActivitie_CheckPhone", { USER_ID: that.data.user_id,PHONE1:that.data.PHONE1,PHONE2:that.data.PHONE2,},"POST",true,function(res){
+            util.sendRequest("/plant/wxrecharge/preferentialActivitie_CheckPhone", {PHONE1:that.data.PHONE1,PHONE2:that.data.PHONE2},"POST",true,function(res){
       wx.showModal({
         title: '提示',
         content: res.data,
         success: function (res) {
           if (res.confirm) {
             util.sendRequest("/plant/wxrecharge/addUnPayOrder_ForTwo", { TOTAL: a }, "POST", true, function (res) {
-              var OUT_TRADE_NO = res.OUT_TRADE_NO
+              var OUT_TRADE_NO = res.OUT_TRADE_NO;
               var nonceStr = res.prePayReSign.nonceStr;
               var packageStr = res.prePayReSign.packageStr;
               var paySign = res.prePayReSign.paySign;
@@ -116,7 +117,7 @@ Page({
                 signType: signType,
                 paySign: paySign,
                 success: function (obj) {
-                  util.sendRequest("/wechat/applet/user/activate_fortwo", { PHONE1: that.data.PHONE1,PHONE2:that.data.PHONE2, OUT_TRADE_NO: OUT_TRADE_NO }, "POST", false, function (obj) {
+                  util.sendRequest("/wechat/applet/user/activate_fortwo", { PHONE1: that.data.PHONE1,PHONE2:that.data.PHONE2, OUT_TRADE_NO: OUT_TRADE_NO,USER_ID:that.data.user_id }, "POST", false, function (obj) {
                     wx.showModal({
                       content: '支付完成',
                       showCancel: false,
