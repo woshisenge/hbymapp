@@ -14,6 +14,53 @@ Page({
     strRes:"",
     strResId:""
   },
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
+  },
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+  },
+  clearInput: function () {
+    var that = this;
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+    var majors = that.data.majors;
+    majors.forEach(function(element){
+      element.check = false;
+    })
+    that.setData({
+      majors:majors
+    })
+  },
+  inputTyping: function (e) {
+    var that = this;
+    this.setData({
+      inputVal: e.detail.value
+    });
+  },
+  searchMajor:function(){
+    var that = this;
+    var majors = that.data.majors;
+    for (var i = 0; i < majors.length; i++) {
+      if (majors[i].NAME.indexOf(that.data.inputVal) >= 0) {
+        majors[i].check = false;
+      }
+      else {
+        majors[i].check = true;
+      }
+    }
+
+    that.setData({
+      majors: majors
+    });
+  },
   serviceValChange: function (e) {
     var strRes = "";
     var strResId = "";

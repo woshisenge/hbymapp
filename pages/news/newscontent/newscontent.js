@@ -28,7 +28,7 @@ Page({
   onLoad: function (options) {
     var that=this;
     var id =options.a;
-    util.sendRequest('/wechat/applet/news/getnewsbyid', { NEWS_ID: id }, 'POST', false, function (res) {
+    util.sendRequest_s('/wechat/applet/news/getnewsbyid', { NEWS_ID: id }, 'POST', false, function (res) {
       
       var imgReg = /<img.*?(?:>|\/>)/gi;
       var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;

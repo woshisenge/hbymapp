@@ -58,9 +58,15 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
+      var result = new Array();
+      res.data.forEach(function(element){
+        if(element.NAME != "军事类" && element.NAME != "体育类" && element.NAME != "艺术类" && element.NAME != "其他类"){
+          result.push(element)
+        }
+      }) 
       if (options.subjecttypes && options.subjecttypes != "") {
         var arr = options.subjecttypes.split(",");
-        res.data.forEach(function (element) {
+        result.forEach(function (element) {
           for (var i = 0; i < arr.length; i++) {
             if (element.DIC_ID == arr[i]) {
               element.checked = true;
@@ -76,7 +82,7 @@ Page({
       }
 
       that.setData({
-        mold: res.data
+        mold: result
       })
     })
   },

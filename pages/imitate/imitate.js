@@ -52,7 +52,7 @@ Page({
         });
       }
     });
-
+    
   },
   toExaminee:function(){
     util.navigateTo("/pages/person/information/information")
@@ -61,8 +61,25 @@ Page({
     var that = this;
     var index = that.data.activeIndex;
     var school_id = e.currentTarget.id;
+    var id = that.data[school_id + "_id"];
+    var num = school_id.substr(1,1)
+    var param = "";
+    if(num == 1){
+      for(var i = 1; i < 6; i++){
+        if (that.data["b1Schools_" + i + "_id"] != ""){
+          param += that.data["b1Schools_" + i + "_id"] + ",";
+        }
+      }
+    }
+    else{
+      for (var i = 1; i < 11; i++) {
+        if (that.data["b2Schools_" + i + "_id"] != "") {
+          param += that.data["b2Schools_" + i + "_id"] + ",";
+        }
+      }
+    }
     var major_id = school_id.replace("Schools","Schools_major");
-      util.navigateTo("/pages/imitate/school/school", { index: index, school_id: school_id, major_id: major_id }) 
+      util.navigateTo("/pages/imitate/school/school", { index: index, school_id: school_id, major_id: major_id,param:param, id:id}) 
     },
   tabClick: function (e) {
     this.setData({
@@ -86,9 +103,15 @@ Page({
       that.setData({
         examinee: res,
         MAJORTYPE: res.MAJORTYPE,
-        subject: res.MAJORTYPE_VALUE
+        subject: res.MAJORTYPE_VALUE,
+        user_id: res.USER_ID
       });
     });
+    util.sendRequest("/wechat/applet/user/getvip", {}, "POST", true, function (obj) {
+      that.setData({
+        vip: obj.DATA
+      })
+    })
   },
 
   /**
@@ -136,9 +159,50 @@ Page({
       return false;
     }
     else{
-    util.confirm({
-      content: "确定要进行模拟填报？非付费会员需消耗一张模拟填报卡",
-      confirmFn: function () {
+      if(that.data.vip != "UC"){
+        util.confirm({
+          content: "确定要进行模拟填报？您将使用一次模拟填报",
+          confirmFn: function () {
+            var b1Schools_1_id = that.data.b1Schools_1_id;
+            var b1Schools_2_id = that.data.b1Schools_2_id;
+            var b1Schools_3_id = that.data.b1Schools_3_id;
+            var b1Schools_4_id = that.data.b1Schools_4_id;
+            var b1Schools_5_id = that.data.b1Schools_5_id;
+            var b1Schools = that.data.b1Schools;
+
+            var b1Schools_major_1_id = that.data.b1Schools_major_1_id;
+            var b1Schools_major_2_id = that.data.b1Schools_major_2_id;
+            var b1Schools_major_3_id = that.data.b1Schools_major_3_id;
+            var b1Schools_major_4_id = that.data.b1Schools_major_4_id;
+            var b1Schools_major_5_id = that.data.b1Schools_major_5_id;
+
+            
+            var param = {};
+            param.school1 = b1Schools_1_id;
+            param.zye1 = b1Schools_major_1_id;
+
+            param.school2 = b1Schools_2_id;
+            param.zye2 = b1Schools_major_2_id;
+
+            param.school3 = b1Schools_3_id;
+            param.zye3 = b1Schools_major_3_id;
+
+            param.school4 = b1Schools_4_id;
+            param.zye4 = b1Schools_major_4_id;
+
+            param.school5 = b1Schools_5_id;
+            param.zye5 = b1Schools_major_5_id;
+            param.flag = 1;
+            param.handleFlag = 1;//1为模拟填报,2为智能推荐
+            param.index = that.data.activeIndex;
+            param.subject = that.data.subject;
+            param.MAJORTYPE = that.data.MAJORTYPE;
+
+            util.navigateTo("/pages/analog/result/result", param);
+          }
+        });
+      }
+      else{
         var b1Schools_1_id = that.data.b1Schools_1_id;
         var b1Schools_2_id = that.data.b1Schools_2_id;
         var b1Schools_3_id = that.data.b1Schools_3_id;
@@ -152,7 +216,7 @@ Page({
         var b1Schools_major_4_id = that.data.b1Schools_major_4_id;
         var b1Schools_major_5_id = that.data.b1Schools_major_5_id;
 
-        
+
         var param = {};
         param.school1 = b1Schools_1_id;
         param.zye1 = b1Schools_major_1_id;
@@ -173,10 +237,8 @@ Page({
         param.index = that.data.activeIndex;
         param.subject = that.data.subject;
         param.MAJORTYPE = that.data.MAJORTYPE;
-
         util.navigateTo("/pages/analog/result/result", param);
       }
-    });
     }
   },
   b2Submit: function () {
@@ -195,9 +257,74 @@ Page({
       return false;
     }
     else{
-    util.confirm({
-      content: "确定要进行模拟填报？非付费会员需消耗一张模拟填报卡",
-      confirmFn: function () {
+      if(that.data.vip != "UC"){
+        util.confirm({
+          content: "确定要进行模拟填报？您将使用一次模拟填报",
+          confirmFn: function () {
+            var b2Schools_1_id = that.data.b2Schools_1_id;
+            var b2Schools_2_id = that.data.b2Schools_2_id;
+            var b2Schools_3_id = that.data.b2Schools_3_id;
+            var b2Schools_4_id = that.data.b2Schools_4_id;
+            var b2Schools_5_id = that.data.b2Schools_5_id;
+            var b2Schools_6_id = that.data.b2Schools_6_id;
+            var b2Schools_7_id = that.data.b2Schools_7_id;
+            var b2Schools_8_id = that.data.b2Schools_8_id;
+            var b2Schools_9_id = that.data.b2Schools_9_id;
+            var b2Schools_10_id = that.data.b2Schools_10_id;
+            var b2Schools = that.data.b2Schools;
+
+            var b2Schools_major_1_id = that.data.b2Schools_major_1_id;
+            var b2Schools_major_2_id = that.data.b2Schools_major_2_id;
+            var b2Schools_major_3_id = that.data.b2Schools_major_3_id;
+            var b2Schools_major_4_id = that.data.b2Schools_major_4_id;
+            var b2Schools_major_5_id = that.data.b2Schools_major_5_id;
+            var b2Schools_major_6_id = that.data.b2Schools_major_6_id;
+            var b2Schools_major_7_id = that.data.b2Schools_major_7_id;
+            var b2Schools_major_8_id = that.data.b2Schools_major_8_id;
+            var b2Schools_major_9_id = that.data.b2Schools_major_9_id;
+            var b2Schools_major_10_id = that.data.b2Schools_major_10_id;
+            var param = {};
+            param.school1 = b2Schools_1_id;
+            param.zye1 = b2Schools_major_1_id;
+
+            param.school2 = b2Schools_2_id;
+            param.zye2 = b2Schools_major_2_id;
+
+            param.school3 = b2Schools_3_id;
+            param.zye3 = b2Schools_major_3_id;
+
+            param.school4 = b2Schools_4_id;
+            param.zye4 = b2Schools_major_4_id;
+
+            param.school5 = b2Schools_5_id;
+            param.zye5 = b2Schools_major_5_id;
+
+            param.school6 = b2Schools_6_id;
+            param.zye6 = b2Schools_major_6_id;
+
+            param.school7 = b2Schools_7_id;
+            param.zye7 = b2Schools_major_7_id;
+
+            param.school8 = b2Schools_8_id;
+            param.zye8 = b2Schools_major_8_id;
+
+            param.school9 = b2Schools_9_id;
+            param.zye9 = b2Schools_major_9_id;
+
+            param.school10 = b2Schools_10_id;
+            param.zye10 = b2Schools_major_10_id;
+            
+            
+            param.flag = 2;
+            param.handleFlag = 1;//1为模拟填报,2为智能推荐
+            param.index = that.data.activeIndex;
+            param.subject = that.data.subject;
+            param.MAJORTYPE = that.data.MAJORTYPE;
+            util.navigateTo("/pages/analog/result/result", param);
+          }
+        });
+      }
+      else{
         var b2Schools_1_id = that.data.b2Schools_1_id;
         var b2Schools_2_id = that.data.b2Schools_2_id;
         var b2Schools_3_id = that.data.b2Schools_3_id;
@@ -250,8 +377,8 @@ Page({
 
         param.school10 = b2Schools_10_id;
         param.zye10 = b2Schools_major_10_id;
-        
-        
+
+
         param.flag = 2;
         param.handleFlag = 1;//1为模拟填报,2为智能推荐
         param.index = that.data.activeIndex;
@@ -259,7 +386,6 @@ Page({
         param.MAJORTYPE = that.data.MAJORTYPE;
         util.navigateTo("/pages/analog/result/result", param);
       }
-    });
     }
   },
 })

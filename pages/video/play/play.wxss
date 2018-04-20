@@ -1,5 +1,110 @@
 /* pages/video/play/play.wxss */
+page {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.MainContent {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.TopBlock {
+    height: 522rpx;
+}
+.BottomBlock {
+    display: flex;
+    flex: 1;
+    overflow: auto;
+}
 .video{
+  width:100%;
+  position: fixed;
+  z-index:2;
+  top:0;
+}
+video{
   width:96%;
   margin:15rpx 2% 0 2%;
+  height:360rpx;
 }
+.page-body{
+ margin-top:510rpx;
+ height:710rpx;
+  box-sizing: border-box; 
+}
+.page-center{
+  width:96%;
+  margin:0 2% 0 2%;
+  background-color: white;
+  padding:10rpx 0;
+ 
+}
+.page-center-title{
+  font-size:28rpx;
+  margin:10rpx 0 0 15rpx;
+}
+.page-center-play{
+  margin:10rpx 0 0 15rpx;
+  color:#666;
+}
+.center{
+  text-align: center;
+  font-size:36rpx;
+  color:rgb(90,180,170);
+  border:0;
+}
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding:0 20rpx;
+}
+.content-item{
+  width:30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left:22rpx;
+  margin-top:10rpx;
+}
+.content-item image{
+  width:100%;
+  height:170rpx;
+}
+.content-item text{
+  margin-top:10rpx;
+  font-size:24rpx;
+}
+/* .weui-cells{
+  background-color: white;
+}
+.page-teacher{
+  width:100%;
+  margin-top:50rpx;
+}
+.teacher-in{
+  width:98%;
+  margin:15rpx 0 0 2%;
+  font-size:36rpx;
+}
+.teacher-logo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.teacher-name{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.teacher-name text{
+  margin-left:20rpx;
+}
+.teacher-content{
+  width:96%;
+  margin:15rpx 2% 0 2%;
+} */

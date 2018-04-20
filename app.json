@@ -54,7 +54,14 @@
     "pages/person/improve/improve",
     "pages/video/play/play",
     "pages/school/schoolcontent/rule/rule",
-    "pages/school/schoolcontent/plan/plan"
+    "pages/school/schoolcontent/plan/plan",
+    "pages/person/collect/collect",
+    "pages/article/article",
+    "pages/teacher/content/content",
+    "pages/teacher/introduce/introduce",
+    "pages/teacher/issue_content/issue_content",
+    "pages/teacher/ask/ask",
+    "pages/teacher/answer/answer"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -68,21 +75,21 @@
     "list": [
       {
         "pagePath": "pages/contacts/contacts",
-        "text": "联系人",
-        "iconPath": "images/contact.png",
-        "selectedIconPath": "images/contacts.png"
+        "text": "招办咨询",
+        "iconPath": "images/2.png",
+        "selectedIconPath": "images/1.png"
       },
       {
         "pagePath": "pages/index/index",
         "text": "主页",
-        "iconPath": "images/homepages.png",
-        "selectedIconPath": "images/homepage.png"
+        "iconPath": "images/4.png",
+        "selectedIconPath": "images/3.png"
       },
       {
         "pagePath": "pages/person/person",
         "text": "我的",
-        "iconPath": "images/personals.png",
-        "selectedIconPath": "images/personal.png"
+        "iconPath": "images/6.png",
+        "selectedIconPath": "images/5.png"
       }
     ]
   }

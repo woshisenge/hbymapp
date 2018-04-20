@@ -5,7 +5,7 @@
       <block wx:for="{{provinceObjs}}" wx:key="{{item.DIC_ID}}">
              <view class="weui-cell" bindtap="select" id="{{item.DIC_ID}}">
                 <view class="weui-cell__bd" >{{item.NAME}}</view>
-                <view class="weui-cell__ft"></view>
+                <view class="weui-cell__ft">{{item.checked ? '√' : ''}}</view>
             </view> 
          <!-- <radio-group class="radio-group" bindchange="radioChange">
           <label class="radio" class="weui-cell weui-check__label" wx:for="{{provinceObjs}}">

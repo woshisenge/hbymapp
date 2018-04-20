@@ -42,8 +42,8 @@
   /* height: 100px; */
 }
 .tpia{
-  width: 50rpx;
-  height: 50rpx; 
+  width: 40rpx;
+  height: 40rpx; 
 }
 .navigation-text{
   font-size: 25rpx;
@@ -58,10 +58,10 @@
   align-items:center;
   justify-content: flex-start;
   position: relative;
-  background-color: white;
+  background-color:white;
 }
 .notices{
-  background-color:#FEFDA1;
+  background-color:white;
   padding: 0rpx 35rpx;
   border-top: 20rpx solid #F7F7F7;
   border-bottom: 20rpx solid #F7F7F7;
@@ -72,7 +72,7 @@
   position: relative;
 }
 .more1{
-  font-size:50rpx;
+  font-size:28rpx;
   color:rgb(90,180,170);
   position: absolute;
   right: 20rpx;

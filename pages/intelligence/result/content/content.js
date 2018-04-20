@@ -10,7 +10,8 @@ Page({
     subject:"",
     checked:false,
     img:"chong",
-    advice:"极大"
+    collection:1,
+    hidden:false
   },
 
   /**
@@ -18,6 +19,26 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    if(options.img == "chong"){
+      that.setData({
+        advice:"风险较大，请慎重考虑！"
+      })
+    }
+    if (options.img == "wen") {
+      that.setData({
+        advice: "风险较小，综合考虑！"
+      })
+    }
+    if (options.img == "bao") {
+      that.setData({
+        advice: "建议填报，综合考虑！"
+      })
+    }
+    if (options.img == "dian") {
+      that.setData({
+        advice: "建议参考填报！"
+      })
+    }
     var arrId = options.ARRANGMENT_ID;
     var style = "";
     if (arrId == "hjj4e5vr0c"){
@@ -38,15 +59,16 @@ Page({
         var results = that.data.results;
         res.data.forEach(function (element) {
           if (element.MINSCORETOTALCOUNT == null) {
-            element.MINSCORETOTALCOUNT = ""
+            element.MINSCORETOTALCOUNT = "---"
           }
           if (element.MAXSCORETOTALCOUNT == null) {
-            element.MAXSCORETOTALCOUNT = ""
+            element.MAXSCORETOTALCOUNT = "---"
           }
         })
         if(res.data.length > 0) {
           var mjname = res.data[0].MJNAME;
-          var majorObj = {MJNAME: mjname, scores: res.data};
+          var mj_id = res.data[0].MAJOR_ID;
+          var majorObj = {MJNAME: mjname,MAJORID:mj_id, scores: res.data};
           results.push(majorObj);
         }
         that.setData({
@@ -74,6 +96,14 @@ Page({
           obj.checked = true;
         }
       })
+      result.forEach(function (element) {
+        if (element.MinPM == null) {
+          element.MinPM = "---"
+        }
+        if (element.MaxPM == null) {
+          element.MaxPM = "---"
+        }
+      })
        that.setData({
          grade: result
        })
@@ -82,10 +112,31 @@ Page({
       subject: options.MAJORTYPE_VALUE,
       style : style,
       img:options.img,
-      advice:options.advice
+      school_id:options.SCHOOL_ID
     })
   },
- 
+  collection:function(e){
+    var that = this;
+    var param={};
+    param.SCHOOL_ID = that.data.school_id;
+    param.SCHOOLNAME = that.data.name;
+    param.MAJORID = e.currentTarget.id;
+    param.PROVINCE = that.data.region;
+    param.COLL_TYPE = that.data.img;
+    param.MJNAME = e.currentTarget.dataset.id;
+    util.sendRequest("/wechat/applet/report/collection_zntj",param,"POST",false,function(res){
+      util.showSuccess()
+      var result = that.data.results;
+      result.forEach(function (element) {
+        if (element.MAJORID == param.MAJORID) {
+          element.hidden = true
+        }
+      })
+      that.setData({
+        results: result
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -22,7 +22,9 @@ Page({
     major_4_id: "",
     major_5_id: "",
     major_6_id: "",
-    param:{}
+    param:{},
+    schools:"",
+    id:""
     },
 
   /**
@@ -34,12 +36,16 @@ Page({
     that.setData({
       index:index,
       school:options.school_id,
-      major: options.major_id
+      major: options.major_id,
+      schools:options.param,
+      id:options.id
     })
   },
   school:function(e){
+    var that = this;
     var index=e.currentTarget.dataset.id;
-    util.navigateTo("/pages/imitate/school/content/content",{index:index})
+    var schools = that.data.schools;
+    util.navigateTo("/pages/imitate/school/content/content",{index:index,schools:schools,id:that.data.id})
   },
   major:function(e){
     var that = this;

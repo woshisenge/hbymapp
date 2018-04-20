@@ -7,7 +7,7 @@ Page({
    */
   data: {
     //用户头像
-    logo:"/images/school.jpg",
+    logo:"/images/touxiang.png",
     //信息完整度
     completeCount: 0,                              
     //高考分数
@@ -20,7 +20,9 @@ Page({
     role: 0,
     vip:"",
     isVip:"",
-    user_id:""
+    user_id:"",
+    hidden:true,
+    hide:true
   },
 
   /**
@@ -74,6 +76,7 @@ Page({
    * 获取用户基本信息
    */
   getUserInfo: function() {
+
     var that = this;
     util.sendRequest("/wechat/applet/user/isvip",{},"POST",false,function(res){
        that.setData({
@@ -81,7 +84,7 @@ Page({
        })
     })
     util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
-      var vip = obj.data;
+      var vip = obj.DATA;
       if(vip == "UC"){
         vip = 1
       }
@@ -121,11 +124,36 @@ Page({
       })
     })
   },
+  collection:function(){
+    var that = this;
+    that.setData({
+      hidden: !that.data.hidden
+    })
+    
+  },
+  analog:function(e){
+    var id = e.currentTarget.id
+
+    util.navigateTo("/pages/person/collect/collect",{id:id})
+  },
+  intelligence:function(e){
+    var id = e.currentTarget.id;
+
+    util.navigateTo("/pages/person/collect/collect", { id: id })
+  },
+  single:function(e){
+    var id = e.currentTarget.id
+    util.navigateTo("/pages/person/improve/improve", { id: id, user_id: this.data.user_id })
+  },
+  group:function(e){
+    var id = e.currentTarget.id
+    util.navigateTo("/pages/person/improve/improve", { id: id, user_id: this.data.user_id })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
@@ -162,23 +190,28 @@ Page({
   },
   power:function(){
     var that = this;
-    wx.showModal({
-      content: '是否已经购买会员卡？',
-      confirmText: "立即购买",
-      cancelText: "已购买",
-      cancelColor: "#3CC51F",
-      success: function (res) {
-        if (res.confirm) {
-          util.navigateTo("/pages/person/improve/improve",{user_id:that.data.user_id})
-        } 
-        if (res.cancel){
-          util.navigateTo("/pages/person/member/member")
-        }
-      },
-      fail:function(){
+    // wx.showModal({
+    //   content: '是否已经购买会员卡？',
+    //   confirmText: "立即购买",
+    //   cancelText: "已购买",
+    //   cancelColor: "#3CC51F",
+    //   success: function (res) {
+    //     if (res.confirm) {
+    //       util.navigateTo("/pages/person/improve/improve",{user_id:that.data.user_id})
+    //     } 
+    //     if (res.cancel){
+    //       util.navigateTo("/pages/person/member/member")
+    //     }
+    //   },
+    //   fail:function(){
 
-      }
-    });
+    //   }
+    // });
+    var that = this;
+    that.setData({
+      hide: !that.data.hide
+    })
+
   },
   toExaminee: function() {
     util.navigateTo("/pages/person/information/information");

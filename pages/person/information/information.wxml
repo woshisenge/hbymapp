@@ -9,7 +9,7 @@
             </picker>
       </view>
   </view>   
-  <view class="weui-cell weui-cell_access">
+  <view class="weui-cell weui-cell_access" bindtap="provice" id="{{province_id}}">
       <view class="weui-cell__hd"></view>
       <view class="weui-cell__bd weui-cell_primary">
           <text>考生所在地</text>

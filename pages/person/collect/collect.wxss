@@ -1,0 +1,74 @@
+/* pages/person/collect/collect.wxss */
+.weui-cell__bd{
+  display: flex;
+  flex-direction: column;
+  margin-left:10rpx;
+  /* align-items: center; */
+}
+.center{
+  text-align: center;
+}
+.page__bd_spacing{
+  padding:10rpx;
+  border-top:2rpx solid #d9d9d9;
+  background-color:white;
+}
+.weui-flex{
+  padding:0 30rpx;
+}
+button[type="primary"]{
+  color:#33c9b5;
+  background-color:white;
+}
+button::after{
+  border: 2rpx solid #33c9b5;
+}
+.weui-cells:after{
+  border-bottom:0;
+}
+.weui-cells:before{
+  border-top:0;
+}
+.placeholder{
+  padding:7rpx;
+}
+.Bgcolor1{
+  background-color:#e6f8f6;
+}
+.Bgcolor2{
+  background-color:#fde8eb;
+}
+.Bgcolor3{
+  background-color:#e6effa;
+}
+.Bgcolor4{
+  background-color:#f4f1f4;
+}
+.nodata{
+  width:100%;
+  margin-top:170rpx;
+  height:510rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nodata image{
+  width:100%;
+  height:100%;
+}
+.date{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size:30rpx;
+}
+.major{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size:30rpx;
+  width:100%;
+}

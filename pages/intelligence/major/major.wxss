@@ -4,3 +4,6 @@
   position: fixed;
   bottom: 0;
 }
+.hide{
+  display: none;
+}

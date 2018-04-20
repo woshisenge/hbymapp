@@ -1,1 +1,109 @@
 /* pages/teacher/teacher.wxss */
+.page_head{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  background-color:#fff;
+  padding:20rpx 0;
+}
+.head_right{
+  width:17%;
+  margin-left:3%;
+  display: flex;
+  
+  flex-direction: row;
+  align-items: center;
+}
+.weui-search-bar{
+  background-color:#fff;
+  border:0;
+}
+.weui-search-bar__label{
+  text-align: right;
+  padding-right:20rpx;
+}
+.quiz{
+  padding-left:10rpx;
+  font-size:30rpx;
+}
+.answer{
+  color:#666;
+  margin-top:25rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.weui-media-box {
+  padding:12rpx 30rpx;
+}
+.answer-item{
+  margin-right:30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.answer-item text{
+  margin-left:10rpx;
+}
+.check_more{
+  text-align: right;
+  color:rgb(90,180,170);
+  margin-top:25rpx;
+}
+.teacher_answer{
+  text-indent: 2em;
+}
+.weui-navbar{
+  width:80%;
+  margin:0 10%;
+  font-size:35rpx;
+   border:0;
+}
+.weui-tab{
+  background-color:white;
+  width:100%;
+  position:fixed;
+  z-index:2;
+  height:130rpx;
+  top:0;
+}
+.weui-navbar__item{
+  border:1rpx solid rgb(90,180,170);
+  border-radius: 5rpx;
+  width:40%;
+  margin:5% 0;
+  padding:8rpx 25rpx;
+  color:rgb(90,180,170);
+}
+.weui-tab__panel{
+  padding-top:0;
+  margin-top:130rpx;
+}
+.weui-navbar__item.weui-bar__item_on {
+  background-color:rgb(90,180,170);
+  color:white;
+}
+.weui-panel{
+  margin-top:0;
+}
+/* .weui-panel:before{
+  border-top:0;
+} */
+.atte{
+  background-color:rgb(90,180,170);
+  font-size:24rpx;
+  color:white;
+  padding:4rpx 20rpx;
+  border-radius: 6rpx;
+}
+.weui-media-box__desc{
+  -webkit-line-clamp:1;
+}
+.weui-panel:after {
+  border-bottom: 0;
+}
+.weui-media-box__thumb{
+  border-radius: 50%;
+}

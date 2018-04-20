@@ -10,7 +10,6 @@
 .top-left{
   width:40%;
   height:50rpx;
-  background-color:#94f5fe;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,8 +17,7 @@
 .top-right{
   width:40%;
   height:50rpx;
-  
-  background-color:#a7dec0;
+  border:1rpx solid rgb(90,180,170);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -53,7 +51,8 @@
 }
 .weui-navbar{
   border:0;
-  width:70%;
+  width:94%;
+  margin:0 3%;
 }
 .weui-navbar__item{
   border:1rpx solid rgb(90,180,170);
@@ -86,3 +85,15 @@
   text-align: center;
   padding:8rpx;
 }
+.backTop{
+  width:100%;
+  height:50rpx;
+  position:fixed;
+  bottom:30rpx;
+  text-align: right;
+}
+/* .backTop image{
+  width:50rpx;
+  height:50rpx;
+  margin:0 30rpx 30rpx 0;
+} */

@@ -224,7 +224,7 @@ Page({
     var that = this;
 
     that.setSearchParam();
-    util.sendRequest('/wechat/applet/school/getrankings', that.data.searchParam, 'POST', false, function (res) {
+    util.sendRequest_s('/wechat/applet/school/getrankings', that.data.searchParam, 'POST', false, function (res) {
       that.setData({
         grade: that.setResults(res.data.results, isClear),
       });

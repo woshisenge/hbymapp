@@ -42,9 +42,16 @@ Page({
     });
   },
   clearInput: function () {
+    var that = this;
+    var that = this;
+    var param = that.data.searchParam;
+    param.NAME = "";
+
     this.setData({
       inputVal: ""
     });
+    that.clearCurPage();
+    that.pullSchoolInfos(true);
   },
   inputTyping: function (e) {
     this.setData({
@@ -59,7 +66,7 @@ Page({
   },
   select: function () {
     var that = this;
-    util.sendRequest('/wechat/applet/school/get', { NAME: that.data.inputVal }, 'POST', false, function (res) {
+    util.sendRequest_s('/wechat/applet/school/get', { NAME: that.data.inputVal }, 'POST', false, function (res) {
 
       that.setData({
         schools: that.toDto(res.data.results)
@@ -152,22 +159,22 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.pullSchoolInfos();
-    util.sendRequest('/wechat/applet/dictionary/get', { code: 'ARRANGMENT' }, 'POST', false, function (res) {
+    util.sendRequest_s('/wechat/applet/dictionary/get', { code: 'ARRANGMENT' }, 'POST', false, function (res) {
       that.setData({
         arrangments: res.data
       })
     });
-    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
+    util.sendRequest_s('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
       that.setData({
         properties: res.data
       })
     });
-    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
+    util.sendRequest_s('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
       that.setData({
         subjecttypes: res.data
       })
     });
-    util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE' }, 'POST', false, function (res) {
+    util.sendRequest_s('/wechat/applet/dictionary/get', { code: 'PROVINCE' }, 'POST', false, function (res) {
       that.setData({
         provinces: res.data
       })
@@ -457,7 +464,7 @@ Page({
 
     that.setSearchParam();
 
-    util.sendRequest('/wechat/applet/school/get', that.data.searchParam, 'POST', false, function (res) {
+    util.sendRequest_s('/wechat/applet/school/get', that.data.searchParam, 'POST', false, function (res) {
       that.setData({
         schools: that.setResults(res.data.results, isClear),
         num: res.data.totalRecord

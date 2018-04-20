@@ -18,7 +18,7 @@
                 <view class="weui-cell__ft weui-cell__ft_in-access {{!major.checked ? '': 'rotate_90'}}"></view>
             </view>
             <view class="weui-cell weui-cell_access childs" hover-class="weui-cell_active" hidden="{{!major.checked}}" wx:for="{{major.childs}}" wx:key="" wx:for-item="majors" bindtap="toDetails" id="{{majors.DIC_ID}}" data-id="{{majors.NAME}}" data-name="{{indexs}}">
-              <view class="weui-cell__bd">　{{majors.NAME}}</view>
+              <view class="weui-cell__bd">{{majors.NAME}}</view>
               <view class="weui-cell__ft"></view>
             </view>
         </view>
@@ -32,7 +32,7 @@
                 <view class="weui-cell__ft weui-cell__ft_in-access {{!zmajor.checked ? '': 'rotate_90'}}"></view>
             </view>
             <view class="weui-cell weui-cell_access childs" hover-class="weui-cell_active" hidden="{{!zmajor.checked}}" wx:for="{{zmajor.childs}}" wx:key="" wx:for-item="zmajors" bindtap="toDetail" id="{{zmajors.DIC_ID}}"data-id="{{zmajors.NAME}}" data-name="{{indexss}}">
-              <view class="weui-cell__bd">　{{zmajors.NAME}}</view>
+              <view class="weui-cell__bd">{{zmajors.NAME}}</view>
               <view class="weui-cell__ft"></view>
             </view>
         </view>

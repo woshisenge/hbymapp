@@ -42,7 +42,10 @@ Page({
     msgView: {},
     RecordStatus: RecordStatus,
     RecordDesc: RecordDesc,
-    recordStatus: RecordStatus.HIDE
+    recordStatus: RecordStatus.HIDE,
+    question:true,
+    que_list:true,
+    hid:false
   },
   toDto: function (list) {
     if (!list) return list;
@@ -143,6 +146,11 @@ Page({
         })
       });
     });
+    util.sendRequest("/wechat/applet/chat/getquestitle",{},"POST",false,function(res){
+      that.setData({
+        que:res.data
+      })
+    })
   },
   onUnload: function() {
 
@@ -153,7 +161,41 @@ Page({
       inputMessage: ''
     })*/
   },
+  open_que:function(){
+    var that = this;
+    that.setData({
+      question:!that.data.question,
+      show: "emoji_list",
+      que_list:true
+    })
+  },
+  que_send:function(){
+    var that = this;
+    that.setData({
+      show:"emoji_list",
+      view: 'scroll_view_change',
+      que_list:false
+    })
+  },
+  send_content:function(e){
+    var that = this;
+    var name = e.currentTarget.dataset.name;
+    var id = e.currentTarget.id
+    console.log(name + "------------" + id)
+    that.setData({
+      inputMessage: name,
+      userMessage: name
+    })
+    // util.sendRequest("/wechat/applet/chat/getquescontent",{QUE_ID:id},"POST",false,function(res){
+    //   console.log(res)
+    //   that.setData({
+    //     userMessage:res.data[0].CONTENT,
+    //     inputMessage: res.data[0].CONTENT
+    //   })
+    // })
+  },
   bindMessage: function (e) {
+    // console.log(e.detail.value)
     this.setData({
       userMessage: e.detail.value
     })
@@ -171,9 +213,10 @@ Page({
       util.showError("消息不能为空");
       return;
     }
+    
     var that = this;
+    
     util.sendRequest("/wechat/applet/chat/sendMessage", {USER_ID: that.data.ruser_id, MESSAGE: that.data.userMessage}, "POST", true, function(res){
-     
       var record = {
         REC_ID: util.getUUID(),
         SUSER_ID: that.data.suser_id,
@@ -183,7 +226,6 @@ Page({
         style: "self"
       
       }
-      
 
       record.CONTENT = util.parseEmoji(that.data.userMessage);
       var chatRecords = that.data.chatRecords;
@@ -192,14 +234,19 @@ Page({
       that.setData({
         chatRecords: chatRecords,
         inputMessage: '',
-        userMessage: ''
+        userMessage: '',
+        que_list: true,
+        show: "emoji_list",
+        question:true,
+        view:'scroll_view'
       });
     });
   },
   openEmoji: function () {
     this.setData({
       show: 'showEmoji',
-      view: 'scroll_view_change'
+      view: 'scroll_view_change',
+      que_list:true
     })
   },
   sendEmoji: function (event) {

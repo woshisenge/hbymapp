@@ -4,7 +4,7 @@
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
   <block wx:for="{{imgUrls}}" wx:key="">
     <swiper-item>
-      <image src="{{item}}" style='width:100%;height:100%;' class="slide-image"/>
+      <image src="{{item.src}}" style='width:100%;height:100%;' class="slide-image"/>
     </swiper-item>
   </block>
 </swiper>   
@@ -13,7 +13,7 @@
 <view class='navigation-box'> 
   <view class='navigation' bindtap="consultation">
     <image class="tpia" src='/images/01.png'></image> 
-    <view class='navigation-text'>院校咨询</view>
+    <view class='navigation-text'>招办咨询</view>
   </view>
   <view class='navigation' bindtap='teacher'>
     <image class="tpia" src='/images/04.png'></image> 
@@ -25,7 +25,7 @@
   </view>
   <view class='navigation' bindtap="major">
     <image class="tpia" src='/images/07.png'></image> 
-    <view class='navigation-text'>专业库</view>
+    <view class='navigation-text'>专业库</view> 
   </view>
   <view class='navigation' bindtap="analog">
     <image class="tpia" src='/images/05.png'></image> 
@@ -37,7 +37,7 @@
   </view>
    <view class='navigation' bindtap='test'>
     <image class="tpia" src='/images/03.png'></image> 
-    <view class='navigation-text'>线下咨询会</view>             
+    <view class='navigation-text'>专家问答</view>             
   </view>
   <view class='navigation' bindtap='phone'>
     <image class="tpia" src='/images/08.png'></image> 
@@ -46,7 +46,7 @@
 </view>
 <!-- 导航 链接 结束 -->
 <!-- 公告 开始 -->
- <view class='notices' hidden='{{!notice || notice.length == 0}}'> 
+ <view class='notices'> 
    <image class="icon" src='/images/notice.png'></image> 
   <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
      <block wx:for="{{notice}}" wx:key="title">
@@ -59,7 +59,7 @@
        </view>
      </block>
     </swiper>
-    <text class="more1" bindtap="noticemore">×</text>
+     <text class="more1" bindtap="noticemore">更多></text> 
  </view> 
 <!-- 公告 结束-->
 

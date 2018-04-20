@@ -1,0 +1,54 @@
+<!--pages/teacher/content/content.wxml-->
+<view class='page'>
+   <view class='head'>
+    <image src="/images/banner.jpg"></image>
+   </view>
+    <view class="page__bd">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">姓名：</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入姓名" bindinput="bindName"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">电话：</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入手机号" bindinput="bindPhone" bindblur="blurPhone"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">所属中学：</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="如：石家庄市第二中学" bindinput="bindSchool"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input" style='margin-bottom:0'>
+            <view class="weui-cell__hd">
+                <view class="weui-label">地址：</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="省/市/区（县）" bindinput="bindAddress"/>
+            </view>
+        </view>
+        <!-- <view class="weui-cells__tips">例：石家庄市/长安区（或元氏县）</view> -->
+      </view>
+      <view class='point'>
+        <view class='point-1'>
+          <icon type="warn" size="23" color="#F43530"></icon>
+          <text>重要提示：</text>
+        </view>
+        <view class='point-2'>
+          <text>1.请确保以上信息全部填写正确。</text>
+          <text>2.请保持电话通讯正常，我们客服人员会在两个小时内给您回复。</text>
+        </view>
+      </view>
+      <view class='appoint' bindtap="order">确认预约</view>
+    </view>
+</view>

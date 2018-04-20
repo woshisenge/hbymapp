@@ -23,7 +23,7 @@
     </view>
     <view class="weui-cell__ft">
         <view class="weui-vcode-btn" wx:if='{{codeHidden}}' bindtap='getSMSCode'>获取验证码</view>
-        <view class="weui-vcode-btn" wx:if='{{!codeHidden}}'>{{timerNumber}}s后重新获取</view>
+        <view class="weui-vcode-btn" wx:if='{{!codeHidden}}'>重新获取（{{timerNumber}}s后）</view>
     </view>
 </view>
 </view>

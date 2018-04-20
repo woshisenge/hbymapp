@@ -1,1 +1,4 @@
 /* pages/person/member/member.wxss */
+.weui-cells:after{
+  border-bottom:0;
+}

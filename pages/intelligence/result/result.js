@@ -13,8 +13,7 @@ Page({
     listDian: [],
     MAJORTYPE:"",
     ARRANGMENT_ID:"",
-    MAJORTYPE_VALUE:"",
-    buttonClicked: false
+    MAJORTYPE_VALUE:""
   },
 
   /**
@@ -25,9 +24,11 @@ Page({
     that.setData({
       MAJORTYPE: options.MAJORTYPE,
       ARRANGMENT_ID: options.ARRANGMENT_ID,
-      MAJORTYPE_VALUE: options.MAJORTYPE_VALUE
+      MAJORTYPE_VALUE: options.MAJORTYPE_VALUE,
+      EXAMSCORE: options.EXAMSCORE
     })
-    util.sendRequest("/wechat/applet/report/reporting", options, "POST", true, function(res){
+    util.sendRequest("/wechat/applet/report/reporting_two", options, "POST", true, function(res){
+      
       var listChong = res.listChong;
       var listWen = res.listWen;
       var listBao = res.listBao;
@@ -143,9 +144,7 @@ Page({
       majors = majors.substring(0, majors.length - 1);
       majorName = majorName.substring(0, majorName.length - 1);
     }
-    if (!that.data.buttonClicked) {
-      util.buttonClicked(that);
+    
     util.navigateTo("/pages/intelligence/result/content/content", { SCHOOL_ID: curId, MAJORTYPE: that.data.MAJORTYPE, major: majors, majorName: majorName, ARRANGMENT_ID: that.data.ARRANGMENT_ID,MAJORTYPE_VALUE:that.data.MAJORTYPE_VALUE,img:img,advice:advice});
-  }
   }
 })

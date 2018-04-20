@@ -1,0 +1,49 @@
+<!--pages/teacher/introduce/introduce.wxml-->
+<view class='page' wx:for="{{expert}}" wx:key="">
+  <view class='page_bd'>
+    <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                <view class="weui-media-box__title">{{item.NICKNAME}}<text class='atte'>认证</text></view>
+                <view class="weui-media-box__desc">
+                  <view class='teacher-item'>
+                    <text>10年</text>
+                    <text>工作年限</text>
+                  </view>
+                  <!-- <view class='teacher-item'>
+                    <text>456</text>
+                    <text>服务人数</text>
+                  </view> -->
+                  <view class='teacher-item'>
+                    <text>{{item.PRICE}}</text>
+                    <text>服务金额</text>
+                  </view>
+                </view>
+            </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-article">          
+      <view class="weui-article__section">
+          <view class="weui-article__h2">个人简介</view>
+          <view class="{{check ? 'weui-article__ps' : 'show'}}">
+              {{item.INTRODUCTION}}
+          </view>
+          <view class="more" bindtap="introduceMore">{{hidden ? '详细信息>>' : '收起全部'}}</view>
+      </view>
+      <view class="weui-article__section">
+          <view class="weui-article__h2">成功案例</view>
+          <view class="weui-article__p" wx:for="{{successanli}}" wx:key="">
+            <text style="font-weight:bold">案例：</text>{{item.SUCCESSANLI}}
+          </view>
+          <!-- <view class="more" bindtap="successMore">{{hid ? '详细信息>>' : '收起全部'}}</view> -->
+      </view>
+    </view>
+      <button class="weui-btn order" type="primary" bindtap="order">预约</button>
+  </view>
+  <view class='white'></view>
+</view>

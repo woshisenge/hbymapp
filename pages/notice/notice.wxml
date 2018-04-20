@@ -19,12 +19,12 @@
     </view>
   </view>
   </block>
-  <block wx:for="{{notice}}" wx:key="">
-<view class="content" bindtap='notice' data-id='{{item.NEWS_ID}}'>
-  <view class='left'>【标题】</view>
-  <view class="center"><text>{{item.TITLE}}</text></view>
-  <view class="right">{{item.CREATETIME}}</view>
-</view>
-</block>
+  <block wx:for="{{notice}}" wx:key="" wx:for-index="i">
+    <view class="content" bindtap='notice' data-id='{{item.NEWS_ID}}' wx:if="{{i>0}}">
+      <view class='left'>【标题】</view>
+      <view class="center"><text>{{item.TITLE}}</text></view>
+      <view class="right">{{item.CREATETIME}}</view>
+    </view>
+  </block>
 </view>
 <view class='white'></view>

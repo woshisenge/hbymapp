@@ -1,0 +1,75 @@
+/* pages/teacher/introduce/introduce.wxss */
+.weui-media-box__title{
+  border-bottom:1rpx solid #eee;
+  padding-bottom:10rpx;
+}
+.weui-media-box__desc{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top:15rpx;
+ 
+}
+.teacher-item{
+  display: flex;
+  flex-direction: column; 
+  color:#333;
+  margin-right:40rpx;
+}
+.weui-article{
+  margin-top:20rpx;
+  padding:0;
+} 
+.weui-article__section{
+  padding:20px 15px;
+  background-color:#fff;
+  margin-bottom:20rpx;
+
+}
+.order{
+  /* padding:50rpx 30rpx 0 30rpx; */
+  width:100%;
+  position: fixed;
+  bottom:0;
+}
+/* button[type=primary]{
+  background-color:rgb(90,180,170);
+} */
+.weui-article__p{
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical; */
+  text-indent: 2em;
+  border-bottom:1rpx solid #eee;
+  padding-bottom:20rpx;
+}
+.atte{
+  background-color:rgb(90,180,170);
+  font-size:24rpx;
+  color:white;
+  padding:4rpx 20rpx;
+  border-radius: 6rpx;
+  margin-left:10rpx;
+}
+.weui-article__ps{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical; 
+  text-indent: 2em;
+}
+.more{
+  text-align: right;
+  color:rgb(90,180,170);
+}
+.show{
+  font-size:28rpx;
+  display: block;
+  text-indent: 2em;
+}
+.weui-media-box__thumb{
+  border-radius: 50%;
+}

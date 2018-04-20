@@ -12,30 +12,29 @@
   
 }
 .top{
-  margin:80rpx 10% 30rpx 10%;
+  margin:100rpx 3% 30rpx 3%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
   color:white;
 }
 .top-right{
-  margin-left:5%;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left:30rpx;
+  height:125rpx;
 }
 .top-right-1{
   font-size:35rpx;
-  margin-bottom: 10rpx;
-  margin-top:-30rpx;
+  padding-bottom:10rpx;
 }
 .top-right-2{
   display: flex;
-  flex-direction: row ;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
 }
 .top-right-2 text{
-  font-weight: bold;
   margin-right:15rpx;
 }
 .top-2{
@@ -56,7 +55,7 @@
   
 }
 .top-2-left text{
-  padding-left:8%;
+  padding-left:4%;
   width:100%;
 }
 .weui-flex__item{
@@ -72,6 +71,7 @@
 }
 .page__bd_spacing{
   background-color: white;
+  margin-top:25rpx;
 }
 .whole{
   width:100%;
@@ -79,25 +79,76 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;  
-   border-bottom:1rpx solid #EEEEEE;
+  border-bottom:1rpx solid #EEEEEE;
+  background-color:white;
 }
 .left{
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;  
-  width:20%;
+  align-items: center;
+  width:25%;
+  padding:10rpx 0;
 }
 .left text{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  padding:0rpx 0rpx 0rpx 30rpx;
+  text-align: center;
 }
 .right{
-  width:80%;
+  width:75%;
   border-left:1rpx solid #EEEEEE;
+  text-align: center;
+  padding:10rpx 0;
 }
 .year{
-  text-align: center;
+  text-align: left;
+  padding-left:15rpx;
+}
+.distance{
+  padding:0rpx;
+}
+.collection{
+  color:rgb(90,180,170);
+  border-bottom:1px solid rgb(90,180,170);
+  padding:5rpx 0;
+}
+.collection2{
+  color:#999;
+  padding:5rpx 0;
+}
+.center{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  font-size:28rpx;
+  background-color: #DDDDDD;
+}
+.center-item{
+  width:20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottom{
+  width:100%;
+  margin-top:20rpx;
+  display: flex;
+  flex-direction: row;
+  font-size:28rpx;
+  background-color: white;
+}
+.bottom-item{
+  width:20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.colorChong{
+  color:red;
+}
+.colorWen{
+  color:orange;
+}
+.colorDian{
+  color:green;
 }

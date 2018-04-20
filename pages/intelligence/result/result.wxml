@@ -1,10 +1,12 @@
 <view class="page">
+    <view class="page__desc">分数：{{EXAMSCORE}}　　{{MAJORTYPE_VALUE}}</view>
+    <view class="page__desc"><text style="color:black">温馨提示：</text>我们已为您精确到专业分数，若冲，稳，保，垫四个结果中出现相同院校，请仔细核对专业分数。</view>
     <view class="page__bd">
               <block wx:for="{{listChong}}" wx:key="" >
                 <view class="weui-cells weui-cells_after-title" bindtap='toDail' id="{{item.SCHOOL_ID}}" data-id="{{item.majors}}" data-name="chong" data-class="极大">
                 <view class="weui-cell">
                     <view class="weui-cell__hd">
-                        <image src="/images/chong.png" style="margin-right: 22rpx;vertical-align: middle;width:32rpx;height:32rpx;"></image>
+                        <image src="/images/chong.png" style="margin-right: 22rpx;vertical-align: middle;width:40rpx;height:40rpx;"></image>
                     </view>
                     <view class="weui-cell__bd">{{item.NAME}}</view>
                     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
@@ -15,7 +17,7 @@
                 <view class="weui-cells weui-cells_after-title" bindtap='toDail'id="{{item.SCHOOL_ID}}" data-id="{{item.majors}}" data-name="wen" data-class="较大" >
                 <view class="weui-cell">
                     <view class="weui-cell__hd">
-                        <image src="/images/wen.png" style="margin-right: 22rpx;vertical-align: middle;width:32rpx;height:32rpx;"></image>
+                        <image src="/images/wen.png" style="margin-right: 22rpx;vertical-align: middle;width:40rpx;height:40rpx;"></image>
                     </view>
                     <view class="weui-cell__bd">{{item.NAME}}</view>
                     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
@@ -26,7 +28,7 @@
                 <view class="weui-cells weui-cells_after-title" bindtap='toDail' id="{{item.SCHOOL_ID}}" data-id="{{item.majors}}" data-name="bao" data-class="较小">
                 <view class="weui-cell">
                     <view class="weui-cell__hd">
-                        <image src="/images/bao.png" style="margin-right: 22rpx;width:32rpx;height:32rpx;"></image>
+                        <image src="/images/bao.png" style="margin-right: 22rpx;width:40rpx;height:40rpx;"></image>
                     </view>
                     <view class="weui-cell__bd">{{item.NAME}}</view>
                     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
@@ -37,7 +39,7 @@
                 <view class="weui-cells weui-cells_after-title" bindtap='toDail' id="{{item.SCHOOL_ID}}" data-id="{{item.majors}}" data-name="dian" data-class="极小">
                 <view class="weui-cell">
                     <view class="weui-cell__hd">
-                        <image src="/images/dian.png" style="margin-right: 22rpx;vertical-align: middle;width:32rpx; height: 32rpx;"></image>
+                        <image src="/images/dian.png" style="margin-right: 22rpx;vertical-align: middle;width:40rpx; height: 40rpx;"></image>
                     </view>
                     <view class="weui-cell__bd">{{item.NAME}}</view>
                     <view class="weui-cell__ft weui-cell__ft_in-access"></view>

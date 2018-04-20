@@ -2,10 +2,14 @@
 .child{
   color:#999999;
 }
-.weui-cells:before {
-  border-top:0;
+.weui-cells{
+  font-size:30rpx;
+  margin-top:10rpx;
+  background-color: white;
+}
+ .weui-cells:before {
+  border-top:1rpx solid #EEEEEE;
 }
 .weui-cells:after{
-  border-bottom:0;
-
-}  
+ border-bottom:1rpx solid #EEEEEE;
+} 

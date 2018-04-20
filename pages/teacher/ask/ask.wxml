@@ -1,0 +1,26 @@
+<!--pages/teacher/ask/ask.wxml-->
+<view class="page">
+  <view class='page_bd'>
+    <view class="weui-cells__title">问题<text style="color:red">*</text></view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请输入问题" bindinput='bindContent' />
+                <!-- <view class="weui-textarea-counter">0/200</view> -->
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells__tips">
+      <text style="color:#000">重要提示：</text>
+      <text>所提问题不得违反国家的法律法规，不得发布、传播含有下列内容的信息：</text>
+      <text>(1)危害国家安全，破坏国家统一的；</text>
+      <text>(2)危害民族团结、宣传邪教的；</text>
+      <text>(3)散布谣言、色情、赌博、暴力的；</text>
+      <text>(4)侮辱或者诽谤他人，侵害他人合法权益的；</text>
+      <text>(5)含有法律、法规禁止的其他内容的。</text>
+    </view>
+  </view>
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
+  </view>
+</view>

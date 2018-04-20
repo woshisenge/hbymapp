@@ -7,7 +7,7 @@ Page({
    */
   data: {
     param: {},
-    checked:true
+    checked:false
   },
 
   /**
@@ -17,8 +17,14 @@ Page({
     //options里有key这个键，控制对勾
     var that=this;
     util.sendRequest("/wechat/applet/dictionary/get", { code: "PROVINCE" }, "POST", true, function (res) {
+      var provinceObjs = res.data;
+      provinceObjs.forEach(function(element){
+        if (element.DIC_ID == options.id){
+          element.checked = true
+        }
+      })
       that.setData({
-        provinceObjs: res.data
+        provinceObjs: provinceObjs
       });
     });
   },

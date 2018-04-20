@@ -9,7 +9,8 @@ Page({
     anyChecked: false,
     buttonClicked: false,
     strRes:"",
-    strResId:""
+    strResId:"",
+    hidden:false
   },
   serviceValChange: function (e) {
     var that = this;
@@ -58,9 +59,15 @@ Page({
   onLoad: function (options) {
     var that = this;
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
+      var result = new Array();
+      res.data.forEach(function(element){
+        if ( element.NAME != "省重点" && element.NAME != "艺术生"){
+          result.push(element)
+        }
+      })
       if (options.properties && options.properties != "") {
         var arr = options.properties.split(",");
-        res.data.forEach(function (element) {
+        result.forEach(function (element) {
           for (var i = 0; i < arr.length; i++) {
             if (element.DIC_ID == arr[i]) {
               element.checked = true;
@@ -75,7 +82,7 @@ Page({
         });
       }
       that.setData({
-        attribute: res.data
+        attribute: result
       })
     })
   },

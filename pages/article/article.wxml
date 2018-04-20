@@ -1,0 +1,86 @@
+<!--pages/article/article.wxml-->
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-article">
+            <view class="weui-article__h1">“铭邦高考规划平台”会员服务协议</view>
+            <view class="weui-article__section">
+                <view class="weui-article__title">　　铭邦高考规划平台(www.gaokgh.com.cn/)是石家庄铭邦网络科技有限公司专门为高考考生和高校招生部门开发的一个(多功能)信息咨询服务平台，该平台主要提供院校信息（查询）、考生与招办老师沟通交流、高考填报志愿综合参考系统等服务。任何用户进入该平台的各系统都应接受本协议书条款，注册成为本网站会员，并遵守本协议所述之条款。如果您不接受本协议的条款，将视为放弃所提供的服务。</view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">一、协议生效条件</view>
+                    <view class="weui-article__p">
+                        　　“铭邦高考规划平台”平台的数据所有权归石家庄铭邦网络科技有限公司所有。所提供的服务将完全按照其发布的章程、服务条款和操作规则严格执行。用户完成注册程序，此协议即时生效，您随之成为“铭邦高考规划平台”的注册用户。
+                    </view>
+                </view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">二、信息的发布和使用</view>
+                    <view class="weui-article__p">
+                        <text>⑴ 会员在平台上发布的信息，均必须符合合法、准确、及时、完整的原则；</text>
+                        <text>⑵ 会员同意本网站合法使用会员在平台上发布的所有信息。</text>
+                        <text>⑶ 学校招生部门发布的信息仅作考生参考使用，学校负责解释；</text>
+                        <text>⑷ 本网站提供的其它信息，仅与其相应内容有关的目的而被使用；</text>
+                        <text>⑸ 禁止会员将本网站的信息用于其它非法用途。</text>
+                    </view>
+                </view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">三、版权、商标权</view>
+                    <view class="weui-article__p">
+                        　　该平台的图形、图像、文字及其程序等均属本网站之版权，受商标法及相关知识产权法律保护；未经书面许可，任何人不得下载或复制，严禁对上述对象进行再使用。在平台发布信息之商标，归其相应的商标所有权人，受商标法保护。
+                    </view>
+                </view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">四、注册信息使用</view>
+                    <view class="weui-article__p">
+                      　　在未经会员授权同意的情况下，本网站不会将会员的资料泄露给第三方。但以下情况除外：
+                      <text>⑴ 根据执法单位之要求或为公共之目的向相关单位提供会员资料；</text>
+                      <text>⑵ 由于会员将用户密码告知他人导致的资料泄露；</text>
+                      <text>⑶ 由于网络线路、黑客攻击、计算机病毒、政府管制而造成的暂时性关闭等不可抗力造成的资料泄露、丢失、被盗用或被窜改等；</text>
+                      <text>⑷ 由于与本网站链接的其它网站所造成之资料泄露及由此而导致的任何法律争议和后果；</text>
+                      <text>⑸ 为免除访问者在生命、身体或财产方面之急迫危险。</text>
+                    </view>
+                </view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">五、禁止条款</view>
+                    <view class="weui-article__p">
+                        <text>⑴ 会员使用本网站只能用于合法目的，禁止任何其他非法用途；</text>
+                        <text>⑵ 禁止发布任何违反有关法律规定的信息；禁止发布不完整、虚假或不准确的信息；</text>
+                        <text>⑶禁止利用本网站发布侵犯他人权益的资料；</text>
+                        <text>⑷禁止使用者进入未经授权的数据库、服务器或需要合法账号的系统；</text>
+                        <text>⑸禁止从事破坏本网站安全措施的行为；</text>
+                        <text>⑹禁止企图干涉对用户及网络的服务；</text>
+　　                     以上行为一经发现，本网站有权立即取消该用户的会员资格，并保留追究有关人员法律责任的权利。
+                    </view>
+                </view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">六、服务条款的修改</view>
+                    <view class="weui-article__p">
+                        　　本网站有权在必要时修改服务条款。服务条款一旦发生变动，将会在重要页面上提示所修改的内容。如果不同意所改动的内容，用户可以主动取消获得的网络服务。如果用户继续享用网络服务，则视为接受服务条款的变动。本网站保留随时修改或中断服务而不需告知用户的权利。本网站行使修改或中断服务的权利，不需对用户或第三方负责。
+                    </view>
+                </view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">七、免责条款</view>
+                    <view class="weui-article__p">
+                        <text>⑴ 本网站不能保证网站不受黑客、病毒的侵害，不能完全保证网站无故障运行；因正常的系统维护、系统升级，或者因网络拥塞而导致网站不能访问，本网站不承担任何责任。</text>
+                        <text>⑵ 会员对在网站中发布信息的准确性和合法性独立承担一切法律责任，对于其它网址链接在本网址的内容，本网站概不负法律责任。</text>
+
+<text>⑶ 本网站不能保证所有由会员提供的信息，或本网站自行采集的信息完全准确。使用者了解，对这些信息的使用，需要经过进一步核实。本网站对访问者未经自行核实误用本网站信息造成的任何损失不予承担任何责任。</text>
+
+<text>⑷ 对于他方输入的，不是本网站发布的信息，本网站不承担任何法律责任。</text>
+
+<text>⑸ 本网站有权根据其判断保留修改或删除任何不适信息之权利。</text>
+
+<text>⑹ 本网站有权在预先通知或不予通知的情况下终止任何免费服务。</text>
+                    </view>
+                </view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">八、法律</view>
+                    <view class="weui-article__p">
+                        <text>⑴ 本服务条款遵守中华人民共和国法律，如发生与中华人民共和国法律相抵触时，则这些条款将完全按法律规定重新解释，而其它条款仍保持对用户产生法律效力和影响。</text>
+
+<text>⑵ 在任何情况下，用户不得利用本网站进行违反或可能违反国家法律和法规的言论或行为；用户对自己的言论或行为负责。</text>
+
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

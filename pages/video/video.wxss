@@ -9,6 +9,7 @@
 }
 .section-item{
   width:49%;
+  margin-top:20rpx;
 }
 .images{
   width:100%;

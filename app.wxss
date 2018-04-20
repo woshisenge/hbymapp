@@ -1,6 +1,6 @@
 @import 'style/weui.wxss';
 
- page{
+page{
     background-color: #F8F8F8;
     font-size: 28rpx;
     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;

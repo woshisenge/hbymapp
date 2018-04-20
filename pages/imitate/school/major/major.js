@@ -39,7 +39,7 @@ Page({
       that.setData({
         major: results
       })
-    })                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    })
   },
   major:function(e){
     var that = this;

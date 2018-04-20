@@ -26,12 +26,9 @@
 .childs{
   color:#999999;
 }
-.weui-cell:before{
-  border-top:1rpx solid #EEEEEE;
+.weui-cells:before{
+  border-top:0;
 }
 .weui-cells:after{
   border-bottom:1rpx solid #EEEEEE;
-}
-.weui-cells:before{
-  border-top:1rpx solid #EEEEEE;
 }

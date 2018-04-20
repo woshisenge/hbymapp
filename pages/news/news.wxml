@@ -14,6 +14,26 @@
       <view class='time-count'>
         <image src='/images/browse.png' style="width:30rpx;height:30rpx"></image>
         <text style='margin-left:10rpx;'>{{item.VIEWCOUNT}}</text>
+      </view> 
+    </view>
+  </view>
+</view>
+</block>
+<block wx:for="{{news2}}" wx:key="" id="{{index}}" >
+<view class='content' bindtap='news' id="{{item.NEWS_ID}}">
+  <view class='content-left'>
+    <image src="{{item.IMGURL}}"></image>
+  </view>
+  <view class='content-right'>
+    <view class='item-title'>{{item.TITLE}}</view>
+    <view class='item-time'>
+      <view class='time-img'>
+        <image src='/images/time.png' style="width:30rpx;height:30rpx"></image>
+        <text style='margin-left:10rpx;'>{{item.MODIFYTIME}}</text>
+      </view>
+      <view class='time-count'>
+        <image src='/images/browse.png' style="width:30rpx;height:30rpx"></image>
+        <text style='margin-left:10rpx;'>{{item.VIEWCOUNT}}</text>
       </view>
     </view>
   </view>

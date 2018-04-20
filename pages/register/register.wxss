@@ -1,1 +1,5 @@
 /* pages/register/register.wxss */
+navigator{
+  display: inline-block;
+  color:rgb(90,180,170);
+}

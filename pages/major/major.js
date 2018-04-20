@@ -20,12 +20,12 @@ Page({
    */
   onLoad: function (options) {
     var that=this;
-    util.sendRequest("/wechat/applet/major/getmajorlibrary", { CODE:"BMAJOR"},"POST",true,function(res){
+    util.sendRequest_s("/wechat/applet/major/getmajorlibrary", { CODE:"BMAJOR"},"POST",true,function(res){
       that.setData({
         major:res.data
       })
     })
-    util.sendRequest("/wechat/applet/major/getmajorlibrary", { CODE: "ZMAJOR" }, "POST", true, function (res) {
+    util.sendRequest_s("/wechat/applet/major/getmajorlibrary", { CODE: "ZMAJOR" }, "POST", true, function (res) {
       that.setData({
         zmajor: res.data
       })

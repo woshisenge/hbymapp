@@ -29,7 +29,6 @@
               <image class='down' src="/images/triangle.png"></image>
             </view>
           </picker>
-          
          </view>  
       </view>
       <view class='content'>
@@ -82,3 +81,6 @@
     <view class="weui-loadmore__tips">正在加载</view>
 </view>
 <view class='white'></view>
+<!-- <view class='backTop'>
+  <image src="/images/arrow.png" bindtap='backTop'></image>
+</view> -->

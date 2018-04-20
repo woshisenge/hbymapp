@@ -1,2 +1,75 @@
 <!--pages/teacher/teacher.wxml-->
-<text>pages/teacher/teacher.wxml</text>
+<view class="page">
+    <view class="page__bd">
+      <view class="weui-tab">
+        <view class="weui-navbar">
+          <block wx:for="{{tabs}}" wx:key="*this">
+            <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                <view class="weui-navbar__title">{{item}}</view>
+            </view>
+          </block>
+        </view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <view class='page_head'>
+            <view class='head_right' bindtap="quiz">
+              <image src="/images/pen.png" style="width:40rpx;height:40rpx;"></image>
+              <text class='quiz'>提问</text>
+            </view>
+          </view>
+          <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text"  wx:for="{{result}}" wx:key="" hidden="{{item.checked}}">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">{{item.CONTENT}}</view> 
+                    <view class="weui-media-box__desc">
+                      {{item.PRONICKNAME}}回复：{{item.PROCONTENT}}
+                      
+                    </view>
+                    <view class='check_more'>
+                        <text style="margin-right:30rpx;" hidden="{{hidden}}" bindtap="issue" id="{{item.ASK_ID}}">专家回复</text>
+                        <text bindtap="issue" id="{{item.ASK_ID}}">查看更多>></text>
+                      </view>
+                    <view class="weui-media-box__desc answer">
+                      <view class='answer-item'>
+                        <image src="/images/teacher-per.png" style="height:30rpx;width:30rpx;"></image>
+                        <text>{{item.READY}}条回答</text>
+                      </view>
+                      <view class='answer-item'>
+                        <image src="/images/view_count.png" style="height:30rpx;width:30rpx;"></image>
+                        <text>{{item.VIEWCOUNT}}</text>
+                      </view>
+                      <view class='answer-item'>
+                        <image src="/images/teacher-time.png" style="height:30rpx;width:30rpx;"></image>
+                        <text>{{item.CREATETIME}}</text>
+                      </view>
+                      <!-- <view class='answer-item'>
+                        <image src="/images/spot.png" style="height:30rpx;width:30rpx;"></image>
+                        <text>{{item.ZAN}}</text>
+                      </view> -->
+                    </view>
+                </view>
+            </view>
+          </view>
+          <view class='white'></view>
+      </view>
+      <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+        <view class="weui-panel weui-panel_access" wx:for="{{experts}}" wx:key="" id="{{item.USER_ID}}" bindtap="expertContent">
+          <view class="weui-panel__bd">
+            <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image class="weui-media-box__thumb" src="{{item.HEADURL}}" />
+                </view>
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title">{{item.NICKNAME}} <text class='atte' >认证</text></view>
+                    <view class="weui-media-box__desc">{{item.INTRODUCTION}}</view>
+                    
+                </view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

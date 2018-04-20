@@ -27,18 +27,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    util.sendRequest("/wechat/applet/news/expertvideo", {SUBTITLE:"专家视频"}, "POST", true, function (res) {
-      that.setData({
-        video:that.toDto(res.data)
-      })
-    })
+    
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this;
+    util.sendRequest_s("/wechat/applet/news/expertvideo", { SUBTITLE: "专家视频" }, "POST", true, function (res) {
+      that.setData({
+        video: that.toDto(res.data)
+      })
+    })
   },
 
   /**

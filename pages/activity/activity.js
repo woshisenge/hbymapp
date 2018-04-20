@@ -45,7 +45,7 @@ Page({
   onShow: function () {
     var that = this;
 
-    util.sendRequest('/wechat/applet/news/get', { NEWSTYPE: "23wtostpu8" }, 'POST', true, function (res) {
+    util.sendRequest_s('/wechat/applet/news/get', { NEWSTYPE: "23wtostpu8" }, 'POST', false, function (res) {
       var contents = that.toDto(res.data.results);
       var imgReg = /<img.*?(?:>|\/>)/gi;
       var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;

@@ -71,7 +71,7 @@ Page({
   },
   // 监听下拉刷新
   onPullDownRefresh: function () {
-    var that = this
+    var that = this;
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (role) {
       util.sendRequest("/wechat/applet/chat/getcontactors", {}, "POST", true, function (res) {
         var teacher = res.teachers;
@@ -102,6 +102,7 @@ Page({
       that.setData({
         role: role.data
       });
+      wx.stopPullDownRefresh()
     })
    
   },
@@ -173,6 +174,7 @@ Page({
       that.setData({
         role: role.data
       });
+     
     })
     
   },
@@ -190,14 +192,6 @@ Page({
   onUnload: function () {
   
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
   /**
    * 页面上拉触底事件的处理函数
    */

@@ -17,7 +17,7 @@ Page({
     var id = options.a;
     var name=options.name;
     var parentName = options.parentName;
-    util.sendRequest("/wechat/applet/major/getmajorbyfatherid", {MAJOR_ID:id},"POST",true,function(res){
+    util.sendRequest_s("/wechat/applet/major/getmajorbyfatherid", {MAJOR_ID:id},"POST",true,function(res){
       that.setData({
         major:res.data,
         parentName: parentName,

@@ -29,7 +29,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    util.sendRequest("/wechat/applet/school/getplanandrulesarticle", { SCHOOL_ID: options.school_id, ARTICLE_ID: options.id }, "POST", true, function (res) {
+    util.sendRequest_s("/wechat/applet/school/getplanandrulesarticle", { SCHOOL_ID: options.school_id, ARTICLE_ID: options.id }, "POST", true, function (res) {
       for (var i = 0; i < res.data.length; i++) {
         article = res.data[0].CONTENT;
         var imgReg = /<img.*?(?:>|\/>)/gi;

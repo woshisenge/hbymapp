@@ -118,7 +118,6 @@ Page({
         delta: 1
       });
     });
-
   },
   //获取短信验证码
   getSMSCode: function () {
@@ -129,7 +128,7 @@ Page({
     }
     util.sendRequest("/wechat/applet/user/getsmscode", { PHONE: that.data.phone }, "POST", true, function (res) {
       that.setData({
-        codeHidden: !that.data.codeHidden,
+        codeHidden: !that.data.codeHidden,  
         timerNumber: 60
       });
 

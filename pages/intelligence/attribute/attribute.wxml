@@ -10,7 +10,7 @@
           </view>
           <view class="weui-cell__bd">不限</view>
         </label>
-        <label class="weui-cell weui-check__label" wx:for="{{attribute}}" wx:key="DIC_ID">
+        <label class="weui-cell weui-check__label" wx:for="{{attribute}}" wx:key="DIC_ID" hidden="true">
           <checkbox class="weui-check" value="{{index}}" checked="{{item.checked}}"/>
           <view class="weui-cell__hd weui-check__hd_in-checkbox">
             <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>

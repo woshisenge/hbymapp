@@ -9,7 +9,7 @@ Page({
     provinceObjs: [],
     gradeObjs: [],
     majortypeIndex:0,
-    gradeIndex: 0,
+    gradeIndex: 2,
     user: {},
     province:"河北省",
     province_id:"province3"
@@ -36,6 +36,10 @@ Page({
         gradeIndex: e.detail.value
       });
     }
+  },
+  provice:function(e){
+    var id = e.currentTarget.id;
+    util.navigateTo("/pages/person/information/content/content",{id:id})
   },
   /**
    * 生命周期函数--监听页面加载
@@ -78,9 +82,10 @@ Page({
           });
         }
       });
-
       that.setData({
-        user: res
+        province: res.EXAMAREA_VALUE,
+        province_id: res.EXAMAREA,
+        user:res
       });
     });
   },

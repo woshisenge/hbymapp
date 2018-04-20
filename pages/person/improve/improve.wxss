@@ -22,12 +22,103 @@ page{
   justify-content: center;
   align-items: center;
 }
+.btn2{
+  width:100%;
+  padding:21rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .text{
   width:90%;
-  margin:16rem 5% 0 5%;
+  margin:23rem 5% 0 5%;
   background-color:#F4F6DB;
   text-align: center;
   padding:20rpx 0;
   color:rgb(228,119,36);
   border-radius: 10rpx;
+}
+.text2{
+  width:90%;
+  /* margin:23rem 5% 0 5%; */
+  background-color:#F4F6DB;
+  text-align: center;
+  padding:20rpx 0;
+  color:rgb(228,119,36);
+  border-radius: 10rpx;
+  margin-top:20rpx;
+}
+.head{
+  width:100%;
+  height:300rpx;
+}
+.head image{
+  width:100%;
+  height:100%;
+}
+.weui-cells{
+  background-color:#F8F8F8;
+  width:90%;
+  margin:65rpx 5%; 
+}
+.weui-cells:after{
+  border-bottom:0;
+}
+.weui-cells:before{
+  border-top:0;
+}
+.weui-cell:before{
+  border-top:0;
+}
+.weui-input{
+  border:1rpx solid rgb(90,180,170);
+  border-radius: 15rpx;
+  height:50rpx;
+  min-height:0;
+  line-height:0;
+  padding:4rpx 10rpx;
+}
+.weui-cell{
+  margin:30rpx 0;
+}
+.weui-label{
+  width:150rpx;
+  text-align: right;
+} 
+.point{
+  width:90%;
+  margin:0 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border:1rpx dashed #666;
+  border-radius: 10rpx;
+  padding:20rpx 10rpx;
+}
+.point-1{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+.point-1 text{
+  margin-left:10rpx;
+}
+.point-2{
+  width:100%;
+  margin-top:20rpx;
+  display: flex;
+  flex-direction: column;
+  color:#666;
+}
+.appoint{
+  width:90%;
+  margin:60rpx 5% 0 5%;
+  padding:20rpx 0;
+  text-align: center;
+  background-color: rgb(90,180,170);
+  color:white;
+  border-radius: 50rpx;
 }

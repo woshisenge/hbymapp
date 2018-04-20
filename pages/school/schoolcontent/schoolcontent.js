@@ -8,14 +8,16 @@ Page({
   data: {
     tabs: ["录取", "基本信息","学校简介"],
     activeIndex: 0,
-    index:0,
+    index:1,
     ckecked:true,
     icon:"/images/address.png",
     array:[],
     icon1: "/images/yuanxiao.png",
     checked:true,
     check:true,
-    school_id:""
+    hidden:true,
+    school_id:"",
+    MAJORTYPE: "r6j4mh69be"
   },
  
   tabClick: function (e) {
@@ -32,7 +34,7 @@ Page({
     that.setData({
       school_id:options.a
     })
-    util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: id }, "POST", true, function (res) {
+    util.sendRequest_s("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: id }, "POST", true, function (res) {
       that.setData({
         subjecttypes: res.subjecttypes,
         properties: res.properties,
@@ -46,35 +48,36 @@ Page({
         address:res.ADDRESS
       })
     })
-    util.sendRequest("/wechat/applet/school/getintroduction", { SCHOOL_ID: id }, "POST", true, function (res) {
+    util.sendRequest_s("/wechat/applet/school/getintroduction", { SCHOOL_ID: id }, "POST", true, function (res) {
       var content = res.CONTENT;
       WxParse.wxParse('content', 'html', content, that, 5);
     });
-    util.sendRequest("/wechat/applet/school/getplanandrules", { SCHOOL_ID: id,SUBTITLE:"招生章程"}, "POST", true, function (res) {
+    util.sendRequest_s("/wechat/applet/school/getplanandrules", { SCHOOL_ID: id,SUBTITLE:"招生章程"}, "POST", true, function (res) {
       
       that.setData({
         rule:res.data
       })
     });
-    util.sendRequest("/wechat/applet/school/getplanandrules", { SCHOOL_ID: id, SUBTITLE: "招生计划" }, "POST", true, function (res) {
-      
+    util.sendRequest_s("/wechat/applet/major/getschoolmajorandplan", { SCHOOL_ID: id}, "POST", true, function (res) {
       that.setData({
-        plan: res.data
+        liberal:res.WEN,
+        science:res.Li
       })
     })
-    util.sendRequest("/wechat/applet/dictionary/get", { code:"MAJORTYPE"},"POST",true,function(res){
+    util.sendRequest_s("/wechat/applet/dictionary/get", { code:"MAJORTYPE"},"POST",true,function(res){
       that.setData({
-        array:res.data
+        array:res.data                
       })
     })
-    util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID: id, MAJORTYPE_ID: 'gjv044girc'}, "POST", true, function (res) {
+    util.sendRequest_s("/wechat/applet/school/getschoolscore", { SCHOOL_ID: id, MAJORTYPE_ID: 'r6j4mh69be'}, "POST", true, function (res) {
+      console.log(res.data)
       var grade = res.data;
       grade.forEach(function(element){
         if (element.MinPM == null){
-          element.MinPM = ""
+          element.MinPM = "---"
         }
         if (element.MaxPM == null){
-          element.MaxPM = ""
+          element.MaxPM = "---"
         }
       })
       that.setData({
@@ -88,24 +91,14 @@ Page({
       checked:!that.data.checked
     })
   },
-  plan:function(){
-    var that = this;
-    that.setData({
-      check: !that.data.check
-    })
-  },
+  
   ruleContent:function(e){
     var that = this;
     var id = e.currentTarget.id;
     var school_id = that.data.school_id;
     util.navigateTo("/pages/school/schoolcontent/rule/rule",{id:id,school_id:school_id})
   },
-  planContent:function(e){
-    var that = this;
-    var id = e.currentTarget.id;
-    var school_id = that.data.school_id;
-    util.navigateTo("/pages/school/schoolcontent/plan/plan", { id: id, school_id: school_id })
-  },
+  
   contentshow:function(){
     var that=this
     that.setData({
@@ -116,7 +109,7 @@ Page({
     var that = this
     var a = e.currentTarget.dataset.id
     var id = that.data.array[e.detail.value].DIC_ID
-    util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID : a, MAJORTYPE_ID : id },"POST",true,function(res){
+    util.sendRequest_s("/wechat/applet/school/getschoolscore", { SCHOOL_ID: a, MAJORTYPE_ID: id }, "POST", true, function (res) {
       var grade = res.data;
       grade.forEach(function (element) {
         if (element.MinPM == null) {
@@ -127,7 +120,8 @@ Page({
         }
       })
       that.setData({
-        grade:res.data
+        grade: res.data,
+        MAJORTYPE: id
       })
     })
     that.setData({

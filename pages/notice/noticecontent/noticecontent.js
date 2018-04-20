@@ -27,9 +27,21 @@ Page({
   onLoad: function (options) {
     var that=this
     var id = options.a;
-    util.sendRequest('/wechat/applet/news/getnewsbyid', { NEWS_ID: id }, 'POST', false, function (res) {
+    util.sendRequest_s('/wechat/applet/news/getnewsbyid', { NEWS_ID: id }, 'POST', false, function (res) {
       var article=res.CONTENT
       res.MODIFYTIME = util.formatTime(new Date(res.MODIFYTIME))
+      var imgReg = /<img.*?(?:>|\/>)/gi;
+      var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;
+      var arr;
+      var results;
+      var srcs = new Set();
+      while (arr = imgReg.exec(article)) {
+        srcs.add(srcReg.exec(arr[0])[1]);
+        srcReg.lastIndex = 0;
+      }
+      srcs.forEach(function (element) {
+        article = article.replace(element, util.setStaticUrl(element));
+      });
       WxParse.wxParse('article', 'html', article, that, 10);
       that.setData({
         content:res

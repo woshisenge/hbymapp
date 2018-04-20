@@ -1,9 +1,5 @@
 <!--pages/person/security/security.wxml-->
 <view class="page">
-  <view class='head'>
-    <view class='icons'><image src="../../../images/tb06.png"></image></view>
-    <view class='text'><text>您的账号存在安全风险，建议立即优化一下5项</text></view>
-  </view>
   <view class='content'>
     <view class="image"><image src="../../../images/tb07.png"></image></view>
     <view class='title'><text class='title-left'>登录密码</text><text style="font-size:25rpx;">已设置</text></view>
@@ -39,7 +35,7 @@
   </view>
 </view>
 <view class='line'></view> -->
-<view class="page">
+<!-- <view class="page">
   <view class='content'>
     <view class="image"><image src="../../../images/tb10.png"></image></view>
     <view class='title'><text class='title-left'>实名认证</text><text style="font-size:25rpx;"><text wx:if='{{isRealName}}'>已</text><text wx:if='{{!isRealName}}'>未</text>设置</text></view>
@@ -47,4 +43,4 @@
     <view class='button'><button class="weui-btn mini-btn" type="primary" size="mini" bindtap='authentication' wx:if='{{!isRealName}}'>实名认证</button></view>
   </view>
 </view>
-<view class='line'></view>
+<view class='line'></view> -->

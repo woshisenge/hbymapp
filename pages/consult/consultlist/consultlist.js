@@ -6,9 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: ["录取", "基本信息", "学校简介"],
+    tabs: ["录取", "基本信息", "学校简介","入驻老师"],
     activeIndex: 0,
-    index: 0,
+    index: 1,
     ckecked: true,
     icon: "/images/address.png",
     array: [],
@@ -17,9 +17,10 @@ Page({
     vip:"",
     checked: true,
     check: true,
-    school_id: ""
+    school_id: "",
+    scrollTop:0,
+    MAJORTYPE:"r6j4mh69be"
   },
-
   tabClick: function (e) {
     this.setData({
       activeIndex: e.currentTarget.id
@@ -42,9 +43,15 @@ Page({
    */
 
   onLoad: function (options) {
-
     var that = this;
-    var id = options.a
+    var id = options.a;
+    util.sendRequest("/wechat/applet/major/getschoolmajorandplan", { SCHOOL_ID: id }, "POST", true, function (res) {
+      console.log(res)
+      that.setData({
+        liberal: res.WEN,
+        science: res.Li 
+      })
+    })
     util.sendRequest("/wechat/applet/complete_tea/get", { SCHOOL_ID: id }, "POST", true, function (res) {
       that.setData({
         teacher: that.toDto(res.data)
@@ -74,23 +81,25 @@ Page({
       })
     })
     util.sendRequest("/wechat/applet/school/getplanandrules", { SCHOOL_ID: id, SUBTITLE: "招生章程" }, "POST", true, function (res) {
+      
       that.setData({
         rule: res.data
       })
     });
     util.sendRequest("/wechat/applet/school/getplanandrules", { SCHOOL_ID: id, SUBTITLE: "招生计划" }, "POST", true, function (res) {
+      
       that.setData({
         plan: res.data
       })
     })
-    util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID: id, MAJORTYPE_ID: 'gjv044girc' }, "POST", true, function (res) {
+    util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID: id, MAJORTYPE_ID: 'r6j4mh69be' }, "POST", true, function (res) {
       var grade = res.data;
       grade.forEach(function (element) {
         if (element.MinPM == null) {
-          element.MinPM = ""
+          element.MinPM = "---"
         }
         if (element.MaxPM == null) {
-          element.MaxPM = ""
+          element.MaxPM = "---"
         }
       })
       that.setData({
@@ -104,23 +113,11 @@ Page({
       checked: !that.data.checked
     })
   },
-  plan: function () {
-    var that = this;
-    that.setData({
-      check: !that.data.check
-    })
-  },
   ruleContent: function (e) {
     var that = this;
     var id = e.currentTarget.id;
     var school_id = that.data.school_id;
     util.navigateTo("/pages/school/schoolcontent/rule/rule", { id: id, school_id: school_id })
-  },
-  planContent: function (e) {
-    var that = this;
-    var id = e.currentTarget.id;
-    var school_id = that.data.school_id;
-    util.navigateTo("/pages/school/schoolcontent/plan/plan", { id: id, school_id: school_id })
   },
   chat: function (e) {
     var that = this
@@ -129,23 +126,26 @@ Page({
         util.showError("仅有学生身份方可在线咨询");
         return false;
       }
-
-      if (that.data.vip == "UC") {
+      else{
         var user_id = e.currentTarget.dataset.id;
         util.navigateTo("/pages/chatroom/chatroom", { user_id: user_id });
       }
-      else {
-        util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
-          var card = res.yxzxk;
-          if (card <= 0) {
-            util.showError("院校咨询卡数量不足！")
-          }
-          else {
-            var user_id = e.currentTarget.dataset.id;
-            util.navigateTo("/pages/chatroom/chatroom", { user_id: user_id });
-          }
-        })
-      } 
+      // if (that.data.vip == "UC") {
+      //   var user_id = e.currentTarget.dataset.id;
+      //   util.navigateTo("/pages/chatroom/chatroom", { user_id: user_id });
+      // }
+      // else {
+      //   util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
+      //     var card = res.yxzxk;
+      //     if (card <= 0) {
+      //       util.showError("院校咨询卡数量不足！")
+      //     }
+      //     else {
+      //       var user_id = e.currentTarget.dataset.id;
+      //       util.navigateTo("/pages/chatroom/chatroom", { user_id: user_id });
+      //     }
+      //   })
+      // } 
     });
   },
 
@@ -170,7 +170,8 @@ Page({
         }
       })
       that.setData({
-        grade: res.data
+        grade: res.data,
+        MAJORTYPE:id
       })
     })
     that.setData({

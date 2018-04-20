@@ -36,17 +36,38 @@
                style="width: 25px;height: 25px;margin: 0 0 2px 0;float: left;"/>
     </template>
     <view class="room_bar">
+        <view wx:if="{{role == 1}}">
         <form bindreset="cleanInput">
-            <view class="f-row">
-            <view class="open_emoji" bindtap="openEmoji">
-                  <image src="/images/Emoji.png"/>
-                </view>
-                <textarea type="text" value="{{ inputMessage }}" bindinput="bindMessage" fixed='true' auto-height='true' show-confirm-bar="false" class='news'></textarea>
-                <button class="weui-btn mini-btn" bindtap="sendMessage" formType="reset">发送</button>
+            <view class="emoji-row">
+              <textarea type="text" value="{{ inputMessage }}" bindinput="bindMessage" fixed='true' auto-height='true' show-confirm-bar='{{hid}}'cursor-spacing="15" class='news'></textarea>
+              <view class="open_emoji" bindtap="openEmoji">
+                  <image src="/images/smile.png"/>
+              </view>
+              <button class="weui-btn mini-btn" bindtap="sendMessage" formType="reset">发送</button>
+              
                 <!-- <button class="send_btn" >发送</button> -->
             </view>
         </form>
-        
+        </view>
+        <view wx:if="{{role == 2}}">
+        <form bindreset="cleanInput">
+            <view class="ch_bottom">
+              <view class='ch_box'>
+                <textarea type="text" value="{{ inputMessage }}" bindinput="bindMessage" fixed='true' auto-height='true' show-confirm-bar='{{hid}}' cursor-spacing="40" class='ch_input'></textarea>
+              <button class="weui-btn mini-btn" bindtap="sendMessage" formType="reset">发送</button>
+              </view>
+              <view class='ch_question'>
+                <view class="ch_emoji" bindtap="openEmoji">
+                  <image src="/images/smile.png" style="width:40rpx;height:40rpx"/>
+                </view>
+                <button class="ch_btn" bindtap="que_send">快捷回复</button>
+              </view>
+            </view>
+        </form>
+        </view>
+        <scroll-view class='que_list' hidden="{{que_list}}" scroll-y='true'>
+          <view class='list_content' wx:for="{{que}}" wx:key="{{index}}" bindtap="send_content" id="{{item.TITLE}}" data-name="{{item.CONTENT}}">{{index+1}}、{{item.TITLE}}</view>
+        </scroll-view>
         <swiper class="emoji_list" class="{{ show }}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}"
                 interval="{{interval}}" duration="{{duration}}">
             <block>

@@ -18,7 +18,7 @@ Page({
       param:options
     })
     if(options.handleFlag == "1") {//模拟填报结果
-      util.sendRequest("/wechat/applet/report/zy", options, "POST", true, function (res) {
+      util.sendRequest("/wechat/applet/report/mntb_zy", options, "POST", true, function (res) {
           that.setData({
             results: res.data
           });

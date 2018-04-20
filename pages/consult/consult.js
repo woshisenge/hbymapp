@@ -42,9 +42,15 @@ Page({
     });
   },
   clearInput: function () {
+    var that = this;
+    var param = that.data.searchParam;
+    param.NAME = "";
+        
     this.setData({
       inputVal: ""
     });
+    that.clearCurPage();
+    that.pullSchoolInfos(true);
   },
   inputTyping: function (e) {
     this.setData({

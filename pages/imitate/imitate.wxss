@@ -76,5 +76,5 @@ page{
 }
 .blank{
   width:100%;
-  height:200rpx;
+  height:50rpx;
 }

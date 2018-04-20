@@ -59,9 +59,15 @@ Page({
   onLoad: function (options) {
     var that=this;
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE' }, 'POST', false, function (res) {
+      var result = new Array();
+      res.data.forEach(function(element){
+        if(element.NAME != "香港" && element.NAME != "澳门" && element.NAME !="台湾省"){
+          result.push(element)
+        } 
+      })
       if (options.provinces && options.provinces != "") {
         var arr = options.provinces.split(",");
-        res.data.forEach(function(element){
+        result.forEach(function(element){
           for(var i = 0; i < arr.length; i++) {
             if(element.DIC_ID == arr[i]) {
               element.checked = true;
@@ -77,7 +83,7 @@ Page({
       }
 
       that.setData({
-        style: res.data
+        style: result
       });
     });
   },
@@ -130,10 +136,10 @@ Page({
   onShareAppMessage: function () {
   
   },
-  noneSelected: function() {
+  noneSelected: function () {
     var that = this;
     var style = that.data.style;
-    
+
     for (var i = 0; i < style.length; i++) {
       style[i].checked = false;
     }
@@ -144,8 +150,8 @@ Page({
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2];  //上一个页面
 
-    prevPage.data["provinces"] = "";
-    prevPage.data["provinces_id"] = "";
+    prevPage.data["subjecttypes"] = "";
+    prevPage.data["subjecttypes_id"] = "";
     prevPage.setData(prevPage.data);
     if (!that.data.buttonClicked) {
       util.buttonClicked(that);

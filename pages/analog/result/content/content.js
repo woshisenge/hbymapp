@@ -6,7 +6,8 @@ Page({
    */
   data: {
     results: [],
-    chance: 0
+    chance: 0,
+    hidden: false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -17,13 +18,15 @@ Page({
     if (options.index == 0) {
       arrId = "hjj4e5vr0c"
       that.setData({
-        style:"本一"
+        style:"本一",
+        arrId:"hjj4e5vr0c"
       })
     }
     if (options.index == 1) {
       arrId = "bdhsl11qtb"
       that.setData({
-        style: "本二"
+        style: "本二",
+        arrId:"bdhsl11qtb"
       })
     }
     util.sendRequest("/wechat/applet/school/getschoolinfo",{SCHOOL_ID:options.school_id}, "POST", true, function(res){
@@ -46,6 +49,14 @@ Page({
           obj.checked = true;
         }
       })
+      result.forEach(function (element) {
+        if (element.MinPM == null) {
+          element.MinPM = "---"
+        }
+        if (element.MaxPM == null) {
+          element.MaxPM = "---"
+        }
+      })
       that.setData({
         grade: result
       })
@@ -54,18 +65,20 @@ Page({
     var chance = options.chance.split(",");
     for (var i=0; i < major.length;i++){
       util.sendRequest("/wechat/applet/major/getmajorbyschool", { SCHOOL_ID: options.school_id, MAJOR_ID: major[i] }, "POST", true, function (res) {
+        
         res.data.forEach(function(element){
           if (element.MINSCORETOTALCOUNT == null){
-            element.MINSCORETOTALCOUNT = ""
+            element.MINSCORETOTALCOUNT = "---"
           }
           if (element.MAXSCORETOTALCOUNT == null) {
-            element.MAXSCORETOTALCOUNT = ""
+            element.MAXSCORETOTALCOUNT = "---"
           }
         })
         var results = that.data.results;
         if (res.data.length > 0) {
           var mjname = res.data[0].MJNAME;
-          var majorObj = { MJNAME: mjname, scores: res.data };
+          var mj_id = res.data[0].MAJOR_ID;
+          var majorObj = { MJNAME: mjname, MAJORID: mj_id,scores: res.data };
           chance.forEach(function(element){
              majorObj.chance = element
           })
@@ -77,7 +90,8 @@ Page({
       })
     }
     that.setData({
-        subject: options.subject
+        subject: options.subject,
+        school_id: options.school_id
       })
   },
   toDto: function (list) {
@@ -91,6 +105,35 @@ Page({
       }
     });
     return list;
+  },
+  collection: function (e) {
+    var that = this;
+    var param = {};
+    param.SCHOOL_ID = that.data.school_id;
+    param.SCHOOLNAME = that.data.name;
+    param.MAJOR_ID = e.currentTarget.id;
+    param.PROVINCE = that.data.region;
+    param.MNCOLL_TYPE = e.currentTarget.dataset.chance;
+    param.MJNAME = e.currentTarget.dataset.id;
+    param.ARRANGMENT_ID = that.data.arrId;
+    if (that.data.subject == "理科"){
+      param.MAJORTYPE_ID = "r6j4mh69be"
+    }
+    if (that.data.subject == "文科"){
+      param.MAJORTYPE_ID = "gjv044girc"
+    }
+    util.sendRequest("/wechat/applet/report/collection_mntb",param,"POST",false,function(res){
+      util.showSuccess()
+      var result = that.data.results;
+      result.forEach(function(element){
+        if (element.MAJORID == param.MAJOR_ID){
+          element.hidden = true
+        }
+      })
+      that.setData({
+        results: result
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

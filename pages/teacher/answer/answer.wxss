@@ -1,0 +1,32 @@
+/* pages/teacher/answer/answer.wxss */
+.page{
+  background-color:white;
+}
+ .page_bd{
+   width:92%;
+   padding:20rpx 4% 20rpx 4%;  
+} 
+.weui-cells_after-title{
+  border:1rpx solid rgb(90,180,170); 
+}
+.weui-cells__title{
+  font-size:32rpx;
+  color:#333;
+  padding-left:0;
+  margin-bottom:20rpx;
+}
+.weui-btn-area {
+  margin:15.17647059em 15px .3em;
+}
+button[type=primary] {
+  background-color:rgb(90,180,170);
+}
+.button-hover{
+  background-color:rgb(90,180,170);
+}
+weui-cell:before{
+  border-top:0;
+}
+.weui-cells:after{
+  border-bottom:0;
+}

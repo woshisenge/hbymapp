@@ -20,13 +20,13 @@
                 </view>
             </view>
         </view>
-        <view class="weui-cells__tips">请填写《铭邦高考规划平台》所使用的账户，我们将把账户信息进行关联</view>
+        <view class="weui-cells__tips">请填写《铭邦高考规划平台》所使用的账户</view>
 
         <view class="weui-btn-area">
             <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
         </view>
         <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="start">还没有账户？点此注册</button>
+            <button class="weui-btn" type="default" bindtap="start">还没有账户？点此免费注册</button>
         </view>
     </view>
 </view>

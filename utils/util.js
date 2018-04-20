@@ -11,7 +11,7 @@ const formatDate = date => {
   const second = date.getSeconds()
 
   return [year, month, day].map(formatNumber).join('-');
-}
+} 
 
 /**
  * 格式化时间 yyyy-MM-dd HH:mm:ss
@@ -206,7 +206,6 @@ var uploadFile = function (url, file, name, formData, loadingType, successFn, er
           mask: true
         });
       }
-      console.log()
       wx.uploadFile({
         url: url,
         filePath: file,
@@ -303,7 +302,7 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
           if (res.data.hasErrors) {
             //需要登录，详情查看后台LoginIntercetor
             if (res.data.errorCode == noLoginCode){
-              login();
+              login()
             }
               
             else if (res.data.errorCode == noCompleteCode){
@@ -324,7 +323,7 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
           if (loadingType) {
             wx.hideLoading();
           }
-          showError("网络连接错误，请稍后重试");
+          // showError("网络连接错误，请稍后重试");
           if (errorFn)
             errorFn(res.data);
         },
@@ -334,11 +333,99 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
       })
     },
     fail: function () {
-      login();
+      login()
     }
   })
 }
+//不查登录态的请求
+/**
+ * url: 填写子url即可，例如：完整url为：http://xx.com/api/demo，则url填写为/api/demo即可，baseUrl参见util.js -> baseUrl
+ * param: 请求参数
+ * sendType: （需大写）有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+ * loadingType (选填)为true则显示loading，反之不显示
+ * successFn: （选填）成功处理函数，若返回出错，则不执行该函数，由本方法自行处理
+ * errorFn: （选填）失败处理函数，如：超时等问题，本方法已处理提示操作 
+ */
+var sendRequest_s = function (url, param, sendType, loadingType, successFn, errorFn) {
+     var header = { 'content-type': 'application/x-www-form-urlencoded' };
+      if (url.indexOf(getBaseUrl()) < 0) {
+        if (url.indexOf("/") == 0) {
+          url = getBaseUrl() + url;
+        }
+        else {
+          url = getBaseUrl() + "/" + url;
+        }
+      }
+      if (url.indexOf("?") > 0) {
+        url += "&ajax=true";
+      }
+      else {
+        url += "?ajax=true";
+      }
+      if (loadingType) {
+        wx.showLoading({
+          title: "请稍后",
+          mask: true
+        });
+      }
+      wx.request({
+        url: url,
+        data: param,
+        method: sendType,
+        header: header,
+        success: function (res) {
+          if (loadingType) {
+            wx.hideLoading();
+          }
+          if (res.data.hasErrors) {
+            //需要登录，详情查看后台LoginIntercetor
+            if (res.data.errorCode == noLoginCode) {
+              login()
+            }
 
+            else if (res.data.errorCode == noCompleteCode) {
+              toComplete();
+            }
+
+            else if (res.data.errorCode == notAcceptCode)
+              console.error("接口：" + url + "缺少参数");
+            else
+              showError(res.data.errorMessage);
+
+            return false;
+          }
+          if (successFn)
+            successFn(res.data);
+        },
+        fail: function (res) {
+          if (loadingType) {
+            wx.hideLoading();
+          }
+          // showError("网络连接错误，请稍后重试");
+          if (errorFn)
+            errorFn(res.data);
+        },
+        complete: function () {
+
+        }
+      })
+}
+// 解决异步问题
+function wxPromisify(fn) {
+  return function (obj = {}) {
+    return new Promise((resolve, reject) => {
+      obj.success = function (res) {
+        resolve(res)
+      }
+
+      obj.fail = function (res) {
+        reject(res)
+      }
+
+      fn(obj)
+    })
+  }
+}
 /**
  * 错误提示框
  * msg: 提示内容
@@ -680,6 +767,7 @@ module.exports = {
   formatNumber: formatNumber,
   showError: showError,
   sendRequest: sendRequest,
+  sendRequest_s: sendRequest_s,
   showSuccess: showSuccess,
   login: login,
   getInfoFromStorage: getInfoFromStorage,
@@ -700,5 +788,5 @@ module.exports = {
   EmojiObj: EmojiObj,
   Emoji: Emoji,
   parseEmoji: parseEmoji,
-  buttonClicked: buttonClicked
+  wxPromisify: wxPromisify
 }

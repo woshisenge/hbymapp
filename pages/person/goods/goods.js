@@ -26,9 +26,9 @@ Page({
       else {
         that.setData({
           BALANCE: res.BALANCE + "个",
-          yxzxk: res.yxzxk + "张",
-          mntbk: res.mntbk + "张",
-          zntjk: res.zntjk + "张"
+          yxzxk: res.yxzxk,
+          mntbk: res.mntbk,
+          zntjk: res.zntjk
         });
       }
     });
