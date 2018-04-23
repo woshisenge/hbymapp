@@ -11,7 +11,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     // 首页轮播图 开始
     imgUrls: [
-      { src: utils.setStaticUrl("/static/ymplant/img/sye/banner/01.jpg"), url:"/pages/person/improve/improve",num:1},
+      {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/8.jpg"), url: "/pages/person/improve/improve", num: 1 },
+      {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/01.jpg"), url:"/pages/person/improve/improve",num:1},
       {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/02.jpg"),url:"/pages/intelligence/intelligence",num:2},
       {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/03.jpg"),url:"/pages/video/video"},
       {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/04.png"),url:"/pages/consult/consult"}
