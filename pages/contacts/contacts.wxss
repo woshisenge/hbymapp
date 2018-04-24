@@ -112,3 +112,10 @@
   width: 100%;
   background-color: #e0e1e2;
 }
+.contact_wait{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top:170rpx;
+}

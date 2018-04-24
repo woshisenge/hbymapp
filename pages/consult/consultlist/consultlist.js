@@ -46,7 +46,6 @@ Page({
     var that = this;
     var id = options.a;
     util.sendRequest("/wechat/applet/major/getschoolmajorandplan", { SCHOOL_ID: id }, "POST", true, function (res) {
-      console.log(res)
       that.setData({
         liberal: res.WEN,
         science: res.Li 
@@ -189,12 +188,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
-    util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
-       that.setData({
-          vip:obj.data
-       })
-    })
+    // var that = this;
+    // util.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
+    //    that.setData({
+    //       vip:obj.data
+    //    })
+    // })
   },
 
   /**

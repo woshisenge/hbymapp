@@ -12,7 +12,8 @@ Page({
     inputVal: "",
     checked:false,
     s_teacher:[],
-    s_student:[]
+    s_student:[],
+    wait: util.setStaticUrl("/static/ymplant/img/sye/banner/wait.png")
   },
   showInput: function () {
     this.setData({

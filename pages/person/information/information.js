@@ -11,8 +11,8 @@ Page({
     majortypeIndex:0,
     gradeIndex: 2,
     user: {},
-    province:"河北省",
-    province_id:"province3"
+    province:"",
+    province_id:""
   },
   formSubmit: function(e) {
     e.detail.value.MAJORTYPE = this.data.majortypeObjs[e.detail.value.MAJORTYPE].DIC_ID;
@@ -73,8 +73,6 @@ Page({
           });
         }
       });
-
-
       that.data.gradeObjs.forEach(function (element, index) {
         if (element.DIC_ID == res.GRADE) {
           that.setData({
@@ -82,6 +80,9 @@ Page({
           });
         }
       });
+      if (res.EXAMAREA_VALUE == null){
+        res.EXAMAREA_VALUE = "";
+      }
       that.setData({
         province: res.EXAMAREA_VALUE,
         province_id: res.EXAMAREA,

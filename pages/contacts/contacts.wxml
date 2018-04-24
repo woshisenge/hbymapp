@@ -16,10 +16,14 @@
     <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
   </view>   
 <view  stytle=" overflow-x: hidden; overflow-y: auto; " wx:if="{{role == 1}}">
-  <view class="message_list">
+<view class='contact_wait' wx:if="{{teacher.length == 0}}">
+  <image src="{{wait}}" style="width:350rpx;height:350rpx"></image>
+  <text>大学招办老师在等你！</text>
+</view>
+  <view class="message_list" wx:else>
     <block wx:for="{{teacher}}" wx:key="">
       <view id='{{item.RUSER_ID}}' bindtap='toChat' hidden="{{item.checked}}">
-        <view class="item" >
+        <view class="item">
           <view class="item-left">
             <image src="{{item.TEAHEADURL}}" class="image"/>
           </view>
@@ -38,7 +42,11 @@
   </view>
 </view>
 <view  stytle=" overflow-x: hidden; overflow-y: auto; " wx:if="{{role==2 || role==3}}">
-  <view class="message_list">
+<view class='contact_wait' wx:if="{{student.length == 0}}">
+  <image src="{{wait}}" style="width:350rpx;height:350rpx"></image>
+  <text>暂无联系人</text>
+</view>
+  <view class="message_list" wx:else>
     <block wx:for="{{student}}" wx:key="">
       <view id='{{item.RUSER_ID}}' bindtap='toChat'>
         <view class="item" >

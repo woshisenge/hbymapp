@@ -8,15 +8,24 @@
               <view class='picker'>{{majortypeObjs[majortypeIndex].NAME}}</view>
             </picker>
       </view>
-  </view>   
-  <view class="weui-cell weui-cell_access" bindtap="provice" id="{{province_id}}">
+  </view>
+    <view class="weui-cell weui-cell_access" bindtap="provice" id="{{province_id}}" wx:if="{{province == ''}}">
       <view class="weui-cell__hd"></view>
       <view class="weui-cell__bd weui-cell_primary">
           <text>考生所在地</text>
           <text>{{province}}</text>
       </view>
       <view class="weui-cell__ft"></view>
-  </view> 
+    </view>
+    <view class="weui-cell weui-cell_access" wx:else>
+      <view class="weui-cell__hd"></view>
+      <view class="weui-cell__bd weui-cell_primary">
+          <text>考生所在地</text>
+          <text>{{province}}</text>
+      </view>
+      <view class="weui-cell__ft"></view>
+    </view>
+    <!-- <view class="weui-cells__tips">考生所在地只能填写一次。</view> -->
   <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__bd weui-cell_primary">
           <text>年级</text>

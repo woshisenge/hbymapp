@@ -9,7 +9,9 @@ Page({
     user_id:"",
     OUT_TRADE_NO:"",
     PHONE1:"",
-    PHONE2:""
+    PHONE2:"",
+    banner: util.setStaticUrl("/static/ymplant/img/sye/banner/15.png"),
+    single: util.setStaticUrl("/static/ymplant/img/sye/banner/banner-vip.jpg")
   },
 
   /**
@@ -20,8 +22,6 @@ Page({
       that.setData({
         user_id:options.user_id,
         id:options.id,
-        single: util.setStaticUrl("/static/ymplant/img/sye/banner/banner-vip.jpg"),
-        group: util.setStaticUrl("/static/ymplant/img/sye/banner/banner-vip2.jpg")
       });
      
   },
