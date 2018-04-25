@@ -83,6 +83,9 @@ Page({
       if (res.EXAMAREA_VALUE == null){
         res.EXAMAREA_VALUE = "请选择...";
       }
+      if (res.EXAMAREA == null) {
+        res.EXAMAREA = "请选择...";
+      }
       that.setData({
         province: res.EXAMAREA_VALUE,
         province_id: res.EXAMAREA,
