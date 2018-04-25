@@ -12,7 +12,7 @@ Page({
     gradeIndex: 2,
     user: {},
     province:"请选择...",
-    province_id:""
+    province_id:"请选择..."
   },
   formSubmit: function(e) {
     e.detail.value.MAJORTYPE = this.data.majortypeObjs[e.detail.value.MAJORTYPE].DIC_ID;
