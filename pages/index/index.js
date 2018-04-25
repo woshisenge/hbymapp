@@ -53,7 +53,25 @@ Page({
         utils.showError("请先登录账号");
         return false;
       }
-      utils.navigateTo("/pages/consult/consult")
+      else{
+        utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
+          if(result.data){
+            utils.navigateTo("/pages/consult/consult")
+          }
+          else{
+            wx.showModal({
+              title: '提示',
+              content: '请完善个人信息',
+              success: function (res) {
+                if (res.confirm) {
+                  util.navigateTo("/pages/person/information/information")
+                }
+              }
+            })
+          }
+        })
+      }
+      
     });
   },
   analog:function(){
@@ -98,7 +116,15 @@ Page({
             })
           }
         else{
-            utils.showError("请完善考生信息");
+            wx.showModal({
+              title: '提示',
+              content: '请完善个人信息',
+              success: function (res) {
+                if (res.confirm) {
+                  util.navigateTo("/pages/person/information/information")
+                }
+              }
+            })
         }
     })
       }
@@ -145,7 +171,15 @@ Page({
             })
           }
           else {
-            utils.showError("请完善考生信息");
+            wx.showModal({
+              title: '提示',
+              content: '请完善个人信息',
+              success: function (res) {
+                if (res.confirm) {
+                  util.navigateTo("/pages/person/information/information")
+                }
+              }
+            })
           }
         })
       }

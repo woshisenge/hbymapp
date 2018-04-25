@@ -14,6 +14,12 @@
 .weui-input{
   text-align: right;
 }
-picker{
-  width:77%;
+.weui-cells:after{
+  border-bottom:0;
+}
+.weui-cell__ft{
+  color:#000;
+}
+.weui-cells__tips{
+  color:red;
 }

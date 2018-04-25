@@ -28,12 +28,8 @@ Page({
   pay:function(e){
     var that = this;
     var a = e.currentTarget.id
-    wx.showModal({
-      title: '提示',
-      content: '本系统付费功能仅供河北考生使用，请确认是否为河北考生？（虚拟商品一经售出概不退换）',
-      success: function (res) {
-        if (res.confirm) {
           util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: a }, "POST", true, function (res) {
+            console.log(res)
             var OUT_TRADE_NO = res.OUT_TRADE_NO
             var nonceStr = res.prePayReSign.nonceStr;
             var packageStr = res.prePayReSign.packageStr;
@@ -63,14 +59,10 @@ Page({
                 });
 
               },
-              fail: function (obj) {
-                util.showError("发起支付失败");
-              }
             })
+          },function(res){
+            console.log(res)
           })  
-        }
-      }
-    })
   },
   bindPhone1:function(e){
     this.setData({
@@ -98,11 +90,6 @@ Page({
         success: function (res) {
           if (res.confirm) {
             util.sendRequest("/plant/wxrecharge/preferentialActivitie_CheckPhone", {PHONE1:that.data.PHONE1,PHONE2:that.data.PHONE2},"POST",true,function(res){
-      wx.showModal({
-        title: '提示',
-        content: res.data,
-        success: function (res) {
-          if (res.confirm) {
             util.sendRequest("/plant/wxrecharge/addUnPayOrder_ForTwo", { TOTAL: a }, "POST", true, function (res) {
               var OUT_TRADE_NO = res.OUT_TRADE_NO;
               var nonceStr = res.prePayReSign.nonceStr;
@@ -134,13 +121,7 @@ Page({
                 }
             })
           
-        });
-        }
-        },
-        fail:function(obj){
-          util.showError("发起支付失败");
-        }
-      })
+        })
     })
           }
         }

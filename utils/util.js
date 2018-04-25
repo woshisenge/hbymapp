@@ -313,8 +313,7 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
               console.error("接口：" + url + "缺少参数");
             else
               showError(res.data.errorMessage);
-
-            return false;
+              return false;
           }
           if (successFn)
             successFn(res.data);

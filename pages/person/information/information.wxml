@@ -1,6 +1,6 @@
 <view class="page">
 <form bindsubmit="formSubmit">
-  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd"></view>
       <view class="weui-cell__bd weui-cell_primary">
           <text>考试类型</text>
@@ -8,8 +8,29 @@
               <view class='picker'>{{majortypeObjs[majortypeIndex].NAME}}</view>
             </picker>
       </view>
-  </view>
-    <view class="weui-cell weui-cell_access" bindtap="provice" id="{{province_id}}" wx:if="{{province == ''}}">
+  </view> -->
+    
+  <!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd weui-cell_primary">
+          <text>年级</text>
+          <picker bindchange="bindPickerChange" value="{{gradeIndex}}" range="{{gradeObjs}}" range-key='NAME' id="GRADE" name="GRADE">
+        <view class='picker'>{{gradeObjs[gradeIndex].NAME}}</view>
+      </picker>
+      </view>
+  </view> -->
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__hd">
+            <view class="weui-label">考试类型</view>
+        </view>
+        <view class="weui-cell__bd">
+            <picker bindchange="bindPickerChange" value="{{majortypeIndex}}" range="{{majortypeObjs}}" range-key='NAME' id="MAJORTYPE" name="MAJORTYPE">
+              <view class='picker'>{{majortypeObjs[majortypeIndex].NAME}}</view>
+            </picker>
+        </view>
+    </view>
+  </view> 
+  <!-- <view class="weui-cell weui-cell_access" >
       <view class="weui-cell__hd"></view>
       <view class="weui-cell__bd weui-cell_primary">
           <text>考生所在地</text>
@@ -24,15 +45,37 @@
           <text>{{province}}</text>
       </view>
       <view class="weui-cell__ft"></view>
-    </view>
-    <!-- <view class="weui-cells__tips">考生所在地只能填写一次。</view> -->
-  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__bd weui-cell_primary">
-          <text>年级</text>
-          <picker bindchange="bindPickerChange" value="{{gradeIndex}}" range="{{gradeObjs}}" range-key='NAME' id="GRADE" name="GRADE">
+    </view> -->
+    <view class="weui-cells weui-cells_after-title" bindtap="provice" id="{{province_id}}" wx:if="{{province == ''}}">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">考生所在地</view>
+                <view class="weui-cell__ft">
+                    {{province}}
+                </view>
+            </view>
+        </view>
+    <view class="weui-cells weui-cells_after-title" wx:else>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">考生所在地</view>
+                <view class="weui-cell__ft">
+                    {{province}}
+                </view>
+            </view>
+        </view>
+    <view class="weui-cells__tips" wx:if="{{province == ''}}">*考生所在地仅允许填写一次，请认真选择</view>
+    <view class="weui-cells__tips" wx:else>*考生所在地已选择，如需再次修改请联系客服</view> 
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__hd">
+            <view class="weui-label">年级</view>
+        </view>
+        <view class="weui-cell__bd">
+            <picker bindchange="bindPickerChange" value="{{gradeIndex}}" range="{{gradeObjs}}" range-key='NAME' id="GRADE" name="GRADE">
         <view class='picker'>{{gradeObjs[gradeIndex].NAME}}</view>
       </picker>
-      </view>
+        </view>
+    </view>
   </view> 
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
@@ -72,7 +115,7 @@
         </view>
       </view>
     </view>
-    <view class="weui-cells__tips">*该成绩用于高校检索查询</view>
+    <view class="weui-cells__tips">*模拟考试成绩用于高校检索查询</view>
 <button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
 </form>
 </view>

@@ -3,7 +3,7 @@
   <view class='banner'>
     <image src="{{single}}"></image>
   </view>
-  <view class='btn' bindtap='pay' id="29800"><text class='text'>立即购买</text></view>
+  <view class='btn' bindtap='pay' id="1"><text class='text'>立即购买</text></view>
 </view>
 <view wx:if="{{id == 2}}">
   <!-- <view class='banner'>
@@ -66,7 +66,7 @@
           <text>2.充值成功后将直接为您升级成黄金会员</text>
         </view>
       </view>
-      <view class='appoint' bindtap="bindSubmit" id="45600">立即提交</view>
+      <view class='appoint' bindtap="bindSubmit" id="1">立即提交</view>
     </view>
 </view>
 </view>

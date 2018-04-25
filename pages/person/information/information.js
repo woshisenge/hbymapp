@@ -11,7 +11,7 @@ Page({
     majortypeIndex:0,
     gradeIndex: 2,
     user: {},
-    province:"",
+    province:"请选择...",
     province_id:""
   },
   formSubmit: function(e) {
