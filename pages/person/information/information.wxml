@@ -46,7 +46,7 @@
       </view>
       <view class="weui-cell__ft"></view>
     </view> -->
-    <view class="weui-cells weui-cells_after-title" bindtap="provice" id="{{province_id}}" wx:if="{{province == ''}}">
+    <view class="weui-cells weui-cells_after-title" bindtap="provice" id="{{province_id}}" wx:if="{{province == '请选择...'}}">
             <view class="weui-cell">
                 <view class="weui-cell__bd">考生所在地</view>
                 <view class="weui-cell__ft">

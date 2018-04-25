@@ -81,7 +81,7 @@ Page({
         }
       });
       if (res.EXAMAREA_VALUE == null){
-        res.EXAMAREA_VALUE = "";
+        res.EXAMAREA_VALUE = "请选择...";
       }
       that.setData({
         province: res.EXAMAREA_VALUE,
