@@ -1,4 +1,5 @@
 <!--pages/major/majorcontent/majorcontent.wxml-->
+<!-- 专业库二类专业列表页 -->
 <view class="weui-cells__title">{{parentName}} > {{name}}</view>
 <view class="weui-cells weui-cells_after-title">
   <block wx:for="{{major}}" wx:key="">

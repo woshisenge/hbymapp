@@ -78,6 +78,7 @@ var login = function () {
             //完成关联信息
             sendRequest("/wechat/applet/user/getuserfromsession", {}, "POST", true, function (obj) {
               setInfoToStorage("user_id", obj.user_id);
+              setInfoToStorage("headurl", obj.HEADURL);
               getApp().startSocket();
               switchTab({ url: "/pages/index/index" });
               //获取角色信息
@@ -134,7 +135,7 @@ var toComplete = function () {
     switchTab({
       url: '/pages/index/index',
       successFn: function () { redirectTo('/pages/login/login'); }
-    })
+    }) 
   }
 }
 

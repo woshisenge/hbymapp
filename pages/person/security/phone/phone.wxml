@@ -1,4 +1,5 @@
 <!--pages/person/security/phone/phone.wxml-->
+<!-- 修改手机号页面 -->
 <view class='page'>
 <form bindsubmit="formSubmit">
 <view class="page__bd">

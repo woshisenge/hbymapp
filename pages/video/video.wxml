@@ -1,3 +1,4 @@
+<!-- 视频列表页 -->
 <view class='section'>
   <view class='section-item' wx:for="{{video}}" wx:key="" bindtap='play' id="{{item.NEWS_ID}}">
     <image class='images' src="{{item.IMGURL}}" ></image>

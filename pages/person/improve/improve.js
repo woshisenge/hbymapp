@@ -29,7 +29,6 @@ Page({
     var that = this;
     var a = e.currentTarget.id
           util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: a }, "POST", true, function (res) {
-            console.log(res)
             var OUT_TRADE_NO = res.OUT_TRADE_NO
             var nonceStr = res.prePayReSign.nonceStr;
             var packageStr = res.prePayReSign.packageStr;

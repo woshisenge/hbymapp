@@ -1,4 +1,4 @@
-<!--pages/activity/content/content.wxml-->
+<!--pages/activity/content/content.wxml    线下活动内容页-->
 <import src="../../../wxParse/wxParse.wxml" />
 <view class='content'>
   <view class="head">

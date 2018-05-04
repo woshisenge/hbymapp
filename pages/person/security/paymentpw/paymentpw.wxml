@@ -1,4 +1,5 @@
 <!--pages/person/security/paymentpw/paymentpw.wxml-->
+<!-- 修改支付密码页面（目前没用） -->
 <view class='page'>
 <form bindsubmit="formSubmit">
 <view class="page__bd">

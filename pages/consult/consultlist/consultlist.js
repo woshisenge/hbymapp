@@ -1,4 +1,5 @@
 // pages/consult/consultlist/consultlist.js
+// 院校咨询详情页
 var util = require("../../../utils/util")
 var WxParse = require('../../../wxParse/wxParse.js');
 Page({

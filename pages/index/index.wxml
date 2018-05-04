@@ -4,7 +4,7 @@
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
   <block wx:for="{{imgUrls}}" wx:key="">
     <swiper-item>
-      <image src="{{item.src}}" style='width:100%;height:100%;' class="slide-image"/>
+      <image src="{{item.src}}" style='width:100%;height:100%;' class="slide-image" id="{{item.url}}" bindtap="image"/>
     </swiper-item>
   </block>
 </swiper>   
@@ -62,11 +62,83 @@
      <text class="more1" bindtap="noticemore">更多></text> 
  </view> 
 <!-- 公告 结束-->
-
+<!-- 热门院校 开始 -->
+<view class="notice">
+  <image class='icon' src='../../images/01.png'></image>
+  <view style='font-size:30rpx;'>网络咨询会的四大优势</view>
+  <!-- <span class="more" style="font-size:25rpx;" bindtap="newsmore">更多></span> -->
+</view>
+  <view class="page__bd page__bd_spacing" bindtap="advantage">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="placeholder" style="height:100%">
+          <view class='adv_left'>
+            <text style="font-size:36rpx">招生政策</text>
+            <!-- <text>网络咨询招生办</text> -->
+            <text>熟知最新的高考招生政策</text>
+          </view>
+          <view class='adv_right'>
+            <image src="{{index_1}}" style="width:260rpx;height:260rpx"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="page__bd page__bd_spacing" bindtap="advantage">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="placeholder" style="height:100%;background-color:#0ddce4">
+          <view class='adv_left'>
+            <text style="font-size:36rpx">实时沟通</text>
+            <!-- <text>网络咨询招生办</text> -->
+            <text>与你心仪大学的招办老师零距离沟通</text>
+          </view>
+          <view class='adv_right'>
+            <image src="{{index_2}}" style="width:260rpx;height:260rpx"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="page__bd page__bd_spacing" bindtap="advantage">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="placeholder" style="height:100%;background-color:#c070f2">
+          <view class='adv_left'>
+            <text style="font-size:36rpx">深度了解</text>
+            <!-- <text>网络咨询招生办</text> -->
+            <text>答疑解惑，让你报考志愿有的放矢，不再迷茫</text>
+          </view>
+          <view class='adv_right'>
+            <image src="{{index_3}}" style="width:220rpx;height:220rpx"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="page__bd page__bd_spacing" bindtap="advantage">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="placeholder" style="height:100%;background-color:#2ef28f">
+          <view class='adv_left'>
+            <text style="font-size:36rpx">决胜千里</text>
+            <!-- <text>整合信息资源</text>  -->
+            <text>智能推荐+模拟填报</text>
+            <text>助力最后一站</text>
+            <text>金榜题名  指日可待</text>
+          </view>
+          <view class='adv_right'>
+            <image src="{{index_4}}" style="width:200rpx;height:200rpx"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+<!-- 热门院校  结束 -->
 <!-- 高考动态 开始 -->
 <view class="notice">
   <image class='icon' src='../../images/dynamic.png'></image>
-  <view style='font-size:30rpx;'>高考动态</view>
+  <view style='font-size:36rpx;'>高考动态</view>
   <span class="more" style="font-size:25rpx;" bindtap="newsmore">更多></span>
 </view>
 <view style='padding:15rpx 0;'>

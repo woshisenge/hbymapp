@@ -1,4 +1,4 @@
-<!--pages/character/character.wxml-->
+<!--pages/character/character.wxml   性格测试页（还没开始写，如果写的话可以把这个删了重新写）-->
 <!-- <button class="weui-btn" type="primary" >开始测试</button> -->
 <view class="banner">
   <image src="/images/test.png"></image>

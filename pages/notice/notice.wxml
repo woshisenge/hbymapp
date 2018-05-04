@@ -1,3 +1,4 @@
+<!-- 公告列表页 -->
 <view style='padding:15rpx 0;'>
   <block wx:for="{{news}}" wx:key="">
   <view style='display:flex;flex-direction:row;' bindtap='notice' data-id='{{item.NEWS_ID}}'>

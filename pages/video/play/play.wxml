@@ -1,24 +1,4 @@
-<!-- pages/video/play/play.wxml
-<view class="video">
-  
-</view>
-<scroll-view class="page-body" scroll-y>
--->
-<!-- <view class='page-teacher'>
-  <view class="teacher-in">专家介绍</view>
-  <view class='teacher-logo'>
-    <image src="/images/002.png" style="width:200rpx;height:200rpx;"></image>
-    <view class="teacher-name">
-      <image src="/images/06.png" style="width:30rpx;height:30rpx;"></image>
-      <text>杨老师</text>
-    </view>
-  </view>
-  <view class='teacher-content'>
-    杨老师坦言：高考报考不仅仅关系着一个孩子的未来，更承载了一个家庭的梦想和期望。作为资深的报考专家，我深知这不是一份工作，更是一份责任。他是家长和学生的希望和寄托。我肩膀上承担的重担，就是家长和学生的前途！因此，我不允许有任何的失误和闪失。高中生活学习中的彷徨和无助不用担心，你有我，无论你在生活上遇到什么困难，我都可以给你恰当、有效的解决方法。
-  </view>
-</view> -->
-<!-- <view class='white'></view>
-</scroll-view> -->
+<!-- 视频播放页 -->
 <view class="MainContent">
     <view class="TopBlock">
         <video id="myVideo"   src="{{src}}" controls show-fullscreen-btn show-center-play-btn enable-progress-gesture loop="true" autoplay="{{autoplay}}"></video>

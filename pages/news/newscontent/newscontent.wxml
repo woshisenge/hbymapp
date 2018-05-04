@@ -1,4 +1,5 @@
 <!--pages/news/newscontent/newscontent.wxml-->
+<!-- 新闻详情页 -->
 <import src="../../../wxParse/wxParse.wxml" />
 
 <view class='content'>

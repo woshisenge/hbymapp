@@ -70,7 +70,6 @@ Page({
       })
     })
     util.sendRequest_s("/wechat/applet/school/getschoolscore", { SCHOOL_ID: id, MAJORTYPE_ID: 'r6j4mh69be'}, "POST", true, function (res) {
-      console.log(res.data)
       var grade = res.data;
       grade.forEach(function(element){
         if (element.MinPM == null){

@@ -1,4 +1,4 @@
-<!--pages/activity/activity.wxml-->
+<!--pages/activity/activity.wxml      线下活动列表页-->
 <block wx:for="{{activity}}" wx:key="">
 <view class="content" data-id='{{item.NEWS_ID}}' bindtap='activity'>
   <view class="head"><text>{{item.TITLE}}</text></view>

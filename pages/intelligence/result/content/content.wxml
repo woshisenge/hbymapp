@@ -1,4 +1,5 @@
 <!--pages/analog/analogs/result/content/content.wxml-->
+<!-- 智能推荐结果详情页 -->
   <view class="page_bd">
     <view class="banner">
       <image src='/images/tb.png'></image>

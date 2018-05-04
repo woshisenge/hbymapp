@@ -1,4 +1,5 @@
 <!--pages/register/register.wxml-->
+<!-- 注册页面 -->
 <form bindsubmit='formSubmit'>
   <view class="page__bd">
   <view class="weui-cells__title">学生注册</view>

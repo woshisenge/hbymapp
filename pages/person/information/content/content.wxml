@@ -1,4 +1,5 @@
 <!--pages/person/information/content/content.wxml-->
+<!-- 修改考生所在地页面 -->
 <view class="page">
     <view class="page__bd">
       <view class="weui-cells weui-cells_after-title">

@@ -1,4 +1,5 @@
 <!--pages/table/table.wxml-->
+<!-- 一分一档表 -->
 <view class="page">
     <view class="page__bd">
       <view class="weui-search-bar">

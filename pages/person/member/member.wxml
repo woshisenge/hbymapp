@@ -1,4 +1,5 @@
 <!--pages/person/member/member.wxml-->
+<!-- 输入卡号，激活码升级成白银会员页面 -->
 <form bindsubmit='formSubmitForReg'>
   <view class="weui-cells__title">请升级会员</view>
   <view class="weui-cells weui-cells_after-title">

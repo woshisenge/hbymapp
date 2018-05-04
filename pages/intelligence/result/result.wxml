@@ -1,3 +1,4 @@
+<!-- 智能推荐结果页 -->
 <view class="page">
     <view class="page__desc">分数：{{EXAMSCORE}}　　{{MAJORTYPE_VALUE}}</view>
     <view class="page__desc"><text style="color:black">温馨提示：</text>我们已为您精确到专业分数，若冲，稳，保，垫四个结果中出现相同院校，请仔细核对专业分数。</view>

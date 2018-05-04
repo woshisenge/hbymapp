@@ -1,4 +1,5 @@
 <!--pages/school/schoolcontent/schoolcontent.wxml-->
+<!-- 院校咨询详情页 -->
 <import src="../../../wxParse/wxParse.wxml" />
 <!-- <scroll-view scroll-y style="height: 600px;" bindscrolltoupper="upper" bindscrolltolower="lower" scroll-top="{{scrollTop}}" upper-threshold="75px" bindscroll="scroll"> -->
 <view class="banner">

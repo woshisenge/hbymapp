@@ -1,3 +1,4 @@
+<!-- 学生修改基本信息页面 -->
 <view class="page">
 <form bindsubmit="formSubmit">
   <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">

@@ -1,3 +1,4 @@
+<!-- 模拟填报结果详情页 -->
 <view class="page_bd">
     <view class="banner">
       <image src='/images/tb.png'></image>

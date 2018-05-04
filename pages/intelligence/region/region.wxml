@@ -1,4 +1,5 @@
 <!--pages/intelligence/region/region.wxml-->
+<!-- 智能推荐选择地区页面 -->
 <view class="page">
     <view class="page__bd">
 		<view class="weui-cells weui-cells_after-title">

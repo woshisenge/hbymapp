@@ -1,4 +1,5 @@
 <!--pages/person/security/loginpw/loginpw.wxml-->
+<!-- 修改登录密码页面 -->
 <view class='page'>
 <form bindsubmit="formSubmit">
 <view class="page__bd">

@@ -1,4 +1,5 @@
 <!--pages/person/collect/collect.wxml-->
+<!-- 收藏页面 -->
 <view class='page' wx:if="{{id == 1}}">
   <view class='page_bd'>
     <view class="weui-cells__title">

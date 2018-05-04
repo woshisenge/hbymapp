@@ -1,4 +1,4 @@
-
+<!-- 新闻列表页 -->
 <block wx:for="{{news}}" wx:key="" id="{{index}}" >
 <view class='content' bindtap='news' id="{{item.NEWS_ID}}">
   <view class='content-left'>

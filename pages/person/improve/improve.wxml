@@ -1,4 +1,5 @@
 <!--pages/person/improve/improve.wxml-->
+<!-- 升级会员页面（单人买卡  优惠团购） -->
 <view wx:if="{{id == 1}}">
   <view class='banner'>
     <image src="{{single}}"></image>

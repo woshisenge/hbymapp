@@ -2,7 +2,7 @@
 var utils = require('utils/util.js');
 App({
   onLaunch: function () {
-    // utils.login()
+    //  utils.login()
   },
   globalData: {
     socketFlag: false,
@@ -24,7 +24,6 @@ App({
       wx.onSocketOpen(function (res) {
         console.log('app-WebSocket连接已打开！')
       });
-
       wx.onSocketError(function (res) {
         console.log('app-WebSocket连接打开失败，请检查！')
       });

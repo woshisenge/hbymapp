@@ -1,4 +1,4 @@
-<!--pages/analog/analogs/result/result.wxml-->
+<!--pages/analog/analogs/result/result.wxml   模拟填报结果页-->
 <view class='page'>
   <view class='page_bd'>
     <block wx:for="{{results}}" wx:for-item="school" wx:key="*this">

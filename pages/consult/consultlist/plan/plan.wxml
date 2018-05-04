@@ -1,4 +1,5 @@
 <!--pages/school/schoolcontent/plan/plan.wxml-->
+<!-- 招生计划内容页（目前这个页面没用） -->
 <import src="../../../../wxParse/wxParse.wxml" />
 <view class='content' wx:for="{{content}}" wx:key = "{{item.TITLE}}">
   <view class="head">

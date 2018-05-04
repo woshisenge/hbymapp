@@ -1,4 +1,5 @@
 <!--pages/school/schoolcontent/schoolcontent.wxml-->
+<!-- 院校库详情页 -->
 <import src="../../../wxParse/wxParse.wxml" />
 <view class="banner">
   <image src='/images/tb.png'></image>

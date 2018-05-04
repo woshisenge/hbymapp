@@ -45,7 +45,8 @@ Page({
     recordStatus: RecordStatus.HIDE,
     question:true,
     que_list:true,
-    hid:false
+    hid:false,
+    cursor:"40"
   },
   toDto: function (list) {
     if (!list) return list;
@@ -56,6 +57,12 @@ Page({
       if (obj.REC_ID) {
         obj.REC_ID = obj.REC_ID
       }
+      if (obj.RHEADURL) {
+        obj.RHEADURL = util.setStaticUrl(obj.RHEADURL);
+      }
+      if (obj.SHEADURL) {
+        obj.SHEADURL = util.setStaticUrl(obj.SHEADURL);
+      }
     });
     return list;
   },
@@ -64,14 +71,13 @@ Page({
     that.setData({
       ruser_id: options.user_id,
       suser_id: util.getInfoFromStorage("user_id"),
+      headurl: util.getInfoFromStorage("headurl")
     });
-    
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function(role){
       that.setData({
         role: role.data
       });
       util.sendRequest("/wechat/applet/chat/getchatrecs", { USER_ID: options.user_id }, "POST", true, function (res) {
-        
         if (res.chatRecords) {
           res.chatRecords.forEach(function (element) {
             if (element.SUSER_ID == that.data.suser_id) {
@@ -106,6 +112,7 @@ Page({
             complete_info: res.complete_stu
           })
         }
+        
         that.setData({
           chatRecords: that.toDto(res.chatRecords)
         });
@@ -129,7 +136,9 @@ Page({
                 RUSER_ID: that.data.ruser_id,
                 ISREAD: false,
                 CREATETIME: util.getCurrentTime(),
-                style: "recmsg"
+                style: "recmsg",
+                SHEADURL: util.setStaticUrl(that.data.headurl)
+
               }
 
               record.CONTENT = util.parseEmoji(recArr[1]);
@@ -217,14 +226,16 @@ Page({
     var that = this;
     
     util.sendRequest("/wechat/applet/chat/sendMessage", {USER_ID: that.data.ruser_id, MESSAGE: that.data.userMessage}, "POST", true, function(res){
+      console.log(res);
       var record = {
         REC_ID: util.getUUID(),
         SUSER_ID: that.data.suser_id,
         RUSER_ID: that.data.ruser_id,
         ISREAD: false,
         CREATETIME: util.getCurrentTime(),
-        style: "self"
-      
+        style: "self",
+        SHEADURL: util.setStaticUrl(that.data.headurl)
+
       }
 
       record.CONTENT = util.parseEmoji(that.data.userMessage);

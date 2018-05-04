@@ -1,4 +1,5 @@
 <!--pages/notice/noticecontent/noticecontent.wxml-->
+<!-- 公告详情页 -->
 <import src="../../../wxParse/wxParse.wxml" />
 <view class='content'>
   <view class="head">

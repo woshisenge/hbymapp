@@ -1,4 +1,5 @@
 <!--pages/school/schoolcontent/rule/rule.wxml-->
+<!-- 招生简章页面 -->
  <import src="../../../../wxParse/wxParse.wxml" /> 
 
 <view class='content' wx:for="{{content}}" wx:key = "{{item.TITLE}}">

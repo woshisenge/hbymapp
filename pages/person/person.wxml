@@ -1,4 +1,5 @@
 <!--pages/person/person.wxml-->
+<!-- 个人中心页面 -->
 <view wx:if="{{role==1}}">
 <view class="head">
   <view class="head-top">

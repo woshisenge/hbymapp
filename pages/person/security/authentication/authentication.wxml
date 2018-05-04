@@ -1,4 +1,5 @@
 <!--pages/person/security/authentication/authentication.wxml-->
+<!-- 实名认证页面 -->
 <view class='page'>
 <form bindsubmit="formSubmit">
 <view class="page__bd">

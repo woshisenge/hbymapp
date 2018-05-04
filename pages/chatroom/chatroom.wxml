@@ -1,3 +1,4 @@
+<!-- 聊天内容页 -->
 <view class="main">
     <view wx:if="{{recordStatus != RecordStatus.HIDE}}" class="modal modal-record" bindtap="toggleRecordModal">
         <view class="modal-body" catchtap="toggleWithoutAction">
@@ -17,7 +18,7 @@
         <view class="user">
           <text>{{ name }}</text>
         </view> 
-        <image class="avatar" src="/images/number.png"/>
+        <image class="avatar" src="{{item.SHEADURL}}"/>
         <view class="msg">
             <view class="template" wx:for="{{ item.CONTENT }}" wx:key="">
               <template is="{{ item.type }}" data="{{ item }}"/>
@@ -53,7 +54,7 @@
         <form bindreset="cleanInput">
             <view class="ch_bottom">
               <view class='ch_box'>
-                <textarea type="text" value="{{ inputMessage }}" bindinput="bindMessage" fixed='true' auto-height='true' show-confirm-bar='{{hid}}' cursor-spacing="40" class='ch_input'></textarea>
+                <textarea type="text" value="{{ inputMessage }}" bindinput="bindMessage" fixed='true' auto-height='true' show-confirm-bar='{{hid}}' cursor-spacing="{{cursor}}" class='ch_input'></textarea>
               <button class="weui-btn mini-btn" bindtap="sendMessage" formType="reset">发送</button>
               </view>
               <view class='ch_question'>
