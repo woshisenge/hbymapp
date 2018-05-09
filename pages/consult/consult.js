@@ -24,7 +24,7 @@ Page({
     hot:null,
     grade:null,
     //banner图
-    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/04.png"),
+    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/recruit_banner.png"),
   },
   upper: function (e) {
   },
