@@ -13,7 +13,9 @@ Page({
     tabs: ["查看问题", "查看专家"],
     activeIndex: 0,
     sliderOffset: 0,
-    sliderLeft: 0
+    sliderLeft: 0,
+    //banner图
+    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/expert_banner.jpg"),
   },
 
   toDto: function (list) {

@@ -23,6 +23,8 @@ Page({
     showView2: true,
     hot:null,
     grade:null,
+    //banner图
+    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/library_bann.jpg"),
   },
   upper: function (e) {
   },

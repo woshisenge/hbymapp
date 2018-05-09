@@ -1,5 +1,8 @@
 <!--pages/table/table.wxml-->
 <!-- 一分一档表 -->
+<view style='width:100%;height: 300rpx;'>
+  <image src='{{consultation}}' style="width: 100%;height: 100%;"></image>
+</view>
 <view class="page">
     <view class="page__bd">
       <view class="weui-search-bar">

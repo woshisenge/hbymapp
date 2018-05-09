@@ -20,7 +20,9 @@ Page({
     arrangment_id: "hjj4e5vr0c",
     MAJORTYPE:"",
     MAJORTYPE_VALUE:"",
-    EXAMSCORE:""
+    EXAMSCORE:"",
+    //banner图
+    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/recommendation.png"),
   },
   bindPickerChange: function (e) {
     var that = this;

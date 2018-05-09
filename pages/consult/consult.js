@@ -22,7 +22,9 @@ Page({
     showView1: true,
     showView2: true,
     hot:null,
-    grade:null
+    grade:null,
+    //banner图
+    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/04.png"),
   },
   upper: function (e) {
   },

@@ -5,7 +5,9 @@ Page({
   // },
   // inputValue: '',
   data: {
-    src: ''
+    src: '',
+    //banner图
+    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/03.jpg"),
   },
   play:function(e){
     var id = e.currentTarget.id

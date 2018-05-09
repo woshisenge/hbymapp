@@ -1,5 +1,8 @@
 <!--pages/intelligence/intelligence.wxml-->
 <!-- 智能推荐首页 -->
+<view style='width:100%;height: 300rpx;'>
+  <image src="{{consultation}}" style="width: 100%;height: 100%;"></image>
+</view>
 <view class="content1">
   <view class="content1-left">
     <text style="color:rgb(125,216,202);font-size:30rpx;">我的分数：{{examinee.EXAMSCORE? examinee.EXAMSCORE : 0}}分</text>

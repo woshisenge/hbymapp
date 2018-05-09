@@ -1,4 +1,7 @@
 <!-- 视频列表页 -->
+<view style='width:100%;height: 300rpx;'>
+  <image src='{{consultation}}' style="width: 100%;height: 100%;"></image>
+</view>
 <view class='section'>
   <view class='section-item' wx:for="{{video}}" wx:key="" bindtap='play' id="{{item.NEWS_ID}}">
     <image class='images' src="{{item.IMGURL}}" ></image>

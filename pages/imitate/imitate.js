@@ -41,6 +41,8 @@ Page({
     param:{},
     subject:"",
     MAJORTYPE: "",
+    //banner图
+    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/8.jpg"),
   },
   onLoad: function () {
     var that = this;

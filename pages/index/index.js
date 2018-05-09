@@ -5,15 +5,15 @@ const app = getApp()
 var utils = require('../../utils/util.js')
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    // motto: 'Hello World',
+    // userInfo: {},
+    // hasUserInfo: false,
+    // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     // 首页轮播图 开始
     imgUrls: [
-      {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/8.jpg"), url: "/pages/imitate/imitate", num: 1 },
-      {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/01.jpg"), url:"/pages/person/improve/improve",num:1},
-      {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/02.jpg"),url:"/pages/intelligence/intelligence",num:2},
+      {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/8.jpg"), url: "/pages/imitate/imitate"},
+      {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/01.jpg"), url:"/pages/person/improve/improve"},
+      {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/02.jpg"),url:"/pages/intelligence/intelligence"},
       {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/03.jpg"),url:"/pages/video/video"},
       {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/04.png"),url:"/pages/consult/consult"}
     ],
@@ -62,7 +62,6 @@ Page({
         }
         else {
           utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
-            console.log(res)
             if (result.data) {
               utils.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
                 if (obj.DATA == "UC") {
@@ -165,7 +164,6 @@ Page({
       }
       else{
         utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
-          console.log(res)
           if (result.data){
             utils.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
               if (obj.DATA == "UC") {
@@ -328,6 +326,7 @@ Page({
     utils.navigateTo("/pages/activity/activity")
   },
   news:function(e){
+    console.log(e);
     var a = e.currentTarget.dataset.id;
     utils.navigateTo('/pages/news/newscontent/newscontent', { a: a })
   },
@@ -349,12 +348,13 @@ Page({
   },
   onShow:function(e) {
     var that = this;
+    
     utils.sendRequest_s('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
       that.setData({
         notice: that.toDto(res.data.results)
       });
     })
-    utils.sendRequest_s('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb", pageSize: "5" }, 'POST', false, function (res) {     
+    utils.sendRequest_s('/wechat/applet/news/get', { NEWSTYPE: "opsmpn8psb", pageSize: "5" }, 'POST', false, function (res) {  
       that.setData({
         news: that.toDto(res.data.results)
       });

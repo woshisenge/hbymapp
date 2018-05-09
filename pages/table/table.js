@@ -17,7 +17,9 @@ Page({
     searchParam: { currentPage: 1 },//搜索参数
     color:true,
     scrolltop:1200,
-    text:true
+    text:true,
+    //banner图
+    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/file_bann.jpg"),
   },
   bindPickerChange: function (e) {
     var that = this;

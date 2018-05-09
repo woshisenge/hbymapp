@@ -12,7 +12,9 @@ Page({
     activeIndex: 0,
     checked:false,
     major:[],
-    zmajor:[]
+    zmajor:[],
+    //banner图
+    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/zhaunye_bann.jpg"),
   },
 
   /**

@@ -64,7 +64,7 @@
 .weui-tab{
   background-color:white;
   width:100%;
-  position:fixed;
+  /* position:fixed; */
   z-index:2;
   height:130rpx;
   top:0;
@@ -79,7 +79,7 @@
 }
 .weui-tab__panel{
   padding-top:0;
-  margin-top:130rpx;
+  /* margin-top:130rpx; */
 }
 .weui-navbar__item.weui-bar__item_on {
   background-color:rgb(90,180,170);
