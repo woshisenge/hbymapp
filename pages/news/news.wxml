@@ -19,7 +19,11 @@
   </view>
 </view>
 </block>
-<block wx:for="{{news2}}" wx:key="" id="{{index}}" >
+<view class="weui-loadmore" hidden='{{!isLoadingMore}}'>
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+</view>
+<!-- <block wx:for="{{news2}}" wx:key="" id="{{index}}" >
 <view class='content' bindtap='news' id="{{item.NEWS_ID}}">
   <view class='content-left'>
     <image src="{{item.IMGURL}}"></image>
@@ -38,5 +42,5 @@
     </view>
   </view>
 </view>
-</block>
+</block> -->
 <view class='white'></view>
