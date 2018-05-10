@@ -67,7 +67,7 @@
           <text>2.充值成功后将直接为您升级成黄金会员</text>
         </view>
       </view>
-      <view class='appoint' bindtap="bindSubmit" id="45`600">立即提交</view>
+      <view class='appoint' bindtap="bindSubmit" id="45600">立即提交</view>
     </view>
 </view>
 </view>
