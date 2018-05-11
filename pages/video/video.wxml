@@ -5,7 +5,7 @@
 <view class='section'>
   <view class='section-item' wx:for="{{video}}" wx:key="" bindtap='play' id="{{item.NEWS_ID}}">
     <image class='images' src="{{item.IMGURL}}" ></image>
-    <text>{{item.TITLE}}</text>
+    <text class='title'>{{item.TITLE}}</text>
     <view class='time'>
       <view class='date'>
         <image src="/images/time.png" style="width:34rpx;height:34rpx"></image>

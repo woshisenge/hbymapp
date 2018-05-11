@@ -135,24 +135,31 @@ Page({
         return false;
       }
       else{
-        utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
-          if(result.data){
-            utils.navigateTo("/pages/consult/consult")
+        utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
+          if(res.data != 1){
+            utils.showError("仅有学生可以使用该功能！");
+            return false;
           }
           else{
-            wx.showModal({
-              title: '提示',
-              content: '请完善个人信息',
-              success: function (res) {
-                if (res.confirm) {
-                  util.navigateTo("/pages/person/information/information")
-                }
+            utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
+              if (result.data) {
+                utils.navigateTo("/pages/consult/consult")
+              }
+              else {
+                wx.showModal({
+                  title: '提示',
+                  content: '请完善个人信息',
+                  success: function (res) {
+                    if (res.confirm) {
+                      util.navigateTo("/pages/person/information/information")
+                    }
+                  }
+                })
               }
             })
           }
         })
-      }
-      
+      } 
     });
   },
   analog:function(){

@@ -36,7 +36,7 @@ Page({
    */
   onShow: function () {
     var that = this;
-    util.sendRequest_s("/wechat/applet/news/expertvideo", { SUBTITLE: "专家视频" }, "POST", true, function (res) {
+    util.sendRequest_s("/wechat/applet/news/expertvideo", { SUBTITLE: "专家视频" }, "POST", true, function (res){
       that.setData({
         video: that.toDto(res.data)
       })
