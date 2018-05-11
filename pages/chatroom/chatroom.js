@@ -78,40 +78,43 @@ Page({
         role: role.data
       });
       util.sendRequest("/wechat/applet/chat/getchatrecs", { USER_ID: options.user_id }, "POST", true, function (res) {
-        if (res.chatRecords) {
-          res.chatRecords.forEach(function (element) {
-            if (element.SUSER_ID == that.data.suser_id) {
-              element.style = 'self';
-            }
-            else {
-              element.style = 'recmsg';
-            }
-            if (element.CONTENT) {
-              //解析聊天内容
-              element.CONTENT = util.parseEmoji(element.CONTENT);
-            }
-          });
-        }
-        
-        
-        if(that.data.role == 1) {
+        console.log(res)
+        if (that.data.role == 1) {
           //为学生
           that.setData({
             complete_info: res.complete_tea
           })
         }
-        else if(that.data.role == 2) {
+        else if (that.data.role == 2) {
           //为老师
           that.setData({
             complete_info: res.complete_stu
           })
         }
-        else if(that.data.role == 3) {
+        else if (that.data.role == 3) {
           //为专家
           that.setData({
             complete_info: res.complete_stu
           })
         }
+        if (res.chatRecords) {
+          res.chatRecords.forEach(function (element) {
+            if (element.SUSER_ID == that.data.suser_id) {
+              element.style = 'self';
+              element.headurl = util.setStaticUrl(that.data.headurl);
+            }
+            else {
+              element.style = 'recmsg';
+              element.headurl = util.setStaticUrl(that.data.complete_info.HEADURL);
+            }
+            if (element.CONTENT) {
+              //解析聊天内容
+              element.CONTENT = util.parseEmoji(element.CONTENT);
+              
+            }
+          });
+        }
+        
         
         that.setData({
           chatRecords: that.toDto(res.chatRecords)
@@ -233,8 +236,7 @@ Page({
         RUSER_ID: that.data.ruser_id,
         ISREAD: false,
         CREATETIME: util.getCurrentTime(),
-        style: "self",
-        SHEADURL: util.setStaticUrl(that.data.headurl)
+        style: "self"
 
       }
 
