@@ -54,7 +54,7 @@ Page({
         }
       })
     }
-    if (url == "/pages/imitate/imitate" || url == "/pages/intelligence/intelligence"){
+    if (url == "/pages/imitate/imitate" || url == "/pages/intelligence/intelligence" ){
       utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
         if (res.data != 1) {
           utils.showError("仅有学生身份才能使用该功能！");
@@ -129,6 +129,11 @@ Page({
   },
   consultation:function(){
     var that = this;
+    utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res){
+      if (res.data != 1) {
+        utils.showError("仅有学生身份才能使用该功能！");
+        return false;
+    }else{
     utils.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function(res){
       if(!res.data){
         utils.showError("请先登录账号");
@@ -153,6 +158,8 @@ Page({
         })
       }
       
+    });
+    }
     });
   },
   analog:function(){
