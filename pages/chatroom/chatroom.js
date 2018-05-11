@@ -140,7 +140,7 @@ Page({
                 ISREAD: false,
                 CREATETIME: util.getCurrentTime(),
                 style: "recmsg",
-                SHEADURL: util.setStaticUrl(that.data.headurl)
+                headurl: util.setStaticUrl(that.data.headurl)
 
               }
 
@@ -236,7 +236,8 @@ Page({
         RUSER_ID: that.data.ruser_id,
         ISREAD: false,
         CREATETIME: util.getCurrentTime(),
-        style: "self"
+        style: "self",
+        headurl: util.setStaticUrl(that.data.headurl)
 
       }
 
