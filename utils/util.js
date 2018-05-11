@@ -77,7 +77,7 @@ var login = function () {
           else {
             //完成关联信息
             sendRequest("/wechat/applet/user/getuserfromsession", {}, "POST", true, function (obj) {
-              setInfoToStorage("user_id", obj.user_id);
+              setInfoToStorage("user_id", obj.USER_ID);
               setInfoToStorage("headurl", obj.HEADURL);
               getApp().startSocket();
               switchTab({ url: "/pages/index/index" });

@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: ["录取", "基本信息", "学校简介","入驻老师"],
+    tabs: ["录取", "基本信息", "学校简介","我要咨询"],
     activeIndex: 0,
     index: 1,
     ckecked: true,

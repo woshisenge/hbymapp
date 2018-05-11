@@ -76,6 +76,7 @@ video{
 .content-item text{
   margin-top:10rpx;
   font-size:24rpx;
+  height:120rpx;
 }
 /* .weui-cells{
   background-color: white;

@@ -46,7 +46,8 @@ Page({
     question:true,
     que_list:true,
     hid:false,
-    cursor:"40"
+    cursor:"40",
+    autofocus:false
   },
   toDto: function (list) {
     if (!list) return list;
@@ -78,7 +79,6 @@ Page({
         role: role.data
       });
       util.sendRequest("/wechat/applet/chat/getchatrecs", { USER_ID: options.user_id }, "POST", true, function (res) {
-        console.log(res)
         if (that.data.role == 1) {
           //为学生
           that.setData({
@@ -110,7 +110,6 @@ Page({
             if (element.CONTENT) {
               //解析聊天内容
               element.CONTENT = util.parseEmoji(element.CONTENT);
-              
             }
           });
         }
@@ -139,7 +138,7 @@ Page({
                 RUSER_ID: that.data.ruser_id,
                 ISREAD: false,
                 CREATETIME: util.getCurrentTime(),
-                style: "recmsg",
+                style: "self",
                 headurl: util.setStaticUrl(that.data.headurl)
 
               }
@@ -209,7 +208,8 @@ Page({
   bindMessage: function (e) {
     // console.log(e.detail.value)
     this.setData({
-      userMessage: e.detail.value
+      userMessage: e.detail.value,
+      autofocus:true
     })
   },
   cleanInput: function () {
@@ -229,7 +229,6 @@ Page({
     var that = this;
     
     util.sendRequest("/wechat/applet/chat/sendMessage", {USER_ID: that.data.ruser_id, MESSAGE: that.data.userMessage}, "POST", true, function(res){
-      console.log(res);
       var record = {
         REC_ID: util.getUUID(),
         SUSER_ID: that.data.suser_id,
