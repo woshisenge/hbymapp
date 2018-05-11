@@ -11,11 +11,11 @@ Page({
     // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     // 首页轮播图 开始
     imgUrls: [
-      { src: utils.setStaticUrl("/static/ymplant/img/sye/banner/recruit_banner.png"), url: "/pages/consult/consult" },
       {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/8.jpg"), url: "/pages/imitate/imitate"},
       {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/01.jpg"), url:"/pages/person/improve/improve"},
-      { src: utils.setStaticUrl("/static/ymplant/img/sye/banner/recommendation.png"),url:"/pages/intelligence/intelligence"},
-      {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/03.jpg"),url:"/pages/video/video"}
+      {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/02.jpg"),url:"/pages/intelligence/intelligence"},
+      {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/03.jpg"),url:"/pages/video/video"},
+      {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/04.png"),url:"/pages/consult/consult"}
     ],
     indicatorDots: false,
     autoplay: true,
@@ -50,20 +50,11 @@ Page({
           return false;
         }
         else{
-          utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
-            if (res.data != 1) {
-              utils.showError("仅有学生身份才能使用该功能！");
-              return false;
-            }
-            else{
-              utils.navigateTo(url, { user_id: use_id, id: "1" });
-            }
-          
-        })
+          utils.navigateTo(url,{user_id:use_id,id:"1"});
         }
       })
     }
-    if (url == "/pages/imitate/imitate" || url == "/pages/intelligence/intelligence"){
+    if (url == "/pages/imitate/imitate" || url == "/pages/intelligence/intelligence" ){
       utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
         if (res.data != 1) {
           utils.showError("仅有学生身份才能使用该功能！");
@@ -138,37 +129,37 @@ Page({
   },
   consultation:function(){
     var that = this;
+    utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res){
+      if (res.data != 1) {
+        utils.showError("仅有学生身份才能使用该功能！");
+        return false;
+    }else{
     utils.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function(res){
       if(!res.data){
         utils.showError("请先登录账号");
         return false;
       }
       else{
-        utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
-          if(res.data != 1){
-            utils.showError("仅有学生可以使用该功能！");
-            return false;
+        utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
+          if(result.data){
+            utils.navigateTo("/pages/consult/consult")
           }
           else{
-            utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
-              if (result.data) {
-                utils.navigateTo("/pages/consult/consult")
-              }
-              else {
-                wx.showModal({
-                  title: '提示',
-                  content: '请完善个人信息',
-                  success: function (res) {
-                    if (res.confirm) {
-                      util.navigateTo("/pages/person/information/information")
-                    }
-                  }
-                })
+            wx.showModal({
+              title: '提示',
+              content: '请完善个人信息',
+              success: function (res) {
+                if (res.confirm) {
+                  util.navigateTo("/pages/person/information/information")
+                }
               }
             })
           }
         })
-      } 
+      }
+      
+    });
+    }
     });
   },
   analog:function(){
@@ -342,6 +333,7 @@ Page({
     utils.navigateTo("/pages/activity/activity")
   },
   news:function(e){
+    console.log(e);
     var a = e.currentTarget.dataset.id;
     utils.navigateTo('/pages/news/newscontent/newscontent', { a: a })
   },
@@ -379,6 +371,23 @@ Page({
         activity: that.toDto(res.data.results)
       });
     });
+    // utils.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
+    //   that.setData({
+    //     vip: obj.data
+    //   })
+    // })
+    // utils.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
+    //   that.setData({
+    //     mntbk: res.mntbk,
+    //     zntjk: res.zntjk
+    //   })
+    // })
+    // utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res) {
+    //   that.setData({
+    //     role: res.data
+    //   })
+    // });
+
   },
   onShareAppMessage: function () {
 
