@@ -27,7 +27,7 @@
   width:90%;
   height:200rpx;
   margin-top:-200rpx;
-  margin-left:10%;
+  margin-left:14%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -36,7 +36,6 @@
 .logo-left{
   width:22%;
   height:150rpx;
-  border-radius:75rpx;
   overflow: hidden;
 }
 .logo-left image{
@@ -47,7 +46,6 @@
   width:65%;
   height:120rpx;
   margin-left:5%;
-  color:white;
   font-size:30rpx;
   display: flex;
   flex-direction: column;
@@ -55,6 +53,7 @@
 }
 .logo-text{
   font-size:35rpx;
+  font-weight:bold;
 }
 .line{
   width:100%;
@@ -100,6 +99,22 @@
   padding:8rpx 25rpx;
   color:rgb(90,180,170);
 }
+.weui-navbar__items{
+  border:1rpx solid #fe8402;
+  border-radius: 5rpx;
+  width:40%;
+  margin:5% 0;
+  padding:8rpx 25rpx;
+  color:#fe8402;
+  position:relative;
+  display:block;
+  -webkit-box-flex:1;
+  -webkit-flex:1;
+  flex:1;
+  text-align:center;
+  font-size:0;
+
+}
 .weui-tab__panel{
   padding-top:0;
   margin-top:300rpx;
@@ -113,6 +128,10 @@
 }
 .weui-navbar__item.weui-bar__item_on {
   background-color:rgb(90,180,170);
+  color:white;
+}
+.weui-navbar__items.weui-bar__item_ons {
+  background-color:#fe8402;
   color:white;
 }
 .center{

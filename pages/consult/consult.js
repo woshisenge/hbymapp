@@ -166,6 +166,7 @@ Page({
       });
     } 
     widthTimer = setInterval(this.openTm, 10)
+    
     this.setData({
       hidden: !this.data.hidden
     })

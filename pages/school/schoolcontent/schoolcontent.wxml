@@ -2,7 +2,7 @@
 <!-- 院校库详情页 -->
 <import src="../../../wxParse/wxParse.wxml" />
 <view class="banner">
-  <image src='/images/tb.png'></image>
+  <image src='/images/tb.jpg'></image>
 </view>
 <view class='logo'>
   <view class='logo-left'>

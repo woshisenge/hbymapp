@@ -2,11 +2,11 @@
 <!-- 智能推荐结果详情页 -->
   <view class="page_bd">
     <view class="banner">
-      <image src='/images/tb.png'></image>
+      <image src='/images/tb.jpg'></image>
     </view>
     <view class="top">
       <view class="top-left">
-        <image src="{{logo}}" style='width:170rpx;height:170rpx;border-radius:50%'></image>
+        <image src="{{logo}}" style='width:170rpx;height:170rpx;'></image>
       </view>
       <view class="top-right">
         <view class='top-right-1'>

@@ -53,9 +53,16 @@ Page({
           utils.showError("请先登录账号");
           return false;
         }
-        else{
-          utils.navigateTo(url,{user_id:use_id,id:"1"});
-        }
+        utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
+          if(res.data != 1){
+            utils.navigateTo(url, { user_id: use_id, id: "1" });
+          }
+          else {
+            utils.showError("仅有学生身份才能使用该功能！");
+            return false;
+          }
+        })
+        
       })
     }
     if (url == "/pages/imitate/imitate" || url == "/pages/intelligence/intelligence" ){
@@ -337,7 +344,6 @@ Page({
     utils.navigateTo("/pages/activity/activity")
   },
   news:function(e){
-    console.log(e);
     var a = e.currentTarget.dataset.id;
     utils.navigateTo('/pages/news/newscontent/newscontent', { a: a })
   },
