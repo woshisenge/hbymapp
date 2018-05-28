@@ -53,7 +53,7 @@ button[type=primary] {
   text-indent: 2em;
   display: block;
   overflow:auto;
-
+  word-wrap: break-word;
 }
 .weui-media-box__title{
     font-weight:400;
