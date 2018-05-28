@@ -81,6 +81,7 @@
             <image src="{{index_1}}" style="width:260rpx;height:260rpx"></image>
           </view>
         </view>
+        
       </view>
     </view>
   </view>
