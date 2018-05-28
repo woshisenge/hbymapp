@@ -12,8 +12,6 @@ Page({
     // 首页轮播图 开始
     imgUrls: [
 
-     
-
       {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/recruit_banner.png"), url: "/pages/consult/consult" },
       {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/8.jpg"), url: "/pages/imitate/imitate"},
       {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/01.jpg"), url:"/pages/person/improve/improve"},
