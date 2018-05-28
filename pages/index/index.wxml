@@ -62,10 +62,10 @@
      <text class="more1" bindtap="noticemore">更多></text> 
  </view> 
 <!-- 公告 结束-->
-<!-- 热门院校 开始 -->
+<!-- 全国高校招生咨询平台 开始 -->
 <view class="notice">
-  <image class='icon' src='../../images/01.png'></image>
-  <view style='font-size:30rpx;'>网络咨询会的四大优势</view>
+  <image style='margin-top:8px' class='icon' src='../../images/01.png'></image>
+  <view style='font-size:45rpx;font-family: 华文彩云;color:#FE4500;margin: 0 auto;'>全国高校招生咨询平台</view>
   <!-- <span class="more" style="font-size:25rpx;" bindtap="newsmore">更多></span> -->
 </view>
   <view class="page__bd page__bd_spacing" bindtap="advantage">
@@ -73,15 +73,16 @@
       <view class="weui-flex__item">
         <view class="placeholder" style="height:100%">
           <view class='adv_left'>
-            <text style="font-size:36rpx">招生政策</text>
+            <text style="font-size:36rpx">本科一批</text>
             <!-- <text>网络咨询招生办</text> -->
-            <text>熟知最新的高考招生政策</text>
+            <text>院校信息，一览无遗</text>
+            <text>大学详情，尽在这里</text>
           </view>
           <view class='adv_right'>
             <image src="{{index_1}}" style="width:260rpx;height:260rpx"></image>
           </view>
         </view>
-        
+
       </view>
     </view>
   </view>
@@ -90,7 +91,7 @@
       <view class="weui-flex__item">
         <view class="placeholder" style="height:100%;background-color:#0ddce4">
           <view class='adv_left'>
-            <text style="font-size:36rpx">实时沟通</text>
+            <text style="font-size:36rpx">本科二批</text>
             <!-- <text>网络咨询招生办</text> -->
             <text>与你心仪大学的招办老师零距离沟通</text>
           </view>
@@ -106,7 +107,7 @@
       <view class="weui-flex__item">
         <view class="placeholder" style="height:100%;background-color:#c070f2">
           <view class='adv_left'>
-            <text style="font-size:36rpx">深度了解</text>
+            <text style="font-size:36rpx">专科批次</text>
             <!-- <text>网络咨询招生办</text> -->
             <text>答疑解惑，让你报考志愿有的放矢，不再迷茫</text>
           </view>
@@ -135,7 +136,7 @@
       </view>
     </view>
   </view>
-<!-- 热门院校  结束 -->
+<!-- 全国高校招生咨询平台  结束 -->
 <!-- 高考动态 开始 -->
 <view class="notice">
   <image class='icon' src='../../images/dynamic.png'></image>
