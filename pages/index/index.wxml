@@ -1,3 +1,5 @@
+
+ 
  <!-- 轮播图 开始  -->
  <import src="../../wxParse/wxParse.wxml" />
 <swiper indicator-dots="{{indicatorDots}}"
@@ -65,7 +67,7 @@
 <!-- 全国高校招生咨询平台 开始 -->
 <view class="notice">
   <image style='margin-top:8px' class='icon' src='../../images/01.png'></image>
-  <view style='font-size:45rpx;font-family: 华文彩云;color:#FE4500;margin: 0 auto;'>全国高校招生咨询平台</view>
+  <view style='font-size:45rpx;color:#FE4500;margin: 0 auto;'>全国高校招生咨询平台</view>
   <!-- <span class="more" style="font-size:25rpx;" bindtap="newsmore">更多></span> -->
 </view>
   <view class="page__bd page__bd_spacing" bindtap="advantage">
