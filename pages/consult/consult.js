@@ -113,17 +113,13 @@ Page({
 
   setSc(list) {
     var that = this;
-   // var oldList = isClear ? [] : that.data;
+    //var oldList = isClear ? [] : that.data;
     var newList = that.toDto(list);
-    // newList.forEach(function (index, element) {
+    //  newList.forEach(function (index, element) {
     //   oldList.push(index);
-    // });
+    //  });
     return newList;
   },
-  // setSc(list) {
-  //   var newListsc = that.toDto(list);
-  //   return listsc;
-  // },
 
   /**
    * 生命周期函数--监听页面加载
@@ -152,15 +148,14 @@ Page({
         provinces: res.data
       })
     });
-
+  // ls:查询合作院校  回显于 院校咨询 广告位
     util.sendRequest('/wechat/applet/school/getcooperateschools', {}, 'POST', false, function (res) {
       console.log(res);
-      that.setSc({
-        sc:res.data
+      that.setData({
+        sc: that.setSc(res.data)
       })
+
     })
-
-
     
   },
   changeArrow:function(){
@@ -479,11 +474,9 @@ Page({
    */
   pullSchoolInfos: function(isClear) {
     var that = this;
-    
-
     that.setSearchParam();
     util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
-    console.log(res);
+   
       that.setData({
         schools: that.setResults(res.data.results, isClear),
         num: res.data.totalRecord
