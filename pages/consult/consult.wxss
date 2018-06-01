@@ -169,7 +169,8 @@ button[type="primary"] {
   display: flex;
   flex-direction: column;
   margin-top:30rpx;
-  border: 2px dotted #E84C33;
+  border: 2px solid #E84C33;
+  border-radius: 15px;
 }
 .weui-media-box__desc{
   margin-top:15rpx;
