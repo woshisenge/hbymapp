@@ -110,6 +110,21 @@ Page({
     var a = e.currentTarget.dataset.id;
     util.navigateTo('/pages/consult/consultlist/consultlist', { a: a })
   },
+
+  setSc(list) {
+    var that = this;
+   // var oldList = isClear ? [] : that.data;
+    var newList = that.toDto(list);
+    // newList.forEach(function (index, element) {
+    //   oldList.push(index);
+    // });
+    return newList;
+  },
+  // setSc(list) {
+  //   var newListsc = that.toDto(list);
+  //   return listsc;
+  // },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -136,7 +151,16 @@ Page({
       that.setData({
         provinces: res.data
       })
-    }) 
+    });
+
+    util.sendRequest('/wechat/applet/school/getcooperateschools', {}, 'POST', false, function (res) {
+      console.log(res);
+      that.setSc({
+        sc:res.data
+      })
+    })
+
+
     
   },
   changeArrow:function(){
@@ -449,15 +473,17 @@ Page({
     
     return oldList;
   },
+
   /**
    * 拉取新数据
    */
   pullSchoolInfos: function(isClear) {
     var that = this;
+    
 
     that.setSearchParam();
     util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
-    
+    console.log(res);
       that.setData({
         schools: that.setResults(res.data.results, isClear),
         num: res.data.totalRecord
