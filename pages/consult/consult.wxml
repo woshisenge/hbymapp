@@ -30,6 +30,35 @@
   </view>
  
 </view> 
+
+<!--wz：2018-6-1 热门院校 广告位  -->
+<view class="remen"><text>热门院校</text></view>
+<!-- 院校列表 -->
+<block wx:for="{{schools}}" wx:key="SCHOOL_ID" wx:for-item="school"> 
+  <view class="flex-wrps1" bindtap='teacher' data-id="{{school.SCHOOL_ID}}" >
+    <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+        <image class="weui-media-box__thumb" src="{{school.HEADURL}}" />
+      </view>
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view>
+          <text>{{school.NAME}}</text>
+          <image wx:for="{{school.properties}}" wx:key="" class='icon-property' src="/images/icon/{{item.DIC_ID}}.png"></image>
+        </view>
+        <view class="weui-media-box__desc">
+          <text>入驻人数：{{school.TEACOUNT}}人</text><text>地区：{{school.PROVINCE_VALUE}}</text>
+        </view>
+        <view class="weui-media-box__desc">
+          <image wx:for="{{school.subjecttypes}}" wx:key="" class='icon-subjecttype' src="/images/icon/{{item.DIC_ID}}.png"></image>
+        </view>  
+      </view>
+    </view>
+  </view> 
+</block>
+<!--热门院校广告位结束  -->
+
+
+
 <view class="cue"><text>共找到<text style='color:rgb(90,180,170)'>{{num}}</text>所院校</text></view> 
 <view class="page1" hidden="{{hidden}}" bindtap="close_ch"></view>
 <scroll-view scroll-y class="page" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" style="width:{{width}}%" >
