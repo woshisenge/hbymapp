@@ -43,6 +43,53 @@
                 <input password class="weui-input" placeholder="再次确认密码" name="REPASSWORD"/>
             </view>
         </view>
+
+        <!--wz：2018-6-2 学生注册添加 考试类型  -->
+        <view class="weui-cell weui-cell_input mb-leixing">
+          <view class="weui-cell__hd mb-leixing1">
+            <view class="weui-label mb-leixing2">
+            <text>考试类型</text>
+              <radio-group class="radio-group" bindchange="radioChange">
+                  <label class="xuanxiang">
+                      <radio                value="gjv044girc" id='checkbox1'/>文科
+                      <radio checked='true' value="r6j4mh69be" id='checkbox2'/>理科
+                  </label>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+
+        <!--wz：2018-6-2 学生注册添加 预估分数  -->
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">预估分数</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input number type='digit' class="weui-input" id='PRESCORE' placeholder="请填写预估分数" maxlength='3' name="fraction" />
+                </view>
+            </view>
+          </view>
+          
+          <view class="weui-cells__tips" style='color:red'>*注：请填写1~750之间</view> 
+
+
+
+        <!-- <text> id="mb-checkbox" class="mb-point-prompt" style="font-size: 16px;">
+          <b>考试类型：</b>
+          <input type="checkbox"          value="gjv044girc"  id='checkbox1' onclick="checktype(this)" style="margin-left: 15px">文科
+          <input type="checkbox" checked  value="r6j4mh69be"  id='checkbox2' onclick="checktype(this)" style="margin-left: 15px">理科
+        </text> -->
+
+
+
+
+
+
+
+
+
+
         <view class="weui-cell weui-cell_input weui-cell_vcode">
             <view class="weui-cell__hd">
                 <view class="weui-label">验证码</view>

@@ -3,3 +3,21 @@ navigator{
   display: inline-block;
   color:rgb(90,180,170);
 }
+.mb-leixing{
+  width: 100%;
+  height:40px; 
+  line-height: 40px;
+}
+.mb-leixing2{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.xuanxiang{
+  margin-left: 70px;
+  zoom: 65%;
+}
+#checkbox2{
+  margin-left: 20px;
+}
