@@ -93,6 +93,11 @@ Page({
       return false;
     }
 
+    if (param.fraction == "") {
+      util.showError("预估分数不能为空");
+      return false;
+    }
+
     if (param.PHONE == "") {
       util.showError("手机号不能为空");
       return false;
