@@ -81,19 +81,32 @@ Page({
       });
     }
   },
+ 
+  radioChange:function(e){
+    
+    var that = this;
+    that.setData({
+      style: e.detail.value
+    })
+  }
+  ,
   formSubmit: function(e) {
     var that = this;
+    console.log(that.data.style)
     if(!that.data.isAgree){
       util.showError("未同意遵守服务条款不可注册账号");
       return false;
     }
     var param = e.detail.value;
+    
+    param.MAJORTYPE = that.data.style;
+    
     if(param.USERNAME == ""){
       util.showError("用户名不能为空");
       return false;
     }
 
-    if (param.fraction == "") {
+    if (param.EXAMSCORE == "") {
       util.showError("预估分数不能为空");
       return false;
     }
@@ -117,6 +130,9 @@ Page({
       showError("确认密码不能为空");
       return false;
     }
+    
+   
+
 
     util.sendRequest("/wechat/applet/api/toregist", param, "POST", true, function(res){
       wx.navigateBack({
