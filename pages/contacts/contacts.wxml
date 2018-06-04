@@ -19,7 +19,7 @@
 <view  stytle=" overflow-x: hidden; overflow-y: auto; " wx:if="{{role == 1}}">
 <view class='contact_wait' wx:if="{{teacher.length == 0}}">
   <image src="{{wait}}" style="width:350rpx;height:350rpx"></image>
-  <text>大学招办老师在等你！</text>
+  <text>您还未于招办老师沟通，暂无信息！</text>
 </view>
   <view class="message_list" wx:else>
     <block wx:for="{{teacher}}" wx:key="">
