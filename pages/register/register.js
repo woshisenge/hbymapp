@@ -92,7 +92,7 @@ Page({
   ,
   formSubmit: function(e) {
     var that = this;
-    console.log(that.data.style)
+    
     if(!that.data.isAgree){
       util.showError("未同意遵守服务条款不可注册账号");
       return false;
