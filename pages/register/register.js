@@ -111,6 +111,17 @@ Page({
       return false;
     }
 
+    if (param.EXAMSCORE < "200"){
+      util.showError("考试分数范围不正确");
+      return false;
+    }
+
+    if (param.EXAMSCORE > "750") {
+      util.showError("考试分数范围不正确");
+      return false;
+    }
+
+
     if (param.PHONE == "") {
       util.showError("手机号不能为空");
       return false;
