@@ -66,7 +66,7 @@
                     <view class="weui-label">预估分数</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input number type='digit' class="weui-input" id='PRESCORE' placeholder="请填写预估分数" maxlength='3'         name="EXAMSCORE" />
+                    <input number class="weui-input" id='PRESCORE' placeholder="请填写预估分数" maxlength='3'         name="EXAMSCORE" />
                 </view>
             </view>
           </view>
