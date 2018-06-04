@@ -71,7 +71,7 @@
             </view>
           </view>
           
-          <view class="weui-cells__tips" style='color:red'>*注：请填写1~750之间</view> 
+          <view class="weui-cells__tips" style='color:red'>*注：请填写200~750之间</view> 
 
 
 
