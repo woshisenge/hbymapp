@@ -141,16 +141,35 @@ Page({
       showError("确认密码不能为空");
       return false;
     }
-    
-   
-
 
     util.sendRequest("/wechat/applet/api/toregist", param, "POST", true, function(res){
-      wx.navigateBack({
-        delta: 1
-      });
+
+
+      wx.showToast({
+        title: '注册成功',
+        icon: 'success',
+        duration: 2000,
+        success: function () {
+          setTimeout(function(){
+            wx.navigateBack({
+              delta: 1
+            })
+          },4000)
+        }
+      })
+// wz : 2018-6-4  添加立即注册 注册成功弹框。
+      // wx.showToast({
+      //   title: '注册成功',
+      //   icon: 'success',
+      //   duration: 1000
+      // });
+
+      // wx.navigateBack({
+      //   delta: 1
+      // });
     });
   },
+
   //获取短信验证码
   getSMSCode: function () {
     var that = this;
@@ -162,9 +181,10 @@ Page({
       that.setData({
         codeHidden: !that.data.codeHidden,  
         timerNumber: 60
+        
       });
 
-      codeTimer = setInterval(that.codeTimerFn, 1000);
+      codeTimer = setInterval(that.codeTimerFn, 1000)
     });
 
 
