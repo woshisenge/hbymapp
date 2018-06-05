@@ -25,7 +25,7 @@
             <view class="weui-label">考试类型</view>
         </view>
         <view class="weui-cell__bd">
-            <picker bindchange="bindPickerChange" value="{{majortypeIndex}}" range="{{majortypeObjs}}" range-key='NAME' id="MAJORTYPE" name="MAJORTYPE" disabled="true">
+            <picker bindchange="bindPickerChange" value="{{majortypeIndex}}" range="{{majortypeObjs}}" range-key='NAME' id="MAJORTYPE" name="MAJORTYPE" >
                <view class='picker'>{{majortypeObjs[majortypeIndex].NAME}}</view> 
             </picker>
         </view>
