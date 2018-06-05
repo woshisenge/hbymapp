@@ -52,7 +52,8 @@ Page({
           return false;
         }
         utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
-          if(res.data != 1){
+          console.log(res);
+          if(res.data == 1){
             utils.navigateTo(url, { user_id: use_id, id: "1" });
           }
           else {
@@ -139,6 +140,7 @@ Page({
   consultation:function(){
     var that = this;
     utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res){
+      console.log(res)
       if (res.data != 1) {
         utils.showError("仅有学生身份才能使用该功能！");
         return false;
