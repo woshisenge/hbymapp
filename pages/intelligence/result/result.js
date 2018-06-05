@@ -29,10 +29,15 @@ Page({
     })
     util.sendRequest("/wechat/applet/report/reporting_two", options, "POST", true, function(res){
       
+
+      var score_exam = res.data;
       var listChong = res.listChong;
       var listWen = res.listWen;
       var listBao = res.listBao;
       var listDian = res.listDian;
+      console.log(score_exam)
+
+      
       if (listChong == "" && listWen == "" && listBao == "" && listDian == "") {
         util.showError("根据您选择的条件查询，暂无数据！")
     }
@@ -49,6 +54,25 @@ Page({
           listDian: listDianOut
         });
     }
+
+      if (score_exam == 750) {
+        util.showError("您已成为考神，祝您金榜题名！")
+      }
+      else {
+        var listChongOut = that.groupBySchool(listChong);
+        var listWenOut = that.groupBySchool(listWen);
+        var listBaoOut = that.groupBySchool(listBao);
+        var listDianOut = that.groupBySchool(listDian);
+
+        that.setData({
+          listChong: listChongOut,
+          listWen: listWenOut,
+          listBao: listBaoOut,
+          listDian: listDianOut
+        });
+      }
+
+      
     });
   },
   groupBySchool: function(list) {
