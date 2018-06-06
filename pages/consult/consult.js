@@ -65,7 +65,7 @@ Page({
     that.clearCurPage();
     that.pullSchoolInfos(true);
     wx.pageScrollTo({
-      scrollTop: 200,
+      scrollTop: 300,
       duration: 300
     })
   },
