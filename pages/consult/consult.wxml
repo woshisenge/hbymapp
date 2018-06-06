@@ -50,9 +50,9 @@
           <!-- <image wx:for="{{school.properties}}" wx:key="" class='icon-property' src="/images/icon/{{item.DIC_ID}}.png"></image> -->
            <image wx:for="{{sc.properties}}" wx:key="" class='icon-property' src="/images/icon/{{item.DIC_ID}}.png"></image>
         </view>
-        <view class="weui-media-box__desc">
+         <!-- <view class="weui-media-box__desc">
           <text>入驻人数：{{sc.TEACOUNT}}人</text><text>地区：{{sc.PROVINCE_VALUE}}</text>
-        </view>
+        </view>  -->
         <view class="weui-media-box__desc">
           <image wx:for="{{sc.subjecttypes}}" wx:key="" class='icon-subjecttype' src="/images/icon/{{item.DIC_ID}}.png"></image>
         </view>  
