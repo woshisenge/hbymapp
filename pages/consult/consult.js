@@ -64,6 +64,10 @@ Page({
     
     that.clearCurPage();
     that.pullSchoolInfos(true);
+    wx.pageScrollTo({
+      scrollTop: 200,
+      duration: 300
+    })
   },
   compare:function (property){
     return function(a, b) {
