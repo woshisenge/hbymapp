@@ -46,7 +46,7 @@
               </view>
           </view>
           <view class="weui-media-box weui-media-box_text">
-              <view class="weui-media-box__desc">{{item.CONTENT}}</view>
+              <view class="weui-media-box__desc" style='font-size:16px'>{{item.CONTENT}}</view>
           </view>
           <view class="weui-panel__ft">
               <button class="weui-btn mini-btn" type="primary" size="mini" hidden="{{hidden}}" id="{{item.ANSWER_ID}}" bindtap="answerDelete">删除</button>
