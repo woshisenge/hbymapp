@@ -112,7 +112,8 @@ Page({
       subject: options.MAJORTYPE_VALUE,
       style : style,
       img:options.img,
-      school_id:options.SCHOOL_ID
+      school_id:options.SCHOOL_ID,
+      arrangment_id: options.ARRANGMENT_ID
     })
   },
   collection:function(e){
@@ -124,7 +125,9 @@ Page({
     param.PROVINCE = that.data.region;
     param.COLL_TYPE = that.data.img;
     param.MJNAME = e.currentTarget.dataset.id;
+    param.ARR = that.data.arrangment_id;
     util.sendRequest("/wechat/applet/report/collection_zntj",param,"POST",false,function(res){
+      console.log(param)
       util.showSuccess()
       var result = that.data.results;
       result.forEach(function (element) {
