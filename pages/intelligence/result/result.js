@@ -35,7 +35,6 @@ Page({
       var listWen = res.listWen;
       var listBao = res.listBao;
       var listDian = res.listDian;
-      console.log(score_exam)
 
       
       if (listChong == "" && listWen == "" && listBao == "" && listDian == "") {

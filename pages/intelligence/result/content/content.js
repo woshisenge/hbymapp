@@ -127,7 +127,6 @@ Page({
     param.MJNAME = e.currentTarget.dataset.id;
     param.ARR = that.data.arrangment_id;
     util.sendRequest("/wechat/applet/report/collection_zntj",param,"POST",false,function(res){
-      console.log(param)
       util.showSuccess()
       var result = that.data.results;
       result.forEach(function (element) {
