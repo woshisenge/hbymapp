@@ -68,7 +68,7 @@ Page({
         var results = [];
         res.data.forEach(function (element) {
           element.forEach(function (obj) {
-            results1.push(obj)
+            results.push(obj)
           })
         })
         that.setData({
