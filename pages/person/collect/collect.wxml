@@ -14,7 +14,7 @@
         <view class="weui-cell weui-cell_access {{item.style}}" hover-class="weui-cell_active" bindtap="showMn" id="{{item.MNCOLL_ID}}">
             <view class="weui-cell__bd">
               <view class='date'> 
-                <text style="width:85%">院校名称：{{item.SCHOOLNAME}}</text>
+                <text style="width:85%">院校名称11：{{item.SCHOOLNAME}}</text>
                 <text style='color:#999;font-size:26rpx;width:15%'>{{item.EXAMSCORE}}分</text>
               </view>
               <view class='major'>
