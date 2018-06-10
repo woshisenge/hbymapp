@@ -6,7 +6,81 @@ Page({
    * 页面的初始数据
    */
   data: {
-    checked: false
+    checked: false,
+    b1: true,
+    b2: false
+  },
+  b1: function (e) {
+    var that = this;
+    var parm = {};
+    var ARR = e.currentTarget.id;
+    parm.ARR = ARR;
+    this.setData({
+      b2: false,
+      b1: true
+    })
+    
+    // b1
+    util.sendRequest("/wechat/applet/report/wxgetcollection_znb1orb2", parm , "POST", true, function (res) {
+      console.log(res)
+      for (var i = 0; i < res.data.length; i++) {
+        var listchong = res.data[0];
+        var listwen = res.data[1];
+        var listbao = res.data[2];
+        var listdian = res.data[3];
+      }
+      var results = [];
+      res.data.forEach(function (element) {
+        element.forEach(function (obj) {
+          results.push(obj)
+        })
+      })
+      that.setData({
+        results: results,
+        listchong: that.toDto(listchong),
+        listwen: that.toDto(listwen),
+        listbao: that.toDto(listbao),
+        listdian: that.toDto(listdian)
+      })
+    });
+  },
+
+  b2: function (e) {
+    var that = this;
+    var parm1 = {};
+    var ARR = e.currentTarget.id;
+    console.log(ARR)
+    parm1.ARR= ARR;
+    this.setData({
+      b1: false,
+      b2: true
+    })
+      ,
+      // b2
+      util.sendRequest("/wechat/applet/report/wxgetcollection_znb1orb2", parm1, "POST", true, function (res) {
+        console.log(res)
+        for (var i = 0; i < res.data.length; i++) {
+          var listchong = res.data[0];
+          var listwen = res.data[1];
+          var listbao = res.data[2];
+          var listdian = res.data[3];
+        }
+        var results = [];
+        res.data.forEach(function (element) {
+          element.forEach(function (obj) {
+            results1.push(obj)
+          })
+        })
+        that.setData({
+          results: results,
+          listchong: that.toDto(listchong),
+          listwen: that.toDto(listwen),
+          listbao: that.toDto(listbao),
+          listdian: that.toDto(listdian)
+        })
+      });
+
+
   },
 
   /**
@@ -15,8 +89,10 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.setData({
-      id: options.id
+      id: options.id,
+   
     })
+
     util.sendRequest("/wechat/applet/report/wxgetcollection_zn",{},"POST",true,function(res){
       for(var i = 0; i < res.data.length; i++){
         var listchong = res.data[0];
@@ -38,6 +114,7 @@ Page({
         listdian:that.toDto(listdian)
       })
     });
+
     util.sendRequest("/wechat/applet/report/wxgetcollection_mn",{},"POST",true,function(res){
       var result = res.data
       for(var i = 0; i < result.length; i++){
@@ -53,6 +130,7 @@ Page({
         if (i % 4 == 3) {
           result[i].style = "Bgcolor4"
         }
+
       }
       that.setData({
         result:that.toDto(result)
@@ -68,6 +146,9 @@ Page({
     });
     return list;
   },
+  // b1
+
+
   showMn:function(e){
     var that= this;
     var result = that.data.result;
@@ -97,6 +178,7 @@ Page({
             var options = {};
             options.id = that.data.id;
             that.onLoad(options)
+
           })
         }
       }

@@ -10,7 +10,7 @@ Page({
     inputVal: "",
     hidden:true,
     role:"",
-    tabs: ["查看问题", "查看专家"],
+    tabs: ["查看问题", "预约专家"],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,

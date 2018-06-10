@@ -74,14 +74,24 @@
 </view>
 <view class='page' wx:if="{{id == 2}}">
   <view class='page_bd'>
-    <view class="weui-cells__title">智能推荐收藏结果</view>
+
+    <view class="weui-cells__title">智能推荐收藏结果<text style='color:red; font-size: 16px'>（点击按钮显示分类收藏）</text></view>
+    <view class='b1b2'>
+      <button id='hjj4e5vr0c' type='primary' class="{{b1?'red':'default'}}" bindtap="b1">本科一批收藏</button>
+      <button id='bdhsl11qtb' type='primary' class="{{b2?'red':'default'}}" bindtap="b2">本科二批收藏</button>
+    </view>
     <view class="weui-cells__title">冲（<text style="color:red">{{listchong.length}}</text>条） 稳（<text style="color:red">{{listwen.length}}</text>条） 保（<text style="color:red">{{listbao.length}}</text>条） 垫（<text style="color:red">{{listdian.length}}</text>条）</view>
       <view class="nodata" wx:if="{{results.length == 0}}">
         <image  src="/images/nodata3.png"></image>
         <text>您暂无收藏记录！</text>
       </view>
+      
       <view wx:else>
-      <view class="weui-cells weui-cells_after-title" wx:for="{{listchong}}" wx:key="" style='border-top:2rpx solid #d9d9d9'>
+      
+
+      <!--b1 开始  -->
+      <view id='b1' class="{{b1?'show':'hidden'}}">
+        <view class="weui-cells weui-cells_after-title" wx:for="{{listchong}}" wx:key="" style='border-top:2rpx solid #d9d9d9'>
         <view class="weui-cell" bindtap="showChong" id="{{item.COLL_ID}}">
             <view class="weui-cell__hd">
                 <image src="/images/chong.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
@@ -127,11 +137,162 @@
             <view class="weui-flex__item"><view class="placeholder center"><button class="weui-btn mini-btn" type="primary" size="mini" bindtap="delet" id="{{item.COLL_ID}}">删除</button></view></view>
         </view>
         </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title" wx:for="{{listwen}}" wx:key="" style='border-top:2rpx solid #d9d9d9'>
+          <view class="weui-cell" bindtap="showWen" id="{{item.COLL_ID}}">
+              <view class="weui-cell__hd">
+                  <image src="/images/wen.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              </view>
+              <view class="weui-cell__bd" >
+                <view class='date'>
+                  <text style="width:85%">{{item.SCHOOLNAME}}</text>
+                  <text style='color:#999;font-size:26rpx;width:15%'>{{item.EXAMSCORE}}分</text>
+                </view>
+                <view class='major'>
+                  <text style="color:#666; font-size:24rpx;width:79%">{{item.MJNAME}}</text>
+                  <text style='color:#999;font-size:24rpx;width:21%'>{{item.COLLECTION_DATE}}</text>
+                </view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access {{!item.checked ? '':'rotate_90'}}"></view>
+          </view>
+          <view class="page__bd page__bd_spacing" hidden="{{!item.checked}}">
+            <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder"></view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center" >{{item.YEAR_VALUE}}</view></view>
+            </view>
+            <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">最高分</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MAXSCORE}}</view></view>
+            </view>
+            <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder">最高分排名</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MAX}}</view></view>
+            </view>
+            <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">最低分</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MINSCORE}}</view></view>
+            </view>
+          <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder">最低分排名</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MIN}}</view></view>
+          </view>
+          <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">录取人数</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.ENTERCOUNT}}</view></view>
+            </view>
+            <view class="weui-flex" style="margin-top:30rpx;">
+              <view class="weui-flex__item"><view class="placeholder center"><button class="weui-btn mini-btn" type="primary" size="mini" bindtap="delet" id="{{item.COLL_ID}}">删除</button></view></view>
+          </view>
+          </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title" wx:for="{{listbao}}" wx:key="" style='border-top:2rpx solid #d9d9d9'>
+          <view class="weui-cell" bindtap="showBao" id="{{item.COLL_ID}}">
+              <view class="weui-cell__hd">
+                  <image src="/images/bao.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              </view>
+              <view class="weui-cell__bd" >
+                <view class='date'>
+                  <text style="width:85%">{{item.SCHOOLNAME}}</text>
+                  <text style='color:#999;font-size:26rpx;width:15%'>{{item.EXAMSCORE}}分</text>
+                </view>
+                <view class='major'>
+                  <text style="color:#666; font-size:24rpx;width:79%">{{item.MJNAME}}</text>
+                  <text style='color:#999;font-size:24rpx;width:21%'>{{item.COLLECTION_DATE}}</text>
+                </view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access {{!item.checked ? '':'rotate_90'}}"></view>
+          </view>
+          <view class="page__bd page__bd_spacing" hidden="{{!item.checked}}">
+            <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder"></view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center" >{{item.YEAR_VALUE}}</view></view>
+            </view>
+            <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">最高分</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MAXSCORE}}</view></view>
+            </view>
+            <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder">最高分排名</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MAX}}</view></view>
+            </view>
+            <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">最低分</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MINSCORE}}</view></view>
+            </view>
+          <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder">最低分排名</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MIN}}</view></view>
+          </view>
+          <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">录取人数</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.ENTERCOUNT}}</view></view>
+            </view>
+            <view class="weui-flex" style="margin-top:30rpx;">
+              <view class="weui-flex__item"><view class="placeholder center"><button class="weui-btn mini-btn" type="primary" size="mini" bindtap="delet" id="{{item.COLL_ID}}">删除</button></view></view>
+          </view>
+          </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title" wx:for="{{listdian}}" wx:key="" style='border-top:2rpx solid #d9d9d9'>
+          <view class="weui-cell" bindtap="showDian" id="{{item.COLL_ID}}">
+              <view class="weui-cell__hd">
+                  <image src="/images/dian.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              </view>
+              <view class="weui-cell__bd" >
+                <view class='date'>
+                  <text style="width:85%">{{item.SCHOOLNAME}}</text>
+                  <text style='color:#999;font-size:26rpx;width:15%'>{{item.EXAMSCORE}}分</text>
+                </view>
+                <view class='major'>
+                  <text style="color:#666; font-size:24rpx;width:79%">{{item.MJNAME}}</text>
+                  <text style='color:#999;font-size:24rpx;width:21%'>{{item.COLLECTION_DATE}}</text>
+                </view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access {{!item.checked ? '':'rotate_90'}}"></view>
+          </view>
+          <view class="page__bd page__bd_spacing" hidden="{{!item.checked}}">
+            <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder"></view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center" >{{item.YEAR_VALUE}}</view></view>
+            </view>
+            <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">最高分</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MAXSCORE}}</view></view>
+            </view>
+            <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder">最高分排名</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MAX}}</view></view>
+            </view>
+            <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">最低分</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MINSCORE}}</view></view>
+            </view>
+          <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder">最低分排名</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MIN}}</view></view>
+          </view>
+          <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">录取人数</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.ENTERCOUNT}}</view></view>
+            </view>
+            <view class="weui-flex" style="margin-top:30rpx;">
+              <view class="weui-flex__item">
+                <view class="placeholder center">
+                  <button class="weui-btn mini-btn" type="primary" size="mini" bindtap="delet" id="{{item.COLL_ID}}">删除</button>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
       </view>
-      <view class="weui-cells weui-cells_after-title" wx:for="{{listwen}}" wx:key="" style='border-top:2rpx solid #d9d9d9'>
-        <view class="weui-cell" bindtap="showWen" id="{{item.COLL_ID}}">
+      <!--b1 结束  -->
+
+
+      <!--b2 开始 -->
+       <view id='b2' class="{{b2?'show':'hidden'}}">
+        <view class="weui-cells weui-cells_after-title" wx:for="{{listchong}}" wx:key="" style='border-top:2rpx solid #d9d9d9'>
+        <view class="weui-cell" bindtap="showChong" id="{{item.COLL_ID}}">
             <view class="weui-cell__hd">
-                <image src="/images/wen.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                <image src="/images/chong.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
             </view>
             <view class="weui-cell__bd" >
               <view class='date'>
@@ -174,107 +335,162 @@
             <view class="weui-flex__item"><view class="placeholder center"><button class="weui-btn mini-btn" type="primary" size="mini" bindtap="delet" id="{{item.COLL_ID}}">删除</button></view></view>
         </view>
         </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title" wx:for="{{listwen}}" wx:key="" style='border-top:2rpx solid #d9d9d9'>
+          <view class="weui-cell" bindtap="showWen" id="{{item.COLL_ID}}">
+              <view class="weui-cell__hd">
+                  <image src="/images/wen.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              </view>
+              <view class="weui-cell__bd" >
+                <view class='date'>
+                  <text style="width:85%">{{item.SCHOOLNAME}}</text>
+                  <text style='color:#999;font-size:26rpx;width:15%'>{{item.EXAMSCORE}}分</text>
+                </view>
+                <view class='major'>
+                  <text style="color:#666; font-size:24rpx;width:79%">{{item.MJNAME}}</text>
+                  <text style='color:#999;font-size:24rpx;width:21%'>{{item.COLLECTION_DATE}}</text>
+                </view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access {{!item.checked ? '':'rotate_90'}}"></view>
+          </view>
+          <view class="page__bd page__bd_spacing" hidden="{{!item.checked}}">
+            <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder"></view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center" >{{item.YEAR_VALUE}}</view></view>
+            </view>
+            <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">最高分</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MAXSCORE}}</view></view>
+            </view>
+            <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder">最高分排名</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MAX}}</view></view>
+            </view>
+            <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">最低分</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MINSCORE}}</view></view>
+            </view>
+          <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder">最低分排名</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MIN}}</view></view>
+          </view>
+          <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">录取人数</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.ENTERCOUNT}}</view></view>
+            </view>
+            <view class="weui-flex" style="margin-top:30rpx;">
+              <view class="weui-flex__item"><view class="placeholder center"><button class="weui-btn mini-btn" type="primary" size="mini" bindtap="delet" id="{{item.COLL_ID}}">删除</button></view></view>
+          </view>
+          </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title" wx:for="{{listbao}}" wx:key="" style='border-top:2rpx solid #d9d9d9'>
+          <view class="weui-cell" bindtap="showBao" id="{{item.COLL_ID}}">
+              <view class="weui-cell__hd">
+                  <image src="/images/bao.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              </view>
+              <view class="weui-cell__bd" >
+                <view class='date'>
+                  <text style="width:85%">{{item.SCHOOLNAME}}</text>
+                  <text style='color:#999;font-size:26rpx;width:15%'>{{item.EXAMSCORE}}分</text>
+                </view>
+                <view class='major'>
+                  <text style="color:#666; font-size:24rpx;width:79%">{{item.MJNAME}}</text>
+                  <text style='color:#999;font-size:24rpx;width:21%'>{{item.COLLECTION_DATE}}</text>
+                </view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access {{!item.checked ? '':'rotate_90'}}"></view>
+          </view>
+          <view class="page__bd page__bd_spacing" hidden="{{!item.checked}}">
+            <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder"></view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center" >{{item.YEAR_VALUE}}</view></view>
+            </view>
+            <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">最高分</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MAXSCORE}}</view></view>
+            </view>
+            <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder">最高分排名</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MAX}}</view></view>
+            </view>
+            <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">最低分</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MINSCORE}}</view></view>
+            </view>
+          <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder">最低分排名</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MIN}}</view></view>
+          </view>
+          <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">录取人数</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.ENTERCOUNT}}</view></view>
+            </view>
+            <view class="weui-flex" style="margin-top:30rpx;">
+              <view class="weui-flex__item"><view class="placeholder center"><button class="weui-btn mini-btn" type="primary" size="mini" bindtap="delet" id="{{item.COLL_ID}}">删除</button></view></view>
+          </view>
+          </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title" wx:for="{{listdian}}" wx:key="" style='border-top:2rpx solid #d9d9d9'>
+          <view class="weui-cell" bindtap="showDian" id="{{item.COLL_ID}}">
+              <view class="weui-cell__hd">
+                  <image src="/images/dian.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+              </view>
+              <view class="weui-cell__bd" >
+                <view class='date'>
+                  <text style="width:85%">{{item.SCHOOLNAME}}</text>
+                  <text style='color:#999;font-size:26rpx;width:15%'>{{item.EXAMSCORE}}分</text>
+                </view>
+                <view class='major'>
+                  <text style="color:#666; font-size:24rpx;width:79%">{{item.MJNAME}}</text>
+                  <text style='color:#999;font-size:24rpx;width:21%'>{{item.COLLECTION_DATE}}</text>
+                </view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access {{!item.checked ? '':'rotate_90'}}"></view>
+          </view>
+          <view class="page__bd page__bd_spacing" hidden="{{!item.checked}}">
+            <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder"></view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center" >{{item.YEAR_VALUE}}</view></view>
+            </view>
+            <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">最高分</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MAXSCORE}}</view></view>
+            </view>
+            <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder">最高分排名</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MAX}}</view></view>
+            </view>
+            <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">最低分</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MINSCORE}}</view></view>
+            </view>
+          <view class="weui-flex">
+              <view class="weui-flex__item"><view class="placeholder">最低分排名</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MIN}}</view></view>
+          </view>
+          <view class="weui-flex" style="background-color:#f2f9f8">
+              <view class="weui-flex__item"><view class="placeholder">录取人数</view></view>
+              <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.ENTERCOUNT}}</view></view>
+            </view>
+            <view class="weui-flex" style="margin-top:30rpx;">
+              <view class="weui-flex__item">
+                <view class="placeholder center">
+                  <button class="weui-btn mini-btn" type="primary" size="mini" bindtap="delet" id="{{item.COLL_ID}}">删除</button>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
       </view>
-      <view class="weui-cells weui-cells_after-title" wx:for="{{listbao}}" wx:key="" style='border-top:2rpx solid #d9d9d9'>
-        <view class="weui-cell" bindtap="showBao" id="{{item.COLL_ID}}">
-            <view class="weui-cell__hd">
-                <image src="/images/bao.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-            </view>
-            <view class="weui-cell__bd" >
-              <view class='date'>
-                <text style="width:85%">{{item.SCHOOLNAME}}</text>
-                <text style='color:#999;font-size:26rpx;width:15%'>{{item.EXAMSCORE}}分</text>
-              </view>
-              <view class='major'>
-                <text style="color:#666; font-size:24rpx;width:79%">{{item.MJNAME}}</text>
-                <text style='color:#999;font-size:24rpx;width:21%'>{{item.COLLECTION_DATE}}</text>
-              </view>
-            </view>
-            <view class="weui-cell__ft weui-cell__ft_in-access {{!item.checked ? '':'rotate_90'}}"></view>
-        </view>
-        <view class="page__bd page__bd_spacing" hidden="{{!item.checked}}">
-          <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder"></view></view>
-            <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center" >{{item.YEAR_VALUE}}</view></view>
-          </view>
-          <view class="weui-flex" style="background-color:#f2f9f8">
-            <view class="weui-flex__item"><view class="placeholder">最高分</view></view>
-            <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MAXSCORE}}</view></view>
-          </view>
-          <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder">最高分排名</view></view>
-            <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MAX}}</view></view>
-          </view>
-          <view class="weui-flex" style="background-color:#f2f9f8">
-            <view class="weui-flex__item"><view class="placeholder">最低分</view></view>
-            <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MINSCORE}}</view></view>
-          </view>
-        <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder">最低分排名</view></view>
-            <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MIN}}</view></view>
-        </view>
-        <view class="weui-flex" style="background-color:#f2f9f8">
-            <view class="weui-flex__item"><view class="placeholder">录取人数</view></view>
-            <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.ENTERCOUNT}}</view></view>
-          </view>
-          <view class="weui-flex" style="margin-top:30rpx;">
-            <view class="weui-flex__item"><view class="placeholder center"><button class="weui-btn mini-btn" type="primary" size="mini" bindtap="delet" id="{{item.COLL_ID}}">删除</button></view></view>
-        </view>
-        </view>
-      </view>
-      <view class="weui-cells weui-cells_after-title" wx:for="{{listdian}}" wx:key="" style='border-top:2rpx solid #d9d9d9'>
-        <view class="weui-cell" bindtap="showDian" id="{{item.COLL_ID}}">
-            <view class="weui-cell__hd">
-                <image src="/images/dian.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-            </view>
-            <view class="weui-cell__bd" >
-              <view class='date'>
-                <text style="width:85%">{{item.SCHOOLNAME}}</text>
-                <text style='color:#999;font-size:26rpx;width:15%'>{{item.EXAMSCORE}}分</text>
-              </view>
-              <view class='major'>
-                <text style="color:#666; font-size:24rpx;width:79%">{{item.MJNAME}}</text>
-                <text style='color:#999;font-size:24rpx;width:21%'>{{item.COLLECTION_DATE}}</text>
-              </view>
-            </view>
-            <view class="weui-cell__ft weui-cell__ft_in-access {{!item.checked ? '':'rotate_90'}}"></view>
-        </view>
-        <view class="page__bd page__bd_spacing" hidden="{{!item.checked}}">
-          <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder"></view></view>
-            <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center" >{{item.YEAR_VALUE}}</view></view>
-          </view>
-          <view class="weui-flex" style="background-color:#f2f9f8">
-            <view class="weui-flex__item"><view class="placeholder">最高分</view></view>
-            <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MAXSCORE}}</view></view>
-          </view>
-          <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder">最高分排名</view></view>
-            <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MAX}}</view></view>
-          </view>
-          <view class="weui-flex" style="background-color:#f2f9f8">
-            <view class="weui-flex__item"><view class="placeholder">最低分</view></view>
-            <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.MINSCORE}}</view></view>
-          </view>
-        <view class="weui-flex">
-            <view class="weui-flex__item"><view class="placeholder">最低分排名</view></view>
-            <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.PAIMING_MIN}}</view></view>
-        </view>
-        <view class="weui-flex" style="background-color:#f2f9f8">
-            <view class="weui-flex__item"><view class="placeholder">录取人数</view></view>
-            <view class="weui-flex__item" wx:for="{{item.scores}}" wx:key=""><view class="placeholder center">{{item.ENTERCOUNT}}</view></view>
-          </view>
-          <view class="weui-flex" style="margin-top:30rpx;">
-            <view class="weui-flex__item">
-              <view class="placeholder center">
-                <button class="weui-btn mini-btn" type="primary" size="mini" bindtap="delet" id="{{item.COLL_ID}}">删除
-                </button>
-              </view>
-            </view>
-          </view>
-        </view>
-      </view>
+      <!--b2  结束  -->
+
+
     </view>
     </view>
+
+
+
+    
+
 </view>
 <view class='white'></view>
