@@ -8,7 +8,8 @@ Page({
   data: {
     inputShowed: false,
     inputVal: "",
-    array: ["2017", "2016"],
+    // array: ["2017", "2016"],
+    array: ["2018", "2017"],
     index: 0,
     tabs: ['文科', '理科'],
     activeIndex: 0,
@@ -21,6 +22,7 @@ Page({
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/file_bann.jpg"),
   },
+  // 切换年份
   bindPickerChange: function (e) {
     var that = this;
     this.setData({
@@ -29,30 +31,31 @@ Page({
     that.clearCurPage();
     that.pullGradeInfos(true);
   },
+  // 切换文理
   tabClick: function (e) {
     var that = this;
-      this.setData({
-        sliderOffset: e.currentTarget.offsetLeft,
-        activeIndex: e.currentTarget.id
-
-      });
-      that.clearCurPage();
-      that.pullGradeInfos(true);
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
+    that.clearCurPage();
+    that.pullGradeInfos(true);
   },
+  // 显示输入框
   showInput: function () {
     this.setData({
       inputShowed: true
     });
   },
+  // 隐藏输入框
   hideInput: function () {
     var that = this;
     that.setData({
       inputVal: "",
       inputShowed: false,
     });
-    
   },
-  
+  // 清空输入框内容
   clearInput: function () {
     var that = this;
     var param = that.data.searchParam;
@@ -64,14 +67,15 @@ Page({
     });
     that.clearCurPage();
     that.pullGradeInfos(true);
-    
   },
+  // 输入框的值发生变化
   inputTyping: function (e) {
     var that = this;
     this.setData({
       inputVal: e.detail.value
     });
   },
+  // 点击搜索
   setSearchStorage: function () {
     var that = this;
     that.setData({
@@ -80,7 +84,9 @@ Page({
     that.clearCurPage();
     that.pullGradeInfos(true);
   },
-  scroll:function(){
+  // 
+  scroll: function () {
+    console.log('!!!')
     var that = this;
     that.setData({
       color:!that.data.color
@@ -148,7 +154,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  //将页码置0
+  // 将页码置0
   clearCurPage: function () {
     var that = this;
     var param = that.data.searchParam;
@@ -158,7 +164,7 @@ Page({
       searchParam: param
     });
   },
-  //页码翻页
+  // 页码翻页
   addCurPage: function () {
     var that = this;
     var param = that.data.searchParam;
@@ -183,10 +189,10 @@ Page({
       param.MAJORTYPE_ID = "r6j4mh69be"
     }
     if (that.data.index == 0) {
-      param.YEAR_ID = "1mwv56c01z"
+      param.YEAR_ID = "hyrykl72va"
     }
     if (that.data.index == 1) {
-      param.YEAR_ID = "qlkgccxzz4"
+      param.YEAR_ID = "1mwv56c01z"
     }
     if (that.data.inputVal)
       param.SCORE = that.data.inputVal;
