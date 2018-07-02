@@ -125,6 +125,7 @@ Page({
   },
   noticecontent:function(e){
     var a = e.currentTarget.dataset.id;
+    console.log(a)
       utils.navigateTo("/pages/notice/noticecontent/noticecontent",{a:a})
   },
   //事件处理函数

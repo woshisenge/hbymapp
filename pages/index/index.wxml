@@ -48,22 +48,28 @@
 </view>
 <!-- 导航 链接 结束 -->
 <!-- 公告 开始 -->
- <view class='notices'> 
-   <image class="icon" src='/images/notice.png'></image> 
-  <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
-     <block wx:for="{{notice}}" wx:key="title">
-       <view>
-         <swiper-item>
-           <view class="swiper_item" data-id="{{item.NEWS_ID}}" bindtap="noticecontent">
+  <view class='notices'> 
+    <image class="icon" src='/images/notice.png'></image> 
+    <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+      <block wx:for="{{notice}}" wx:key="title">
+        <view>
+          <swiper-item>
+            <view class="swiper_item" data-id="{{item.NEWS_ID}}" bindtap="noticecontent">
               {{item.ABSTRACT?item.ABSTRACT:item.TITLE}}
-           </view>
-         </swiper-item>
-       </view>
-     </block>
+            </view>
+          </swiper-item>
+        </view>
+      </block>
     </swiper>
-     <text class="more1" bindtap="noticemore">更多></text> 
- </view> 
+    <text class="more1" bindtap="noticemore">更多></text> 
+  </view> 
 <!-- 公告 结束-->
+<!-- 2018.7.2 ldq 增加高招会连接 -->
+<view class="ldq-meeting" data-id="qh87fnrr44" bindtap="noticecontent">
+  <view>全国（<text class='orange'>本科二批</text>和<text class='orange'>专科批</text>）高校</view>
+  <view>在河北省招生咨询行程安排<image src="../../images/mouse.png"></image></view>
+</view>
+<!-- 2018.7.2 ldq 结束 -->
 <!-- 全国高校招生咨询平台 开始 -->
 <view class="notice">
   <image style='margin-top:8px' class='icon' src='../../images/01.png'></image>
