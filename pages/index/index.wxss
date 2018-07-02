@@ -183,5 +183,6 @@
 .ldq-meeting image {
   width: 50rpx;
   height: 50rpx;
+  transform: rotate(-20deg);
 }
 /* 2018.7.2 ldq 结束 */
