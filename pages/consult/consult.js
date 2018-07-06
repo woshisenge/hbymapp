@@ -12,7 +12,9 @@ Page({
     width:0,
     checked:false,
     isLoadingMore: false,//是否加载更多
-    searchParam:{currentPage: 1},//搜索参数
+    searchParam: {
+      currentPage: 1
+    },//搜索参数
     schools:[],//学校结果
     provinces: [],
     arrangments: [],
@@ -23,6 +25,7 @@ Page({
     showView2: true,
     hot:null,
     grade:null,
+    ldq: 0,
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/recruit_banner.png"),
   },
@@ -131,36 +134,41 @@ Page({
   onLoad: function (options) {
     var that=this;
     that.pullSchoolInfos();
-
+    // 获取本一本二本三id值
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'ARRANGMENT' }, 'POST', false, function (res) {
+      // console.log(res.data)
       that.setData({
         arrangments: res.data
       })
     });
+    // 获取小图标
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
+      // console.log(res.data)
       that.setData({
         properties: res.data
       })
     });
+    // 获取专业类别
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
+      // console.log(res.data)
       that.setData({
         subjecttypes: res.data
       })
     });
+    // 获取城市名称
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE' }, 'POST', false, function (res) {
+      // console.log(res.data)
       that.setData({
         provinces: res.data
       })
     });
-  // ls:查询合作院校  回显于 院校咨询 广告位
+    // ls:查询合作院校  回显于 院校咨询 广告位
     util.sendRequest('/wechat/applet/school/getcooperateschools', {}, 'POST', false, function (res) {
-      console.log(res);
+      // console.log(res)
       that.setData({
         sc: that.setSc(res.data)
       })
-
     })
-    
   },
   changeArrow:function(){
     var that=this;
@@ -392,7 +400,7 @@ Page({
   setSearchParam: function() {
     var that = this;
     var param = this.data.searchParam;
-
+    console.log(param)
     var province_search = "";
     that.data.provinces.forEach(function(element){
       if (element.checked) {
@@ -410,8 +418,13 @@ Page({
     });
     if (subjecttype_search != "") subjecttype_search = subjecttype_search.substring(0, subjecttype_search.length - 1);
     param.SUBJECTTYPE = subjecttype_search;
-
-    var arrangment_search = "";
+    // 判断是否是第一次进入
+    if (that.data.ldq === 1) {
+      var arrangment_search = "8sqm1urq5w,";
+    } else {
+      // 如果不是则执行正常的逻辑
+      var arrangment_search = "";
+    }
     that.data.arrangments.forEach(function (element) {
       if (element.checked) {
         arrangment_search += element.DIC_ID + ",";
@@ -452,7 +465,6 @@ Page({
       var that = this;
       var paramObj = that.data.searchParam;
       if (!paramObj.currentPage) paramObj.currentPage = 1;
-
       if (paramObj.currentPage <= param.totalPage){
         that.addCurPage();//后台页码从0开始，前台页码从1开始
 
@@ -478,16 +490,15 @@ Page({
    */
   pullSchoolInfos: function(isClear) {
     var that = this;
+    console.log(that.data.ldq)
+    that.data.ldq += 1;
     that.setSearchParam();
     util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
-   
       that.setData({
         schools: that.setResults(res.data.results, isClear),
         num: res.data.totalRecord
       });
-
       that.reloadSearchParam(res.data);
-
       that.setData({
         isLoadingMore: false
       });

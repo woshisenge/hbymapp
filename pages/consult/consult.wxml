@@ -44,7 +44,7 @@
       <view id='view1' class="weui-media-box__hd weui-media-box__hd_in-appmsg">
         <!-- <image class="weui-media-box__thumb" src="{{school.HEADURL}}" /> -->
         <image class="weui-media-box__thumb" src="{{sc.HEADURL}}" />
-      </view> 
+      </view>
 
       <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
         <view>
@@ -68,7 +68,7 @@
 
 <view class='jiange'></view>
 
- <!-- <view class="cue"><text>共找到<text style='color:rgb(90,180,170)'>{{num}}</text>所院校</text></view>   -->
+  <!-- <view class="cue"><text>共找到<text style='color:rgb(90,180,170)'>{{num}}</text>所院校</text></view>    -->
 <view class="page1" hidden="{{hidden}}" bindtap="close_ch"></view>
 <scroll-view scroll-y class="page" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" style="width:{{width}}%" >
 <view class="page-body">
@@ -76,7 +76,7 @@
   <view class="demo-text-1"><text>地区</text><view class="weui-cell__ft_in-access {{showView?'':'.rotate_90'}}" bindtap='changeArrow'></view></view>
   <view class="demo-text-2">
     <checkbox-group bindchange="changeProvince">  
-        <view class="service_selection2">  
+        <view class="service_selection2">
              <label class="checkbox {{item.checked?'is_checked':''}}"  wx:for="{{provinces}}" wx:key="NAME" wx:for-index="i" wx:if="{{i<6}}"> 
               <checkbox value="{{i}}"  hidden="false" checked="{{checked}}" />{{item.NAME}}
               </label>      
