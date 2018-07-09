@@ -25,6 +25,7 @@ Page({
     showView2: true,
     hot:null,
     grade:null,
+    /* ldq-显示大专 */
     ldq: 0,
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/recruit_banner.png"),
@@ -400,7 +401,7 @@ Page({
   setSearchParam: function() {
     var that = this;
     var param = this.data.searchParam;
-    console.log(param)
+    // console.log(param)
     var province_search = "";
     that.data.provinces.forEach(function(element){
       if (element.checked) {
@@ -418,6 +419,7 @@ Page({
     });
     if (subjecttype_search != "") subjecttype_search = subjecttype_search.substring(0, subjecttype_search.length - 1);
     param.SUBJECTTYPE = subjecttype_search;
+    /* ldq-显示大专 */
     // 判断是否是第一次进入
     if (that.data.ldq === 1) {
       var arrangment_search = "8sqm1urq5w,";
@@ -490,7 +492,8 @@ Page({
    */
   pullSchoolInfos: function(isClear) {
     var that = this;
-    console.log(that.data.ldq)
+    // console.log(that.data.ldq)
+    /* ldq-显示大专 */
     that.data.ldq += 1;
     that.setSearchParam();
     util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
