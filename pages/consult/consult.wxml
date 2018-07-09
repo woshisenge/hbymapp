@@ -93,8 +93,8 @@
   <view class="demo-text-1">批次</view>
   <view class="demo-text-2">
     <checkbox-group bindchange="changeArrangment">  
-        <view class="service_selection1">    
-              <label class="checkbox {{item.checked?'is_checked':''}}"  wx:for="{{arrangments}}" wx:key="NAME" wx:for-index="i" wx:if="{{i<3}}">  
+      <view class="service_selection1">    
+        <label class="checkbox {{item.checked?'is_checked':''}}"  wx:for="{{arrangments}}" wx:key="NAME" wx:for-index="i" wx:if="{{i<3}}" bindtap="ldqClick">  
                 <checkbox value="{{i}}"  hidden="false" checked="{{checked}}" />{{item.NAME}}  
               </label>
         </view>  

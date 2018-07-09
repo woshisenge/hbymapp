@@ -209,6 +209,17 @@ Page({
       hidden: !this.data.hidden,
     })
   },
+  /* ldq-显示大专 */
+  ldqClick: function (e) {
+    this.setData({
+      searchParam: {
+        currentPage: 1
+      },
+      ldq: 2
+    });
+    this.pullSchoolInfos();
+    // console.log(this.data.ldq)
+  },
   changeArrangment: function (e) {
     var that = this;
     var arrangments = that.data.arrangments;
@@ -401,7 +412,6 @@ Page({
   setSearchParam: function() {
     var that = this;
     var param = this.data.searchParam;
-    // console.log(param)
     var province_search = "";
     that.data.provinces.forEach(function(element){
       if (element.checked) {
@@ -421,7 +431,8 @@ Page({
     param.SUBJECTTYPE = subjecttype_search;
     /* ldq-显示大专 */
     // 判断是否是第一次进入
-    if (that.data.ldq === 1) {
+    // console.log(that.data.ldq)
+    if (that.data.ldq === 0) {
       var arrangment_search = "8sqm1urq5w,";
     } else {
       // 如果不是则执行正常的逻辑
@@ -492,10 +503,8 @@ Page({
    */
   pullSchoolInfos: function(isClear) {
     var that = this;
-    // console.log(that.data.ldq)
-    /* ldq-显示大专 */
-    that.data.ldq += 1;
     that.setSearchParam();
+    // console.log(this.data.searchParam)
     util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
       that.setData({
         schools: that.setResults(res.data.results, isClear),
