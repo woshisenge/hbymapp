@@ -121,7 +121,7 @@
             <view class='plan' wx:for="{{liberal}}" wx:key="" wx:if="{{MAJORTYPE == 'gjv044girc'}}">
               <view class='plan-left'>
                 <view class='left-top'>{{item.MJNAME}}</view>
-                <view class='left-bottom'>2017年计划数：{{item.PLANCOUNT}}人　</view>
+                <view class='left-bottom'>2018年计划数：{{item.PLANCOUNT}}人　</view>
                 <!-- <view class='left-bottom' style="color:#666">学费：3500　学制：4年</view> -->
               </view>
               <view class='plan-right'>文科</view>
@@ -129,7 +129,7 @@
             <view class='plan' wx:for="{{science}}" wx:key="" wx:if="{{MAJORTYPE == 'r6j4mh69be'}}">
               <view class='plan-left'>
                 <view class='left-top'>{{item.MJNAME}}</view>
-                <view class='left-bottom'>2017年计划数：{{item.PLANCOUNT}}人</view>
+                <view class='left-bottom'>2018年计划数：{{item.PLANCOUNT}}人</view>
                 <!-- <view class='left-bottom' style="color:#666">学费：3500　学制：4年</view> -->
               </view>
               <view class='plan-right'>理科</view>
