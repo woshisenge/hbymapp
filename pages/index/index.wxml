@@ -65,10 +65,10 @@
   </view> 
 <!-- 公告 结束-->
 <!-- 2018.7.2 ldq 增加高招会连接 -->
-<view class="ldq-meeting" data-id="qh87fnrr44" bindtap="noticecontent">
-  <view>全国（<text class='orange'>本科二批</text>和<text class='orange'>专科批</text>）高校</view>
-  <view>在河北省招生咨询行程安排<image src="../../images/mouse.png"></image></view>
-</view>
+<!-- <view class="ldq-meeting" data-id="qh87fnrr44" bindtap="noticecontent"> -->
+  <!-- <view>全国（<text class='orange'>本科二批</text>和<text class='orange'>专科批</text>）高校</view> -->
+  <!-- <view>在河北省招生咨询行程安排<image src="../../images/mouse.png"></image></view> -->
+<!-- </view> -->
 <!-- 2018.7.2 ldq 结束 -->
 <!-- 全国高校招生咨询平台 开始 -->
 <view class="notice">
