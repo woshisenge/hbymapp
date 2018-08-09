@@ -9,14 +9,17 @@ Page({
   data: {
     codeHidden: true,
     timerNumber: 60,
-    phone: ""
+    phone: "",
+    countries: ['石家庄', '保定', '张家口']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    sendRequest("/plant/api/toregist_two", { DIC_ID: 'province3' }, "POST", function (res) {
+      console.log(res)
+    })
   },
 
   /**
@@ -66,6 +69,12 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  bindCountryChange: function (e) {
+    console.log(e.detail.value);
+    this.setData({
+      countryIndex: e.detail.value
+    })
   },
   bindAgreeChange: function(e) {
     var that = this;

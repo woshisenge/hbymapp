@@ -3,93 +3,15 @@
 <form bindsubmit='formSubmit'>
   <view class="page__bd">
   <view class="weui-cells__title">学生注册</view>
-  <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-              <view class="weui-label">注册账号</view>
-          </view>
-          <view class="weui-cell__bd">
-              <input class="weui-input" placeholder="请输入手机号" name="USERNAME"/>
-              
-          </view>
-      </view>
-      </view>
-      <view class="weui-cells__tips" style='color:red'>*例：18888888888</view> 
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
                 <view class="weui-label">手机号</view>
             </view>
             <view class="weui-cell__bd">
-                <input number class="weui-input" placeholder="请输入手机号" name="PHONE" bindinput='inputPhone'/>
-            </view>
-        </view> 
-        <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__hd">
-                <view class="weui-label">密码</view>
-            </view>
-            <view class="weui-cell__bd">
-                <input password class="weui-input" placeholder="请输入密码" name="PASSWORD"/>
+                <input number class="weui-input" placeholder="请输入 11 位手机号" name="PHONE" bindinput='inputPhone' maxlength='16'/>
             </view>
         </view>
-      </view>
-      <view class="weui-cells__tips" style='color:red'>*6-16位英文（含大小写）、数字、下划线</view> 
-      <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__hd">
-                <view class="weui-label">确认密码</view>
-            </view>
-            <view class="weui-cell__bd">
-                <input password class="weui-input" placeholder="再次确认密码" name="REPASSWORD"/>
-            </view>
-        </view>
-
-        <!--wz：2018-6-2 学生注册添加 考试类型  -->
-        <view class="weui-cell weui-cell_input mb-leixing">
-          <view class="weui-cell__hd mb-leixing1">
-            <view class="weui-label mb-leixing2">
-            <text>考试类型</text>
-              <radio-group class="radio-group" bindchange="radioChange">
-                  <label class="xuanxiang">
-                      <radio                value="gjv044girc" id='checkbox1' name='MAJORTYPE'/>文科
-                      <radio checked='true' value="r6j4mh69be" id='checkbox2' name='MAJORTYPE'/>理科
-                  </label>
-              </radio-group>
-            </view>
-          </view>
-        </view>
-
-        <!--wz：2018-6-2 学生注册添加 预估分数  -->
-          <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">预估分数</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <input number class="weui-input" id='PRESCORE' placeholder="请填写预估分数" maxlength='3'         name="EXAMSCORE" />
-                </view>
-            </view>
-          </view>
-          
-          <view class="weui-cells__tips" style='color:red'>*注：请填写200~750之间</view> 
-
-
-
-        <!-- <text> id="mb-checkbox" class="mb-point-prompt" style="font-size: 16px;">
-          <b>考试类型：</b>
-          <input type="checkbox"          value="gjv044girc"  id='checkbox1' onclick="checktype(this)" style="margin-left: 15px">文科
-          <input type="checkbox" checked  value="r6j4mh69be"  id='checkbox2' onclick="checktype(this)" style="margin-left: 15px">理科
-        </text> -->
-
-
-
-
-
-
-
-
-
-
         <view class="weui-cell weui-cell_input weui-cell_vcode">
             <view class="weui-cell__hd">
                 <view class="weui-label">验证码</view>
@@ -100,6 +22,82 @@
             <view class="weui-cell__ft">
               <view class="weui-vcode-btn" wx:if='{{codeHidden}}' bindtap='getSMSCode'>获取验证码</view>
               <view class="weui-vcode-btn" wx:if='{{!codeHidden}}'>重新获取（{{timerNumber}}s后）</view>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">密码</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input password class="weui-input" placeholder="6-16位英文、数字、下划线" name="PASSWORD" maxlength='16'/>
+            </view>
+        </view>
+      </view>
+
+      <view class="weui-cells__title">城市信息</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-label">城市</view>
+            </view>
+            <view class="weui-cell__bd">
+                <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+                    <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-label">区域</view>
+            </view>
+            <view class="weui-cell__bd">
+                <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+                    <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_select">
+            <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                <view class="weui-label">学校</view>
+            </view>
+            <view class="weui-cell__bd">
+                <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+                    <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+                </picker>
+            </view>
+        </view>
+      </view>
+
+      <view class="weui-cells__title">考生信息</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input number class="weui-input" placeholder="长度为 2-5" name="USER_NAME" bindinput='inputPhone'  maxlength='5'/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input mb-leixing">
+          <view class="weui-cell__hd mb-leixing1">
+            <view class="weui-label mb-leixing2">
+            <text>考试类型</text>
+              <radio-group class="radio-group" bindchange="radioChange">
+                  <label class="xuanxiang">
+                      <radio value="gjv044girc" id='checkbox1' name='MAJORTYPE'/>文科
+                      <radio checked='true' value="r6j4mh69be" id='checkbox2' name='MAJORTYPE'/>理科
+                  </label>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+        <!--wz：2018-6-2 学生注册添加 预估分数  -->
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">预估分数</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input number class="weui-input" id='PRESCORE' placeholder="请填写预估分数" maxlength='3' name="EXAMSCORE" />
             </view>
         </view>
       </view>

@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/register/register",
+    "pages/login/login",
     "pages/index/index",
     "pages/intelligence/result/result",
     "pages/consult/consult",
     "pages/consult/consultlist/consultlist",
-    "pages/login/login",
     "pages/contacts/contacts",
     "pages/person/person",
     "pages/notice/notice",
@@ -37,7 +38,6 @@
     "pages/chatroom/chatroom",
     "pages/intelligence/major/major",
     "pages/person/tbasics/tbasics",
-    "pages/register/register",
     "pages/person/information/content/content",
     "pages/imitate/school/school",
     "pages/imitate/school/content/content",
