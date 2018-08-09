@@ -10,30 +10,32 @@ Page({
     codeHidden: true,
     timerNumber: 60,
     phone: "",
-    countries: ['石家庄', '保定', '张家口']
+    city: [],
+    c: ['石家庄', '保定', '张家口']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    sendRequest("/plant/api/toregist_two", { DIC_ID: 'province3' }, "POST", function (res) {
-      console.log(res)
+    var that = this
+    util.sendRequest("/wechat/applet/api/toregist_two", { DIC_ID: 'province3' }, "POST", true, function (res) {
+      that.setData({
+        city: res.datas
+      })
+      console.log(res.datas)
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
   },
 
   /**
@@ -177,6 +179,17 @@ Page({
       //   delta: 1
       // });
     });
+  },
+
+  getCity: function () {
+    // var _city = this.city[1].NAME
+    // console.log(this.data.city)
+    for (var i = 0; i < this.data.city.length; i++) {
+      console.log(this.data.city[i].NAME)
+    }
+    // setData({
+    //   c: 
+    // })
   },
 
   //获取短信验证码
