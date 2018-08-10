@@ -38,7 +38,7 @@
 </view> -->
       <view class="weui-cells__title">城市信息</view>
       <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_select">
+        <view class="weui-cell weui-cell_select" name="s">
             <view class="weui-cell__hd weui-cell__hd_in-select-after">
                 <view class="weui-label">城市</view>
             </view>
@@ -87,7 +87,7 @@
               <radio-group class="radio-group" bindchange="radioChange">
                   <label class="xuanxiang">
                       <radio value="gjv044girc" id='checkbox1' name='MAJORTYPE'/>文科
-                      <radio checked='true' value="r6j4mh69be" id='checkbox2' name='MAJORTYPE'/>理科
+                      <radio value="r6j4mh69be" id='checkbox2' name='MAJORTYPE'/>理科
                   </label>
               </radio-group>
             </view>

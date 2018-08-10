@@ -197,10 +197,12 @@ Page({
       showError("确认密码不能为空");
       return false;
     }
-
-    util.sendRequest("/wechat/applet/api/toregist", param, "POST", true, function(res){
-
-
+    param.CITY = that.data.thisCity.DIC_ID
+    param.COUNTY = that.data.thisCounty.DIC_ID
+    param.SCHOOL_BELONG = that.data.thisSchool.DIC_ID
+    param.SCHOOL_NAME = that.data.thisSchool.NAME
+    console.log(param)
+    util.sendRequest("/wechat/applet/api/toregist_third", param, "POST", true, function(res){
       wx.showToast({
         title: '注册成功',
         icon: 'success',
@@ -244,7 +246,6 @@ Page({
     var data = {
       PHONE: that.data.phone
     }
-    console.log(data)
     util.sendRequest("/wechat/applet/user/getsmscode", data, "POST", true, function (res) {
       that.setData({
         codeHidden: !that.data.codeHidden,  
