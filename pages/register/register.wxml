@@ -33,9 +33,9 @@
             </view>
         </view>
       </view>
-<view wx:for="{{city}}" wx:key="{{index}}" bindtap="getCity">
+<!-- <view wx:for="{{city}}" wx:key="{{index}}" bindtap="getCity">
   {{item.NAME}}
-</view>
+</view> -->
       <view class="weui-cells__title">城市信息</view>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_select">
@@ -43,8 +43,8 @@
                 <view class="weui-label">城市</view>
             </view>
             <view class="weui-cell__bd">
-                <picker bindchange="bindCountryChange" value="{{city}}" range="{{c}}">
-                    <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+                <picker bindchange="bindCountryChange1" value="{{index}}" range="{{city}}" range-key='NAME'>
+                    <view class="weui-select weui-select_in-select-after">{{thisCity.NAME}}</view>
                 </picker>
             </view>
         </view>
@@ -53,8 +53,8 @@
                 <view class="weui-label">区域</view>
             </view>
             <view class="weui-cell__bd">
-                <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
-                    <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+                <picker bindchange="bindCountryChange2" value="{{index}}" range="{{county}}"  range-key='NAME'>
+                    <view class="weui-select weui-select_in-select-after">{{thisCounty.NAME}}</view>
                 </picker>
             </view>
         </view>
@@ -63,8 +63,8 @@
                 <view class="weui-label">学校</view>
             </view>
             <view class="weui-cell__bd">
-                <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
-                    <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
+                <picker bindchange="bindCountryChange3" value="{{index}}" range="{{school}}"  range-key='NAME'>
+                    <view class="weui-select weui-select_in-select-after">{{thisSchool.NAME}}</view>
                 </picker>
             </view>
         </view>
