@@ -16,6 +16,12 @@ Page({
     thisCounty: { DIC_ID: '', NAME: '清选择区域' },
     school: [],
     thisSchool: { DIC_ID: '', NAME: '清选择学校' },
+    year: [
+      { val: '2019', uid: 'twh405jq9y' },
+      { val: '2020', uid: 'r6cemag3kh' },
+      { val: '2021', uid: 'nlpxbkwn47' }
+    ],
+    thisYear: {uid: '', val: '请选择年份'},
   },
 
   /**
@@ -40,6 +46,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // this.openAlert()
   },
 
   /**
@@ -75,6 +82,12 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  selYear: function (e) {
+    var that = this
+    that.setData({
+      thisYear: { uid: that.data.year[e.detail.value].uid, val: that.data.year[e.detail.value].val}
+    })
   },
   bindCountryChange1: function (e) {
     var that = this
@@ -201,33 +214,25 @@ Page({
     param.COUNTY = that.data.thisCounty.DIC_ID
     param.SCHOOL_BELONG = that.data.thisSchool.DIC_ID
     param.SCHOOL_NAME = that.data.thisSchool.NAME
+    param.EXAMYEAR = that.data.thisYear.uid
     console.log(param)
     util.sendRequest("/wechat/applet/api/toregist_third", param, "POST", true, function(res){
-      wx.showToast({
-        title: '注册成功',
-        icon: 'success',
-        duration: 2000,
-        success: function () {
-          setTimeout(function(){
-            wx.navigateBack({
-              delta: 1
-            })
-          },4000)
-        }
-      })
-// wz : 2018-6-4  添加立即注册 注册成功弹框。
-      // wx.showToast({
-      //   title: '注册成功',
-      //   icon: 'success',
-      //   duration: 1000
-      // });
-
-      // wx.navigateBack({
-      //   delta: 1
-      // });
+      that.openAlert()
     });
   },
-
+  openAlert: function () {
+    wx.showModal({
+      content: '注册成功',
+      showCancel: false,
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateBack({
+            delta: 1
+          })
+        }
+      }
+    });
+  },
   getCity: function () {
     var that = this
     // var _city = this.city[1].NAME

@@ -69,74 +69,24 @@ var login = function () {
       if (res.code) {
         //发起网络请求
         sendRequest("/wechat/applet/api/login", { code: res.code }, "POST", true, function (obj) {
-          //存储session_id
-          setInfoToStorage('session_id', obj.thirdSessionId);
-          if (!obj.isCompleted) {
-            toComplete();
-          }
-          else {
-            //完成关联信息
-            sendRequest("/wechat/applet/user/getuserfromsession", {}, "POST", true, function (obj) {
-              setInfoToStorage("user_id", obj.USER_ID);
-              setInfoToStorage("headurl", obj.HEADURL);
-              getApp().startSocket();
-              switchTab({ url: "/pages/index/index" });
-              //获取角色信息
-              sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function(role){
-                if(role.data == 1) {
-                  wx.getUserInfo({
-                    success: function (res) {
-                      var userInfo = res.userInfo;
-                      var avatarUrl = userInfo.avatarUrl
-                      var gender = userInfo.gender //性别 0：未知、1：男、2：女
-
-                      sendRequest("/wechat/applet/user/hasheadurl", {}, "POST", false, function(hasHead){
-                        if(!hasHead.data) {
-                          wx.downloadFile({
-                            url: avatarUrl,
-                            success: function (img) {
-                              // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-                              if (img.statusCode === 200) {
-                                uploadFile("/wechat/applet/user/uploadhead", img.tempFilePath, "HEADURL", {});
-                              }
-                            }
-                          });
-                        }
-                      });
-                      sendRequest("/wechat/applet/user/hassex", {}, "POST", false, function (hasSex) {
-                        if (!hasSex.data){
-                          if (gender == 1) gender = 11;
-                          else if(gender == 2) gender = 12;
-                          else gender = 11;
-
-                          sendRequest("/wechat/applet/user/addsex", {SEX: gender}, "POST", false);
-                        }
-                      });
-                    }
-                  })
-                }
-              });
-            });
-          }
+          // 把session_id存到本地
+          setInfoToStorage('session_id', obj.thirdSessionId)
+					wx.switchTab({
+						url: '/index'
+					})
         });
       } else {
-        showError("获取用户信息失败，请重试！");
+        showError("获取用户信息失败，请重试！")
       }
     }
-  });
+  })
 }
 
 /**
  * 完善信息操作
- */333
+ */
 var toComplete = function () {
-  var pages = getCurrentPages();
-  if(pages[pages.length - 1].route != "pages/login/login"){
-    switchTab({
-      url: '/pages/index/index',
-      successFn: function () { redirectTo('/pages/login/login'); }
-    }) 
-  }
+	console.log(111)
 }
 
 /**

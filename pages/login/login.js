@@ -4,18 +4,18 @@ const util = require('../../utils/util.js')
 Page({
   data: {
     logs: [],
-    username:'',
+    phone:'',
     password:''
   },
   onLoad: function () {
-    // util.login();
+    console.log()
   },
   start:function(){
     util.navigateTo("../register/register");
   },
   bindUsername: function(e) {
     this.setData({
-      username: e.detail.value
+      phone: e.detail.value
     });
   },
   bindPassword: function (e) {
@@ -24,8 +24,22 @@ Page({
     });
   },
   showTopTips:function(){
-    util.sendRequest('/wechat/applet/api/relation', { USERNAME: this.data.username, PASSWORD: this.data.password }, "POST", true, function (res){
-      util.login();
+		var data = {
+			PHONE: this.data.phone,
+			PASSWORD: this.data.password
+		}
+		console.log(data)
+		// 登录成功
+    util.sendRequest('/wechat/applet/api/tologin_new', data, "POST", true, function (res){
+			if (res.hasErrors) {
+				console.log(res.errorMessage);
+				return false;
+			}
+			// 把登录信息存到本地缓存
+			util.sendRequest('/wechat/applet/api/tologin_new', data, "POST", true, function (res) {
+				// 把登录信息存到本地缓存
+				wx.setStorageSync('key', 'value')
+			});
     });
   }
 })

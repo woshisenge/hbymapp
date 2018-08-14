@@ -1,8 +1,8 @@
 {
   "pages": [
+		"pages/index/index",
+		"pages/login/login",
     "pages/register/register",
-    "pages/login/login",
-    "pages/index/index",
     "pages/intelligence/result/result",
     "pages/consult/consult",
     "pages/consult/consultlist/consultlist",

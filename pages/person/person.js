@@ -1,7 +1,6 @@
 // pages/person/person.js
 var util = require('../../utils/util.js');
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -29,6 +28,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+		console.log(1)
+		// 判断
+		if (this.data.role == 0) {
+			console.log(2)
+			wx.navigateTo({
+				url: '/pages/login/login'
+			})
+		}
   },
   chooseImageTap: function () {
     let _this = this;
@@ -70,7 +77,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.getUserInfo();
+    // this.getUserInfo();
   },
   /**
    * 获取用户基本信息

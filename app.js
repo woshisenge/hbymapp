@@ -4,7 +4,9 @@ App({
   onLaunch: function () {
     //  utils.login()
   },
+	
   globalData: {
+		userInfo: null,
     socketFlag: false,
     globalSocket: null
   },
