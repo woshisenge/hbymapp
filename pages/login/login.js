@@ -36,10 +36,10 @@ Page({
 				return false;
 			}
 			// 把登录信息存到本地缓存
-			util.sendRequest('/wechat/applet/api/tologin_new', data, "POST", true, function (res) {
-				// 把登录信息存到本地缓存
-				wx.setStorageSync('key', 'value')
-			});
-    });
+			wx.setStorageSync('userInfo', res)
+			wx.switchTab({
+				url: '/pages/person/person'
+			})
+    })
   }
 })

@@ -14,7 +14,7 @@
 <!-- 导航 链接 开始 -->
 <view class='navigation-box'>
   <view class='navigation' bindtap="consultation">
-    <image class="tpia" src='/images/01.png'></image> 
+    <image class="tpia" src='/images/01.png'></image>
     <view class='navigation-text'>招办咨询</view>
   </view>
   <view class='navigation' bindtap='teacher'>

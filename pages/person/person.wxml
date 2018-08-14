@@ -1,137 +1,76 @@
-<!--pages/person/person.wxml-->
 <!-- 个人中心页面 -->
-<view wx:if="{{role==1}}">
-<view class="head">
-  <view class="head-top">
-    <view class="image">
-      <image src="{{logo}}" bindtap="chooseImageTap"></image>
-    </view>
-    <view class="name">
-      <view class="nickname">
-        <text>{{nickname}}</text>
-        <image wx:if="{{isVip}}" src="/images/vip.png" style='width:64rpx;height:32rpx'></image>
-      </view>
-      <view class='message'>
-        <view class="message-text">{{region}}</view><view class="line"></view>
-        <view class="message-text">{{subject}}</view><view class="line"></view>
-        <view class="message-text">{{grade}}分</view>
-      </view>
-    </view>
-  </view>
-</view>
-<view class="weui-panel">
-  <view class="weui-panel__bd">
-      <view class="weui-media-box weui-media-box_small-appmsg">
-          <view class="weui-cells weui-cells_in-small-appmsg">
-              <navigator url="/pages/person/basics/basics" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                  <view class="weui-cell__hd"><image src="/images/me01.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
-                  <view class="weui-cell__bd weui-cell_primary">
-                      <view>基础信息</view>
-                  </view>
-                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-              </navigator>
-              <navigator url="../person/information/information" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                  <view class="weui-cell__hd"><image src="/images/me02.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
-                  <view class="weui-cell__bd weui-cell_primary">
-                      <view>考生信息</view>
-                  </view>
-                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-              </navigator>
-              <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="goods" wx:if="{{vip == 0}}">
-                  <view class="weui-cell__hd"><image src="/images/tb03.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
-                  <view class="weui-cell__bd weui-cell_primary">
-                      <view>我的物品</view>
-                  </view>
-                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-              </view>
-               <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="collection">
-                  <view class="weui-cell__hd"><image src="/images/tb20.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
-                  <view class="weui-cell__bd weui-cell_primary">
-                      <view>我的收藏</view>
-                  </view>
-                  <view class="weui-cell__ft weui-cell__ft_in-access {{hidden?'':'rotate_90'}}"></view>
-              </view>
-              <view class="weui-cells weui-cells_after-title" hidden="{{hidden}}">
-                <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="analog" id="1" style="border-bottom:0">
-                    <view class="weui-cell__bd" style="color:#666;text-indent:2em;">模拟填报结果收藏</view>
-                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                </view>
-                <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="intelligence" id="2">
-                    <view class="weui-cell__bd" style="color:#666;text-indent:2em;">智能推荐结果收藏</view>
-                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                </view>
-            </view> 
-              <navigator url="../person/security/security" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                  <view class="weui-cell__hd"><image src="/images/tb04.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
-                  <view class="weui-cell__bd weui-cell_primary">
-                      <view>账户安全</view>
-                  </view>
-                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-              </navigator>
-              <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="power" wx:if="{{vip == 0}}">
-                  <view class="weui-cell__hd"><image src="/images/tb05.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
-                  <view class="weui-cell__bd weui-cell_primary">
-                      <view>升级成会员</view>
-                  </view>
-                  <view class="weui-cell__ft weui-cell__ft_in-access {{hide?'':'rotate_90'}}"></view>
-              </view>
-              <view class="weui-cells weui-cells_after-title" hidden="{{hide}}" wx:if="{{vip == 0}}">
-                <navigator url="/pages/person/member/member" class="weui-cell weui-cell_access" hover-class="weui-cell_active" style="border-bottom:0">
-                    <view class="weui-cell__bd" style="color:#666;text-indent:2em;">已购买会员卡</view>
-                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                </navigator>
-                <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="single" id="1">
-                    <view class="weui-cell__bd" style="color:#666;text-indent:2em;">单人充值</view>
-                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                </view>
-                <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="group" id="2">
-                    <view class="weui-cell__bd" style="color:#666;text-indent:2em;">优惠团购（两人即可享受优惠）</view>
-                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-                </view>
-            </view> 
-          </view>
-      </view>
-  </view>
-</view>
-</view>
-<view wx:elif="{{role==2}}">
-  <view class="head">
-  <view class="head-top">
-    <view class="image">
-      <image src="{{logo}}" bindtap="chooseImageTap"></image>
-    </view>
-    <view class="name">
-      <view class="nickname">
-        <text>{{nickname2}}</text>
-      </view>
-      <view class='message'>
-        <view class="message-text">{{scname}}</view><view class="line"></view>
-        <view class="message-text">{{work}}</view>
-      </view>
-    </view>
-  </view>
-</view>
-<view class="weui-panel">
-  <view class="weui-panel__bd">
-      <view class="weui-media-box weui-media-box_small-appmsg">
-          <view class="weui-cells weui-cells_in-small-appmsg">
-              <navigator url="/pages/person/tbasics/tbasics" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                  <view class="weui-cell__hd"><image src="/images/me01.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
-                  <view class="weui-cell__bd weui-cell_primary">
-                      <view>基础信息</view>
-                  </view>
-                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-              </navigator>
-              
-              <navigator url="../person/security/security" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-                  <view class="weui-cell__hd"><image src="/images/tb04.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
-                  <view class="weui-cell__bd weui-cell_primary">
-                      <view>账号安全</view>
-                  </view>
-                  <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-              </navigator>
-          </view>
-      </view>
-  </view>
-</view>
+
+<view class="page">
+	<!-- title -->
+	<view class="page__hd">
+		<view class="page__title">个人中心</view>
+		<view class="page__desc">student</view>
+	</view>
+	<!-- 头像 -->
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell">
+			<view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+				<image src="./img/123.jpg" style="width: 50px; height: 50px; display: block"/>
+			</view>
+			<view class="weui-cell__bd">
+				<view>{{user_name}}</view>
+				<view style="font-size: 13px;color: #888888;">
+					<text wx:if="{{majortype == 'gjv044girc'}}">文科</text>
+					<text wx:if="{{majortype == 'r6j4mh69be'}}">理科</text>
+					|
+					<text>{{examscore}}分</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 个人信息 -->
+	<view class="weui-cells__title">个人信息</view>
+	<view class="weui-cells weui-cells_after-title">
+		<navigator url="/pages/person/basics/basics" hover-class="navigator-hover" open-type='navigate'>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<image src="./img/purple.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+				</view>
+				<view class="weui-cell__bd">基础信息</view>
+			</view>
+		</navigator>
+		<navigator url="/pages/person/information/information" hover-class="navigator-hover" open-type='navigate'>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<image src="./img/red.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+				</view>
+				<view class="weui-cell__bd">考生信息</view>
+			</view>
+		</navigator>
+	</view>
+	<!-- 个人收藏 -->
+	<view class="weui-cells__title">个人收藏</view>
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell">
+			<view class="weui-cell__hd">
+				<image src="./img/yellow.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+			</view>
+			<view class="weui-cell__bd">智能推荐</view>
+		</view>
+	</view>
+	<!-- 账户信息 -->
+	<view class="weui-cells__title">账户信息</view>
+	<view class="weui-cells weui-cells_after-title">
+		<navigator url="/pages/person/security/loginpw/loginpw" hover-class="navigator-hover" open-type='navigate'>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<image src="./img/blue.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+				</view>
+				<view class="weui-cell__bd">修改密码</view>
+			</view>
+		</navigator>
+		<navigator url="/pages/person/security/phone/phone" hover-class="navigator-hover" open-type='navigate'>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<image src="./img/green.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+				</view>
+				<view class="weui-cell__bd">绑定手机</view>
+			</view>
+		</navigator>
+	</view>
 </view>

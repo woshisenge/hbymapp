@@ -7,35 +7,32 @@ Page({
   data: {
     //用户头像
     logo:"/images/touxiang.png",
-    //信息完整度
-    completeCount: 0,                              
-    //高考分数
-    examScore: 0,
-    //账户余额
-    valiablePocket: 0,
-    //昵称
-    nickname: "",
-    //用户身份
-    role: 0,
-    vip:"",
-    isVip:"",
-    user_id:"",
-    hidden:true,
-    hide:true
+    // 姓名
+		user_name: '',
+		// 分数
+		examscore: '',
+		// 科目
+		majortype: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		console.log(1)
-		// 判断
-		if (this.data.role == 0) {
-			console.log(2)
-			wx.navigateTo({
+		// 判断是否登录
+		var userInfo = wx.getStorageSync('userInfo')
+		console.log(userInfo)
+		if (!userInfo) {
+			wx.redirectTo({
 				url: '/pages/login/login'
 			})
+			return false
 		}
+		this.setData({
+			user_name: userInfo.USER_NAME,
+			examscore: userInfo.EXAMSCORE,
+			majortype: userInfo.MAJORTYPE
+		})
   },
   chooseImageTap: function () {
     let _this = this;
@@ -104,7 +101,7 @@ Page({
     })
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res)     {      
       var role=res.data
-      if(role==1){   
+      if(role==1){
         util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (obj) {
           that.setData({
             logo: util.setStaticUrl(obj.complete.HEADURL),
