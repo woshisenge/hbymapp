@@ -83,7 +83,7 @@ var login = function () {
 }
 
 /**
- * 判断是否登录
+ * ldq 判断是否登录
  */
 var checkLogin = function () {
 	var userInfo = wx.getStorageSync('userInfo')
@@ -93,6 +93,15 @@ var checkLogin = function () {
 		})
 		return false
 	}
+}
+
+/**
+ * ldq 重新获取session
+ */
+var upSession = function (data) {
+	var userInfo = wx.getStorageSync('userInfo')
+	
+	wx.setStorageSync('userInfo', userInfo)
 }
 
 /**
@@ -736,6 +745,7 @@ module.exports = {
   getInfoFromStorage: getInfoFromStorage,
   setInfoToStorage: setInfoToStorage,
 	checkLogin: checkLogin,
+	upSession: upSession,
   toComplete: toComplete,
   setStaticUrl: setStaticUrl,
   navigateTo: navigateTo,

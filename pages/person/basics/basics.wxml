@@ -5,28 +5,28 @@
 		<view class="page__title">基本信息</view>
 		<view class="page__desc">student</view>
 	</view>
-<form bindsubmit="formSubmit">
+<form bindsubmit='formSubmit'>
   <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd"></view>
-      <view class="weui-cell__bd weui-cell_primary">
-          <text>姓名</text>
-          <input type='text' name='' value='{{user_name}}'style="text-align:right" />
-      </view>
+		<view class="weui-cell__hd"></view>
+		<view class="weui-cell__bd weui-cell_primary">
+			<text>姓名</text>
+			<input type='text' name='USER_NAME' value='{{user_name}}'style="text-align:right" />
+		</view>
   </view>
 	<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__hd"></view>
-      <view class="weui-cell__bd weui-cell_primary">
-          <text>昵称</text>
-          <input type='text' name='' value='{{nickname}}'style="text-align:right" />
-      </view>
+		<view class="weui-cell__hd"></view>
+		<view class="weui-cell__bd weui-cell_primary">
+			<text>昵称</text>
+			<input type='text' name='NICKNAME' value='{{nickname}}'style="text-align:right" />
+		</view>
   </view>
   <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd"></view>
       <view class="weui-cell__bd weui-cell_primary">
           <text>性别</text>
-          <picker bindchange="bindPickerChange" value="{{sexIndex}}" range="{{sexs}}" name='' range-key='NAME'>
+          <picker bindchange="changeSex" value="{{sexIndex}}" range="{{sexs}}" name='' range-key='val'>
         <view class="picker">
-          {{sexObjs[sexIndex].NAME}}
+          {{thisSex.val}}
         </view>
       </picker>
       </view>

@@ -8,27 +8,28 @@ Page({
   data: {
     user_name: '',
 		nickname: '',
-		sexs: [{key: '11', val: '男'}, {key: '12', val: '女'}]
+		sexs: [{key: '11', val: '男'}, {key: '12', val: '女'}],
+		thisSex: {key: '', val: '请选择性别'}
   },
-  bindPickerChange: function (e) {
-    this.setData({
-      sexIndex: e.detail.value
-    })
-  },
-  bindDateChange: function (e) {
-    this.setData({
-      birthday: e.detail.value
-    })
-  },
-  formSubmit: function (e) {
-    e.detail.value.SEX = this.data.sexObjs[e.detail.value.SEX].DIC_ID;
-    util.sendRequest("/wechat/applet/user/tocomplete", e.detail.value, "POST", true, function(res){
+  // bindPickerChange: function (e) {
+  //   this.setData({
+  //     sexIndex: e.detail.value
+  //   })
+  // },
+  // bindDateChange: function (e) {
+  //   this.setData({
+  //     birthday: e.detail.value
+  //   })
+  // },
+  // formSubmit: function (e) {
+  //   e.detail.value.SEX = this.data.sexObjs[e.detail.value.SEX].DIC_ID;
+  //   util.sendRequest("/wechat/applet/user/tocomplete", e.detail.value, "POST", true, function(res){
      
-      wx.navigateBack({
-        delta: 1
-      });
-    });
-  },
+  //     wx.navigateBack({
+  //       delta: 1
+  //     });
+  //   });
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -39,10 +40,47 @@ Page({
 		this.setData({
 			user_name: userInfo.USER_NAME,
 			nickname: userInfo.NICKNAME,
-			sex: userInfo.SEX
 		})
+		if (userInfo.SEX == 11) {
+			this.setData({
+				thisSex: { key: '11', val: '男' }
+			})
+		}
+		if (userInfo.SEX == 12) {
+			this.setData({
+				thisSex: { key: '12', val: '女' }
+			})
+		}
   },
-
+	formSubmit: function (e) {
+		var data = e.detail.value
+		data.SEX = this.data.thisSex.key
+		// console.log(data)
+		util.sendRequest('/wechat/applet/user/tocompletebasicnew', data, "POST", true, function (res) {
+			if (res.hasErrors) {
+				console.log(res.errorMessage);
+				return false;
+			}
+			console.log(res)
+			// 更新session
+			var userInfo = wx.getStorageSync('userInfo')
+			userInfo.USER_NAME = data.USER_NAME
+			userInfo.NICKNAME = data.NICKNAME
+			userInfo.SEX = data.SEX
+			wx.setStorageSync('userInfo', userInfo)
+			// 跳转
+			wx.navigateBack({
+				delta: 1
+			})
+		})
+	},
+	changeSex: function (e) {
+		var that = this
+		that.setData({
+			thisSex: { key: that.data.sexs[e.detail.value].key, val: that.data.sexs[e.detail.value].val}
+		})
+		console.log(that.data.thisSex)
+	},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

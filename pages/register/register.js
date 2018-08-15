@@ -157,8 +157,8 @@ Page({
     that.setData({
       style: e.detail.value
     })
-  }
-  ,
+  },
+	
   formSubmit: function(e) {
     var that = this;
     

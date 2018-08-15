@@ -8,7 +8,7 @@ Page({
     //用户头像
     logo:"/images/touxiang.png",
     // 姓名
-		user_name: '',
+		nickname: '',
 		// 分数
 		examscore: '',
 		// 科目
@@ -23,7 +23,7 @@ Page({
 		util.checkLogin()
 		var userInfo = wx.getStorageSync('userInfo')
 		this.setData({
-			user_name: userInfo.USER_NAME,
+			nickname: userInfo.NICKNAME,
 			examscore: userInfo.EXAMSCORE,
 			majortype: userInfo.MAJORTYPE
 		})

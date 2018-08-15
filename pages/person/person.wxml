@@ -13,7 +13,7 @@
 				<image src="./img/123.jpg" style="width: 50px; height: 50px; display: block"/>
 			</view>
 			<view class="weui-cell__bd">
-				<view>{{user_name}}</view>
+				<view>{{nickname}}</view>
 				<view style="font-size: 13px;color: #888888;">
 					<text wx:if="{{majortype == 'gjv044girc'}}">文科</text>
 					<text wx:if="{{majortype == 'r6j4mh69be'}}">理科</text>
@@ -31,7 +31,7 @@
 				<view class="weui-cell__hd">
 					<image src="./img/purple.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
 				</view>
-				<view class="weui-cell__bd">基础信息</view>
+				<view class="weui-cell__bd">基本信息</view>
 			</view>
 		</navigator>
 		<navigator url="/pages/person/information/information" hover-class="navigator-hover" open-type='navigate'>
