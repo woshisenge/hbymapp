@@ -64,6 +64,7 @@ const notAcceptCode = "406";
  * 登录操作
  */
 var login = function () {
+	console.log('login')
   wx.login({
     success: function (res) {
       if (res.code) {
@@ -98,17 +99,17 @@ var checkLogin = function () {
 /**
  * ldq 重新获取session
  */
-var upSession = function (data) {
-	var userInfo = wx.getStorageSync('userInfo')
+// var upSession = function (data) {
+// 	var userInfo = wx.getStorageSync('userInfo')
 	
-	wx.setStorageSync('userInfo', userInfo)
-}
+// 	wx.setStorageSync('userInfo', userInfo)
+// }
 
 /**
  * 完善信息操作
  */
 var toComplete = function () {
-	console.log(111)
+	console.log('toComplete')
 }
 
 /**
@@ -275,18 +276,20 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
           if (res.data.hasErrors) {
             //需要登录，详情查看后台LoginIntercetor
             if (res.data.errorCode == noLoginCode){
-              login()
+							// 该方法因微信官网改动而废弃
+              // login()
             }
-              
-            else if (res.data.errorCode == noCompleteCode){
-              toComplete();
-            }
-              
-            else if (res.data.errorCode == notAcceptCode)
-              console.error("接口：" + url + "缺少参数");
-            else
+						// 原先的逻辑注释掉
+            // else if (res.data.errorCode == noCompleteCode){
+            //   toComplete();
+            // }
+            else if (res.data.errorCode == notAcceptCode) {
+							console.error("接口：" + url + "缺少参数");
+						}
+            else {
               showError(res.data.errorMessage);
               return false;
+						}
           }
           if (successFn)
             successFn(res.data);
@@ -745,7 +748,6 @@ module.exports = {
   getInfoFromStorage: getInfoFromStorage,
   setInfoToStorage: setInfoToStorage,
 	checkLogin: checkLogin,
-	upSession: upSession,
   toComplete: toComplete,
   setStaticUrl: setStaticUrl,
   navigateTo: navigateTo,

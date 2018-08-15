@@ -57,17 +57,8 @@ Page({
 		data.SEX = this.data.thisSex.key
 		// console.log(data)
 		util.sendRequest('/wechat/applet/user/tocompletebasicnew', data, "POST", true, function (res) {
-			if (res.hasErrors) {
-				console.log(res.errorMessage);
-				return false;
-			}
-			console.log(res)
 			// 更新session
-			var userInfo = wx.getStorageSync('userInfo')
-			userInfo.USER_NAME = data.USER_NAME
-			userInfo.NICKNAME = data.NICKNAME
-			userInfo.SEX = data.SEX
-			wx.setStorageSync('userInfo', userInfo)
+			wx.setStorageSync('userInfo', res)
 			// 跳转
 			wx.navigateBack({
 				delta: 1
