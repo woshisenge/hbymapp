@@ -20,14 +20,8 @@ Page({
    */
   onLoad: function (options) {
 		// 判断是否登录
+		util.checkLogin()
 		var userInfo = wx.getStorageSync('userInfo')
-		console.log(userInfo)
-		if (!userInfo) {
-			wx.redirectTo({
-				url: '/pages/login/login'
-			})
-			return false
-		}
 		this.setData({
 			user_name: userInfo.USER_NAME,
 			examscore: userInfo.EXAMSCORE,

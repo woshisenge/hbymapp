@@ -6,10 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    sexObjs: [],
-    sexIndex:0,
-    birthday: "",
-    user: {NICKNAME: "", SEX: "", BIRTHDAY: "", IDCARD: "", EMAIL: "", PHONE: ""}
+    user_name: '',
+		nickname: '',
+		sexs: [{key: '11', val: '男'}, {key: '12', val: '女'}]
   },
   bindPickerChange: function (e) {
     this.setData({
@@ -34,54 +33,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    util.sendRequest("/wechat/applet/dictionary/get", { code: "SEX" }, "POST", true, function (res) {
-      var sexs = res.data;
-      that.setData({
-        sexObjs: sexs
-      });
-
-      util.sendRequest("/wechat/applet/user/getstudentcomplete", {}, "POST", true, function (res) {
-        var userTmp = { NICKNAME: "", SEX: "11", BIRTHDAY: "1990-12-12", IDCARD: "未设置", EMAIL: "未设置", PHONE: "未设置" };
-        if (res.NICKNAME) {
-          userTmp.NICKNAME = res.NICKNAME;
-        }
-
-        if (res.SEX) {
-          userTmp.SEX = res.SEX;
-          that.data.sexObjs.forEach(function(element, index) {
-            if(element.DIC_ID == userTmp.SEX) {
-              that.setData({
-                sexIndex: index
-              });
-            }
-          });
-        }
-
-        if (res.BIRTHDAY) {
-          userTmp.BIRTHDAY = res.BIRTHDAY;
-          that.setData({
-            birthday: userTmp.BIRTHDAY
-          });
-        }
-
-        if(res.IDCARD) {
-          userTmp.IDCARD = res.IDCARD.substring(0, 3) + "*****" + res.IDCARD.substring(15, 18);
-        }
-
-        if (res.EMAIL) {
-          userTmp.EMAIL = res.EMAIL.substring(0, 2) + "*********";
-        }
-
-        if (res.PHONE) {
-          userTmp.PHONE = res.PHONE.substring(0, 3) + "****" + res.PHONE.substring(7, 11);
-        }
-
-        that.setData({
-          user: userTmp
-        });
-      });
-    });
+		var userInfo = wx.getStorageSync('userInfo')
+    // 判断是否登录
+		util.checkLogin()
+		this.setData({
+			user_name: userInfo.USER_NAME,
+			nickname: userInfo.NICKNAME,
+			sex: userInfo.SEX
+		})
   },
 
   /**

@@ -83,6 +83,19 @@ var login = function () {
 }
 
 /**
+ * 判断是否登录
+ */
+var checkLogin = function () {
+	var userInfo = wx.getStorageSync('userInfo')
+	if (!userInfo) {
+		wx.redirectTo({
+			url: '/pages/login/login'
+		})
+		return false
+	}
+}
+
+/**
  * 完善信息操作
  */
 var toComplete = function () {
@@ -722,6 +735,7 @@ module.exports = {
   login: login,
   getInfoFromStorage: getInfoFromStorage,
   setInfoToStorage: setInfoToStorage,
+	checkLogin: checkLogin,
   toComplete: toComplete,
   setStaticUrl: setStaticUrl,
   navigateTo: navigateTo,
@@ -740,3 +754,4 @@ module.exports = {
   parseEmoji: parseEmoji,
   wxPromisify: wxPromisify
 }
+
