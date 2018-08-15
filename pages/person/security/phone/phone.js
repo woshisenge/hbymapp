@@ -9,14 +9,21 @@ Page({
   data: {
     codeHidden: true,
     timerNumber: 60,
-    phone: ""
+		oldPhone: '',
+    phone: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+		var userInfo = wx.getStorageSync('userInfo')
+		// console.log(userInfo)
+		// 判断是否登录
+		util.checkLogin()
+		this.setData({
+			oldPhone: userInfo.PHONE
+		})
   },
 
   /**
@@ -76,7 +83,7 @@ Page({
   getSMSCode: function () {
     var that = this;
     if(!that.data.phone || that.data.phone == null || that.data.phone == ""){
-      util.showError("新的手机号码不能为空！");
+      util.showError("新手机号不能为空！");
       return false;
     }
     util.sendRequest("/wechat/applet/user/getsmscode", { PHONE: that.data.phone }, "POST", true, function (res) {
@@ -106,10 +113,19 @@ Page({
     }
   },
   formSubmit: function (e) {
-    util.sendRequest("/wechat/applet/user/binding/phone", e.detail.value, "POST", true, function (res) {
-      wx.navigateBack({
-        delta: 1
-      });
-    });
-  }
+		util.sendRequest("/wechat/applet/user/binding/phone_new", e.detail.value, "POST", true, function (res) {
+			wx.showModal({
+				content: '保存成功',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+						// 跳转
+						wx.navigateBack({
+							delta: 1
+						})
+					}
+				}
+			})
+    })
+  },
 })

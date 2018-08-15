@@ -1,15 +1,25 @@
 <!--pages/person/security/phone/phone.wxml-->
 <!-- 修改手机号页面 -->
 <view class='page'>
+<!-- title -->
+	<view class="page__hd">
+		<view class="page__title">绑定手机</view>
+		<view class="page__desc">student</view>
+	</view>
 <form bindsubmit="formSubmit">
 <view class="page__bd">
-<view class="weui-cells__title">1.绑定手机即可直接通过短信安全验证进行操作</view>
-<view class="weui-cells__title">2.更改手机时，请重新输入新手机号码</view>
-<view class="weui-cells__title">3.收到安全验证码时，请在1分钟内完成验证</view>
 <view class="weui-cells weui-cells_after-title">
 <view class="weui-cell weui-cell_input">
     <view class="weui-cell__hd">
-        <view class="weui-label">新手机号码</view>
+        <view class="weui-label">原手机号</view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" value="{{oldPhone}}" name='' disabled='true'/>
+    </view>
+</view>
+<view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+        <view class="weui-label">新手机号</view>
     </view>
     <view class="weui-cell__bd">
         <input class="weui-input" bindinput='inputPhone' placeholder="请输入新手机号码" name='PHONE'/>
@@ -17,7 +27,7 @@
 </view>
 <view class="weui-cell weui-cell_input weui-cell_vcode">
     <view class="weui-cell__hd">
-        <view class="weui-label">短信验证码</view>
+        <view class="weui-label">验证码</view>
     </view>
     <view class="weui-cell__bd">
         <input class="weui-input" placeholder="请输入短信验证码" name='SMSCODE' />
@@ -28,7 +38,12 @@
     </view>
 </view>
 </view>
+<view class="weui-cells__title">1.绑定手机即可直接通过短信安全验证进行操作</view>
+<view class="weui-cells__title">2.更改手机时，请重新输入新手机号码</view>
+<view class="weui-cells__title">3.收到安全验证码时，请在1分钟内完成验证</view>
 </view>
-<button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
+	<view class="weui-btn-area">
+  	<button class="weui-btn" type="primary" form-type='submit'>完成</button>
+  </view>
 </form>
 </view>

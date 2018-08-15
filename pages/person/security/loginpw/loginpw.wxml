@@ -1,10 +1,13 @@
 <!--pages/person/security/loginpw/loginpw.wxml-->
 <!-- 修改登录密码页面 -->
 <view class='page'>
+<!-- title -->
+	<view class="page__hd">
+		<view class="page__title">修改密码</view>
+		<view class="page__desc">student</view>
+	</view>
 <form bindsubmit="formSubmit">
 <view class="page__bd">
-<view class="weui-cells__title">1.请牢记登录密码</view>
-<view class="weui-cells__title">2.如果丢失密码，可以通过绑定的手机找到</view>
 <view class="weui-cells weui-cells_after-title">
 <view class="weui-cell weui-cell_input">
     <view class="weui-cell__hd">
@@ -30,6 +33,7 @@
         <input class="weui-input" type='password' placeholder="请确认新密码" name='RENEWPASSWORD'/>
     </view>
 </view>
+
 <!-- <view class="weui-cell weui-cell_input weui-cell_vcode">
     <view class="weui-cell__hd">
         <view class="weui-label">短信验证码</view>
@@ -43,7 +47,11 @@
     </view>
 </view> -->
 </view>
+<view class="weui-cells__title">1.请牢记登录密码</view>
+<view class="weui-cells__title">2.如果丢失密码，可以通过绑定的手机找到</view>
 </view>
-<button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
+	<view class="weui-btn-area">
+  	<button class="weui-btn" type="primary" form-type='submit'>完成</button>
+  </view>
 </form>
 </view>

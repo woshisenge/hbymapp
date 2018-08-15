@@ -179,7 +179,12 @@ var uploadFile = function (url, file, name, formData, loadingType, successFn, er
           title: "请稍后",
           mask: true
         });
-      }
+			}
+			console.log(url)
+			console.log(file)
+			console.log(name)
+			console.log(formData)
+			console.log(header)
       wx.uploadFile({
         url: url,
         filePath: file,
@@ -207,6 +212,7 @@ var uploadFile = function (url, file, name, formData, loadingType, successFn, er
             successFn(res.data);
         },
         fail: function (res) {
+					console.log(res)
           if (loadingType) {
             wx.hideLoading();
           }
@@ -215,7 +221,6 @@ var uploadFile = function (url, file, name, formData, loadingType, successFn, er
             errorFn(res.data);
         },
         complete: function () {
-
         }
       })
     },
@@ -223,7 +228,6 @@ var uploadFile = function (url, file, name, formData, loadingType, successFn, er
       login();
     }
   });
-
 }
 
 /**

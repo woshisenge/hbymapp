@@ -6,6 +6,7 @@
 		<view class="page__desc">student</view>
 	</view>
 <form bindsubmit='formSubmit'>
+<view class="weui-cells weui-cells_after-title">
   <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
 		<view class="weui-cell__hd"></view>
 		<view class="weui-cell__bd weui-cell_primary">
@@ -31,6 +32,7 @@
       </picker>
       </view>
   </view>
+</view>
   <!-- <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" >
       <view class="weui-cell__hd"></view>
       <view class="weui-cell__bd weui-cell_primary">
@@ -41,7 +43,7 @@
       </view>
   </view> -->
 	<view class="weui-btn-area">
-  	<button class="weui-btn" type="primary" form-type='submit'>保存修改</button>
+  	<button class="weui-btn" type="primary" form-type='submit'>完成</button>
   </view>
 </form>
 </view>

@@ -59,9 +59,17 @@ Page({
 		util.sendRequest('/wechat/applet/user/tocompletebasicnew', data, "POST", true, function (res) {
 			// 更新session
 			wx.setStorageSync('userInfo', res)
-			// 跳转
-			wx.navigateBack({
-				delta: 1
+			wx.showModal({
+				content: '保存成功',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+						// 跳转
+						wx.switchTab({
+							url: '/pages/person/person'
+						})
+					}
+				}
 			})
 		})
 	},
@@ -70,7 +78,7 @@ Page({
 		that.setData({
 			thisSex: { key: that.data.sexs[e.detail.value].key, val: that.data.sexs[e.detail.value].val}
 		})
-		console.log(that.data.thisSex)
+		// console.log(that.data.thisSex)
 	},
   /**
    * 生命周期函数--监听页面初次渲染完成

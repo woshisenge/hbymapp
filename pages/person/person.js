@@ -6,7 +6,7 @@ Page({
    */
   data: {
     //用户头像
-    logo:"/images/touxiang.png",
+    headurl:"./img/nohead.png",
     // 姓名
 		nickname: '',
 		// 分数
@@ -32,9 +32,9 @@ Page({
     let _this = this;
     wx.showActionSheet({
       itemList: ['从相册中选择', '拍照'],
-      itemColor: "#f7982a",
+      // itemColor: "#f7982a",
       success: function (res) {
-        if (!res.cancel) {
+				if (!res.cancel) {
           if (res.tapIndex == 0) {
             _this.chooseWxImage('album')
           } else if (res.tapIndex == 1) {
@@ -43,7 +43,6 @@ Page({
         }
       }
     })
-
   },
   chooseWxImage:function (type) {
     var that = this;
@@ -51,7 +50,8 @@ Page({
       sizeType: ['compressed'],
       sourceType: [type],
       success: function (res) {
-        util.uploadFile("/wechat/applet/user/uploadhead", res.tempFilePaths[0], "HEADURL", {}, true, function(result){
+        util.uploadFile("/wechat/applet/user/uploadhead", res.tempFilePaths[0], "HEADURL", {}, true, function(res){
+					console.log(res)
           that.getUserInfo();
         });
       }

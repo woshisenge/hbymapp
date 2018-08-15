@@ -17,9 +17,7 @@
 .weui-cells:after{
   border-bottom:0;
 }
-.weui-cell__ft{
-  color:#000;
-}
-.weui-cells__tips{
-  color:red;
+.weui-cells__title {
+	margin-top: 0;
+	letter-spacing: 1px;
 }

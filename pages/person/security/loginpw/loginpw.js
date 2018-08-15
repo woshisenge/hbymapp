@@ -95,10 +95,19 @@ Page({
     }
   },
   formSubmit: function(e) {
-    util.sendRequest("/wechat/applet/user/updatepass", e.detail.value, "POST", true, function (res) {
-      wx.navigateBack({
-        delta: 1
-      });
-    });
+		util.sendRequest("/wechat/applet/user/updatepass_new", e.detail.value, "POST", true, function (res) {
+			wx.showModal({
+				content: '保存成功',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+						// 跳转
+						wx.navigateBack({
+							delta: 1
+						})
+					}
+				}
+			})
+    })
   }
 })
