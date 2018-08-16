@@ -4,7 +4,7 @@
 <!-- title -->
 	<view class="page__hd">
 		<view class="page__title">绑定手机</view>
-		<view class="page__desc">student</view>
+		<view class="page__desc">phone</view>
 	</view>
 <form bindsubmit="formSubmit">
 <view class="page__bd">

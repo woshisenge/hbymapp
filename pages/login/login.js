@@ -8,7 +8,8 @@ Page({
     password:''
   },
   onLoad: function () {
-    console.log()
+		// 获取session_id
+    util.login()
   },
   start:function(){
     util.navigateTo("../register/register");

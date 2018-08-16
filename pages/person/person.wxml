@@ -1,6 +1,7 @@
 <!-- 个人中心页面 -->
 
-<view class="page">
+<!-- 学生 -->
+<view class="page" wx-if="{{role_id == 'sja4gc59bg'}}">
 	<!-- title -->
 	<view class="page__hd">
 		<view class="page__title">个人中心</view>
@@ -52,6 +53,62 @@
 			</view>
 			<view class="weui-cell__bd">智能推荐</view>
 		</view>
+	</view>
+	<!-- 账户信息 -->
+	<view class="weui-cells__title">账户信息</view>
+	<view class="weui-cells weui-cells_after-title">
+		<navigator url="/pages/person/security/loginpw/loginpw" hover-class="navigator-hover" open-type='navigate'>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<image src="./img/blue.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+				</view>
+				<view class="weui-cell__bd">修改密码</view>
+			</view>
+		</navigator>
+		<navigator url="/pages/person/security/phone/phone" hover-class="navigator-hover" open-type='navigate'>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<image src="./img/green.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+				</view>
+				<view class="weui-cell__bd">绑定手机</view>
+			</view>
+		</navigator>
+	</view>
+</view>
+<!-- 老师 -->
+<view class="page" wx-if="{{role_id == 'm9bxdt9g36'}}">
+	<!-- title -->
+	<view class="page__hd">
+		<view class="page__title">个人中心</view>
+		<view class="page__desc">teacher</view>
+	</view>
+	<!-- 头像 -->
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell">
+			<view class="weui-cell__hd" bindtap='chooseImageTap' style="position: relative;margin-right: 10px; border-radius: 50px;">
+				<image src="{{headurl}}" style="width: 50px; height: 50px; display: block"/>
+			</view>
+			<view class="weui-cell__bd">
+				<view>{{nickname}}</view>
+				<view style="font-size: 13px;color: #888888;">
+					<text>{{school_name}}</text>
+					|
+					<text>{{jobtype}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 个人信息 -->
+	<view class="weui-cells__title">个人信息</view>
+	<view class="weui-cells weui-cells_after-title">
+		<navigator url="/pages/person/tbasics/tbasics" hover-class="navigator-hover" open-type='redirectTo'>
+			<view class="weui-cell">
+				<view class="weui-cell__hd">
+					<image src="./img/purple.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+				</view>
+				<view class="weui-cell__bd">基本信息</view>
+			</view>
+		</navigator>
 	</view>
 	<!-- 账户信息 -->
 	<view class="weui-cells__title">账户信息</view>

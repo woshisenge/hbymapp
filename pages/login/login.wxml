@@ -1,8 +1,11 @@
 <!-- 登录页 -->
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
-
+	<!-- title -->
+	<view class="page__hd">
+		<view class="page__title">用户登录</view>
+		<view class="page__desc">login</view>
+	</view>
     <view class="page__bd">
-        <view class="weui-cells__title">关联已有账户</view>
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__hd">
@@ -22,7 +25,6 @@
             </view>
         </view>
         <view class="weui-cells__tips">请填写《铭邦高考规划平台》所使用的账户</view>
-
         <view class="weui-btn-area">
             <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
         </view>

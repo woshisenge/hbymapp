@@ -12,7 +12,13 @@ Page({
 		// 分数
 		examscore: '',
 		// 科目
-		majortype: ''
+		majortype: '',
+		// 身份状态
+		role_id: '',
+		// 学校名称
+		school_name: '',
+		// 职位
+		jobtype: ''
   },
 
   /**
@@ -22,11 +28,23 @@ Page({
 		// 判断是否登录
 		util.checkLogin()
 		var userInfo = wx.getStorageSync('userInfo')
-		this.setData({
-			nickname: userInfo.NICKNAME,
-			examscore: userInfo.EXAMSCORE,
-			majortype: userInfo.MAJORTYPE
-		})
+		console.log(userInfo)
+		if (userInfo.ROLE_ID == 'sja4gc59bg') {
+			this.setData({
+				nickname: userInfo.NICKNAME || '',
+				examscore: userInfo.EXAMSCORE || '',
+				majortype: userInfo.MAJORTYPE || '',
+				role_id: userInfo.ROLE_ID || ''
+			})
+		}
+		if (userInfo.ROLE_ID == 'm9bxdt9g36') {
+			this.setData({
+				nickname: userInfo.NICKNAME || '',
+				role_id: userInfo.ROLE_ID || '',
+				school_name: userInfo.SCHOOL_NAME || '',
+				jobtype: userInfo.JOBTYPE || ''
+			})
+		}
   },
   chooseImageTap: function () {
     let _this = this;

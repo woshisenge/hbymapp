@@ -72,9 +72,6 @@ var login = function () {
         sendRequest("/wechat/applet/api/login", { code: res.code }, "POST", true, function (obj) {
           // 把session_id存到本地
           setInfoToStorage('session_id', obj.thirdSessionId)
-					wx.switchTab({
-						url: '/index'
-					})
         });
       } else {
         showError("获取用户信息失败，请重试！")
@@ -178,7 +175,7 @@ var uploadFile = function (url, file, name, formData, loadingType, successFn, er
         wx.showLoading({
           title: "请稍后",
           mask: true
-        });
+        })
 			}
 			console.log(url)
 			console.log(file)
@@ -205,7 +202,6 @@ var uploadFile = function (url, file, name, formData, loadingType, successFn, er
               console.error("接口：" + url + "缺少参数");
             else
               showError(res.data.errorMessage);
-
             return false;
           }
           if (successFn)
