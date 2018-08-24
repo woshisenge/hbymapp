@@ -47,7 +47,9 @@
       </view>
   </view>
 </view>
-<button class="weui-btn" type="primary" bindtap='result'>智能推荐</button>
+<view class="weui-btn-area">
+	<button class="weui-btn" type="primary" bindtap='result'>智能推荐</button>
+</view>
 <view class='footer'>
   <view class='footer1'>
     <icon type="warn" size="23" color="#F43530"></icon><text>重要提示：</text>

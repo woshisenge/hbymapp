@@ -53,7 +53,7 @@ Page({
 			MAJORTYPE_VALUE: that.data.MAJORTYPE_VALUE,
 			EXAMSCORE: that.data.EXAMSCORE
 		}
-		data.NUMBER = '0'
+		data.NUMBER = 0
 		data.MAJORTYPE = userInfo.MAJORTYPE
 		util.navigateTo("/pages/intelligence/result/result", data)
   },

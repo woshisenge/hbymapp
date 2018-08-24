@@ -10,6 +10,7 @@ Page({
     listchong: [],
     listwen: [],
     listbao: [],
+		datause: [],
 		EXAMSCORE: '',
     MAJORTYPE:"",
     ARRANGMENT_ID:"",
@@ -20,21 +21,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+		// console.log('run')
     var that = this;
 		var userInfo = wx.getStorageSync('userInfo')
-		// console.log(userInfo)
+		// console.log(options)
 		this.setData({
 			EXAMSCORE: userInfo.EXAMSCORE,
 			MAJORTYPE: userInfo.MAJORTYPE,
 			ARRANGMENT_ID: options.ARRANGMENT_ID,
 			MAJORTYPE_VALUE: userInfo.MAJORTYPE_VALUE,
+			options: options
 		})
 		util.sendRequest("/wechat/applet/report/reporting_onekey", options, "POST", true, function (res) {
 			if (res.hasErrors) {
 				console.log(res.errorMessage);
 				return false;
 			}
-			console.log(res)
+			// console.log(res)
 			if (res.data == '222' || res.data == '333') {
 				util.showError("所选批次与分数不符")
 				return false
@@ -50,39 +53,32 @@ Page({
 			that.setData({
 				listchong: res.listchong,
 				listwen: res.listwen,
+				listbao: res.listbao,
+				datause: res.datause,
+				MAJOR: res.datause.MAJOR,
+				number: 0
+			})
+			// console.log(that.data.MAJOR)
+		})
+  },
+	changeSchool: function () {
+		var that = this
+		this.data.number += 1
+		if (this.data.number > 2) {
+			this.data.number = 0
+		}
+		this.data.options.NUMBER = this.data.number
+		// console.log(this.data.options)
+		util.sendRequest("/wechat/applet/report/reporting_onekey", this.data.options, "POST", true, function (res) {
+			// console.log(res)
+			that.setData({
+				listchong: res.listchong,
+				listwen: res.listwen,
 				listbao: res.listbao
 			})
 		})
-  },
-  groupBySchool: function(list) {
-    var listOut = [];
-    var setObj = new Set();
-    list.forEach(function (element) {
-      setObj.add(element.SCHOOL_ID);
-    });
+	},
 
-    setObj.forEach(function (element) {
-      var school = {};
-      school.NAME = element.NAME;
-      school.SCHOOL_ID = element;
-      school.majors = [];
-      list.forEach(function (arrObj) {
-        if (element == arrObj.SCHOOL_ID) {
-          if(!school.NAME) {
-            school.NAME = arrObj.NAME;
-          }
-          var major = {};
-          major.MJNAME = arrObj.MJNAME;
-          major.MAJOR_ID = arrObj.MAJOR_ID;
-          school.majors.push(major);
-        }
-      });
-
-      listOut.push(school);
-    });
-
-    return listOut;
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -115,21 +111,19 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+	onReachBottom: function () {
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
   toDail:function(e){
     var that = this;
@@ -139,14 +133,29 @@ Page({
     var advice = e.currentTarget.dataset.class;
     var majors= "";
     var majorName = "";
-    for(var i=0;i<major.length;i++){
-      majors += major[i].MAJOR_ID + ',';
-      majorName += major[i].MJNAME +','
-    }
-    if (majors != "") {
-      majors = majors.substring(0, majors.length - 1);
-      majorName = majorName.substring(0, majorName.length - 1);
-    }
-    util.navigateTo("/pages/intelligence/result/content/content", { SCHOOL_ID: curId, MAJORTYPE: that.data.MAJORTYPE, major: majors, majorName: majorName, ARRANGMENT_ID: that.data.ARRANGMENT_ID,MAJORTYPE_VALUE:that.data.MAJORTYPE_VALUE,img:img,advice:advice});
+		console.log(this.data.datause)
+		wx.setStorageSync('datause', this.data.datause);
+		// return false
+    // for(var i=0; i<major.length; i++){
+    //   majors += major[i].MAJOR_ID + ',';
+    //   majorName += major[i].MJNAME + ','
+    // }
+    // if (majors != "") {
+    //   majors = majors.substring(0, majors.length - 1);
+    //   majorName = majorName.substring(0, majorName.length - 1);
+    // }
+		var data = {
+			SCHOOL_ID: curId,
+			MAJORTYPE: that.data.MAJORTYPE,
+			// major: majors,
+			// majorName: majorName,
+			ARRANGMENT_ID: that.data.ARRANGMENT_ID,
+			MAJORTYPE_VALUE: that.data.MAJORTYPE_VALUE,
+			img: img,
+			advice: advice
+		}
+		console.log(data)
+		// return false
+    util.navigateTo("/pages/intelligence/result/content/content", data);
   }
 })

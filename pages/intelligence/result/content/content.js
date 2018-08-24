@@ -47,37 +47,38 @@ Page({
     else{
       style = "本二"
     }
-    if(options.major != null){
-      options.major = options.major.split(",");
-    }
-    if (options.majorName != null) {
-      options.majorName = options.majorName.split(",");
-    }
-    var major = options.major;
-    for (var i = 0; i < major.length; i++){
-      util.sendRequest("/wechat/applet/major/getmajorbyschool", { SCHOOL_ID: options.SCHOOL_ID, MAJOR_ID:major[i]},"POST",true,function(res){
-        var results = that.data.results;
-        res.data.forEach(function (element) {
-          if (element.MINSCORETOTALCOUNT == null) {
-            element.MINSCORETOTALCOUNT = "---"
-          }
-          if (element.MAXSCORETOTALCOUNT == null) {
-            element.MAXSCORETOTALCOUNT = "---"
-          }
-        })
-        if(res.data.length > 0) {
-          var mjname = res.data[0].MJNAME;
-          var mj_id = res.data[0].MAJOR_ID;
-          var majorObj = {MJNAME: mjname,MAJORID:mj_id, scores: res.data};
-          results.push(majorObj);
-        }
-        that.setData({
-          results: results
-        });
-      })
-    }
+    // if(options.major != null){
+    //   options.major = options.major.split(",");
+    // }
+    // if (options.majorName != null) {
+    //   options.majorName = options.majorName.split(",");
+    // }
+    // var major = options.major;
+    // for (var i = 0; i < major.length; i++){
+    //   util.sendRequest("/wechat/applet/major/getmajorbyschool", { SCHOOL_ID: options.SCHOOL_ID, MAJOR_ID:major[i]},"POST",true,function(res){
+    //     var results = that.data.results;
+    //     res.data.forEach(function (element) {
+    //       if (element.MINSCORETOTALCOUNT == null) {
+    //         element.MINSCORETOTALCOUNT = "---"
+    //       }
+    //       if (element.MAXSCORETOTALCOUNT == null) {
+    //         element.MAXSCORETOTALCOUNT = "---"
+    //       }
+    //     })
+    //     if(res.data.length > 0) {
+    //       var mjname = res.data[0].MJNAME;
+    //       var mj_id = res.data[0].MAJOR_ID;
+    //       var majorObj = {MJNAME: mjname,MAJORID:mj_id, scores: res.data};
+    //       results.push(majorObj);
+    //     }
+    //     that.setData({
+    //       results: results
+    //     });
+    //   })
+    // }
     util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: options.SCHOOL_ID}, "POST", true, function (res) {
-      that.setData({
+      console.log(res)
+			that.setData({
         logo: util.setStaticUrl(res.HEADURL),
         name:res.NAME,
         types: res.SCTYPE_VALUE,

@@ -19,7 +19,7 @@
 				</view>
 			</view>
 		</block>
-		 <block wx:for="{{listwen}}" wx:key="item.SCHOOL_ID">
+		<block wx:for="{{listwen}}" wx:key="item.SCHOOL_ID">
 			<view class="weui-cells weui-cells_after-title"
 				bindtap='toDail' id="{{item.SCHOOL_ID}}"
 				data-id="{{item.majors}}" data-name="wen"
@@ -52,5 +52,8 @@
 			</view>
 		</block>
 	</view>
+	<view class="weui-btn-area">
+  	<button class="weui-btn" type="primary" bindtap='changeSchool'>换一批</button>
+  </view>
 </view>
 <view class='white'></view>
