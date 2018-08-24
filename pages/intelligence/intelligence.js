@@ -8,13 +8,13 @@ Page({
   data: {
     batch: [{ DIC_ID: 'hjj4e5vr0c', NAME: '本一' }, { DIC_ID: 'bdhsl11qtb', NAME: '本二' }],
     index:0,
-    provinces: "",
+    provinces: "河北省",
     subjecttypes: "",
     properties: "",
     majors: "",
-    provinces_id: "",
+		provinces_id: "province3",
     subjecttypes_id: "",
-    properties_id: "",
+		properties_id: "",
     majors_id: "",
     examinee: {},
     arrangment_id: "hjj4e5vr0c",
@@ -37,7 +37,12 @@ Page({
     });
   },
   result:function(){
+		if (!this.data.provinces_id || this.data.provinces_id.split(',').length > 5) {
+			util.showError("请选择 1 - 5 个城市")
+			return false
+		}
     var that = this;
+		var userInfo = wx.getStorageSync('userInfo')
 		var data = {
 			MAJOR: that.data.majors_id,
 			PROVINCE: that.data.provinces_id,
@@ -48,7 +53,9 @@ Page({
 			MAJORTYPE_VALUE: that.data.MAJORTYPE_VALUE,
 			EXAMSCORE: that.data.EXAMSCORE
 		}
-    util.navigateTo("/pages/intelligence/result/result", data);
+		data.NUMBER = '0'
+		data.MAJORTYPE = userInfo.MAJORTYPE
+		util.navigateTo("/pages/intelligence/result/result", data)
   },
   /**
    * 生命周期函数--监听页面加载

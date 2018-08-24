@@ -7,10 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    listChong: [],
-    listWen: [],
-    listBao: [],
-    listDian: [],
+    listchong: [],
+    listwen: [],
+    listbao: [],
+		EXAMSCORE: '',
     MAJORTYPE:"",
     ARRANGMENT_ID:"",
     MAJORTYPE_VALUE:""
@@ -22,64 +22,37 @@ Page({
   onLoad: function (options) {
     var that = this;
 		var userInfo = wx.getStorageSync('userInfo')
-    that.setData({
-      MAJORTYPE: options.MAJORTYPE,
-      ARRANGMENT_ID: options.ARRANGMENT_ID,
-      MAJORTYPE_VALUE: options.MAJORTYPE_VALUE,
-      EXAMSCORE: options.EXAMSCORE
+		// console.log(userInfo)
+		this.setData({
+			EXAMSCORE: userInfo.EXAMSCORE,
+			MAJORTYPE: userInfo.MAJORTYPE,
+			ARRANGMENT_ID: options.ARRANGMENT_ID,
+			MAJORTYPE_VALUE: userInfo.MAJORTYPE_VALUE,
 		})
-		console.log(options)
-		options.NUMBER = '0'
-		options.MAJORTYPE = userInfo.MAJORTYPE
-		util.sendRequest("/wechat/applet/report/reporting_onekey", options, "POST", true, function(res){
+		util.sendRequest("/wechat/applet/report/reporting_onekey", options, "POST", true, function (res) {
+			if (res.hasErrors) {
+				console.log(res.errorMessage);
+				return false;
+			}
 			console.log(res)
+			if (res.data == '222' || res.data == '333') {
+				util.showError("所选批次与分数不符")
+				return false
+			}
+			if (res.data == '000') {
+				util.showError("您的分数有误")
+				return false
+			}
+			if (!res.listbao.length && !res.listchong.length && !res.listwen.length) {
+				util.showError("无匹配数据, 请重新选择条件")
+				return false
+			}
+			that.setData({
+				listchong: res.listchong,
+				listwen: res.listwen,
+				listbao: res.listbao
+			})
 		})
-    // util.sendRequest("/wechat/applet/report/reporting_two", options, "POST", true, function(res){
-      
-
-    //   var score_exam = res.data;
-    //   var listChong = res.listChong;
-    //   var listWen = res.listWen;
-    //   var listBao = res.listBao;
-    //   var listDian = res.listDian;
-
-      
-    //   if (listChong == "" && listWen == "" && listBao == "" && listDian == "") {
-    //     util.showError("根据您选择的条件查询，暂无数据！")
-    // 	}
-		// 	else{
-		// 			var listChongOut = that.groupBySchool(listChong);
-		// 			var listWenOut = that.groupBySchool(listWen);
-		// 			var listBaoOut = that.groupBySchool(listBao);
-		// 			var listDianOut = that.groupBySchool(listDian);
-
-		// 			that.setData({
-		// 				listChong: listChongOut,
-		// 				listWen: listWenOut,
-		// 				listBao: listBaoOut,
-		// 				listDian: listDianOut
-		// 			});
-		// 	}
-
-    //   if (score_exam == 750) {
-    //     util.showError("您已成为考神，祝您金榜题名！")
-    //   }
-    //   else {
-    //     var listChongOut = that.groupBySchool(listChong);
-    //     var listWenOut = that.groupBySchool(listWen);
-    //     var listBaoOut = that.groupBySchool(listBao);
-    //     var listDianOut = that.groupBySchool(listDian);
-
-    //     that.setData({
-    //       listChong: listChongOut,
-    //       listWen: listWenOut,
-    //       listBao: listBaoOut,
-    //       listDian: listDianOut
-    //     });
-    //   }
-
-      
-    // });
   },
   groupBySchool: function(list) {
     var listOut = [];
