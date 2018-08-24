@@ -21,6 +21,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+		var userInfo = wx.getStorageSync('userInfo')
     that.setData({
       MAJORTYPE: options.MAJORTYPE,
       ARRANGMENT_ID: options.ARRANGMENT_ID,
@@ -28,6 +29,8 @@ Page({
       EXAMSCORE: options.EXAMSCORE
 		})
 		console.log(options)
+		options.NUMBER = '0'
+		options.MAJORTYPE = userInfo.MAJORTYPE
 		util.sendRequest("/wechat/applet/report/reporting_onekey", options, "POST", true, function(res){
 			console.log(res)
 		})
@@ -171,7 +174,6 @@ Page({
       majors = majors.substring(0, majors.length - 1);
       majorName = majorName.substring(0, majorName.length - 1);
     }
-    
     util.navigateTo("/pages/intelligence/result/content/content", { SCHOOL_ID: curId, MAJORTYPE: that.data.MAJORTYPE, major: majors, majorName: majorName, ARRANGMENT_ID: that.data.ARRANGMENT_ID,MAJORTYPE_VALUE:that.data.MAJORTYPE_VALUE,img:img,advice:advice});
   }
 })
