@@ -26,53 +26,57 @@ Page({
       ARRANGMENT_ID: options.ARRANGMENT_ID,
       MAJORTYPE_VALUE: options.MAJORTYPE_VALUE,
       EXAMSCORE: options.EXAMSCORE
-    })
-    util.sendRequest("/wechat/applet/report/reporting_two", options, "POST", true, function(res){
+		})
+		console.log(options)
+		util.sendRequest("/wechat/applet/report/reporting_onekey", options, "POST", true, function(res){
+			console.log(res)
+		})
+    // util.sendRequest("/wechat/applet/report/reporting_two", options, "POST", true, function(res){
       
 
-      var score_exam = res.data;
-      var listChong = res.listChong;
-      var listWen = res.listWen;
-      var listBao = res.listBao;
-      var listDian = res.listDian;
+    //   var score_exam = res.data;
+    //   var listChong = res.listChong;
+    //   var listWen = res.listWen;
+    //   var listBao = res.listBao;
+    //   var listDian = res.listDian;
 
       
-      if (listChong == "" && listWen == "" && listBao == "" && listDian == "") {
-        util.showError("根据您选择的条件查询，暂无数据！")
-    }
-    else{
-        var listChongOut = that.groupBySchool(listChong);
-        var listWenOut = that.groupBySchool(listWen);
-        var listBaoOut = that.groupBySchool(listBao);
-        var listDianOut = that.groupBySchool(listDian);
+    //   if (listChong == "" && listWen == "" && listBao == "" && listDian == "") {
+    //     util.showError("根据您选择的条件查询，暂无数据！")
+    // 	}
+		// 	else{
+		// 			var listChongOut = that.groupBySchool(listChong);
+		// 			var listWenOut = that.groupBySchool(listWen);
+		// 			var listBaoOut = that.groupBySchool(listBao);
+		// 			var listDianOut = that.groupBySchool(listDian);
 
-        that.setData({
-          listChong: listChongOut,
-          listWen: listWenOut,
-          listBao: listBaoOut,
-          listDian: listDianOut
-        });
-    }
+		// 			that.setData({
+		// 				listChong: listChongOut,
+		// 				listWen: listWenOut,
+		// 				listBao: listBaoOut,
+		// 				listDian: listDianOut
+		// 			});
+		// 	}
 
-      if (score_exam == 750) {
-        util.showError("您已成为考神，祝您金榜题名！")
-      }
-      else {
-        var listChongOut = that.groupBySchool(listChong);
-        var listWenOut = that.groupBySchool(listWen);
-        var listBaoOut = that.groupBySchool(listBao);
-        var listDianOut = that.groupBySchool(listDian);
+    //   if (score_exam == 750) {
+    //     util.showError("您已成为考神，祝您金榜题名！")
+    //   }
+    //   else {
+    //     var listChongOut = that.groupBySchool(listChong);
+    //     var listWenOut = that.groupBySchool(listWen);
+    //     var listBaoOut = that.groupBySchool(listBao);
+    //     var listDianOut = that.groupBySchool(listDian);
 
-        that.setData({
-          listChong: listChongOut,
-          listWen: listWenOut,
-          listBao: listBaoOut,
-          listDian: listDianOut
-        });
-      }
+    //     that.setData({
+    //       listChong: listChongOut,
+    //       listWen: listWenOut,
+    //       listBao: listBaoOut,
+    //       listDian: listDianOut
+    //     });
+    //   }
 
       
-    });
+    // });
   },
   groupBySchool: function(list) {
     var listOut = [];

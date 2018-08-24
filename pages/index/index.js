@@ -214,7 +214,7 @@ Page({
               }
             })
           }
-        else{
+        	else{
             wx.showModal({
               title: '提示',
               content: '请完善个人信息',
@@ -224,65 +224,85 @@ Page({
                 }
               }
             })
-        }
-    })
+        	}
+    		})
       }
     });
   },
   intelligence:function(){
     var that = this;
-    utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
-      if (res.data != 1) {
-        utils.showError("仅有学生身份才能使用该功能！");
-        return false;
-      }
-      else {
-        utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
-          if (result.data) {
-            utils.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
-              var user_id = obj.USER_ID;
-              if (obj.DATA == "UC") {
-                utils.navigateTo("/pages/intelligence/intelligence");
-              }
-              else {
-                utils.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
-                  if (res.zntjk != 0) {
-                    utils.navigateTo("/pages/intelligence/intelligence");
-                  }
-                  else {
-                    // utils.showError("您当前智能推荐卡数为0，无法使用该功能！")
-                    wx.showModal({
-                      title: '提示',
-                      content: '您当前智能推荐次数为0,请激活已有会员卡或去充值升级会员',
-                      cancelText:'手动激活',
-                      confirmText:'去充值',
-                      success: function (res) {
-                        if (res.confirm) {
-                          utils.navigateTo("/pages/person/improve/improve", { id: 1, user_id: res.USER_ID})
-                        } else if (res.cancel) {
-                          utils.navigateTo("/pages/person/member/member")
-                        }
-                      }
-                    })
-                  }
-                })
-              }
-            })
-          }
-          else {
-            wx.showModal({
-              title: '提示',
-              content: '请完善个人信息',
-              success: function (res) {
-                if (res.confirm) {
-                  util.navigateTo("/pages/person/information/information")
-                }
-              }
-            })
-          }
-        })
-      }
-    });
+		var userInfo = wx.getStorageSync('userInfo')
+		// 判断是否登录
+		if (!userInfo) {
+			utils.showError("请先进行登录");
+			return false
+		}
+		// 判断是否是学生
+		if (userInfo.ROLE_ID == 'm9bxdt9g36') {
+			utils.showError("该功能只有学生可以使用");
+			return false
+		}
+		// 判断是否是vip
+		if (!userInfo.VIP) {
+			utils.showError("该功能只有VIP用户可以使用");
+			return false
+		}
+		// console.log(111)
+		// return false
+		utils.navigateTo("/pages/intelligence/intelligence");
+
+    // utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
+    //   if (res.data != 1) {
+    //     utils.showError("仅有学生身份才能使用该功能！");
+    //     return false;
+    //   }
+    //   else {
+    //     utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
+    //       if (result.data) {
+    //         utils.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
+    //           var user_id = obj.USER_ID;
+    //           if (obj.DATA == "UC") {
+    //             utils.navigateTo("/pages/intelligence/intelligence");
+    //           }
+    //           else {
+    //             utils.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
+    //               if (res.zntjk != 0) {
+    //                 utils.navigateTo("/pages/intelligence/intelligence");
+    //               }
+    //               else {
+    //                 // utils.showError("您当前智能推荐卡数为0，无法使用该功能！")
+    //                 wx.showModal({
+    //                   title: '提示',
+    //                   content: '您当前智能推荐次数为0,请激活已有会员卡或去充值升级会员',
+    //                   cancelText:'手动激活',
+    //                   confirmText:'去充值',
+    //                   success: function (res) {
+    //                     if (res.confirm) {
+    //                       utils.navigateTo("/pages/person/improve/improve", { id: 1, user_id: res.USER_ID})
+    //                     } else if (res.cancel) {
+    //                       utils.navigateTo("/pages/person/member/member")
+    //                     }
+    //                   }
+    //                 })
+    //               }
+    //             })
+    //           }
+    //         })
+    //       }
+    //       else {
+    //         wx.showModal({
+    //           title: '提示',
+    //           content: '请完善个人信息',
+    //           success: function (res) {
+    //             if (res.confirm) {
+    //               util.navigateTo("/pages/person/information/information")
+    //             }
+    //           }
+    //         })
+    //       }
+    //     })
+    //   }
+    // });
     // var that = this;
     // var vip = that.data.vip;
     // if (that.data.role != 1) {

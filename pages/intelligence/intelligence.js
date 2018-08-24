@@ -20,8 +20,11 @@ Page({
     arrangment_id: "hjj4e5vr0c",
     MAJORTYPE:"",
     MAJORTYPE_VALUE:"",
-    EXAMSCORE:"",
-    //banner图
+    EXAMSCORE:"0",
+		MAJORTYPE_VALUE: '',
+		EXAMAREA_VALUE: '',
+		CITY_VALUE: '',
+		    //banner图
     consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/recommendation.png"),
   },
   bindPickerChange: function (e) {
@@ -35,43 +38,52 @@ Page({
   },
   result:function(){
     var that = this;
-    if(that.data.vip != "UC"){
-      util.confirm({
-        content: "确定要进行智能推荐？您将使用一次智能推荐",
-        confirmFn: function () {
-          util.navigateTo("/pages/intelligence/result/result", { MAJOR: that.data.majors_id, PROVINCE: that.data.provinces_id, SUBJECTTYPE: that.data.subjecttypes_id, SCPROPERTY: that.data.properties_id, ARRANGMENT_ID: that.data.arrangment_id, MAJORTYPE: that.data.MAJORTYPE, MAJORTYPE_VALUE: that.data.MAJORTYPE_VALUE, EXAMSCORE: that.data.EXAMSCORE });
-        }
-      });
-    }
-    else{
-      util.navigateTo("/pages/intelligence/result/result", { MAJOR: that.data.majors_id, PROVINCE: that.data.provinces_id, SUBJECTTYPE: that.data.subjecttypes_id, SCPROPERTY: that.data.properties_id, ARRANGMENT_ID: that.data.arrangment_id, MAJORTYPE: that.data.MAJORTYPE, MAJORTYPE_VALUE: that.data.MAJORTYPE_VALUE, EXAMSCORE: that.data.EXAMSCORE });
-    }
+		var data = {
+			MAJOR: that.data.majors_id,
+			PROVINCE: that.data.provinces_id,
+			SUBJECTTYPE: that.data.subjecttypes_id,
+			SCPROPERTY: that.data.properties_id,
+			ARRANGMENT_ID: that.data.arrangment_id,
+			MAJORTYPE: that.data.MAJORTYPE,
+			MAJORTYPE_VALUE: that.data.MAJORTYPE_VALUE,
+			EXAMSCORE: that.data.EXAMSCORE
+		}
+    util.navigateTo("/pages/intelligence/result/result", data);
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that=this;
+		var userInfo = wx.getStorageSync('userInfo')
+		// console.log(userInfo)
+		this.setData({
+			EXAMSCORE: userInfo.EXAMSCORE,
+			MAJORTYPE_VALUE: userInfo. MAJORTYPE_VALUE,
+			EXAMAREA_VALUE: userInfo.EXAMAREA_VALUE,
+			CITY_VALUE: userInfo.CITY_VALUE,
+		})
+		// 城市
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE' }, 'POST', false, function (res) {
+			// console.log(res)
       that.setData({
-        region: res.data
+        // region: res.data
       })
     })
-    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
+		// 类型
+		util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
+			// console.log(res)
       that.setData({
-        style: res.data
+        // style: res.data
       })
     })
-    util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
+		// 属性
+		util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
+			// console.log(res)
       that.setData({
-        types: res.data
+        // types: res.data
       })
     });
-    util.sendRequest("/wechat/applet/user/getvip", {}, "POST", true, function (obj) {
-      that.setData({
-        vip:obj.DATA
-      })
-    })
     
   },
 
@@ -86,16 +98,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
-    util.sendRequest("/wechat/applet/user/getstudentexaminee", {}, "POST", true, function (res) {
-      that.setData({
-        EXAMSCORE: res.EXAMSCORE,
-        examinee: res,
-        MAJORTYPE: res.MAJORTYPE,
-        MAJORTYPE_VALUE: res.MAJORTYPE_VALUE,
-        user_id: res.USER_ID
-      });
-    });
   },
 
   /**

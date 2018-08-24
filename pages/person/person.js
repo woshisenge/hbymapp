@@ -28,7 +28,7 @@ Page({
 		// 判断是否登录
 		util.checkLogin()
 		var userInfo = wx.getStorageSync('userInfo')
-		console.log(userInfo)
+		// console.log(userInfo)
 		if (userInfo.ROLE_ID == 'sja4gc59bg') {
 			this.setData({
 				nickname: userInfo.NICKNAME || '',

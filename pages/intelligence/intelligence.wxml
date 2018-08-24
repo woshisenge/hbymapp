@@ -5,8 +5,8 @@
 </view>
 <view class="content1">
   <view class="content1-left">
-    <text style="color:rgb(125,216,202);font-size:30rpx;">我的分数：{{examinee.EXAMSCORE? examinee.EXAMSCORE : 0}}分</text>
-    <text style="color:#333333;font-size:28rpx;">{{examinee.EXAMAREA_VALUE? examinee.EXAMAREA_VALUE : ''}}　{{examinee.MAJORTYPE_VALUE? examinee.MAJORTYPE_VALUE : ''}}</text>
+    <text style="font-size:30rpx;">分数：{{EXAMSCORE}}分 - {{MAJORTYPE_VALUE}}</text>
+    <text style="color:#333333;font-size:28rpx;">城市: {{EXAMAREA_VALUE}} - {{CITY_VALUE}}</text>
   </view>
   <view class="content1-right" bindtap='toExaminee'>
     <image src="/images/icon01.png" style="width:60rpx;height:60rpx;"></image>

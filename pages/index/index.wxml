@@ -30,11 +30,11 @@
     <view class='navigation-text'>专业库</view> 
   </view>
   <view class='navigation' bindtap="analog">
-    <image class="tpia" src='/images/05.png'></image> 
+    <image class="tpia" src='/images/05.png'></image>
     <view class='navigation-text'>模拟填报</view>
   </view>
   <view class='navigation' bindtap="intelligence">
-    <image class="tpia" src='/images/02.png'></image> 
+    <image class="tpia" src='/images/02.png'></image>
     <view class='navigation-text'>智能推荐</view>
   </view>
    <view class='navigation' bindtap='test'>
