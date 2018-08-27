@@ -24,12 +24,17 @@ Page({
 		// console.log(datause)
 		datause.SCHOOL_ID = options.SCHOOL_ID
 		datause.TYPE = options.TYPE
+		if (options.MAJOR == 'null') {
+			options.MAJOR = []
+		}
 		datause.MAJOR = options.MAJOR
+		console.log('0', datause)
 		util.sendRequest("/wechat/applet/report/report_fitmajor", datause, "POST", true, function (res) {
 			if (res.hasErrors) {
 				console.log(res.errorMessage);
 				return false;
 			}
+			console.log('1', res)
 			that.setData({
 				data: res.data
 			})
