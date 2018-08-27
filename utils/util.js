@@ -85,10 +85,18 @@ var login = function () {
  */
 var checkLogin = function () {
 	var userInfo = wx.getStorageSync('userInfo')
-	if (!userInfo) {
-		wx.redirectTo({
-			url: '/pages/login/login'
-		})
+	if (!userInfo.USER_NAME) {
+		wx.showModal({
+			content: '请登录',
+			showCancel: false,
+			success: function (res) {
+				if (res.confirm) {
+					wx.redirectTo({
+						url: '/pages/login/login'
+					})
+				}
+			}
+		});
 		return false
 	}
 }
@@ -238,6 +246,7 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
   wx.checkSession({
     success: function () {
       var session_id = getSessionId();//本地取存储的sessionID
+			// console.log(session_id)
       if (session_id) {
         var header = { 'content-type': 'application/x-www-form-urlencoded', 'Cookie': 'new.cookie.id=' + session_id };
       }
@@ -287,8 +296,9 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
 							console.error("接口：" + url + "缺少参数");
 						}
             else {
-              showError(res.data.errorMessage);
-              return false;
+							// console.log(111)
+              // showError(res.data.errorMessage);
+              // return false;
 						}
           }
           if (successFn)

@@ -11,13 +11,11 @@ Page({
     // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     // 首页轮播图 开始
     imgUrls: [
-
       {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/recruit_banner.png"), url: "/pages/consult/consult" },
       {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/8.jpg"), url: "/pages/imitate/imitate"},
       {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/01.jpg"), url:"/pages/person/improve/improve"},
       {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/recommendation.png"),url:"/pages/intelligence/intelligence"},
       {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/03.jpg"),url:"/pages/video/video"}
-
     ],
     indicatorDots: false,
     autoplay: true,

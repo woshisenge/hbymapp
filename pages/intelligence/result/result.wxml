@@ -7,7 +7,7 @@
 			<view class="weui-cells weui-cells_after-title"
 				bindtap='toDail' id="{{item.SCHOOL_ID}}"
 				data-id="{{item.majors}}" data-name="chong"
-				data-class="极大">
+				data-class="极大" data-type="C">
 				<view class="weui-cell">
 					<view class="weui-cell__hd">
 						<image src="/images/chong.png"
@@ -23,7 +23,7 @@
 			<view class="weui-cells weui-cells_after-title"
 				bindtap='toDail' id="{{item.SCHOOL_ID}}"
 				data-id="{{item.majors}}" data-name="wen"
-				data-class="较大" >
+				data-class="较大" data-type="W">
 				<view class="weui-cell">
 					<view class="weui-cell__hd">
 						<image src="/images/wen.png"
@@ -39,7 +39,7 @@
 			<view class="weui-cells weui-cells_after-title"
 				bindtap='toDail' id="{{item.SCHOOL_ID}}"
 				data-id="{{item.majors}}" data-name="bao"
-				data-class="较小">
+				data-class="较小" data-type="B">
 				<view class="weui-cell">
 					<view class="weui-cell__hd">
 						<image src="/images/bao.png"

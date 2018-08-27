@@ -24,17 +24,46 @@ Page({
 		// console.log('run')
     var that = this;
 		var userInfo = wx.getStorageSync('userInfo')
-		// console.log(options)
+		if (!userInfo.USER_NAME) {
+			wx.showModal({
+				content: '请重新登录',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+						wx.redirectTo({
+							url: '/pages/login/login'
+						})
+					}
+				}
+			})
+			return false
+		}
 		this.setData({
 			EXAMSCORE: userInfo.EXAMSCORE,
 			MAJORTYPE: userInfo.MAJORTYPE,
 			ARRANGMENT_ID: options.ARRANGMENT_ID,
 			MAJORTYPE_VALUE: userInfo.MAJORTYPE_VALUE,
-			options: options
+			options: options,
+			MAJOR: options.MAJOR
 		})
 		util.sendRequest("/wechat/applet/report/reporting_onekey", options, "POST", true, function (res) {
+			console.log(wx.getStorageSync('session_id'))
 			if (res.hasErrors) {
-				console.log(res.errorMessage);
+				if (res.errorMessage == 'relogin') {
+					wx.showModal({
+						content: '请重新登录',
+						showCancel: false,
+						success: function (res) {
+							if (res.confirm) {
+								wx.redirectTo({
+									url: '/pages/login/login'
+								})
+							}
+						}
+					})
+					return false
+				}
+				console.log(res.errorMessage)
 				return false;
 			}
 			// console.log(res)
@@ -131,9 +160,8 @@ Page({
     var major = e.currentTarget.dataset.id;
     var img = e.currentTarget.dataset.name;
     var advice = e.currentTarget.dataset.class;
-    var majors= "";
-    var majorName = "";
-		console.log(this.data.datause)
+		var type = e.currentTarget.dataset.type;
+		// console.log(this.data.datause)
 		wx.setStorageSync('datause', this.data.datause);
 		// return false
     // for(var i=0; i<major.length; i++){
@@ -147,14 +175,13 @@ Page({
 		var data = {
 			SCHOOL_ID: curId,
 			MAJORTYPE: that.data.MAJORTYPE,
-			// major: majors,
-			// majorName: majorName,
+			TYPE: type,
 			ARRANGMENT_ID: that.data.ARRANGMENT_ID,
 			MAJORTYPE_VALUE: that.data.MAJORTYPE_VALUE,
 			img: img,
-			advice: advice
+			advice: advice,
+			MAJOR: that.data.MAJOR,
 		}
-		console.log(data)
 		// return false
     util.navigateTo("/pages/intelligence/result/content/content", data);
   }

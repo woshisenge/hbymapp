@@ -63,6 +63,20 @@ Page({
   onLoad: function (options) {
     var that=this;
 		var userInfo = wx.getStorageSync('userInfo')
+		if (!userInfo.USER_NAME) {
+			wx.showModal({
+				content: '请重新登录',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+						wx.redirectTo({
+							url: '/pages/login/login'
+						})
+					}
+				}
+			})
+			return false
+		}
 		// console.log(userInfo)
 		this.setData({
 			EXAMSCORE: userInfo.EXAMSCORE,

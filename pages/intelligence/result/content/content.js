@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+		data: [],
     results:[],
     subject:"",
     checked:false,
@@ -19,6 +20,21 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+		var datause = wx.getStorageSync('datause')
+		// console.log(datause)
+		datause.SCHOOL_ID = options.SCHOOL_ID
+		datause.TYPE = options.TYPE
+		datause.MAJOR = options.MAJOR
+		util.sendRequest("/wechat/applet/report/report_fitmajor", datause, "POST", true, function (res) {
+			if (res.hasErrors) {
+				console.log(res.errorMessage);
+				return false;
+			}
+			that.setData({
+				data: res.data
+			})
+			console.log(res.data)
+		})
     if(options.img == "chong"){
       that.setData({
         advice:"风险较大，请慎重考虑！"
@@ -43,7 +59,7 @@ Page({
     var style = "";
     if (arrId == "hjj4e5vr0c"){
       style = "本一"
-    } 
+    }
     else{
       style = "本二"
     }
@@ -77,7 +93,7 @@ Page({
     //   })
     // }
     util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: options.SCHOOL_ID}, "POST", true, function (res) {
-      console.log(res)
+      // console.log(res)
 			that.setData({
         logo: util.setStaticUrl(res.HEADURL),
         name:res.NAME,

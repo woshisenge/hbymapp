@@ -121,7 +121,6 @@
   display: flex;
   flex-direction: row;
   font-size:28rpx;
-  background-color: #DDDDDD;
 }
 .center-item{
   width:20%;
@@ -131,7 +130,6 @@
 }
 .bottom{
   width:100%;
-  margin-top:20rpx;
   display: flex;
   flex-direction: row;
   font-size:28rpx;
@@ -152,4 +150,10 @@
 }
 .colorDian{
   color:green;
+}
+.ldq-center {
+	text-align: center;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	padding: 5rpx 0;
 }
