@@ -18,50 +18,75 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+		// console.log(options)
       var that = this;
       that.setData({
         user_id:options.user_id,
         id:options.id,
-      });
-     
+			});
   },
   pay:function(e){
     var that = this;
     var a = e.currentTarget.id
-          util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: a }, "POST", true, function (res) {
-            var OUT_TRADE_NO = res.OUT_TRADE_NO
-            var nonceStr = res.prePayReSign.nonceStr;
-            var packageStr = res.prePayReSign.packageStr;
-            var paySign = res.prePayReSign.paySign;
-            var signType = res.prePayReSign.signType;
-            var timeStamp = res.prePayReSign.timeStamp;
-            wx.requestPayment({
-              timeStamp: timeStamp,
-              nonceStr: nonceStr,
-              package: packageStr,
-              signType: signType,
-              paySign: paySign,
-              success: function (obj) {
-                util.sendRequest("/wechat/applet/user/activate", { USER_ID: that.data.user_id, OUT_TRADE_NO: OUT_TRADE_NO }, "POST", false, function (obj) {
-                  wx.showModal({
-                    content: '支付完成',
-                    showCancel: false,
-                    confirmText: "确定",
-                    success: function (res) {
-                      if (res.confirm) {
-                        wx.navigateBack({
-                          delta: 1,
-                        })
-                      }
-                    }
-                  })
-                });
-
-              },
-            })
-          },function(res){
-            console.log(res)
-          })  
+		console.log(a)
+		util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: '1' }, "POST", true, function (res) {
+			console.log(res)
+			if (res.errorMessage == "请君登录账号！") {
+				wx.showModal({
+					content: '请重新登录',
+					showCancel: false,
+					success: function (res) {
+						if (res.confirm) {
+							wx.redirectTo({
+								url: '/pages/login/login'
+							})
+						}
+					}
+				})
+			}
+			// return false
+			var OUT_TRADE_NO = res.OUT_TRADE_NO
+			var nonceStr = res.prePayReSign.nonceStr;
+			var packageStr = res.prePayReSign.packageStr;
+			var paySign = res.prePayReSign.paySign;
+			var signType = res.prePayReSign.signType;
+			var timeStamp = res.prePayReSign.timeStamp;
+			wx.requestPayment({
+				timeStamp: timeStamp,
+				nonceStr: nonceStr,
+				package: packageStr,
+				signType: signType,
+				paySign: paySign,
+				success: function (obj) {
+					util.sendRequest("/wechat/applet/user/activate", { USER_ID: that.data.user_id, OUT_TRADE_NO: OUT_TRADE_NO }, "POST", false, function (obj) {
+						wx.showModal({
+							content: '支付完成',
+							showCancel: false,
+							confirmText: "确定",
+							success: function (res) {
+								// 更新session
+								var userInfo = wx.getStorageSync('userInfo')
+								if (a == '13600') {
+									userInfo.VIP = '初级会员'
+								}
+								if (a == '29800') {
+									userInfo.VIP = '高级会员'
+								}
+								wx.setStorageSync('userInfo', userInfo)
+								if (res.confirm) {
+									wx.navigateBack({
+										delta: 1,
+									})
+								}
+							}
+						})
+					});
+				},
+			})
+		},
+		function(res){
+			console.log(res)
+		})
   },
   bindPhone1:function(e){
     this.setData({

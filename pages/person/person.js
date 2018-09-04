@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+		user_id: '',
     //用户头像
     headurl:"./img/nohead.png",
     // 姓名
@@ -31,6 +32,7 @@ Page({
 		// console.log(userInfo)
 		if (userInfo.ROLE_ID == 'sja4gc59bg') {
 			this.setData({
+				user_id: userInfo.USER_ID || '',
 				nickname: userInfo.NICKNAME || '',
 				examscore: userInfo.EXAMSCORE || '',
 				majortype: userInfo.MAJORTYPE || '',

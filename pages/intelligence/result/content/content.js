@@ -12,7 +12,10 @@ Page({
     checked:false,
     img:"chong",
     collection:1,
-    hidden:false
+    hidden:false,
+		schoolId: '',
+		typec: '',
+		major: []
   },
 
   /**
@@ -21,24 +24,27 @@ Page({
   onLoad: function (options) {
     var that = this;
 		var datause = wx.getStorageSync('datause')
-		// console.log(datause)
+		// console.log(2563,options)
 		datause.SCHOOL_ID = options.SCHOOL_ID
 		datause.TYPE = options.TYPE
 		if (options.MAJOR == 'null') {
 			options.MAJOR = []
 		}
 		datause.MAJOR = options.MAJOR
-		console.log('0', datause)
+		// console.log('0', datause)
 		util.sendRequest("/wechat/applet/report/report_fitmajor", datause, "POST", true, function (res) {
 			if (res.hasErrors) {
 				console.log(res.errorMessage);
 				return false;
 			}
-			console.log('1', res)
+			// console.log(8362, res)
 			that.setData({
-				data: res.data
+				data: res.data,
+				schoolId: datause.SCHOOL_ID,
+				typec: datause.TYPE,
+				datause: datause
 			})
-			console.log(res.data)
+			// console.log(res.data)
 		})
     if(options.img == "chong"){
       that.setData({
@@ -55,11 +61,6 @@ Page({
         advice: "建议填报，综合考虑！"
       })
     }
-    if (options.img == "dian") {
-      that.setData({
-        advice: "建议参考填报！"
-      })
-    }
     var arrId = options.ARRANGMENT_ID;
     var style = "";
     if (arrId == "hjj4e5vr0c"){
@@ -68,35 +69,6 @@ Page({
     else{
       style = "本二"
     }
-    // if(options.major != null){
-    //   options.major = options.major.split(",");
-    // }
-    // if (options.majorName != null) {
-    //   options.majorName = options.majorName.split(",");
-    // }
-    // var major = options.major;
-    // for (var i = 0; i < major.length; i++){
-    //   util.sendRequest("/wechat/applet/major/getmajorbyschool", { SCHOOL_ID: options.SCHOOL_ID, MAJOR_ID:major[i]},"POST",true,function(res){
-    //     var results = that.data.results;
-    //     res.data.forEach(function (element) {
-    //       if (element.MINSCORETOTALCOUNT == null) {
-    //         element.MINSCORETOTALCOUNT = "---"
-    //       }
-    //       if (element.MAXSCORETOTALCOUNT == null) {
-    //         element.MAXSCORETOTALCOUNT = "---"
-    //       }
-    //     })
-    //     if(res.data.length > 0) {
-    //       var mjname = res.data[0].MJNAME;
-    //       var mj_id = res.data[0].MAJOR_ID;
-    //       var majorObj = {MJNAME: mjname,MAJORID:mj_id, scores: res.data};
-    //       results.push(majorObj);
-    //     }
-    //     that.setData({
-    //       results: results
-    //     });
-    //   })
-    // }
     util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: options.SCHOOL_ID}, "POST", true, function (res) {
       // console.log(res)
 			that.setData({
@@ -138,7 +110,84 @@ Page({
       arrangment_id: options.ARRANGMENT_ID
     })
   },
-  collection:function(e){
+	addSchool: function () {
+		util.sendRequest("/wechat/applet/report/checkcollection", {}, "POST", true, (res) => {
+			if (res.hasErrors) {
+				console.log(res)
+				return false
+			}
+			if (res.C.length + res.W.length + res.B.length >= 10) {
+				wx.showModal({
+					content: '您最多收藏10个院校',
+					showCancel: false,
+					success: function (res) {}
+				})
+				return false
+			}
+			for (var i = 0; i < res.C.length; i++) {
+				res.C[i].type = 'C'
+			}
+			for (var i = 0; i < res.W.length; i++) {
+				res.W[i].type = 'W'
+			}
+			for (var i = 0; i < res.B.length; i++) {
+				res.B[i].type = 'B'
+			}
+			var arr = res.C.concat(res.W, res.B)
+			for (var i = 0; i < arr.length; i++) {
+				var it = arr[i]
+				console.log(this.data.typec)
+				if (this.data.schoolId == it.SCHOOL_ID && this.data.typec == it.type) {
+					console.log(it.type)
+					wx.showModal({
+						content: '您已收藏过本院校',
+						showCancel: false,
+						success: function (res) {}
+					})
+					return false
+				}
+			}
+			if (!this.data.datause.ARRANGMENT_ID) {
+				return false
+			}
+			var data = {
+				ARRANGMENT_ID: this.data.datause.ARRANGMENT_ID,
+				CHANGESCORE: this.data.datause.CHANGESCORE,
+				EXAMSCORE: this.data.datause.EXAMSCORE,
+				MAJORTYPE_ID: this.data.datause.MAJORTYPE_ID,
+				PROVINCE_NAME: this.data.region,
+				REPORT_TYPE: this.data.typec,
+				SCHOOLNAME: this.data.name,
+				SCHOOL_ID: this.data.schoolId,
+				MAJOR_NAME: [],
+				MAJOR_ID: [],
+			}
+			var params = this.data.datause
+			util.sendRequest("/wechat/applet/report/report_fitmajor", params, "POST", true, (res) => {
+				if (res.hasErrors) {
+					console.log(res.errorMessage);
+					return false;
+				}
+				for (it of res.data) {
+					data.MAJOR_NAME.push(it.MAJORNAME)
+					data.MAJOR_ID.push(it.MAJOR_ID)
+				}
+				util.sendRequest("/wechat/applet/report/onekeyreport_collect", data, "POST", true, (res) => {
+					if (res.hasErrors) {
+						console.log(res.errorMessage);
+						return false;
+					}
+					wx.showModal({
+						content: '收藏成功',
+						showCancel: false,
+						success: function (res) { }
+					})
+					return false
+				})
+			})
+		})
+	},
+  collection:function (e) {
     var that = this;
     var param={};
     param.SCHOOL_ID = that.data.school_id;

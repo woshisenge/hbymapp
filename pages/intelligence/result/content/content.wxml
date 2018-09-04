@@ -91,7 +91,15 @@
         </view>
       </view>
     </view>
-
+<view class="page__bd page__bd_spacing" style='padding: 20rpx 30rpx'>
+	<view class="button-sp-area">
+		<button class="weui-btn" type="primary" plain="true"
+			bindtap="addSchool"
+			style='border: 1px solid #409EFF; color: #409EFF; background-color: #ECF5FF'>
+			收藏学校
+		</button>
+  </view>
+</view>
 		<!-- ldq -->
 		<view class="page__bd page__bd_spacing" style='background-color: #409EFF; color: #fff'>
 			<view class='center'>
