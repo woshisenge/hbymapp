@@ -29,7 +29,7 @@ Page({
     var that = this;
     var a = e.currentTarget.id
 		console.log(a)
-		util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: '1' }, "POST", true, function (res) {
+		util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: a }, "POST", true, function (res) {
 			console.log(res)
 			if (res.errorMessage == "请君登录账号！") {
 				wx.showModal({
