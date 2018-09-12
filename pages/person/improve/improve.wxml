@@ -2,13 +2,13 @@
 <!-- 升级会员页面 -->
 <view wx:if="{{id == 1}}">
   <view class='banner'>
-    <image src="{{single}}"></image>
+    <image src="{{single1}}"></image>
   </view>
   <view class='btn' bindtap='pay' id="13600"><text class='text'>立即购买</text></view>
 </view>
 <view wx:if="{{id == 2}}">
   <view class='banner'>
-    <image src="{{single}}"></image>
+    <image src="{{single2}}"></image>
   </view>
   <view class='btn' bindtap='pay' id="29800"><text class='text'>立即购买</text></view>
 </view>

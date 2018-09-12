@@ -1,0 +1,67 @@
+<view class="page">
+    <view class="page__bd">
+		<!-- <view class="weui-cells__title">每个院校最多选择6个专业</view> -->
+		<view class="weui-cells weui-cells_after-title">
+      <!-- <checkbox-group bindchange="serviceValChange">
+        <label class="weui-cell weui-check__label" wx:for="{{majors}}" wx:key="{{MAJOR_ID}}">
+          <checkbox class="weui-check" value="{{index}}" checked="{{item.checked}}"/>
+          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+            <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+          </view>
+          <view class="weui-cell__bd">{{item.MAJORNAME}}</view>
+        </label>
+      </checkbox-group> -->
+<view class="page__bd page__bd_spacing" style='background-color: #409EFF; color: #fff'>
+	<view class='center'>
+		<view class='center-item ldq-center'>专业名称</view>
+	</view>
+	<view class='center'>
+		<view class='center-item'>年份</view>
+		<view class='center-item'>最低分</view>
+		<view class='center-item'>最高分</view>
+		<view class='center-item'>平均分</view>
+		<view class='center-item'>计划数</view>
+		<view class='center-item'>录取数</view>
+	</view>
+</view>
+<block wx:for="{{majors}}" wx:key="">
+	<view class="page__bd page__bd_spacing">
+		<view class="weui-flex">
+				<view class="placeholder ldq-center" style='color: #409EFF; width: 300rpx;'>{{item.MAJORNAME}}</view>
+		</view>
+		<view>
+			<view class='bottom' wx:for="{{item.mjscores}}" wx:key="">
+				<view class='bottom-item'>
+					<text style='color: #999'>{{item.YEAR_VALUE}}</text>
+				</view>
+				<view class='bottom-item'>
+					<text style='color: #000' wx:if="{{item.MINSCORE == 0}}">-</text>
+					<text style='color: #67c23a' wx:else>{{item.MINSCORE}}</text>
+				</view>
+				<view class='bottom-item'>
+					<text style='color: #000' wx:if="{{item.MAXSCORE == 0}}">-</text>
+					<text style='color: #f56c6c' wx:else>{{item.MAXSCORE}}</text>
+				</view>
+				<view class='bottom-item'>
+					<text style='color: #000' wx:if="{{item.AVESCORE == 0}}">-</text>
+					<text style='color: #e6a23c' wx:else>{{item.AVESCORE}}</text>
+				</view>
+				<view class='bottom-item'>
+					<text style='color: #000' wx:if="{{item.PLANCOUNT == 0}}">-</text>
+					<text style='color: #999' wx:else>{{item.PLANCOUNT}}</text>
+				</view>
+				<view class='bottom-item'>
+					<text style='color: #000' wx:if="{{item.ENTERCOUNT == 0}}">-</text>
+					<text style='color: #000' wx:else>{{item.ENTERCOUNT}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</block>
+			<!-- --- -->
+		</view>
+	</view>
+</view>
+<button bindtap="confirm" class="weui-btn btn" type="primary">确定</button>
+<view class='whites'></view>

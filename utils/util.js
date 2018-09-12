@@ -11,7 +11,7 @@ const formatDate = date => {
   const second = date.getSeconds()
 
   return [year, month, day].map(formatNumber).join('-');
-} 
+}
 
 /**
  * 格式化时间 yyyy-MM-dd HH:mm:ss

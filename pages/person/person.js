@@ -29,6 +29,20 @@ Page({
 		// 判断是否登录
 		util.checkLogin()
 		var userInfo = wx.getStorageSync('userInfo')
+		if (!userInfo.USER_NAME) {
+			wx.showModal({
+				content: '请重新登录',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+						wx.redirectTo({
+							url: '/pages/login/login'
+						})
+					}
+				}
+			})
+			return false
+		}
 		// console.log(userInfo)
 		if (userInfo.ROLE_ID == 'sja4gc59bg') {
 			this.setData({
@@ -155,9 +169,7 @@ Page({
     util.navigateTo("/pages/person/collect/collect",{id:id})
   },
   intelligence:function(e){
-    var id = e.currentTarget.id;
-
-    util.navigateTo("/pages/person/collect/collect", { id: id })
+    util.navigateTo("/pages/person/collect/collect")
   },
   single:function(e){
     var id = e.currentTarget.id

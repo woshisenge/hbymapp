@@ -35,7 +35,7 @@
   </view>
   <view class='navigation' bindtap="intelligence">
     <image class="tpia" src='/images/02.png'></image>
-    <view class='navigation-text'>智能推荐</view>
+    <view class='navigation-text'>一键填报</view>
   </view>
    <view class='navigation' bindtap='test'>
     <image class="tpia" src='/images/03.png'></image> 

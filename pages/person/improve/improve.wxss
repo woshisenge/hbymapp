@@ -32,7 +32,7 @@ page{
 }
 .text{
   width:90%;
-  margin:23rem 5% 0 5%;
+  margin:25rem 5% 0 5%;
   background-color:#F4F6DB;
   text-align: center;
   padding:20rpx 0;

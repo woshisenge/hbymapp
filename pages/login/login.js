@@ -33,7 +33,15 @@ Page({
 		// 登录成功
     util.sendRequest('/wechat/applet/api/tologin_new', data, "POST", true, function (res){
 			if (res.hasErrors) {
-				console.log(res.errorMessage);
+				wx.showModal({
+					content: res.errorMessage,
+					showCancel: false,
+					success: function (res) {
+						if (res.confirm) {
+							return false
+						}
+					}
+				})
 				return false;
 			}
 			// 把登录信息存到本地缓存

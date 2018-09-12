@@ -10,8 +10,9 @@ Page({
     OUT_TRADE_NO:"",
     PHONE1:"",
     PHONE2:"",
-    banner: util.setStaticUrl("/static/ymplant/img/sye/banner/15.png"),
-    single: util.setStaticUrl("/static/ymplant/img/sye/banner/banner-vip.jpg")
+		banner: util.setStaticUrl("/static/ymplant/img/sye/banner/15.png"),
+		single1: util.setStaticUrl("/static/ymplant/img/sye/banner/banner-pay01.jpg"),
+		single2: util.setStaticUrl("/static/ymplant/img/sye/banner/banner-pay02.jpg"),
   },
 
   /**
@@ -64,6 +65,13 @@ Page({
 							showCancel: false,
 							confirmText: "确定",
 							success: function (res) {
+								// util.sendRequest("/wechat/applet/user/activate_lsVSldq", {}, "POST", false, function (ldqRes) {
+								// 	if (ldqRes.hasErrors) {
+								// 		showError(ldqRes.errorMessage);
+								// 		return false;
+								// 	}
+								// 	console.log(ldqRes)
+								// })
 								// 更新session
 								var userInfo = wx.getStorageSync('userInfo')
 								if (a == '13600') {

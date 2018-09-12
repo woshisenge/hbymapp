@@ -7,92 +7,82 @@ Page({
    */
   data: {
     checked: false,
-    b1: true,
+    b1: false,
     b2: false
-  },
-  b1: function (e) {
-    var that = this;
-    var parm = {};
-    var ARR = e.currentTarget.id;
-    parm.ARR = ARR;
-    this.setData({
-      b2: false,
-      b1: true
-    })
-    
-    // b1
-    util.sendRequest("/wechat/applet/report/wxgetcollection_znb1orb2", parm , "POST", true, function (res) {
-      console.log(res)
-      for (var i = 0; i < res.data.length; i++) {
-        var listchong = res.data[0];
-        var listwen = res.data[1];
-        var listbao = res.data[2];
-        var listdian = res.data[3];
-      }
-      var results = [];
-      res.data.forEach(function (element) {
-        element.forEach(function (obj) {
-          results.push(obj)
-        })
-      })
-      that.setData({
-        results: results,
-        listchong: that.toDto(listchong),
-        listwen: that.toDto(listwen),
-        listbao: that.toDto(listbao),
-        listdian: that.toDto(listdian)
-      })
-    });
-  },
-
-  b2: function (e) {
-    var that = this;
-    var parm1 = {};
-    var ARR = e.currentTarget.id;
-    console.log(ARR)
-    parm1.ARR= ARR;
-    this.setData({
-      b1: false,
-      b2: true
-    })
-      ,
-      // b2
-      util.sendRequest("/wechat/applet/report/wxgetcollection_znb1orb2", parm1, "POST", true, function (res) {
-        console.log(res)
-        for (var i = 0; i < res.data.length; i++) {
-          var listchong = res.data[0];
-          var listwen = res.data[1];
-          var listbao = res.data[2];
-          var listdian = res.data[3];
-        }
-        var results = [];
-        res.data.forEach(function (element) {
-          element.forEach(function (obj) {
-            results.push(obj)
-          })
-        })
-        that.setData({
-          results: results,
-          listchong: that.toDto(listchong),
-          listwen: that.toDto(listwen),
-          listbao: that.toDto(listbao),
-          listdian: that.toDto(listdian)
-        })
-      });
-
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     var that = this;
-    that.setData({
-      id: options.id,
-   
-    })
 
+		util.sendRequest("/wechat/applet/report/getonekey_collection", {}, "POST", true, (res) => {
+			if (res.hasErrors) {
+				console.log(res.errorMessage);
+				if (res.errorMessage == 'relogin') {
+					wx.showModal({
+						content: '请重新登录',
+						showCancel: false,
+						success: function (res) {
+							if (res.confirm) {
+								wx.redirectTo({
+									url: '/pages/login/login'
+								})
+							}
+						}
+					})
+					return false
+				}
+				return false
+			}
+			for (var i = 0; i < res.data[0].RESULT_C.length; i++) {
+				var cwb = res.data[0].RESULT_C[i]
+				if (cwb.ARRANGMENT_ID == "hjj4e5vr0c") {
+					this.setData({
+						b1: true
+					})
+				}
+				if (cwb.ARRANGMENT_ID == "bdhsl11qtb") {
+					this.setData({
+						b2: true
+					})
+				}
+			}
+			for (var i = 0; i < res.data[0].RESULT_W.length; i++) {
+				var cwb = res.data[0].RESULT_W[i]
+				if (cwb.ARRANGMENT_ID == "hjj4e5vr0c") {
+					this.setData({
+						b1: true
+					})
+				}
+				if (cwb.ARRANGMENT_ID == "bdhsl11qtb") {
+					this.setData({
+						b2: true
+					})
+				}
+			}
+			for (var i = 0; i < res.data[0].RESULT_B.length; i++) {
+				var cwb = res.data[0].RESULT_B[i]
+				if (cwb.ARRANGMENT_ID == "hjj4e5vr0c") {
+					this.setData({
+						b1: true
+					})
+				}
+				if (cwb.ARRANGMENT_ID == "bdhsl11qtb") {
+					this.setData({
+						b2: true
+					})
+				}
+			}
+			console.log(this.data.b1, this.data.b2)
+			this.setData({
+				listchong: res.data[0].RESULT_C,
+				listwen: res.data[0].RESULT_W,
+				listbao: res.data[0].RESULT_B
+			})
+		})
+		return false
     util.sendRequest("/wechat/applet/report/wxgetcollection_zn",{},"POST",true,function(res){
       for(var i = 0; i < res.data.length; i++){
         var listchong = res.data[0];
@@ -137,6 +127,18 @@ Page({
       })
     })
   },
+	addB1: function (e) {
+		wx.setStorageSync('thisMajors', e.target.dataset.item)
+		wx.navigateTo({
+			url: "/pages/person/collect/lists/lists"
+		})
+	},
+	addB2: function (e) {
+		wx.setStorageSync('thisMajors', e.target.dataset.item)
+		wx.navigateTo({
+			url: "/pages/person/collect/lists/lists"
+		})
+	},
   toDto: function (list) {
     if (!list) return list;
     list.forEach(function (obj) {
@@ -147,8 +149,6 @@ Page({
     return list;
   },
   // b1
-
-
   showMn:function(e){
     var that= this;
     var result = that.data.result;
@@ -178,7 +178,6 @@ Page({
             var options = {};
             options.id = that.data.id;
             that.onLoad(options)
-
           })
         }
       }
@@ -309,10 +308,15 @@ Page({
   
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
+	  data: {
+		x: 0,
+		y: 0
+	},
+	tap: function (e) {
+		var x = this.data.x + 30
+		this.setData({
+			x: x,
+			y: 30
+		});
+	},
 })
