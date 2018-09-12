@@ -1,6 +1,9 @@
 {
   "pages": [
 		"pages/index/index",
+		"pages/person/collect/collect",
+		"pages/person/collect/lists/lists",
+		"pages/intelligence/intelligence",
 		"pages/person/person",
 		"pages/login/login",
     "pages/register/register",
@@ -18,7 +21,6 @@
     "pages/person/security/security",
     "pages/notice/noticecontent/noticecontent",
     "pages/school/school",
-    "pages/intelligence/intelligence",
     "pages/person/security/loginpw/loginpw",
     "pages/person/security/paymentpw/paymentpw",
     "pages/person/security/phone/phone",
@@ -54,7 +56,6 @@
     "pages/video/play/play",
     "pages/school/schoolcontent/rule/rule",
     "pages/school/schoolcontent/plan/plan",
-    "pages/person/collect/collect",
     "pages/article/article",
     "pages/teacher/content/content",
     "pages/teacher/introduce/introduce",
