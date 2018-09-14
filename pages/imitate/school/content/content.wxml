@@ -18,6 +18,7 @@
         <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="setSearchStorage">取消</view>
     </view>
   <view class='page_bd'>
+		<view hidden='{{school.length != 0}}' style='text-align: center; margin-top: 30rpx;'>您暂未收藏该批次的院校</view>
     <block wx:for="{{school}}" wx:key="">
       <view class="weui-cells weui-cells_after-title" bindtap="school" id="{{item.SCHOOL_ID}}" hidden ="{{item.checked}}">
             <view class="weui-cell">
