@@ -3,48 +3,48 @@
 <view class='page'>
   <view class='page_bd'>
     <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" data-id="{{index}}" bindtap='school' id="{{school_1_id}}">
-            <view class="weui-cell__bd" >{{school_1}}</view>
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" data-id="{{index}}" bindtap='school' id="{{schoolId}}">
+            <view class="weui-cell__bd" >{{schoolName}}</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
     </view>
     <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='major' id='major_1'>
-            <view class="weui-cell__bd" id="{{major_1_id}}">1、{{major_1_name}}</view>
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='selMajor' id='major_1'>
+            <view class="weui-cell__bd" id="{{major_1_id}}">专业1 : {{major_1_name}}</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
     </view>
     <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='major' id='major_2'>
-            <view class="weui-cell__bd" id='{{major_2_id}}'>2、{{major_2_name}}</view>
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='selMajor' id='major_2'>
+            <view class="weui-cell__bd" id='{{major_2_id}}'>专业2 : {{major_2_name}}</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
     </view>
     <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='major' id='major_3'>
-            <view class="weui-cell__bd" id='{{major_3_id}}'>3、{{major_3_name}}</view>
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='selMajor' id='major_3'>
+            <view class="weui-cell__bd" id='{{major_3_id}}'>专业3 : {{major_3_name}}</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
     </view>
     <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='major' id='major_4'>
-            <view class="weui-cell__bd" id='{{major_4_id}}'>4、{{major_4_name}}</view>
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='selMajor' id='major_4'>
+            <view class="weui-cell__bd" id='{{major_4_id}}'>专业4 : {{major_4_name}}</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
     </view>
     <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='major' id='major_5'>
-            <view class="weui-cell__bd" id='{{major_5_id}}'>5、{{major_5_name}}</view>
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='selMajor' id='major_5'>
+            <view class="weui-cell__bd" id='{{major_5_id}}'>专业5 : {{major_5_name}}</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
     </view>
     <view class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='major' id='major_6'>
-            <view class="weui-cell__bd" id='{{major_6_id}}'>6、{{major_6_name}}</view>
+        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='selMajor' id='major_6'>
+            <view class="weui-cell__bd" id='{{major_6_id}}'>专业6 : {{major_6_name}}</view>
             <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
     </view>
   </view>
-  <button class="weui-btn" type="primary" bindtap='back'>确定</button>
+  <button class="weui-btn" type="primary" bindtap='goBack'>确定</button>
 </view>
 <view class='white'></view>

@@ -8,14 +8,52 @@ Page({
   data: {
     id:"",
     checked:false,
-    param:{}
+    param:{},
+		major: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+		// for (var i = 1; i <= 6; i++) {
+		// 	console.log(options.tempArr)
+		// }
     var that = this;
+		var arrId = ''
+		if (options.index == 0) {
+			arrId = 'hjj4e5vr0c'
+		} else if (options.index == 1) {
+			arrId = 'bdhsl11qtb'
+		}
+		var data = {
+			SCHOOL_ID: options.schoolId,
+			ARRANGMENT_ID: arrId,
+			REPORT_TYPE: options.schoolType
+		}
+		// console.log(data)
+		util.sendRequest("/wechat/applet/report/getcollection_majors", data, "POST", true, (res) => {
+			if (res.hasErrors) {
+				console.log(res.errorMessage)
+				return false;
+			}
+			// console.log(res)
+			var major = res.data
+			var temp = options.tempArr.split(',')
+			console.log(major)
+			for (var i = 0; i < major.length; i++) {
+				for (var j = 0; j < temp.length; j++ ) {
+					if (major[i].MAJOR_ID == temp[j]) {
+						major[i].checked = true
+					}
+				}
+			}
+			this.setData({
+				major: major,
+				majorIndex: options.majorIndex
+			})
+		})
+		return false
     that.setData({
       id:options.id,
     })
@@ -27,7 +65,7 @@ Page({
    else{
      arrId = "bdhsl11qtb"
    }
-   util.sendRequest("/wechat/applet/report/getmajors", { SCHOOL_ID: options.school_id, ARRANGMENT_ID: arrId}, "POST", true, function (res) {
+	 util.sendRequest("/wechat/applet/report/getcollection_majors", { SCHOOL_ID: options.school_id, ARRANGMENT_ID: arrId}, "POST", true, function (res) {
       var results = res.majors;
       for (var value in options) {
         for (var i = 0; i < results.length;i++){
@@ -41,6 +79,23 @@ Page({
       })
     })
   },
+	selMajor: function (e) {
+		var curId = e.currentTarget.id
+		this.data.major.forEach(item => {
+			if (item.MAJOR_ID == curId) {
+				// console.log(item)
+				var majorIndex = this.data.majorIndex
+				var pages = getCurrentPages()
+				var prevPage = pages[pages.length - 2]
+				prevPage.data[majorIndex + '_name'] = item.MAJORNAME
+				prevPage.data[majorIndex + '_id'] = item.MAJOR_ID
+				prevPage.setData(prevPage.data)
+				wx.navigateBack({
+					delta: 1
+				})
+			}
+		})
+	},
   major:function(e){
     var that = this;
     var curId = e.currentTarget.id;

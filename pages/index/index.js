@@ -172,6 +172,8 @@ Page({
     });
   },
   analog:function(){
+		utils.navigateTo("/pages/imitate/imitate");
+		return false
     var that = this;
     utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
       if(res.data != 1){

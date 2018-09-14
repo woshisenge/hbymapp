@@ -16,13 +16,13 @@
             </label>
         </view>
         <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="setSearchStorage">取消</view>
-    </view>  
+    </view>
   <view class='page_bd'>
     <block wx:for="{{school}}" wx:key="">
-      <view class="weui-cells weui-cells_after-title" bindtap="school" id="{{item.SCHOOL_ID}}" hidden ="{{item.checked}}" >
+      <view class="weui-cells weui-cells_after-title" bindtap="school" id="{{item.SCHOOL_ID}}" hidden ="{{item.checked}}">
             <view class="weui-cell">
-                <view class="weui-cell__bd">{{item.NAME}}</view>
-                <view class="weui-cell__ft" wx:if="{{item.check}}">√</view>
+                <view class="weui-cell__bd">{{REPORT_TYPE}}{{item.SCHOOLNAME}}</view>
+                <view class="weui-cell__ft" wx:if="{{item.check}}">已选择</view>
                 <view class="weui-cell__ft" wx:if="{{!item.check}}"></view>
             </view>
         </view>

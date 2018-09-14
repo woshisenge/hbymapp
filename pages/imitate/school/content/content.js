@@ -10,7 +10,8 @@ Page({
   index:"",
   inputVal:"",
   checked:false,
-  id:""
+  id:"",
+	thisSchool: []
   },
   showInput: function () {
     this.setData({
@@ -64,84 +65,112 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    var schools = "";
-    var bschools;
-    if(options.schools != ""){
-      schools = options.schools.substring(0, options.schools.lastIndexOf(','))
-      bschools = schools.split(",");
-    }
-    util.sendRequest("/wechat/applet/report/getschools", {}, "POST", true, function (res) {
-      if (options.index == 0) {
-        for (var value in bschools) {
-          for (var i = 0; i < res.b1schools.length; i++) {
-            if (bschools[value] == res.b1schools[i].SCHOOL_ID) {
-              res.b1schools[i].check = true;
-            }
-          }
-        }
-        that.setData({
-          school: res.b1schools,
-          index: options.index,
-          id: options.id
-        })
-      }
-      if (options.index == 1) {
-        for (var value in bschools) {
-          for (var i = 0; i < res.b2schools.length; i++) {
-            if (bschools[value] == res.b2schools[i].SCHOOL_ID) {
-              res.b2schools[i].check = true;
-            }
-          }
-        }
-        that.setData({
-          school: res.b2schools,
-          index: options.index,
-          id:options.id
-        })
-      }
-    })
-    
+		var tempSchools = options.tempSchools.split(',')
+		this.setData({
+			mySchools: options.mySchools,
+			index: options.index,
+			id: options.id,
+			schools: options.schools,
+		})
+		util.sendRequest("/wechat/applet/report/getonekey_collection_wechat", {}, "POST", true, (res) => {
+			if (res.hasErrors) {
+				if (res.errorMessage == 'relogin') {
+					wx.showModal({
+						content: '请重新登录',
+						showCancel: false,
+						success: function (res) {
+							if (res.confirm) {
+								wx.redirectTo({
+									url: '/pages/login/login'
+								})
+							}
+						}
+					})
+					return false
+				}
+				console.log(res.errorMessage)
+				return false;
+			}
+			if (res.data == 10003) {
+				console.log('出现异常, 抓取数据失败, 请联系后端')
+				return false
+			}
+			var schoolsB1 = []
+			var schoolsB2 = []
+			res.data[0].list_c1.forEach(item => {
+				schoolsB1.push(item)
+			})
+			res.data[0].list_w1.forEach(item => {
+				schoolsB1.push(item)
+			})
+			res.data[0].list_b1.forEach(item => {
+				schoolsB1.push(item)
+			})
+			res.data[1].list_c2.forEach(item => {
+				schoolsB2.push(item)
+			})
+			res.data[1].list_w2.forEach(item => {
+				schoolsB2.push(item)
+			})
+			res.data[1].list_b2.forEach(item => {
+				schoolsB2.push(item)
+			})
+			if (options.index == 0) {
+				for (var i = 0; i < schoolsB1.length; i++) {
+					for (var j = 0; j < tempSchools.length; j++) {
+						if (tempSchools[j] == schoolsB1[i].SCHOOLNAME) {
+							schoolsB1[i].checked = true
+						}
+					}
+				}
+				this.setData({
+					school: schoolsB1
+				})
+			} else if (options.index == 1) {
+				console.log(tempSchools)
+				for (var i = 0; i < schoolsB2.length; i++) {
+					for (var j = 0; j < tempSchools.length; j++) {
+						if (tempSchools[j] == schoolsB2[i].SCHOOLNAME) {
+							schoolsB2[i].checked = true
+						}
+					}
+				}
+				this.setData({
+					school: schoolsB2
+				})
+			}
+		})
   },
   school:function(e){
     var that = this;
-    var curId = e.currentTarget.id;
-    var valueStr = "";
-    var school = that.data.school;
-    school.forEach(function (element) {
-      var valurIdStr = curId;
-      var pages = getCurrentPages();
-      var prevPage = pages[pages.length - 2];  //上一个页面
-      if (element.SCHOOL_ID == curId) {
-        if (element.SCHOOL_ID == prevPage.data.school_1_id){
-          element.check = false;
-          prevPage.data.school_1= "请选择学校";
-          prevPage.data.school_1_id = "";
-          prevPage.setData(prevPage.data);
-        }
-      
-      else if (element.SCHOOL_ID != that.data.id && element.check == true){
-        util.showError("院校不能重复！")
-      }
-      else{
-        var pages = getCurrentPages();
-        var prevPage = pages[pages.length - 2];  //上一个页面
-        valueStr = element.NAME;
-        prevPage.data.school_1 = valueStr;
-        prevPage.data.school_1_id = valurIdStr;
-        //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
-        prevPage.setData(prevPage.data);
-          wx.navigateBack({
-            delta: 1
-          });
-      }
-      }
-    });
+    var schoolId = e.currentTarget.id;
+		var schoolName = ''
+		var schoolType = ''
+		this.data.school.forEach(school => {
+			if (schoolId == school.SCHOOL_ID) {
+				schoolName = school.SCHOOLNAME
+				schoolType = school.REPORT_TYPE
+			}
+		})
+		var pages = getCurrentPages()
+		var prevPage = pages[pages.length - 2]
+		prevPage.data.schoolId = schoolId
+		prevPage.data.schoolName = schoolName
+		prevPage.data.schoolType = schoolType
+		prevPage.data.major_1_name = ""
+		prevPage.data.major_2_name = ""
+		prevPage.data.major_3_name = ""
+		prevPage.data.major_4_name = ""
+		prevPage.data.major_5_name = ""
+		prevPage.data.major_6_name = ""
+		prevPage.setData(prevPage.data)
+		wx.navigateBack({
+			delta: 1
+		});
+		return 
     that.setData({
       school:school
     })
-    
-    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

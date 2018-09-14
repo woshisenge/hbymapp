@@ -55,7 +55,7 @@
 				<view class="weui-cell__bd">我的收藏</view>
 			</view>
 		</navigator>
-		<navigator url="/pages/person/collect/collect" hover-class="navigator-hover" open-type='navigateTo'>
+		<navigator url="/pages/imitate/imitate" hover-class="navigator-hover" open-type='navigateTo'>
 			<view class="weui-cell">
 				<view class="weui-cell__hd">
 					<image src="./img/yellow.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>

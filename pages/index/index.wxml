@@ -1,7 +1,5 @@
-
- 
- <!-- 轮播图 开始  -->
- <import src="../../wxParse/wxParse.wxml" />
+<!-- 轮播图 开始  -->
+<import src="../../wxParse/wxParse.wxml" />
 <swiper indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
   <block wx:for="{{imgUrls}}" wx:key="">
@@ -31,7 +29,7 @@
   </view>
   <view class='navigation' bindtap="analog">
     <image class="tpia" src='/images/05.png'></image>
-    <view class='navigation-text'>模拟填报</view>
+    <view class='navigation-text'>我的志愿</view>
   </view>
   <view class='navigation' bindtap="intelligence">
     <image class="tpia" src='/images/02.png'></image>
