@@ -47,6 +47,7 @@ Page({
 			console.log(res.data)
 			this.setData({
 				list: res.data,
+				userId: userInfo.USER_ID,
 				vip: userInfo.VIP,
 				role: userInfo.ROLE_ID,
 				nickname: userInfo.NICKNAME,
@@ -170,7 +171,7 @@ Page({
 			ANSWER_CONTENT: this.data.text,
 			NICKNAME_PRO: this.data.nickname,
 			HEADURL_PRO: this.data.headurl,
-			ASKS_ANSWERS_ID: this.data.id,
+			ASKS_ANSWERS_ID: this.data.list[this.data.list.length - 1].ASKS_ANSWERS_ID,
 			CODE: this.data.list[this.data.list.length - 1].CODE
 		}
 		utils.sendRequest("wechat/applet/expert/api/pro_answer_stu", data, "POST", true, (res) => {
@@ -185,7 +186,7 @@ Page({
 					showCancel: false,
 					success: function (res) {
 						if (res.confirm) {
-							utils.sendRequest("wechat/applet/expert/api/getOneAll", { ASKS_ANSWERS_ID: data.ASKS_ANSWERS_ID }, "POST", true, (res) => {
+							utils.sendRequest("wechat/applet/expert/api/getOneAll", { ASKS_ANSWERS_ID: that.data.id }, "POST", true, (res) => {
 								if (res.hasErrors) {
 									console.log(res.errorMessage);
 									return false;

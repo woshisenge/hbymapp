@@ -46,7 +46,7 @@
 				</view>
 
 				<view class="weui-panel__ft" style='position:relative'
-					hidden="{{!(role == 'sja4gc59bg' && item.STU_ID && item.PRO_ID && index == list.length - 1)}}">
+					hidden="{{!(role == 'sja4gc59bg' && item.STU_ID && item.PRO_ID && index == list.length - 1 && item.STU_ID == userId)}}">
 					<textarea style='text-align: left; padding: 15rpx 20rpx;' bindinput='bindContent'></textarea>
 					<button class="weui-btn mini-btn" type="primary" size="mini" bindtap='postQuestionAgain'
 							style='background-color:#5AB4AA; position:absolute;bottom:0rpx;right:20rpx'>追问

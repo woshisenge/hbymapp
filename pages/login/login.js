@@ -4,8 +4,8 @@ const util = require('../../utils/util.js')
 Page({
   data: {
     logs: [],
-    phone:'',
-    password:''
+    phone:'17778888138',
+    password:'123456'
   },
   onLoad: function () {
 		// 获取session_id
@@ -47,7 +47,7 @@ Page({
 			// 把登录信息存到本地缓存
 			wx.setStorageSync('userInfo', res)
 			wx.switchTab({
-				url: '/pages/person/person'
+				url: '/pages/index/index'
 			})
     })
   }
