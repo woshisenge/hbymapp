@@ -7,7 +7,7 @@
     <view class="page__bd">
       <view class="weui-tab">
         <view class="weui-navbar">
-          <block wx:for="{{tabs}}" wx:key="*this">
+          <block wx:for="{{tabs}}" wx:key="index">
             <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
                 <view class="weui-navbar__title">{{item}}</view>
             </view>
@@ -24,35 +24,45 @@
           </view>
           <view class="weui-panel weui-panel_access">
             <view class="weui-panel__bd">
-                <view class="weui-media-box weui-media-box_text"  wx:for="{{result}}" wx:key="" hidden="{{item.checked}}">
-                    <view class="weui-media-box__title weui-media-box__title_in-text">{{item.CONTENT}}</view> 
-                    <view class="weui-media-box__desc" style='color: #FF0000; font-size: 16px;'>
-                      {{item.PRONICKNAME}}回复：{{item.PROCONTENT}}
-                      
-                    </view>
-                    <view class='check_more'>
-                        <text style="margin-right:30rpx;" hidden="{{hidden}}" bindtap="issue" id="{{item.ASK_ID}}">专家回复</text>
-                        <text bindtap="issue" id="{{item.ASK_ID}}">查看更多>></text>
-                      </view>
-                    <view class="weui-media-box__desc answer">
-                      <view class='answer-item'>
-                        <image src="/images/teacher-per.png" style="height:30rpx;width:30rpx;"></image>
-                        <text>{{item.READY}}条回答</text>
-                      </view>
-                      <view class='answer-item'>
-                        <image src="/images/view_count.png" style="height:30rpx;width:30rpx;"></image>
-                        <text>{{item.VIEWCOUNT}}</text>
-                      </view>
-                      <view class='answer-item'>
-                        <image src="/images/teacher-time.png" style="height:30rpx;width:30rpx;"></image>
-                        <text>{{item.CREATETIME}}</text>
-                      </view>
-                      <!-- <view class='answer-item'>
-                        <image src="/images/spot.png" style="height:30rpx;width:30rpx;"></image>
-                        <text>{{item.ZAN}}</text>
-                      </view> -->
-                    </view>
-                </view>
+							<view class="weui-media-box weui-media-box_text" wx:for="{{result}}" wx:key="" hidden="{{item.checked}}">
+								<view class="weui-media-box__title weui-media-box__title_in-text ldq-box">
+									<image src="{{item.HEADURL_STU}}" style="width: 70rpx;height: 70rpx;margin-right: 5px;border-radius:50%" />
+									<text>{{item.NICKNAME_STU}}：{{item.ASK_CONTENT}}</text>
+								</view>
+								<view class="weui-media-box__desc ldq-box" hidden='{{!item.PRO_ID}}' style='padding-left: 20px'>
+									<image src="{{item.HEADURL_PRO}}" style="width: 50rpx;height: 50rpx;margin-right: 5px;border-radius:50%" />
+									<text class="s {{vip=='无' ? 'ldq-blur' : ''}}">{{item.NICKNAME_PRO}}回复：{{item.ANSWER_CONTENT}}</text>
+								</view>
+								<view style='position: relative' hidden="{{item.PRO_ID || role != 'wophbzohkh'}}">
+									<textarea placeholder='请输入' bindinput='bindContent' id='{{index}}'
+										style='border: 1px solid #5AB4AA;display:inline-block;padding: 10px;width:530rpx;'>
+									</textarea>
+									<button class="weui-btn mini-btn" type="primary" size="mini" data-pid='{{item.ASKS_ANSWERS_ID}}' bindtap='postAnswer' id='{{index}}'
+										style='background-color:#5AB4AA; position:absolute;bottom:10rpx;right:0rpx'>回复
+									</button>
+								</view>
+								<view class="weui-media-box__desc answer">
+									 <view class='answer-item'>
+										<image src="/images/teacher-per.png" style="height:30rpx;width:30rpx;"></image>
+										<text>{{item.SUNLIST.length + 1}}条问答</text>
+									</view>
+									<!-- <view class='answer-item'>
+										<image src="/images/view_count.png" style="height:30rpx;width:30rpx;"></image>
+										<text>{{item.VIEWCOUNT}}</text>
+									</view> -->
+									<view class='answer-item'>
+										<image src="/images/teacher-time.png" style="height:30rpx;width:30rpx;"></image>
+										<text>{{item.CREATETIME}}</text>
+									</view>
+									<view class='check_more'>
+										<text bindtap="issue" id="{{item.ASKS_ANSWERS_ID}}">查看更多</text>
+									</view>
+									<!-- <view class='answer-item'>
+										<image src="/images/spot.png" style="height:30rpx;width:30rpx;"></image>
+										<text>{{item.ZAN}}</text>
+									</view> -->
+								</view>
+							</view>
             </view>
           </view>
           <view class='white'></view>

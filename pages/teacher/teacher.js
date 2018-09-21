@@ -8,7 +8,7 @@ Page({
   data: {
     inputShowed: false,
     inputVal: "",
-    hidden:true,
+    hidden:false,
     role:"",
     tabs: ["查看问题", "预约专家"],
     activeIndex: 0,
@@ -17,48 +17,135 @@ Page({
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/expert_banner.jpg"),
   },
-
-  toDto: function (list) {
-    if (!list) return list;
-    list.forEach(function (obj) {
-      if (obj.HEADURL) {
-        obj.HEADURL = util.setStaticUrl(obj.HEADURL);
-      }
-      if (obj.CREATETIME) {
-        obj.CREATETIME = util.formatDate(new Date(obj.CREATETIME));
-      }
-    });
-    return list;
-  },
-  tabClick: function (e) {
-    this.setData({
-      activeIndex: e.currentTarget.id
-    });
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res){
-      var hidden = that.data.hidden;
-      if(res.data == 3){
-        hidden = false
-      }
-      that.setData({
-        hidden:hidden,
-        role:res.data
-      })
-    })
-    // wx.getSystemInfo({
-    //   success: function (res) {
-    //     that.setData({
-    //       sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-    //       sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
-    //     });
-    //   }
-    // });
+		var userInfo = wx.getStorageSync('userInfo')
+		util.sendRequest("/wechat/applet/expert/api/askpro_datas", {}, "POST", false, (res) => {
+			console.log(res)
+			if (res.hasErrors) {
+				if (res.errorMessage == 'relogin') {
+					wx.showModal({
+						content: '请重新登录',
+						showCancel: false,
+						success: function (res) {
+							if (res.confirm) {
+								wx.redirectTo({
+									url: '/pages/login/login'
+								})
+							}
+						}
+					})
+					return false
+				}
+				console.log(res.errorMessage);
+				return false;
+			}
+			console.log(userInfo)
+			res.data.forEach(item => {
+				item.HEADURL_PRO = util.setStaticUrl(item.HEADURL_PRO)
+				item.HEADURL_STU = util.setStaticUrl(item.HEADURL_STU)
+			})
+			this.setData({
+				vip: userInfo.VIP,
+				role: userInfo.ROLE_ID,
+				result: res.data
+			})
+		})
   },
+	bindContent: function (e) {
+		this.setData({
+			content: e.detail.value,
+			ind: e.target.id
+		})
+	},
+	postAnswer: function (e) {
+		var that = this
+		// 避免点击的按钮与输入框获取的内容不同
+		if (e.target.id != this.data.ind) {
+			return false
+		}
+		if (!this.data.content) {
+			wx.showModal({
+				content: '内容不得为空',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+						return false
+					}
+				}
+			})
+			return false
+		}
+		if (this.data.content.length > 255) {
+			wx.showModal({
+				content: '长度不得超过255字符',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+						return false
+					}
+				}
+			})
+			return false
+		}
+		var userInfo = wx.getStorageSync('userInfo')
+		var data = {
+			ANSWER_CONTENT: this.data.content,
+			NICKNAME_PRO: userInfo.NICKNAME,
+			HEADURL_PRO: userInfo.HEADURL,
+			ASKS_ANSWERS_ID: e.currentTarget.dataset.pid,
+			CODE: '1'
+		}
+		console.log(data)
+		util.sendRequest("/wechat/applet/expert/api/pro_answer_stu", data, "POST", true, function (res) {
+			if (res.hasErrors) {
+				console.log(res.errorMessage);
+				return false;
+			}
+			if (res.data == 10011) {
+				wx.showModal({
+					content: '回复成功',
+					showCancel: false,
+					success: function (res) {
+						if (res.confirm) {
+							util.sendRequest("/wechat/applet/expert/api/askpro_datas", {}, "POST", false, (res) => {
+								if (res.hasErrors) {
+									console.log(res.errorMessage);
+									return false;
+								}
+								res.data.forEach(item => {
+									item.HEADURL_PRO = util.setStaticUrl(item.HEADURL_PRO)
+									item.HEADURL_STU = util.setStaticUrl(item.HEADURL_STU)
+								})
+								that.setData({
+									result: res.data
+								})
+							})
+						}
+					}
+				})
+			}
+		})
+	},
+	toDto: function (list) {
+		if (!list) return list;
+		list.forEach(function (obj) {
+			if (obj.HEADURL) {
+				obj.HEADURL = util.setStaticUrl(obj.HEADURL);
+			}
+			if (obj.CREATETIME) {
+				obj.CREATETIME = util.formatDate(new Date(obj.CREATETIME));
+			}
+		});
+		return list;
+	},
+	tabClick: function (e) {
+		this.setData({
+			activeIndex: e.currentTarget.id
+		});
+	},
   showInput: function () {
     this.setData({
       inputShowed: true
@@ -112,15 +199,14 @@ Page({
   // },
   issue:function(e){
     var id = e.currentTarget.id;
-     util.navigateTo("/pages/teacher/issue_content/issue_content",{id:id})
+		util.navigateTo("/pages/teacher/issue_content/issue_content", { ASKS_ANSWERS_ID:id})
   },
   quiz:function(){
-      if(this.data.role != 1){
-        util.showError("仅有学生身份才能提问！")
-      }else{
-        util.navigateTo("/pages/teacher/ask/ask")
-      }
-      
+		if (this.data.role != 'sja4gc59bg'){
+			util.showError("仅有学生身份才能提问！")
+		}else{
+			util.navigateTo("/pages/teacher/ask/ask")
+		}
   },
   expertContent:function(e){
     var id = e.currentTarget.id;
@@ -138,16 +224,16 @@ Page({
    */
   onShow: function () {
     var that = this;
-    util.sendRequest("/wechat/applet/expert/api/expert_home", {}, "POST", false, function (res) {
-      that.setData({
-        result: that.toDto(res.data)
-      })
-    });
-    util.sendRequest("wechat/applet/expert/api/all_experts", {}, "POST", false, function (res) {
-      that.setData({
-        experts:that.toDto(res.data)
-      })
-    })
+    // util.sendRequest("/wechat/applet/expert/api/expert_home", {}, "POST", false, function (res) {
+    //   that.setData({
+    //     result: that.toDto(res.data)
+    //   })
+    // });
+    // util.sendRequest("wechat/applet/expert/api/all_experts", {}, "POST", false, function (res) {
+    //   that.setData({
+    //     experts:that.toDto(res.data)
+    //   })
+    // })
   },
 
   /**

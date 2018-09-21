@@ -348,13 +348,13 @@ Page({
     utils.navigateTo("/pages/table/table")
   },
   test:function(){
-    utils.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function (res) {
-      if (!res.data) {
-        utils.showError("请先登录账号");
-        return false;
-      }
+    // utils.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function (res) {
+    //   if (!res.data) {
+    //     utils.showError("请先登录账号");
+    //     return false;
+    //   }
       utils.navigateTo("/pages/teacher/teacher")
-    });
+    // });
     // utils.navigateTo("/pages/activity/activity")
   },
   newsmore:function(){

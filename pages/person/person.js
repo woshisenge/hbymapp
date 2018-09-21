@@ -27,8 +27,8 @@ Page({
    */
   onLoad: function (options) {
 		// 判断是否登录
-		util.checkLogin()
 		var userInfo = wx.getStorageSync('userInfo')
+		console.log(userInfo)
 		if (!userInfo.USER_NAME) {
 			wx.showModal({
 				content: '请重新登录',

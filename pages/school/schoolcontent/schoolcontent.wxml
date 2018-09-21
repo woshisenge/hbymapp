@@ -6,7 +6,7 @@
 </view>
 <view class='logo'>
   <view class='logo-left'>
-     <image src="{{logo}}"></image>  
+     <image src="{{logo}}"></image>
   </view>
   <view class='logo-right'>
     <view class='logo-text'>

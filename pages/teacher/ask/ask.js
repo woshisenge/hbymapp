@@ -13,7 +13,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+		if (wx.getStorageSync('userInfo').VIP == '无') {
+			wx.showModal({
+				content: '该功能只有会员才能使用',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+						util.navigateTo("/pages/teacher/teacher")
+					}
+				}
+			})
+		}
   },
   bindContent:function(e){
     this.setData({
@@ -21,13 +31,33 @@ Page({
     })
   },
   showTopTips:function(){
-    var that = this;
-    util.sendRequest("/wechat/applet/expert/api/ask_expert", { CONTENT: that.data.content},"POST",true,function(res){
-      if (res.data == "提问成功！"){
-        util.showSuccess()
-        wx.navigateBack({
-          delta: 1,
-        })
+		var userInfo = wx.getStorageSync('userInfo')
+    var data = {
+			CODE: 1,
+			NICKNAME_STU: userInfo.NICKNAME,
+			HEADURL_STU: userInfo.HEADURL,
+			ASK_CONTENT: this.data.content
+		}
+		if (data.ASK_CONTENT == '') {
+			util.showError("问题不能为空")
+			return false
+		}
+		console.log(data)
+		util.sendRequest("/wechat/applet/expert/api/stu_ask_pro", data,"POST",true,function(res){
+			if (res.hasErrors) {
+				console.log(res.errorMessage);
+				return false;
+			}
+			if (res.data == 10010) {
+				wx.showModal({
+					content: '提问成功',
+					showCancel: false,
+					success: function (res) {
+						if (res.confirm) {
+							util.navigateTo("/pages/teacher/teacher")
+						}
+					}
+				})
       }
     })
   },

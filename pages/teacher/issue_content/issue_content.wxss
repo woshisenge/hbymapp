@@ -12,7 +12,7 @@ weui-cell:before{
   border-bottom:0;
 }
 .weui-media-box{
-  padding:0 30rpx 30rpx 30rpx;
+  padding:0 30rpx 10rpx 30rpx;
 }
 .weui-cell{
   padding:20rpx 0;
@@ -74,4 +74,11 @@ button[type=primary] {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.weui-panel__ft {
+	padding: 0 20rpx;
+}
+textarea {
+	border: 1px solid #5AB4AA;
+	border-radius: 3px;
 }

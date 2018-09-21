@@ -48,9 +48,10 @@
   margin-left:10rpx;
 }
 .check_more{
+	font-size: 30rpx;
   text-align: right;
   color:rgb(90,180,170);
-  margin-top:25rpx;
+  /* margin-top:25rpx; */
 }
 .teacher_answer{
   text-indent: 2em;
@@ -106,4 +107,15 @@
 }
 .weui-media-box__thumb{
   border-radius: 50%;
+}
+.ldq-box {
+	position: relative
+}
+.ldq-box text {
+	display: inline-block;
+	position: absolute;
+	top: 15rpx;
+}
+.ldq-blur {
+	filter: blur(3px);
 }
