@@ -32,16 +32,14 @@ Page({
     var id = options.id;
 
     util.sendRequest_s("/wechat/applet/news/expertvideoplaybyid", { NEWS_ID:id, SUBTITLE: "专家视频" }, "POST", true, function (res) {
-      for(var i= 0; i<res.data.length;i++){
-        var article = res.data[0].CONTENT;
-        var videoReg = /<video.*?(?:>|\/>)/gi;
-        var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i;
-        var arr = videoReg.exec(article);
-        var src = srcReg.exec(arr);
+			console.log(res)
+      for(var i= 0; i<res.data.length;i++) {
+				var srcReg = /(src[=]["])(.+)(["]\s{1}type)/gi;
+				var src = srcReg.exec(res.data[0].CONTENT);
         var title = res.data[0].TITLE;
         var count = res.data[0].VIEWCOUNT
         that.setData({
-          src: util.setStaticUrl(src[1]),
+          src: util.setStaticUrl(src[2]),
           count:count,
           title:title
         })

@@ -1,7 +1,7 @@
 <!-- 视频播放页 -->
 <view class="MainContent">
     <view class="TopBlock">
-        <video id="myVideo"   src="{{src}}" controls show-fullscreen-btn show-center-play-btn enable-progress-gesture loop="true" autoplay="{{autoplay}}"></video>
+        <video id="myVideo" src="{{src}}" controls show-fullscreen-btn show-center-play-btn enable-progress-gesture loop="true" autoplay="{{autoplay}}"></video>
         <view class='page-center'>
         <view class='page-center-title'>{{title}}</view>
         <text class='page-center-play'>{{count}}次播放</text>
