@@ -12,3 +12,9 @@
   </view>
   <view class='btn' bindtap='pay' id="29800"><text class='text'>立即购买</text></view>
 </view>
+<view wx:if="{{id == 3}}">
+  <view class='banner'>
+    <image src="{{single3}}"></image>
+  </view>
+  <view class='btn' bindtap='pay' id="5000"><text class='text'>立即购买</text></view>
+</view>

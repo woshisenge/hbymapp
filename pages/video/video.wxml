@@ -3,7 +3,7 @@
   <image src='{{consultation}}' style="width: 100%;height: 100%;"></image>
 </view>
 <view class='section'>
-  <view class='section-item' wx:for="{{video}}" wx:key="" bindtap='play' id="{{item.NEWS_ID}}">
+  <view class='section-item' wx:for="{{video}}" wx:key="" bindtap='play' id="{{item.NEWS_ID}}" data-isfree='{{item.ISFREE}}'>
     <image class='images' src="{{item.IMGURL}}" ></image>
     <text class='title'>{{item.TITLE}}</text>
     <view class='time'>
@@ -15,6 +15,8 @@
         <image src="/images/browse.png" style="width:34rpx;height:34rpx"></image>
         <text class='text'>{{item.VIEWCOUNT}}</text>
       </view>
+			<text hidden='{{item.ISFREE == 1}}' style='width: 100rpx'>免费</text>
+			<text hidden='{{item.ISFREE == 0}}' style='width: 100rpx'>会员</text>
     </view>
   </view>
 </view> 

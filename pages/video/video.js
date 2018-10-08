@@ -9,7 +9,26 @@ Page({
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/03.jpg"),
   },
-  play:function(e){
+	play: function (e) {
+		var userInfo = wx.getStorageSync('userInfo')
+		console.log(userInfo)
+		if (userInfo.VIP != '体验版会员' || userInfo.VIP != '初级会员' || userInfo.VIP != '高级会员' || userInfo.VIP != '预约专家') {
+			if (e.currentTarget.dataset.isfree == '1') {
+				var userInfo = wx.getStorageSync('userInfo')
+				if (!userInfo.VIP) {
+					wx.showModal({
+						content: '该视频仅限会员观看',
+						showCancel: false,
+						success: function (res) {
+							if (res.confirm) {
+								util.navigateTo("/pages/person/improve/improve", { id: '3', user_id: userInfo.USER_ID })
+							}
+						}
+					})
+					return false
+				}
+			}
+		}
     var id = e.currentTarget.id
     util.navigateTo("/pages/video/play/play",{id:id})
   },
@@ -34,7 +53,35 @@ Page({
 		}
 		util.sendRequest("/wechat/applet/news/expertvideo", data, "POST", true, (res) => {
 			if (res.hasErrors) {
+				if (res.errorMessage == 'relogin') {
+					wx.showModal({
+						content: '请重新登录',
+						showCancel: false,
+						success: function (res) {
+							if (res.confirm) {
+								wx.redirectTo({
+									url: '/pages/login/login'
+								})
+							}
+						}
+					})
+					return false
+				}
 				console.log(res.errorMessage)
+				return false
+			}
+			if (res.data == '10012') {
+				wx.showModal({
+					content: '请重新登录',
+					showCancel: false,
+					success: function (res) {
+						if (res.confirm) {
+							wx.redirectTo({
+								url: '/pages/login/login'
+							})
+						}
+					}
+				})
 				return false
 			}
 			console.log(res)

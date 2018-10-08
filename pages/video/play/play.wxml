@@ -10,7 +10,7 @@
     <view class="BottomBlock">
         <scroll-view class="ScrollView" scroll-y="true">
           <view class="content" >
-            <view class="content-item" wx:for="{{video}}" wx:key="" wx:for-index="i" bindtap="play" id="{{item.NEWS_ID}}">
+            <view class="content-item" wx:for="{{video}}" wx:key="" wx:for-index="i" bindtap="play" id="{{item.NEWS_ID}}" data-free='{{item.ISFREE}}'>
               <image src="{{item.IMGURL}}"></image>
               <text>{{item.TITLE}}</text>
             </view>

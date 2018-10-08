@@ -13,18 +13,19 @@ Page({
 		banner: util.setStaticUrl("/static/ymplant/img/sye/banner/15.png"),
 		single1: util.setStaticUrl("/static/ymplant/img/sye/banner/banner-pay01.jpg"),
 		single2: util.setStaticUrl("/static/ymplant/img/sye/banner/banner-pay02.jpg"),
+		single3: util.setStaticUrl("/static/ymplant/img/sye/banner/banner-pay03.jpg"),
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		// console.log(options)
-      var that = this;
-      that.setData({
-        user_id:options.user_id,
-        id:options.id,
-			});
+		console.log(options.user_id)
+		var that = this;
+		that.setData({
+			user_id:options.user_id,
+			id:options.id,
+		});
   },
   pay:function(e){
     var that = this;

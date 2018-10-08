@@ -45,14 +45,28 @@ Page({
         })
       }  
     });
-    
-    util.sendRequest_s("/wechat/applet/news/expertvideo", { SUBTITLE: "专家视频" }, "POST", true, function (res) {
+		util.sendRequest("/plant/news/api/details/video", { NEWS_ID: id }, "POST", true, (res) => {
       that.setData({
-        video: that.toDto(res.data)
+				video: that.toDto(res.RECOMMEND_VIDEO)
       })
     })
   },
   play:function(e){
+		if (e.currentTarget.dataset.free == 1) {
+			var userInfo = wx.getStorageSync('userInfo')
+			if (!userInfo.VIP) {
+				wx.showModal({
+					content: '该视频仅限会员观看',
+					showCancel: false,
+					success: function (res) {
+						if (res.confirm) {
+							util.navigateTo("/pages/person/improve/improve", { id: '3', user_id: userInfo.USER_ID })
+						}
+					}
+				})
+				return false
+			}
+		}
     var that = this;
     var id = e.currentTarget.id;
     util.sendRequest_s("/wechat/applet/news/expertvideoplaybyid", { NEWS_ID: id, SUBTITLE: "专家视频" }, "POST", true, function (res) {
