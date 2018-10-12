@@ -45,6 +45,20 @@ Page({
 		util.sendRequest("/wechat/applet/user/vip_new", data, "POST", true, (res) => {
 			if (res.hasErrors) {
 				console.log(res.errorMessage)
+				if (res.errorMessage == 'relogin') {
+					wx.showModal({
+						content: '请重新登录',
+						showCancel: false,
+						success: function (res) {
+							if (res.confirm) {
+								wx.redirectTo({
+									url: '/pages/login/login'
+								})
+							}
+						}
+					})
+					return false
+				}
 				wx.showModal({
 					content: res.errorMessage,
 					showCancel: false,
@@ -55,10 +69,9 @@ Page({
 				})
 				return false
 			}
-			console.log('-------')
-			console.log(res)
+			wx.setStorageSync('userInfo', res)
 			wx.showModal({
-				content: '激活成功!!!!!!',
+				content: '激活成功',
 				showCancel: false,
 				success: function (res) {
 					if (res.confirm) {
@@ -68,7 +81,6 @@ Page({
 					}
 				}
 			})
-			console.log('-------')
 		})
 	},
   pay:function(e){
