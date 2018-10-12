@@ -29,7 +29,7 @@ Page({
 		// 判断是否登录
 		var userInfo = wx.getStorageSync('userInfo')
 		console.log(userInfo)
-		if (!userInfo.USER_NAME) {
+		if (!userInfo.NICKNAME) {
 			wx.showModal({
 				content: '请重新登录',
 				showCancel: false,
@@ -165,7 +165,6 @@ Page({
   },
   analog:function(e){
     var id = e.currentTarget.id
-
     util.navigateTo("/pages/person/collect/collect",{id:id})
   },
   intelligence:function(e){

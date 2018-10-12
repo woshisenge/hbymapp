@@ -138,7 +138,7 @@ Page({
   consultation:function(){
 		var userInfo = wx.getStorageSync('userInfo')
 		console.log(userInfo)
-		if (!userInfo.USER_NAME) {
+		if (!userInfo.NICKNAME) {
 			wx.showModal({
 				content: '请重新登录',
 				showCancel: false,
@@ -154,6 +154,16 @@ Page({
 		}
 		if (userInfo.ROLE_ID == 'sja4gc59bg') {
 			utils.navigateTo("/pages/consult/consult")
+		} else {
+			wx.showModal({
+				content: '该功能只有学生身份能使用',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+					}
+				}
+			})
+			return false
 		}
   },
   analog:function(){
