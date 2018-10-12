@@ -79,6 +79,7 @@ Page({
         role: role.data
       });
       util.sendRequest("/wechat/applet/chat/getchatrecs", { USER_ID: options.user_id }, "POST", true, function (res) {
+        console.log(res);
         if (that.data.role == 1) {
           //为学生
           that.setData({
@@ -228,7 +229,7 @@ Page({
     
     var that = this;
     
-    util.sendRequest("/wechat/applet/chat/sendMessage", {USER_ID: that.data.ruser_id, MESSAGE: that.data.userMessage}, "POST", true, function(res){
+    util.sendRequest("/wechat/applet/chat/sendMessage_new", {USER_ID: that.data.ruser_id, MESSAGE: that.data.userMessage}, "POST", true, function(res){
       var record = {
         REC_ID: util.getUUID(),
         SUSER_ID: that.data.suser_id,
