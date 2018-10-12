@@ -14,6 +14,8 @@ Page({
 		single1: util.setStaticUrl("/static/ymplant/img/sye/banner/banner-pay01.jpg"),
 		single2: util.setStaticUrl("/static/ymplant/img/sye/banner/banner-pay02.jpg"),
 		single3: util.setStaticUrl("/static/ymplant/img/sye/banner/banner-pay03.jpg"),
+		NUMBER: '',
+		PASSWORD: '',
   },
 
   /**
@@ -27,6 +29,48 @@ Page({
 			id:options.id,
 		});
   },
+	cardUp: function (e) {
+		var data = e.detail.value
+		if (data.NUMBER.length != 15) {
+			wx.showModal({
+				content: '请输入15位卡号',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+					}
+				}
+			})
+			return false
+		}
+		util.sendRequest("/wechat/applet/user/vip_new", data, "POST", true, (res) => {
+			if (res.hasErrors) {
+				console.log(res.errorMessage)
+				wx.showModal({
+					content: res.errorMessage,
+					showCancel: false,
+					success: function (res) {
+						if (res.confirm) {
+						}
+					}
+				})
+				return false
+			}
+			console.log('-------')
+			console.log(res)
+			wx.showModal({
+				content: '激活成功!!!!!!',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+						wx.redirectTo({
+							url: '/pages/index/index'
+						})
+					}
+				}
+			})
+			console.log('-------')
+		})
+	},
   pay:function(e){
     var that = this;
     var a = e.currentTarget.id

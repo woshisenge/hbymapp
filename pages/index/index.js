@@ -136,40 +136,25 @@ Page({
   onReady: function() {
   },
   consultation:function(){
-    var that = this;
-    utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res){
-      // console.log(res)
-      if (res.data != 1) {
-        utils.showError("仅有学生身份才能使用该功能！");
-        return false;
-    }else{
-    utils.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function(res){
-      if(!res.data){
-        utils.showError("请先登录账号");
-        return false;
-      }
-      else{
-        utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
-          if(result.data){
-            utils.navigateTo("/pages/consult/consult")
-          }
-          else{
-            wx.showModal({
-              title: '提示',
-              content: '请完善个人信息',
-              success: function (res) {
-                if (res.confirm) {
-                  util.navigateTo("/pages/person/information/information")
-                }
-              }
-            })
-          }
-        })
-      }
-      
-    });
-    }
-    });
+		var userInfo = wx.getStorageSync('userInfo')
+		console.log(userInfo)
+		if (!userInfo.USER_NAME) {
+			wx.showModal({
+				content: '请重新登录',
+				showCancel: false,
+				success: function (res) {
+					if (res.confirm) {
+						wx.redirectTo({
+							url: '/pages/login/login'
+						})
+					}
+				}
+			})
+			return false
+		}
+		if (userInfo.ROLE_ID == 'sja4gc59bg') {
+			utils.navigateTo("/pages/consult/consult")
+		}
   },
   analog:function(){
 		utils.navigateTo("/pages/imitate/imitate");

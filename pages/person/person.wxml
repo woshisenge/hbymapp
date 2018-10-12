@@ -58,7 +58,7 @@
 		<navigator url="/pages/imitate/imitate" hover-class="navigator-hover" open-type='navigateTo'>
 			<view class="weui-cell">
 				<view class="weui-cell__hd">
-					<image src="./img/yellow.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+					<image src="./img/vip2.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
 				</view>
 				<view class="weui-cell__bd">我的志愿</view>
 			</view>
@@ -95,9 +95,15 @@
 		</view>
 		<view class="weui-cell" bindtap="single" id='2'>
 			<view class="weui-cell__hd">
-				<image src="./img/vip2.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+				<image src="./img/vip1.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
 			</view>
 			<view class="weui-cell__bd">开通高级会员</view>
+		</view>
+		<view class="weui-cell" bindtap="single" id='4'>
+			<view class="weui-cell__hd">
+				<image src="./img/vip1.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+			</view>
+			<view class="weui-cell__bd">激活会员卡</view>
 		</view>
 	</view>
 </view>
