@@ -433,7 +433,7 @@ Page({
     // 判断是否是第一次进入
     // console.log(that.data.ldq)
     if (that.data.ldq === 0) {
-      var arrangment_search = "8sqm1urq5w,";
+      // var arrangment_search = "8sqm1urq5w,";
     } else {
       // 如果不是则执行正常的逻辑
       var arrangment_search = "";

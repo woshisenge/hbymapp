@@ -12,9 +12,9 @@ Page({
     // 首页轮播图 开始
     imgUrls: [
       {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/recruit_banner.png"), url: "/pages/consult/consult" },
-      {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/8.jpg"), url: "/pages/imitate/imitate"},
+      // {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/8.jpg"), url: "/pages/imitate/imitate"},
       {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/01.jpg"), url:"/pages/person/improve/improve"},
-      {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/recommendation.png"),url:"/pages/intelligence/intelligence"},
+      // {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/recommendation.png"),url:"/pages/intelligence/intelligence"},
       {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/03.jpg"),url:"/pages/video/video"}
     ],
     indicatorDots: false,
@@ -51,7 +51,7 @@ Page({
         }
         utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
           if(res.data == 1){
-            utils.navigateTo(url, { user_id: use_id, id: "1" });
+            utils.navigateTo(url, { user_id: use_id, id: "2" });
           }
           else {
             utils.showError("仅有学生身份才能使用该功能！");
@@ -222,14 +222,24 @@ Page({
         	}
     		})
       }
-    });
+    })
   },
   intelligence:function(){
     var that = this;
 		var userInfo = wx.getStorageSync('userInfo')
 		// 判断是否登录
 		if (!userInfo) {
-			utils.showError("请先进行登录");
+      wx.showModal({
+        content: '请重新登录',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            wx.redirectTo({
+              url: '/pages/login/login'
+            })
+          }
+        }
+      })
 			return false
 		}
 		// 判断是否是学生

@@ -22,7 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		console.log(options.user_id)
+		console.log('111' ,options)
 		var that = this;
 		that.setData({
 			user_id:options.user_id,
