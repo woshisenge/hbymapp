@@ -50,8 +50,7 @@ Page({
 				nickname: userInfo.NICKNAME || '',
 				examscore: userInfo.EXAMSCORE || '',
 				majortype: userInfo.MAJORTYPE || '',
-				role_id: userInfo.ROLE_ID || '',
-				headurl: util.setStaticUrl(userInfo.HEADURL)
+				role_id: userInfo.ROLE_ID || ''
 			})
 		}
 		if (userInfo.ROLE_ID == 'm9bxdt9g36') {
@@ -59,8 +58,7 @@ Page({
 				nickname: userInfo.NICKNAME || '',
 				role_id: userInfo.ROLE_ID || '',
 				school_name: userInfo.SCHOOL_NAME || '',
-				jobtype: userInfo.JOBTYPE || '',
-				headurl: util.setStaticUrl(userInfo.HEADURL)
+				jobtype: userInfo.JOBTYPE || ''
 			})
 		}
   },
