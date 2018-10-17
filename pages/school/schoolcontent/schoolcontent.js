@@ -19,7 +19,7 @@ Page({
     school_id:"",
     MAJORTYPE: "r6j4mh69be"
   },
- //
+
   tabClick: function (e) {
     this.setData({
       activeIndex: e.currentTarget.id
