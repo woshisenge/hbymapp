@@ -29,7 +29,7 @@
             <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
         </view>
         <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="start">还没有账户？点此免费注册</button>
+            <button class="weui-btn" type="default" bindtap="start" style='background-color: red;color: #fff'>还没有账户？点此免费注册</button>
         </view>
     </view>
 </view>

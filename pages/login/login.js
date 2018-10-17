@@ -4,8 +4,8 @@ const util = require('../../utils/util.js')
 Page({
   data: {
     logs: [],
-    phone:'17778888138',
-    password:'123456'
+    phone:'',
+    password:''
   },
   onLoad: function () {
 		// 获取session_id
