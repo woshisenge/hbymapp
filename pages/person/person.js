@@ -27,7 +27,17 @@ Page({
    */
   onLoad: function (options) {
     // 判断是否登录
-    util.ldqCheckLogin()
+    util.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
+      console.log(res)
+      if (res.hasErrors && res.errorMessage == 'relogin') {
+        wx.redirectTo({
+          url: '/pages/login/login'
+        })
+        return false
+      }
+    })
+    return false
+    // util.ldqCheckLogin()
 		var userInfo = wx.getStorageSync('userInfo')
 		console.log(userInfo)
 		// console.log(userInfo)

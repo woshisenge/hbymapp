@@ -84,7 +84,7 @@ var login = function () {
  * ldq 判断是否登录
  */
 var ldqCheckLogin = function () {
-  if (wx.getStorageSync('session_id')) {
+  if (!wx.getStorageSync('session_id')) {
     login()
   }
   sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
