@@ -432,12 +432,12 @@ Page({
     /* ldq-显示大专 */
     // 判断是否是第一次进入
     // console.log(that.data.ldq)
-    if (that.data.ldq === 0) {
+    // if (that.data.ldq === 0) {
       // var arrangment_search = "8sqm1urq5w,";
-    } else {
+    // } else {
       // 如果不是则执行正常的逻辑
       var arrangment_search = "";
-    }
+    // }
     that.data.arrangments.forEach(function (element) {
       if (element.checked) {
         arrangment_search += element.DIC_ID + ",";

@@ -40,12 +40,11 @@
         <view wx:if="{{role == 1}}">
         <form bindreset="cleanInput">
             <view class="emoji-row">
-              <textarea type="text" value="{{ inputMessage }}" bindinput="bindMessage" auto-height='true' show-confirm-bar='{{hid}}'cursor-spacing="15" class='news'  adjust-position></textarea>
+              <textarea type="text" value="{{ inputMessage }}" bindinput="bindMessage" auto-height='true' show-confirm-bar='{{hid}}' cursor-spacing="15" class='news'  adjust-position></textarea>
               <view class="open_emoji" bindtap="openEmoji">
                   <image src="/images/smile.png"/>
               </view>
               <button class="weui-btn mini-btn" bindtap="sendMessage" formType="reset">发送</button>
-              
                 <!-- <button class="send_btn" >发送</button> -->
             </view>
         </form>

@@ -68,6 +68,7 @@ Page({
     return list;
   },
   onLoad: function (options) {
+    var userInfo = wx.getStorageSync('userInfo')
     var that = this;
     that.setData({
       ruser_id: options.user_id,
@@ -79,7 +80,9 @@ Page({
         role: role.data
       });
       util.sendRequest("/wechat/applet/chat/getchatrecs", { USER_ID: options.user_id }, "POST", true, function (res) {
-        console.log(res);
+        that.setData({
+          teaheadurl: res.complete_tea.HEADURL
+        })
         if (that.data.role == 1) {
           //为学生
           that.setData({
@@ -100,9 +103,9 @@ Page({
         }
         if (res.chatRecords) {
           res.chatRecords.forEach(function (element) {
-            if (element.SUSER_ID == that.data.suser_id) {
+            if (element.SUSER_ID == userInfo.USER_ID) {
               element.style = 'self';
-              element.headurl = util.setStaticUrl(that.data.headurl);
+              element.headurl = util.setStaticUrl(userInfo.HEADURL)
             }
             else {
               element.style = 'recmsg';
@@ -114,7 +117,6 @@ Page({
             }
           });
         }
-        
         
         that.setData({
           chatRecords: that.toDto(res.chatRecords)
@@ -139,9 +141,8 @@ Page({
                 RUSER_ID: that.data.ruser_id,
                 ISREAD: false,
                 CREATETIME: util.getCurrentTime(),
-                style: "self",
-                headurl: util.setStaticUrl(that.data.headurl)
-
+                style: "recmsg",
+                headurl: util.setStaticUrl(that.data.teaheadurl)
               }
 
               record.CONTENT = util.parseEmoji(recArr[1]);
@@ -228,8 +229,12 @@ Page({
     }
     
     var that = this;
-    
-    util.sendRequest("/wechat/applet/chat/sendMessage_new", {USER_ID: that.data.ruser_id, MESSAGE: that.data.userMessage}, "POST", true, function(res){
+    var params = {
+      USER_ID: that.data.ruser_id,
+      MESSAGE: that.data.userMessage
+    }
+    var userInfo = wx.getStorageSync('userInfo')
+    util.sendRequest("/wechat/applet/chat/sendMessage_new", params, "POST", true, function(res){
       var record = {
         REC_ID: util.getUUID(),
         SUSER_ID: that.data.suser_id,
@@ -237,7 +242,7 @@ Page({
         ISREAD: false,
         CREATETIME: util.getCurrentTime(),
         style: "self",
-        headurl: util.setStaticUrl(that.data.headurl)
+        headurl: util.setStaticUrl(userInfo.HEADURL)
 
       }
 

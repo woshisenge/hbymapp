@@ -121,32 +121,15 @@ Page({
   },
   chat: function (e) {
     var that = this
-    util.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
-      if (res.data != 1) {
-        util.showError("仅有学生身份方可在线咨询");
-        return false;
-      }
-      else{
-        var user_id = e.currentTarget.dataset.id;
-        util.navigateTo("/pages/chatroom/chatroom", { user_id: user_id });
-      }
-      // if (that.data.vip == "UC") {
-      //   var user_id = e.currentTarget.dataset.id;
-      //   util.navigateTo("/pages/chatroom/chatroom", { user_id: user_id });
-      // }
-      // else {
-      //   util.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
-      //     var card = res.yxzxk;
-      //     if (card <= 0) {
-      //       util.showError("院校咨询卡数量不足！")
-      //     }
-      //     else {
-      //       var user_id = e.currentTarget.dataset.id;
-      //       util.navigateTo("/pages/chatroom/chatroom", { user_id: user_id });
-      //     }
-      //   })
-      // } 
-    });
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo.ROLE_ID != 'sja4gc59bg') {
+      util.showError("仅有学生身份方可在线咨询");
+      return false;
+    }
+    else{
+      var user_id = e.currentTarget.dataset.id;
+      util.navigateTo("/pages/chatroom/chatroom", { user_id: user_id });
+    }
   },
 
   contentshow: function () {
