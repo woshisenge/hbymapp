@@ -46,25 +46,12 @@ Page({
 		MJJ_NAME: [],
 		MJJ_ID: [],
     //banner图
-    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/8.jpg"),
+    consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_zyb.jpg"),
   },
   onLoad: function () {
+    util.ldqCheckLogin()
 		util.sendRequest("/wechat/applet/report/getvolunteer", {}, "POST", true, (res) => {
 			if (res.hasErrors) {
-				if (res.errorMessage == 'relogin') {
-					wx.showModal({
-						content: '请重新登录',
-						showCancel: false,
-						success: function (res) {
-							if (res.confirm) {
-								wx.redirectTo({
-									url: '/pages/login/login'
-								})
-							}
-						}
-					})
-					return false
-				}
 				console.log(res.errorMessage)
 				return false
 			}

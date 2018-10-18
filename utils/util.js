@@ -83,22 +83,34 @@ var login = function () {
 /**
  * ldq 判断是否登录
  */
-var checkLogin = function () {
-	var userInfo = wx.getStorageSync('userInfo')
-	if (!userInfo.USER_NAME) {
-		wx.showModal({
-			content: '请登录',
-			showCancel: false,
-			success: function (res) {
-				if (res.confirm) {
-					wx.redirectTo({
-						url: '/pages/login/login'
-					})
-				}
-			}
-		});
-		return false
-	}
+var ldqCheckLogin = function () {
+  console.log('ldqLogin')
+  sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
+    if (res.hasErrors && res.errorMessage == 'relogin') {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
+  })
+}
+
+/**
+ * ldq 判断是否是学生身份
+ */
+var ldqCheckStudent = function () {
+  var userInfo = wx.getStorageSync('userInfo')
+  if (userInfo.ROLE_ID != 'sja4gc59bg') {
+    wx.showModal({
+      content: '该功能仅限学生使用',
+      showCancel: false,
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+    return false
+  }
 }
 
 /**
@@ -757,7 +769,8 @@ module.exports = {
   login: login,
   getInfoFromStorage: getInfoFromStorage,
   setInfoToStorage: setInfoToStorage,
-	checkLogin: checkLogin,
+  ldqCheckLogin: ldqCheckLogin,
+  ldqCheckStudent: ldqCheckStudent,
   toComplete: toComplete,
   setStaticUrl: setStaticUrl,
   navigateTo: navigateTo,

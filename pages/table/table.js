@@ -20,7 +20,7 @@ Page({
     scrolltop:1200,
     text:true,
     //banner图
-    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/file_bann.jpg"),
+    consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_yfyd.jpg"),
   },
   // 切换年份
   bindPickerChange: function (e) {

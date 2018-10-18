@@ -11,11 +11,11 @@ Page({
     // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     // 首页轮播图 开始
     imgUrls: [
-      {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/recruit_banner.png"), url: "/pages/consult/consult" },
-      // {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/8.jpg"), url: "/pages/imitate/imitate"},
-      {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/01.jpg"), url:"/pages/person/improve/improve"},
-      // {src: utils.setStaticUrl("/static/ymplant/img/sye/banner/recommendation.png"),url:"/pages/intelligence/intelligence"},
-      {src:utils.setStaticUrl("/static/ymplant/img/sye/banner/03.jpg"),url:"/pages/video/video"}
+      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner03.jpg"), url: "/pages/intelligence/intelligence" },
+      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner05.jpg"), url: "/pages/consult/consult" },
+      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner02.jpg"), url: "/pages/person/improve/improve" },
+      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"), url: "/pages/video/video" },
+      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_yxk.jpg"), url: "/pages/school/school" }
     ],
     indicatorDots: false,
     autoplay: true,
@@ -38,84 +38,27 @@ Page({
   },
   image:function(e){
     var that = this;
-    var use_id = utils.getInfoFromStorage("user_id");
+    var user_id = utils.getInfoFromStorage("user_id");
     var url = e.currentTarget.id;
-    if (url == "/pages/video/video"){
-      utils.navigateTo(url);
+    var userInfo = wx.getStorageSync('userInfo')
+    if (url == "/pages/intelligence/intelligence") {
+      utils.ldqCheckLogin()
+      utils.ldqCheckStudent()
     }
-    if (url == "/pages/consult/consult" || url == "/pages/person/improve/improve"){
-      utils.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function (res) {
-        if (!res.data) {
-          utils.showError("请先登录账号");
-          return false;
-        }
-        utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
-          if(res.data == 1){
-            utils.navigateTo(url, { user_id: use_id, id: "2" });
-          }
-          else {
-            utils.showError("仅有学生身份才能使用该功能！");
-            return false;
-          }
-        })
-        
-      })
+    if (url == "/pages/consult/consult") {
+      console.log(utils.ldqCheckLogin())
     }
-    if (url == "/pages/imitate/imitate" || url == "/pages/intelligence/intelligence" ){
-      utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
-        if (res.data != 1) {
-          utils.showError("仅有学生身份才能使用该功能！");
-          return false;
-        }
-        else {
-          utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
-            if (result.data) {
-              utils.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
-                if (obj.DATA == "UC") {
-                  utils.navigateTo(url);
-                }
-                else {
-                  utils.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
-                    if (res.mntbk != 0) {
-                      utils.navigateTo(url);
-                    }
-                    else {
-                      wx.showModal({
-                        title: '提示',
-                        content: '您当前模拟填报次数为0,请激活已有会员卡或去充值升级会员',
-                        cancelText: '手动激活',
-                        confirmText: '去充值',
-                        success: function (res) {
-                          if (res.confirm) {
-                            utils.navigateTo("/pages/person/improve/improve", { id: 1, user_id: res.USER_ID })
-                          } else if (res.cancel) {
-                            utils.navigateTo("/pages/person/member/member")
-                          }
-                        },
-                        fail: function () {
-
-                        }
-                      })
-                    }
-                  })
-                }
-              })
-            }
-            else {
-              wx.showModal({
-                title: '提示',
-                content: '请完善个人信息',
-                success: function (res) {
-                  if (res.confirm) {
-                    util.navigateTo("/pages/person/information/information")
-                  }
-                }
-              })
-            }
-          })
-        }
-      });
+    if (url == "/pages/person/improve/improve") {
+      utils.ldqCheckLogin()
+      utils.ldqCheckStudent()
+      utils.navigateTo(url, { user_id: user_id, id: '2'})
     }
+    if (url == "/pages/video/video") {
+      utils.ldqCheckLogin()
+    }
+    if (url == "/pages/school/school") {
+    }
+    // utils.navigateTo(url)
   },
   advantage:function(){
     utils.navigateTo("/pages/consult/consult");
@@ -132,39 +75,17 @@ Page({
     })
   },
   onLoad: function () {
+    var userInfo = wx.getStorageSync('userInfo')
+    console.log(userInfo)
   },
   onReady: function() {
   },
   consultation:function(){
 		var userInfo = wx.getStorageSync('userInfo')
 		console.log(userInfo)
-		if (!userInfo.NICKNAME) {
-			wx.showModal({
-				content: '请重新登录',
-				showCancel: false,
-				success: function (res) {
-					if (res.confirm) {
-						wx.redirectTo({
-							url: '/pages/login/login'
-						})
-					}
-				}
-			})
-			return false
-		}
-		if (userInfo.ROLE_ID == 'sja4gc59bg') {
-			utils.navigateTo("/pages/consult/consult")
-		} else {
-			wx.showModal({
-				content: '该功能只有学生身份能使用',
-				showCancel: false,
-				success: function (res) {
-					if (res.confirm) {
-					}
-				}
-			})
-			return false
-		}
+    utils.ldqCheckLogin()
+    utils.ldqCheckStudent()
+    utils.navigateTo("/pages/consult/consult")
   },
   analog:function(){
 		utils.navigateTo("/pages/imitate/imitate");
@@ -228,20 +149,7 @@ Page({
     var that = this;
 		var userInfo = wx.getStorageSync('userInfo')
 		// 判断是否登录
-		if (!userInfo) {
-      wx.showModal({
-        content: '请重新登录',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            wx.redirectTo({
-              url: '/pages/login/login'
-            })
-          }
-        }
-      })
-			return false
-		}
+    utils.ldqCheckLogin()
 		// 判断是否是学生
 		if (userInfo.ROLE_ID == 'm9bxdt9g36') {
 			utils.showError("该功能只有学生可以使用");

@@ -28,7 +28,7 @@ Page({
     /* ldq-显示大专 */
     ldq: 0,
     //banner图
-    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/recruit_banner.png"),
+    consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_banner04.jpg"),
   },
   upper: function (e) {
   },
@@ -133,6 +133,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    util.ldqCheckLogin()
     var that=this;
     that.pullSchoolInfos();
     // 获取本一本二本三id值

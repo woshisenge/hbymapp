@@ -25,7 +25,7 @@ Page({
 		EXAMAREA_VALUE: '',
 		CITY_VALUE: '',
 		    //banner图
-    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/recommendation.png"),
+    consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_banner03.jpg"),
   },
   bindPickerChange: function (e) {
     var that = this;
@@ -61,22 +61,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    util.ldqCheckLogin()
     var that=this;
 		var userInfo = wx.getStorageSync('userInfo')
-		if (!userInfo.USER_NAME) {
-			wx.showModal({
-				content: '请重新登录',
-				showCancel: false,
-				success: function (res) {
-					if (res.confirm) {
-						wx.redirectTo({
-							url: '/pages/login/login'
-						})
-					}
-				}
-			})
-			return false
-		}
 		// console.log(userInfo)
 		this.setData({
 			EXAMSCORE: userInfo.EXAMSCORE,

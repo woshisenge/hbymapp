@@ -26,23 +26,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		// 判断是否登录
+    // 判断是否登录
+    util.ldqCheckLogin()
 		var userInfo = wx.getStorageSync('userInfo')
 		console.log(userInfo)
-		if (!userInfo.NICKNAME) {
-			wx.showModal({
-				content: '请重新登录',
-				showCancel: false,
-				success: function (res) {
-					if (res.confirm) {
-						wx.redirectTo({
-							url: '/pages/login/login'
-						})
-					}
-				}
-			})
-			return false
-		}
 		// console.log(userInfo)
 		if (userInfo.ROLE_ID == 'sja4gc59bg') {
 			this.setData({
@@ -50,7 +37,8 @@ Page({
 				nickname: userInfo.NICKNAME || '',
 				examscore: userInfo.EXAMSCORE || '',
 				majortype: userInfo.MAJORTYPE || '',
-				role_id: userInfo.ROLE_ID || ''
+				role_id: userInfo.ROLE_ID || '',
+        headurl: util.setStaticUrl(userInfo.HEADURL)
 			})
 		}
 		if (userInfo.ROLE_ID == 'm9bxdt9g36') {

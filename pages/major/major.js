@@ -14,7 +14,7 @@ Page({
     major:[],
     zmajor:[],
     //banner图
-    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/zhaunye_bann.jpg"),
+    consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_zyk.jpg"),
   },
 
   /**

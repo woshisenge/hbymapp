@@ -7,7 +7,7 @@ Page({
   data: {
     src: '',
     //banner图
-    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/03.jpg"),
+    consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"),
   },
 	play: function (e) {
 		var userInfo = wx.getStorageSync('userInfo')
@@ -48,6 +48,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    util.ldqCheckLogin()
 		var data = {
 			SUBTITLE: "专家视频"
 		}

@@ -15,12 +15,13 @@ Page({
     sliderOffset: 0,
     sliderLeft: 0,
     //banner图
-    consultation: util.setStaticUrl("/static/ymplant/img/sye/banner/expert_banner.jpg"),
+    consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_zjwd.jpg"),
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    util.ldqCheckLogin()
 		var userInfo = wx.getStorageSync('userInfo')
 		util.sendRequest("/wechat/applet/expert/api/askpro_datas", {}, "POST", false, (res) => {
 			console.log(res)
