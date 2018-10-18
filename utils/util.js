@@ -64,7 +64,7 @@ const notAcceptCode = "406";
  * 登录操作
  */
 var login = function () {
-	console.log('login')
+	// console.log('login')
   wx.login({
     success: function (res) {
       if (res.code) {
@@ -84,8 +84,11 @@ var login = function () {
  * ldq 判断是否登录
  */
 var ldqCheckLogin = function () {
-  console.log('ldqLogin')
+  if (wx.getStorageSync('session_id')) {
+    login()
+  }
   sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
+    console.log(res)
     if (res.hasErrors && res.errorMessage == 'relogin') {
       wx.redirectTo({
         url: '/pages/login/login'

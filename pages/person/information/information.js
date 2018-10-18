@@ -38,7 +38,7 @@ Page({
 		var userInfo = wx.getStorageSync('userInfo')
 		// console.log(userInfo)
 		// 判断是否登录
-		util.checkLogin()
+		util.ldqCheckLogin()
 		this.setData({
 			city: userInfo.CITY_VALUE,
 			county: userInfo.COUNTY_VALUE,
