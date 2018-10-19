@@ -72,7 +72,7 @@ var login = function () {
         sendRequest("/wechat/applet/api/login", { code: res.code }, "POST", true, function (obj) {
           // 把session_id存到本地
           wx.setStorageSync('session_id', obj.thirdSessionId)
-          console.log(wx.getStorageSync('session_id'))
+          console.log('session_id', wx.getStorageSync('session_id'))
         });
       } else {
         showError("获取用户信息失败，请重试！")
@@ -87,7 +87,7 @@ var login = function () {
 var ldqCheckLogin = function () {
   console.log(111)
   login()
-  console.log(wx.getStorageSync('session_id'))
+  // console.log(wx.getStorageSync('session_id'))
   sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
     console.log(222)
     console.log(res)

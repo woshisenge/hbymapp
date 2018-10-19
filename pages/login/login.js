@@ -31,7 +31,7 @@ Page({
 		}
 		console.log(data)
 		// 登录成功
-    util.sendRequest('/wechat/applet/api/tologin_new', data, "POST", true, function (res){
+    util.sendRequest('/wechat/applet/api/relation', data, "POST", true, function (res){
 			if (res.hasErrors) {
 				wx.showModal({
 					content: res.errorMessage,
