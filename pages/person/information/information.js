@@ -14,6 +14,17 @@ Page({
   },
   formSubmit: function(e) {
     var data = e.detail.value
+    if (data.EXAMSCORE > 750 || data.EXAMSCORE < 200) {
+      wx.showModal({
+        content: '分数不得超过750分, 或低于200分',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+          }
+        }
+      })
+      return false
+    }
 		util.sendRequest('/wechat/applet/user/examineenew', data, "POST", true, function (res) {
 			// 更新session
 			wx.setStorageSync('userInfo', res)
