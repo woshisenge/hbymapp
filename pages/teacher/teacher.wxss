@@ -119,3 +119,8 @@
 .ldq-blur {
 	filter: blur(3px);
 }
+.ldq-btn {
+  position: absolute;
+  right: 20rpx;
+  top: -10rpx;
+}

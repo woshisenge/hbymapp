@@ -6,15 +6,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    PHONE_STU: '无',
+    ISBRANCHE: '无',
+    LEARNING_TEND: '无',
+    REGIONAL_TEND: '无',
+    PROFESSIONAL_TEND: '无',
+    HUMEN_RELATIONS: '无',
+    ATTRACT_SCHOOL: '无',
+    PARENTS_OPINION: '无',
+    ADDITIONAL_ITEMS: '无',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     this.setData({
-      id:options.id
+      id:options.id,
+      headurl: options.headurl,
+      nickname: options.nickname
     })
   },
   bindName:function(e){
@@ -51,23 +62,39 @@ Page({
     })
     
   },
-  order:function(){
+  order:function(e){
+    var userInfo = wx.getStorageSync('userInfo')
     var that = this;
-    var param = {}
-    param.CUSTOMER_NAME = that.data.CUSTOMER_NAME;
-    param.CUSTOMER_PHONE = that.data.CUSTOMER_PHONE;
-    param.CUSTOMER_SCHOOL = that.data.CUSTOMER_SCHOOL;
-    param.CUSTOMER_ADDRESS = that.data.CUSTOMER_ADDRESS;
-    param.EXPERT_ID = that.data.id;
-    util.sendRequest("wechat/applet/expert/api/order_expert",param,"POST",true,function(res){
-      wx.showModal({
-        title: '提示',
-        content: res.data,
-        showCancel:false,
-        success: function (res) {
-          
+    const data = {
+      PHONE_STU: this.data.PHONE_STU,
+      ISBRANCHE: this.data.ISBRANCHE,
+      LEARNING_TEND: this.data.LEARNING_TEND,
+      REGIONAL_TEND: this.data.REGIONAL_TEND,
+      PROFESSIONAL_TEND: this.data.PROFESSIONAL_TEND,
+      HUMEN_RELATIONS: this.data.HUMEN_RELATIONS,
+      ATTRACT_SCHOOL: this.data.ATTRACT_SCHOOL,
+      PARENTS_OPINION: this.data.PARENTS_OPINION,
+      ADDITIONAL_ITEMS: this.data.ADDITIONAL_ITEMS,
+    }
+    data.PRO_ID = that.data.id
+    data.NICKNAME_PRO = that.data.nickname
+    data.HEADURL_PRO = that.data.headurl
+    console.log(data)
+    util.sendRequest("wechat/applet/expert/api/appointment_expert",data,"POST",true,function(res){
+      if (res.data == 10000) {
+        if (userInfo.VIP == '高级会员') {
+          wx.showModal({
+            content: '预约成功, 请等待专家联系您',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+              }
+            }
+          })
+        } else {
+          console.log(123)
         }
-      })
+      }
     })
   },
   /**

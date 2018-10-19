@@ -72,7 +72,7 @@ var login = function () {
         sendRequest("/wechat/applet/api/login", { code: res.code }, "POST", true, function (obj) {
           // 把session_id存到本地
           wx.setStorageSync('session_id', obj.thirdSessionId)
-          console.log('session_id', wx.getStorageSync('session_id'))
+          // console.log('session_id', wx.getStorageSync('session_id'))
         });
       } else {
         showError("获取用户信息失败，请重试！")
@@ -85,12 +85,12 @@ var login = function () {
  * ldq 判断是否登录
  */
 var ldqCheckLogin = function () {
-  console.log(111)
+  // console.log(111)
   login()
   // console.log(wx.getStorageSync('session_id'))
   sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
-    console.log(222)
-    console.log(res)
+    // console.log(222)
+    // console.log(res)
     if (res.hasErrors && res.errorMessage == 'relogin') {
       wx.redirectTo({
         url: '/pages/login/login'
@@ -214,11 +214,12 @@ var uploadFile = function (url, file, name, formData, loadingType, successFn, er
         formData: formData,
         header: header,
         success: function (res) {
+          console.log('999', res)
           if (loadingType) {
             wx.hideLoading();
           }
           if (res.data.hasErrors) {
-            //需要登录，详情查看后台LoginIntercetor
+            // 需要登录，详情查看后台LoginIntercetor
             if (res.data.errorCode == noLoginCode)
               login();
             else if (res.data.errorCode == noCompleteCode)
@@ -238,8 +239,9 @@ var uploadFile = function (url, file, name, formData, loadingType, successFn, er
             wx.hideLoading();
           }
           showError("网络连接错误，请稍后重试");
-          if (errorFn)
+          if (errorFn) {
             errorFn(res.data);
+          }
         },
         complete: function () {
         }
@@ -266,7 +268,7 @@ var sendRequest = function (url, param, sendType, loadingType, successFn, errorF
 			// console.log(session_id)
       if (session_id) {
         var header = { 'content-type': 'application/x-www-form-urlencoded', 'Cookie': 'new.cookie.id=' + session_id };
-        console.log(session_id)
+        // console.log(session_id)
       }
       else {
         var header = { 'content-type': 'application/x-www-form-urlencoded' };

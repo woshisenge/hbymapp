@@ -1,6 +1,7 @@
 <!--pages/teacher/content/content.wxml-->
 <!-- 预约页面 -->
 <view class='page'>
+<form bindsubmit='formSubmit'>
    <view class='head'>
     <image src="/images/banner.jpg"></image>
    </view>
@@ -8,34 +9,74 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
-                <view class="weui-label">姓名：</view>
+                <view class="weui-label">是否偏科：</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入姓名" bindinput="bindName"/>
+                <input class="weui-input" name='ISBRANCHE' value='{{ISBRANCHE}}'/>
             </view>
         </view>
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
-                <view class="weui-label">电话：</view>
+                <view class="weui-label">联系电话：</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="请输入手机号" bindinput="bindPhone" bindblur="blurPhone"/>
+                <input class="weui-input" bindinput="bindPhone" bindblur="blurPhone" name='PHONE_STU' value='{{PHONE_STU}}'/>
             </view>
         </view>
         <view class="weui-cell weui-cell_input">
             <view class="weui-cell__hd">
-                <view class="weui-label">所属中学：</view>
+                <view class="weui-label">学习倾向：</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="如：石家庄市第二中学" bindinput="bindSchool"/>
+                <input class="weui-input" name='LEARNING_TEND' value='{{LEARNING_TEND}}'/>
             </view>
         </view>
         <view class="weui-cell weui-cell_input" style='margin-bottom:0'>
             <view class="weui-cell__hd">
-                <view class="weui-label">地址：</view>
+                <view class="weui-label">地域倾向：</view>
             </view>
             <view class="weui-cell__bd">
-                <input class="weui-input" placeholder="省/市/区（县）" bindinput="bindAddress"/>
+                <input class="weui-input" name='REGIONAL_TEND' value='{{REGIONAL_TEND}}'/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input" style='margin-bottom:0'>
+            <view class="weui-cell__hd">
+                <view class="weui-label">职业倾向：</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name='PROFESSIONAL_TEND' value='{{PROFESSIONAL_TEND}}'/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input" style='margin-bottom:0'>
+            <view class="weui-cell__hd">
+                <view class="weui-label">人脉关系：</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name='HUMEN_RELATIONS' value='{{HUMEN_RELATIONS}}'/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input" style='margin-bottom:0'>
+            <view class="weui-cell__hd">
+                <view class="weui-label">钟情院校：</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name='ATTRACT_SCHOOL' value='{{ATTRACT_SCHOOL}}'/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input" style='margin-bottom:0'>
+            <view class="weui-cell__hd">
+                <view class="weui-label">家长意见：</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name='PARENTS_OPINION' value='{{PARENTS_OPINION}}'/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input" style='margin-bottom:0'>
+            <view class="weui-cell__hd">
+                <view class="weui-label">额外补充：</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" name='ADDITIONAL_ITEMS' value='{{ADDITIONAL_ITEMS}}'/>
             </view>
         </view>
         <!-- <view class="weui-cells__tips">例：石家庄市/长安区（或元氏县）</view> -->
@@ -52,4 +93,5 @@
       </view>
       <view class='appoint' bindtap="order">确认预约</view>
     </view>
+    </form>
 </view>

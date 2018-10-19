@@ -35,7 +35,9 @@ Page({
       })
     })
     that.setData({
-      id:options.id
+      id:options.id,
+      headurl: options.headurl,
+      nickname: options.nickname
     })
   },
   order:function(){
@@ -46,7 +48,7 @@ Page({
         utils.showError("仅有学生才能预约专家！")
       }
       else{
-        utils.navigateTo("/pages/teacher/content/content", { id: id })
+        utils.navigateTo("/pages/teacher/content/content", { id: id, nickname: that.data.nickname, headurl: that.data.headurl })
       }
     })
   },

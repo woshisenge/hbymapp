@@ -16,6 +16,7 @@ Page({
     sliderLeft: 0,
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_zjwd.jpg"),
+    ex_list: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -26,20 +27,6 @@ Page({
 		util.sendRequest("/wechat/applet/expert/api/askpro_datas", {}, "POST", false, (res) => {
 			console.log(res)
 			if (res.hasErrors) {
-				// if (res.errorMessage == 'relogin') {
-				// 	wx.showModal({
-				// 		content: '请重新登录',
-				// 		showCancel: false,
-				// 		success: function (res) {
-				// 			if (res.confirm) {
-				// 				wx.redirectTo({
-				// 					url: '/pages/login/login'
-				// 				})
-				// 			}
-				// 		}
-				// 	})
-				// 	return false
-				// }
 				console.log(res.errorMessage);
 				return false;
 			}
@@ -143,10 +130,46 @@ Page({
 		return list;
 	},
 	tabClick: function (e) {
+    if (e.currentTarget.id == 1) {
+      util.sendRequest("wechat/applet/expert/api/getExpertList", {}, "POST", true, (res) => {
+        if (res.hasErrors) {
+          console.log(res.errorMessage);
+          return false;
+        }
+        console.log(res)
+        res.data.forEach(item => {
+          item.headurl = util.setStaticUrl(item.HEADURL)
+        })
+        this.setData({
+          ex_list: res.data
+        })
+      })
+    }
 		this.setData({
 			activeIndex: e.currentTarget.id
 		});
 	},
+  topay: function (e) {
+    console.log(e)
+  },
+  toPay:function (e) {
+    console.log(e)
+    util.ldqCheckLogin()
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo.ROLE_ID != "sja4gc59bg") {
+      wx.showModal({
+        content: '该功能只有学生可以使用',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+          }
+        }
+      })
+      return false
+    }
+    var id = e.currentTarget.id
+    util.navigateTo("/pages/teacher/introduce/introduce", { id: id, headurl: e.currentTarget.dataset.headurl, nickname: e.currentTarget.dataset.nickname })
+  },
   showInput: function () {
     this.setData({
       inputShowed: true
