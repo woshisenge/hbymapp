@@ -11,35 +11,35 @@
 		<view class="weui-cell__hd"></view>
 		<view class="weui-cell__bd weui-cell_primary">
 			<text>科目</text>
-			<input type='text' name='' value='{{majortype}}'style="text-align:right" disabled='true'/>
+			<input type='text' name='' value='{{majortype}}'style="text-align:right; color: #bbb" disabled='true'/>
 		</view>
   </view>
 	<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
 		<view class="weui-cell__hd"></view>
 		<view class="weui-cell__bd weui-cell_primary">
 			<text>城市</text>
-			<input type='text' name='' value='{{city}}'style="text-align:right" disabled='true'/>
+			<input type='text' name='' value='{{city}}'style="text-align:right; color: #bbb" disabled='true'/>
 		</view>
   </view>
 	<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
 		<view class="weui-cell__hd"></view>
 		<view class="weui-cell__bd weui-cell_primary">
 			<text>区域</text>
-			<input type='text' name='' value='{{county}}'style="text-align:right" disabled='true'/>
+			<input type='text' name='' value='{{county}}'style="text-align:right; color: #bbb" disabled='true'/>
 		</view>
   </view>
 	<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
 		<view class="weui-cell__hd"></view>
 		<view class="weui-cell__bd weui-cell_primary">
 			<text>学校</text>
-			<input type='text' name='' value='{{school_name}}'style="text-align:right" disabled='true'/>
+			<input type='text' name='' value='{{school_name}}'style="text-align:right; color: #bbb" disabled='true'/>
 		</view>
   </view>
 	<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
 		<view class="weui-cell__hd"></view>
 		<view class="weui-cell__bd weui-cell_primary">
 			<text>高考年份</text>
-			<input type='text' name='' value='{{examyear}}'style="text-align:right" disabled='true'/>
+			<input type='text' name='' value='{{examyear}}'style="text-align:right; color: #bbb" disabled='true'/>
 		</view>
   </view>
 </view>

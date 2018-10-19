@@ -80,19 +80,19 @@ Page({
         role: role.data
       });
       util.sendRequest("/wechat/applet/chat/getchatrecs", { USER_ID: options.user_id }, "POST", true, function (res) {
-        that.setData({
-          teaheadurl: res.complete_tea.HEADURL
-        })
+        console.log(res)
         if (that.data.role == 1) {
           //为学生
           that.setData({
-            complete_info: res.complete_tea
+            complete_info: res.complete_tea,
+            teaheadurl: res.complete_tea.HEADURL
           })
         }
         else if (that.data.role == 2) {
           //为老师
           that.setData({
-            complete_info: res.complete_stu
+            complete_info: res.complete_stu,
+            teaheadurl: res.complete_stu.HEADURL
           })
         }
         else if (that.data.role == 3) {
