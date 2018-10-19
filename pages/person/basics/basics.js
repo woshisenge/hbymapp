@@ -36,7 +36,7 @@ Page({
   onLoad: function (options) {
 		var userInfo = wx.getStorageSync('userInfo')
     // 判断是否登录
-		util.checkLogin()
+    util.ldqCheckLogin()
 		this.setData({
 			user_name: userInfo.USER_NAME,
 			nickname: userInfo.NICKNAME,
