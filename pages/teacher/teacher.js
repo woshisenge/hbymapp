@@ -26,20 +26,20 @@ Page({
 		util.sendRequest("/wechat/applet/expert/api/askpro_datas", {}, "POST", false, (res) => {
 			console.log(res)
 			if (res.hasErrors) {
-				if (res.errorMessage == 'relogin') {
-					wx.showModal({
-						content: '请重新登录',
-						showCancel: false,
-						success: function (res) {
-							if (res.confirm) {
-								wx.redirectTo({
-									url: '/pages/login/login'
-								})
-							}
-						}
-					})
-					return false
-				}
+				// if (res.errorMessage == 'relogin') {
+				// 	wx.showModal({
+				// 		content: '请重新登录',
+				// 		showCancel: false,
+				// 		success: function (res) {
+				// 			if (res.confirm) {
+				// 				wx.redirectTo({
+				// 					url: '/pages/login/login'
+				// 				})
+				// 			}
+				// 		}
+				// 	})
+				// 	return false
+				// }
 				console.log(res.errorMessage);
 				return false;
 			}
