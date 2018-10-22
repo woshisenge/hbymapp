@@ -19,7 +19,9 @@ Page({
 		// 学校名称
 		school_name: '',
 		// 职位
-		jobtype: ''
+		jobtype: '',
+    //VIP
+    vip:''
   },
 
   /**
@@ -38,7 +40,8 @@ Page({
 				examscore: userInfo.EXAMSCORE || '',
 				majortype: userInfo.MAJORTYPE || '',
 				role_id: userInfo.ROLE_ID || '',
-        headurl: util.setStaticUrl(userInfo.HEADURL)
+        headurl: util.setStaticUrl(userInfo.HEADURL),
+        vip: userInfo.VIP
 			})
 		}
 		if (userInfo.ROLE_ID == 'm9bxdt9g36') {

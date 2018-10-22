@@ -73,3 +73,10 @@
 .weui-cells:after{
   border-bottom:0;
 }
+.vip-style {
+  margin-left: 10rpx;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 3px;
+  padding: 0 5px;
+}

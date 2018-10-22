@@ -14,7 +14,11 @@
 				<image src="{{headurl}}" style="width: 50px; height: 50px; display: block"/>
 			</view>
 			<view class="weui-cell__bd">
-				<view>{{nickname}}</view>
+				<view>{{nickname}}
+          <text class='vip-style' style='background-color: #F56C6C' wx:if="{{vip == '高级会员'}}">{{vip}}</text>
+          <text class='vip-style' style='background-color: #67C23A' wx:if="{{vip == '初级会员'}}">{{vip}}</text>
+          <text class='vip-style' style='background-color: #409EFF' wx:if="{{vip == '体验版会员'}}">{{vip}}</text>
+        </view>
 				<view style="font-size: 13px;color: #888888;">
 					<text wx:if="{{majortype == 'gjv044girc'}}">文科</text>
 					<text wx:if="{{majortype == 'r6j4mh69be'}}">理科</text>
