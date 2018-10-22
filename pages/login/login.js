@@ -48,7 +48,7 @@ Page({
         }
         // 把登录信息存到本地缓存
         wx.setStorageSync('userInfo', res)
-        console.log(res)
+        // console.log(res)
         wx.switchTab({
           url: '/pages/index/index'
         })

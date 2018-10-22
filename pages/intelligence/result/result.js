@@ -97,6 +97,7 @@ Page({
 			this.data.number = 0
 		}
 		this.data.options.NUMBER = this.data.number
+    this.data.options.ldqCount = 1
 		// console.log(this.data.options)
 		util.sendRequest("/wechat/applet/report/reporting_onekey", this.data.options, "POST", true, function (res) {
 			// console.log(res)

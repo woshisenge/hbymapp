@@ -60,6 +60,9 @@ Page({
     }
     // utils.navigateTo(url)
   },
+  toChar:function () {
+    utils.navigateTo("/pages/character/character")
+  },
   advantage:function(){
     utils.navigateTo("/pages/consult/consult");
   },

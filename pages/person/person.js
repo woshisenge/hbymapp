@@ -72,8 +72,9 @@ Page({
       sizeType: ['compressed'],
       sourceType: [type],
       success: function (res) {
+        console.log('112233',res)
         util.uploadFile("/wechat/applet/user/uploadhead", res.tempFilePaths[0], "HEADURL", {}, true, function(res){
-					console.log(res)
+					console.log('223344',res)
           that.getUserInfo();
         });
       }
@@ -96,7 +97,6 @@ Page({
    * 获取用户基本信息
    */
   getUserInfo: function() {
-
     var that = this;
     util.sendRequest("/wechat/applet/user/isvip",{},"POST",false,function(res){
        that.setData({
@@ -131,6 +131,7 @@ Page({
       }
       if(role==2){
         util.sendRequest("/wechat/applet/user/basic_teacher", {}, "POST", false, function (obj) {
+
           that.setData({
             logo2: util.setStaticUrl(obj.complete.HEADURL),
             nickname2: obj.complete.NICKNAME ? obj.complete.NICKNAME : "暂无",

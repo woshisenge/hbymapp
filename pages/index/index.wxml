@@ -1,6 +1,6 @@
 <!-- 轮播图 开始  -->
 <import src="../../wxParse/wxParse.wxml" />
-<swiper indicator-dots="{{indicatorDots}}"
+<swiper indicator-dots="{{false}}"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
   <block wx:for="{{imgUrls}}" wx:key="">
     <swiper-item>
@@ -9,41 +9,55 @@
   </block>
 </swiper>
 <!-- 轮播图 结束 -->
+<swiper indicator-dots="{{true}}"
+  autoplay="{{false}}" interval="{{interval}}" duration="{{500}}">
+  <swiper-item>
+    <view class='navigation-box'>
+      <view class='navigation' bindtap="consultation">
+        <image class="tpia" src='/images/01.png'></image>
+        <view class='navigation-text'>招办咨询</view>
+      </view>
+      <view class='navigation' bindtap='teacher'>
+        <image class="tpia" src='/images/04.png'></image> 
+        <view class='navigation-text'>一分一档</view>
+      </view>
+      <view class='navigation' bindtap="school">
+        <image class="tpia" src='/images/06.png'></image> 
+        <view class='navigation-text'>院校库</view>
+      </view>
+      <view class='navigation' bindtap="major">
+        <image class="tpia" src='/images/07.png'></image> 
+        <view class='navigation-text'>专业库</view> 
+      </view>
+      <view class='navigation' bindtap="analog">
+        <image class="tpia" src='/images/05.png'></image>
+        <view class='navigation-text'>我的志愿</view>
+      </view>
+      <view class='navigation' bindtap="intelligence">
+        <image class="tpia" src='/images/02.png'></image>
+        <view class='navigation-text'>一键填报</view>
+      </view>
+      <view class='navigation' bindtap='test'>
+        <image class="tpia" src='/images/03.png'></image> 
+        <view class='navigation-text'>专家问答</view>             
+      </view>
+      <view class='navigation' bindtap='phone'>
+        <image class="tpia" src='/images/08.png'></image> 
+        <view class='navigation-text'>铭邦讲堂</view>
+      </view> 
+    </view>
+  </swiper-item>
+  <swiper-item>
+    <view class='navigation-box'>
+      <view class='navigation' bindtap="toChar">
+        <image class="tpia" src='/images/char.png'></image>
+        <view class='navigation-text'>专业匹配</view>
+      </view>
+    </view>
+  </swiper-item>
+</swiper>
 <!-- 导航 链接 开始 -->
-<view class='navigation-box'>
-  <view class='navigation' bindtap="consultation">
-    <image class="tpia" src='/images/01.png'></image>
-    <view class='navigation-text'>招办咨询</view>
-  </view>
-  <view class='navigation' bindtap='teacher'>
-    <image class="tpia" src='/images/04.png'></image> 
-    <view class='navigation-text'>一分一档</view>
-  </view>
-  <view class='navigation' bindtap="school">
-    <image class="tpia" src='/images/06.png'></image> 
-    <view class='navigation-text'>院校库</view>
-  </view>
-  <view class='navigation' bindtap="major">
-    <image class="tpia" src='/images/07.png'></image> 
-    <view class='navigation-text'>专业库</view> 
-  </view>
-  <view class='navigation' bindtap="analog">
-    <image class="tpia" src='/images/05.png'></image>
-    <view class='navigation-text'>我的志愿</view>
-  </view>
-  <view class='navigation' bindtap="intelligence">
-    <image class="tpia" src='/images/02.png'></image>
-    <view class='navigation-text'>一键填报</view>
-  </view>
-   <view class='navigation' bindtap='test'>
-    <image class="tpia" src='/images/03.png'></image> 
-    <view class='navigation-text'>专家问答</view>             
-  </view>
-  <view class='navigation' bindtap='phone'>
-    <image class="tpia" src='/images/08.png'></image> 
-    <view class='navigation-text'>铭邦讲堂</view>
-  </view> 
-</view>
+
 <!-- 导航 链接 结束 -->
 <!-- 公告 开始 -->
   <view class='notices'> 
