@@ -12,13 +12,13 @@
             </view>
             <view class="weui-form-preview__bd">
                 <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">5、过去你遇见你大部分的朋友是</view>
+                    <view class="weui-form-preview__label">{{curr_id}}、{{curr_title}}</view>
                 </view>
                 <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">A 在宴会中、夜总会、工作上、休闲活动中、会议上或当朋友介绍我给他们的朋友时</view>
+                    <view class="weui-form-preview__label">A、{{curr_A}}</view>
                 </view>
                 <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">B 通过私人的方式,例如个人广告、录影约会,或是由亲密的朋友和家人介绍</view>
+                    <view class="weui-form-preview__label">B、{{curr_B}}</view>
                 </view>
             </view>
             <view class="weui-form-preview__ft">

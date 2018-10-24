@@ -9,6 +9,11 @@ Page({
     title: '',
     stitle: '',
     MBTI_TYPE: '',
+    curr_title: '',
+    curr_A: '',
+    curr_B: '',
+    curr_id:'',
+    MBTI_TYPE: ''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -18,25 +23,63 @@ Page({
       this.setData({
         title: '简单版',
         stitle: 'simple',
-      })
-      const data = {
         MBTI_TYPE: 'g57h70o2c8'
-      }
-      util.sendRequest("/plant/character/api/simple_begin", data, "POST", false, (res) => {
-        if (res.hasErrors) {
-          console.log(res.errorMessage);
-          return false;
-        }
-        console.log(res)
       })
     } else if (options.id == 2) {
       this.setData({
         title: '专业版',
         stitle: 'pro',
-        MBTI_TYPE: 'g57h70o2c8',
+        MBTI_TYPE: '1tt3euq8ij',
       })
     }
-    
+    // 获取问题
+    this.getQuestion(1)
+  },
+  submit: function (e) {
+    // 传回答案
+    const data = {
+      ANSWER: e.currentTarget.dataset.msg,
+      MBTI_ID: this.data.curr_id,
+      MBTI_TYPE: this.data.MBTI_TYPE
+    }
+    util.sendRequest("/plant/character/api/simple_answer", data, "POST", false, (res) => {
+      if (res.hasErrors) {
+        console.log(res.errorMessage);
+        return false;
+      }
+      // 获取问题
+      this.getQuestion(res.data)
+    })
+  },
+  getQuestion: function (curr) {
+    // 获取问题
+    const data = {
+      MBTI_ID: curr,
+      MBTI_TYPE: this.data.MBTI_TYPE
+    }
+    util.sendRequest("/plant/character/api/simple_begin", data, "POST", false, (res) => {
+      if (res.hasErrors) {
+        console.log(res.errorMessage);
+        return false;
+      }
+      console.log(res)
+      if (res.data == '答题完毕等结果') {
+        util.sendRequest("/plant/character/api/get_result", {}, "POST", false, (res) => {
+          if (res.hasErrors) {
+            console.log(res.errorMessage);
+            return false;
+          }
+          console.log(res)
+        })
+        return false
+      }
+      this.setData({
+        curr_title: res.TITLE,
+        curr_A: res.OPTION_A,
+        curr_B: res.OPTION_B,
+        curr_id: res.MBTI_ID,
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
