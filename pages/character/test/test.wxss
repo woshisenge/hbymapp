@@ -32,3 +32,7 @@
 .weui-form-preview__label {
   text-align-last:left;
 }
+.weui-media-box__desc {
+  line-height: 1.5;
+  -webkit-line-clamp: 99;
+}

@@ -6,8 +6,6 @@
     </view>
     <view class="page__bd">
         <view class="weui-panel weui-panel_access">
-            <!-- <view class="weui-media-box__title weui-media-box__title_in-text">标题一</view> -->
-            <!-- <view class="weui-panel__hd">MBTI专业匹配性格测试须知</view> -->
             <view class="weui-panel__bd">
                 <view class="weui-media-box weui-media-box_text">
                     <view class="weui-media-box__title weui-media-box__title_in-text">MBTI专业匹配性格测试须知</view>

@@ -33,7 +33,7 @@ Page({
       })
     }
     // 获取问题
-    this.getQuestion(1)
+    this.getQuestion(27)
   },
   submit: function (e) {
     // 传回答案
@@ -70,6 +70,27 @@ Page({
             return false;
           }
           console.log(res)
+          var arr1 = []
+          var arr2 = []
+          res.ZMAJORSOUT.forEach(item => {
+            item.forEach(it => {
+              arr1.push(it.NAME)
+            })
+          })
+          res.BMAJORSOUT.forEach(item => {
+            item.forEach(it => {
+              arr2.push(it.NAME)
+            })
+          })
+          this.setData({
+            test_title: res.RESULTOBJ,
+            test1: res.RESULTDATAMAP.INTRODUCE,
+            test2: res.RESULTDATAMAP.FIELD,
+            test3: res.RESULTDATAMAP.JOB,
+            test4: arr1.join('、'),
+            test5: arr2.join('、'),
+            finish: true
+          })
         })
         return false
       }

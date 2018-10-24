@@ -1,5 +1,5 @@
 <!--pages/character/test/test.wxml   性格测试问题页-->
-<view class="page">
+<view class="page" hidden='{{finish}}'>
     <view class="page__hd">
         <view class="page__title">{{title}}</view>
         <view class="page__desc">{{stitle}}</view>
@@ -24,6 +24,37 @@
             <view class="weui-form-preview__ft">
                 <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='submit' data-msg='A'>A</view>
                 <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='submit' data-msg='B'>B</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="page" hidden='{{!finish}}'>
+    <view class="page__hd">
+        <view class="page__title">MBTI职业性格测试报告</view>
+        <view class="page__desc">根据测试分析得出，您属于{{test_title}}类型</view>
+    </view>
+    <view class="page__bd" hidden='{{!finish}}'>
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">性格介绍：</view>
+                    <view class="weui-media-box__desc">{{test1}}</view>
+                </view>
+                <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">适合领域：</view>
+                    <view class="weui-media-box__desc">{{test2}}</view>
+                </view>
+                <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">适合职业：</view>
+                    <view class="weui-media-box__desc">{{test3}}</view>
+                </view>
+                <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">专科专业推荐：</view>
+                    <view class="weui-media-box__desc">{{test4}}</view>
+                    <view class="weui-media-box__title weui-media-box__title_in-text" style='margin-top: 20rpx'>本科专业推荐：</view>
+                    <view class="weui-media-box__desc">{{test5}}</view>
+                </view>
             </view>
         </view>
     </view>
