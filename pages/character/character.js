@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    src: util.setStaticUrl("/static/ymplant/ldq-img/character.jpg")
   },
   test:function(){
     util.navigateTo("/pages/character/test/test")
@@ -21,7 +21,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log('/static/ymplant/ldq-img/character.jpg')
+    console.log(util.setStaticUrl("/static/ymplant/ldq-img/character.jpg"))
   },
 
   /**
