@@ -1,12 +1,30 @@
-<!--pages/character/test/test.wxml   性格测试问题页（还没开始写，如果写的话可以把这个删了重新写）-->
-<progress percent="80" show-info active />
-<view class='content'>
-  <view class='title'>
-    <image src="/images/dati.png"></image>
-    <text>1、当你要外出一整天，你会</text>
-  </view>
-  <view class='option'>
-    <view class='options'>A、计划你要做什么和在什么时候做</view>
-    <view class='options'>B、说去就去</view>
-  </view>
+<!--pages/character/test/test.wxml   性格测试问题页-->
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">{{title}}</view>
+        <view class="page__desc">{{stitle}}</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-form-preview">
+            <view class="weui-form-preview__hd">
+                <!-- <view class="weui-form-preview__label">哪一个答案能最贴切的描绘你一般的感受或行为？</view> -->
+                <view class="weui-form-preview__value_in-hd" style='font-size: 30rpx;text-align: left'>哪一个答案能最贴切的描绘你一般的感受或行为？</view>
+            </view>
+            <view class="weui-form-preview__bd">
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">5、过去你遇见你大部分的朋友是</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">A 在宴会中、夜总会、工作上、休闲活动中、会议上或当朋友介绍我给他们的朋友时</view>
+                </view>
+                <view class="weui-form-preview__item">
+                    <view class="weui-form-preview__label">B 通过私人的方式,例如个人广告、录影约会,或是由亲密的朋友和家人介绍</view>
+                </view>
+            </view>
+            <view class="weui-form-preview__ft">
+                <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='submit' data-msg='A'>A</view>
+                <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='submit' data-msg='B'>B</view>
+            </view>
+        </view>
+    </view>
 </view>

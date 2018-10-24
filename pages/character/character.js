@@ -11,6 +11,12 @@ Page({
   test:function(){
     util.navigateTo("/pages/character/test/test")
   },
+  simple: function (e) {
+    util.navigateTo("/pages/character/test/test", { id: e.target.id})
+  },
+  pro: function (e) {
+    util.navigateTo("/pages/character/test/test", { id: e.target.id })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

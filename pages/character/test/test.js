@@ -1,16 +1,41 @@
 // pages/character/test/test.js
+var util = require('../../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    title: '',
+    stitle: '',
+    MBTI_TYPE: '',
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.id == 1) {
+      this.setData({
+        title: '简单版',
+        stitle: 'simple',
+      })
+      const data = {
+        MBTI_TYPE: 'g57h70o2c8'
+      }
+      util.sendRequest("/plant/character/api/simple_begin", data, "POST", false, (res) => {
+        if (res.hasErrors) {
+          console.log(res.errorMessage);
+          return false;
+        }
+        console.log(res)
+      })
+    } else if (options.id == 2) {
+      this.setData({
+        title: '专业版',
+        stitle: 'pro',
+        MBTI_TYPE: 'g57h70o2c8',
+      })
+    }
     
   },
   /**

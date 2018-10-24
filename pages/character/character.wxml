@@ -1,12 +1,29 @@
-<!--pages/character/character.wxml   性格测试页（还没开始写，如果写的话可以把这个删了重新写）-->
-<!-- <button class="weui-btn" type="primary" >开始测试</button> -->
-<view class="banner">
-  <image src="/images/test.png"></image>
+<!--pages/character/character.wxml   性格测试页-->
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">专业匹配</view>
+        <view class="page__desc">character</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-panel weui-panel_access">
+            <!-- <view class="weui-media-box__title weui-media-box__title_in-text">标题一</view> -->
+            <!-- <view class="weui-panel__hd">MBTI专业匹配性格测试须知</view> -->
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">MBTI专业匹配性格测试须知</view>
+                    <view class="weui-media-box__desc">1、参加测试的人员请务必诚实、独立地回答问题，只有如此，才能得到有效的结果。</view>
+                    <view class="weui-media-box__desc">2、《性格分析报告》展示的是你的性格倾向，而不是你的知识、技能、经验。</view>
+                    <view class="weui-media-box__desc">3、MBTI提供的性格类型描述仅供测试者确定自己的性格类型之用，性格类型没有好坏，只有不同。每一种性格特征都有其价值和优点，也有缺点和需要注意的地方。清楚地了解自己的性格优劣势，有利于更好地发挥自己的特长，而尽可能的在为人处事中避免自己性格中的劣势，更好地和他人相处，更好地作重要的决策。</view>
+                    <view class="weui-media-box__desc">4、本测试分为四部分，共93题；需时约18分钟。所有题目没有对错之分，请根据自己的实际情况选择。只要你是认真、真实地填写了测试问卷，那么通常情况下你都能得到一个确实和你的性格相匹配的类型。希望你能从中或多或少地获得一些有益的信息。</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    
+    <view class="page__bd page__bd_spacing" style='margin-top:40rpx'>
+        <button class="weui-btn" type="primary" id='1' bindtap='simple'>简单版</button>
+        <button class="weui-btn" type="primary" id='2' bindtap='pro'>专业版</button>
+    </view>
 </view>
-<view class='text'>
-  <text>通过职业性格测评，每个人都能通过职业测评的结果，</text>
-  <text>来更加了解自己的职业性格，职业兴趣，</text>
-  <text>发挥自己的潜能，天赋</text>
-  <text class="transform">>></text>
-  <view class='start' bindtap='test'>开始测试</view>
-</view>
+
+

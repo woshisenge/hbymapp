@@ -33,5 +33,7 @@ image{
 .start{
   padding:15rpx  60rpx;
   border:1rpx solid white;
-  
+}
+.weui-media-box__desc {
+  margin-bottom: 30rpx;
 }

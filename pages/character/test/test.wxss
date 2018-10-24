@@ -26,3 +26,9 @@
   margin-top:20rpx;
   padding:10rpx 30rpx;
 }
+.weui-form-preview__item {
+  margin-top: 20rpx;
+}
+.weui-form-preview__label {
+  text-align-last:left;
+}
