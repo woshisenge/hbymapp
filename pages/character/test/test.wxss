@@ -36,3 +36,13 @@
   line-height: 1.5;
   -webkit-line-clamp: 99;
 }
+.ldq-color {
+  font-weight: 700;
+  color: #18c3b1; 
+}
+.weui-form-preview__btn{
+  background-color: #1AAD19;
+  color: #fff;
+  margin: 20rpx 10rpx 10rpx;
+  border-radius: 12rpx;
+}

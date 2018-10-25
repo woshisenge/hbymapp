@@ -18,7 +18,7 @@
             </view>
         </view>
     </view>
-    
+
     <view class="page__bd page__bd_spacing" style='margin-top:20rpx'>
         <button class="weui-btn" type="primary" id='1' bindtap='simple'>简单版</button>
         <button class="weui-btn" type="primary" id='2' bindtap='pro'>专业版</button>

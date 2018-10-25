@@ -21,8 +21,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('/static/ymplant/ldq-img/character.jpg')
-    console.log(util.setStaticUrl("/static/ymplant/ldq-img/character.jpg"))
+    util.ldqCheckLogin();
+    util.sendRequest("/plant/character/api/clean_character_begin", {}, "POST", true, (res) => {
+      if (res.hasErrors) {
+        console.log(res.errorMessage);
+        return false;
+      }
+    })
   },
 
   /**

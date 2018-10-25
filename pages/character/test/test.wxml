@@ -1,8 +1,9 @@
 <!--pages/character/test/test.wxml   性格测试问题页-->
-<view class="page" hidden='{{finish}}'>
-    <view class="page__hd">
-        <view class="page__title">{{title}}</view>
-        <view class="page__desc">{{stitle}}</view>
+<view class="page" hidden='{{finish}}' style='position:relative'>
+    <image src="{{src}}" mode='widthFix' style='width:100%; margin-bottom:-12rpx;'></image>
+    <view class="page__hd" style=' position:absolute; top:0rpx; left:0rpx'>
+        <view class="page__title" style='color:#fff'>{{title}}</view>
+        <view class="page__desc" style='color:#fff'>{{stitle}}</view>
     </view>
     <view class="page__bd">
         <view class="weui-form-preview">
@@ -21,39 +22,70 @@
                     <view class="weui-form-preview__label">B、{{curr_B}}</view>
                 </view>
             </view>
-            <view class="weui-form-preview__ft">
-                <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='submit' data-msg='A'>A</view>
-                <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='submit' data-msg='B'>B</view>
-            </view>
+        </view>
+        <view class="weui-form-preview__ft">
+            <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='submit' data-msg='A'>A</view>
+            <view class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active" bindtap='submit' data-msg='B'>B</view>
         </view>
     </view>
 </view>
 
-<view class="page" hidden='{{!finish}}'>
-    <view class="page__hd">
-        <view class="page__title">MBTI职业性格测试报告</view>
-        <view class="page__desc">根据测试分析得出，您属于{{test_title}}类型</view>
+<view class="page" hidden='{{!finish}}' style='position:relative;'>
+    <image src="{{src}}" mode='widthFix' style='width:100%; margin-bottom:-12rpx;'></image>
+    <view class="page__hd" style='position:absolute; top:0rpx; left:0rpx; width:100%; padding:40px 0;'>
+        <view class="page__title" style='color:#fff; text-align:center;'>MBTI职业性格测试报告</view>
+        <view class="page__desc" style='color:#BEE3DE; text-align:center;'>根据测试分析得出，您属于{{test_title}}类型</view>
     </view>
     <view class="page__bd" hidden='{{!finish}}'>
         <view class="weui-panel weui-panel_access">
             <view class="weui-panel__bd">
                 <view class="weui-media-box weui-media-box_text">
-                    <view class="weui-media-box__title weui-media-box__title_in-text">性格介绍：</view>
+                    <view class="weui-media-box__title weui-media-box__title_in-text ldq-color">性格介绍：</view>
                     <view class="weui-media-box__desc">{{test1}}</view>
                 </view>
                 <view class="weui-media-box weui-media-box_text">
-                    <view class="weui-media-box__title weui-media-box__title_in-text">适合领域：</view>
+                    <view class="weui-media-box__title weui-media-box__title_in-text ldq-color">适合领域：</view>
                     <view class="weui-media-box__desc">{{test2}}</view>
                 </view>
                 <view class="weui-media-box weui-media-box_text">
-                    <view class="weui-media-box__title weui-media-box__title_in-text">适合职业：</view>
+                    <view class="weui-media-box__title weui-media-box__title_in-text ldq-color">适合职业：</view>
                     <view class="weui-media-box__desc">{{test3}}</view>
                 </view>
                 <view class="weui-media-box weui-media-box_text">
-                    <view class="weui-media-box__title weui-media-box__title_in-text">专科专业推荐：</view>
-                    <view class="weui-media-box__desc">{{test4}}</view>
-                    <view class="weui-media-box__title weui-media-box__title_in-text" style='margin-top: 20rpx'>本科专业推荐：</view>
+                    <view class="weui-media-box__title weui-media-box__title_in-text ldq-color">本科专业推荐：</view>
                     <view class="weui-media-box__desc">{{test5}}</view>
+                    <view class="weui-media-box__title weui-media-box__title_in-text ldq-color" style='margin-top: 20rpx'>专科专业推荐：</view>
+                    <view class="weui-media-box__desc">{{test4}}</view>
+                </view>
+                <view hidden="{{MBTI_TYPE == 'g57h70o2c8'}}">
+                    <view class="weui-media-box weui-media-box_text">
+                        <view class="weui-media-box__title weui-media-box__title_in-text ldq-color">团队中的表现：</view>
+                        <view class="weui-media-box__desc">{{CONTRIBUTION}}</view>
+                    </view>
+                    <view class="weui-media-box weui-media-box_text">
+                        <view class="weui-media-box__title weui-media-box__title_in-text ldq-color">管理风格：</view>
+                        <view class="weui-media-box__desc">{{LEADERSHIP}}</view>
+                    </view>
+                    <view class="weui-media-box weui-media-box_text">
+                        <view class="weui-media-box__title weui-media-box__title_in-text ldq-color">学习风格：</view>
+                        <view class="weui-media-box__desc">{{STUDY}}</view>
+                    </view>
+                    <view class="weui-media-box weui-media-box_text">
+                        <view class="weui-media-box__title weui-media-box__title_in-text ldq-color">解决问题的方式：</view>
+                        <view class="weui-media-box__desc">{{SOLVE}}</view>
+                    </view>
+                    <view class="weui-media-box weui-media-box_text">
+                        <view class="weui-media-box__title weui-media-box__title_in-text ldq-color">适合的工作环境：</view>
+                        <view class="weui-media-box__desc">{{ENVIRONMENT}}</view>
+                    </view>
+                    <view class="weui-media-box weui-media-box_text">
+                        <view class="weui-media-box__title weui-media-box__title_in-text ldq-color">潜在缺点：</view>
+                        <view class="weui-media-box__desc">{{BLEMISH}}</view>
+                    </view>
+                    <view class="weui-media-box weui-media-box_text">
+                        <view class="weui-media-box__title weui-media-box__title_in-text ldq-color">发展建议：</view>
+                        <view class="weui-media-box__desc">{{PROPOSAL}}</view>
+                    </view>
                 </view>
             </view>
         </view>
