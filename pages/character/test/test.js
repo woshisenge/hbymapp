@@ -33,7 +33,7 @@ Page({
       })
     }
     // 获取问题
-    this.getQuestion(29)
+    this.getQuestion(1)
   },
   submit: function (e) {
     // 传回答案
