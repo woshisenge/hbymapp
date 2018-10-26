@@ -49,6 +49,11 @@ Page({
     })
     
   },
+  gdDialing:function () {
+    wx.makePhoneCall({
+      phoneNumber: '0311-69053126'
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -80,3 +80,65 @@
   border-radius: 3px;
   padding: 0 5px;
 }
+.gd_Personal_Center{
+  background-color: #fff;
+  border-radius:5px;
+  margin-top: 150rpx;
+  width: 90%;
+  height: 200rpx;
+  box-shadow: 0 2px 15px 5px rgba(8, 131, 118, 0.3);
+  position: relative;
+}
+.gd_portrait{
+  background-color: #fff; 
+  position: absolute;
+  left: 50%;
+  top: -60rpx;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  overflow: hidden;
+}
+.gd_portrait image {
+  border: 5px solid #fff;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  box-shadow: 0 1px 5px 3px rgba(8, 131, 118, 0.3);
+}
+.gd_star{
+  border-radius: 150rpx;
+  position: absolute;
+  top: -110rpx;
+  right: 0px;
+  background-color: #45CFC0;
+  height: 40rpx;
+  padding: 0 10rpx 0 5rpx;
+}
+.gd_star image{
+  margin-top: -7rpx;
+  height: 100%;
+  vertical-align: middle;
+}
+.vip-style{
+  display: inline-block;
+  height: 40rpx;
+  line-height: 40rpx;
+  padding: 0 5rpx 0 3rpx;
+}
+.ldq-flex {
+  display: flex;
+}
+.ldq-child {
+  text-align: center;
+  display: block;
+  flex: 1;
+  justify-content: center;
+}
+.gd-child{
+  flex: 2;
+}
+.gd-over{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}

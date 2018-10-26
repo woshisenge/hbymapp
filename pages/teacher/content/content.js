@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    PHONE_STU: '无',
+    PHONE_STU: '',
     ISBRANCHE: '无',
     LEARNING_TEND: '无',
     REGIONAL_TEND: '无',
@@ -21,11 +21,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var userInfo = wx.getStorageSync('userInfo')
     console.log(options)
     this.setData({
       id:options.id,
       headurl: options.headurl,
-      nickname: options.nickname
+      nickname: options.nickname,
+      PHONE_STU: userInfo.PHONE,
     })
   },
   bindName:function(e){
@@ -92,7 +94,81 @@ Page({
             }
           })
         } else {
-          console.log(123)
+          util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: '1' }, "POST", true, function (res) {
+            console.log(res)
+            if (res.errorMessage == "请君登录账号！") {
+              wx.showModal({
+                content: '请重新登录',
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.redirectTo({
+                      url: '/pages/login/login'
+                    })
+                  }
+                }
+              })
+            }
+            // return false
+            var OUT_TRADE_NO = res.OUT_TRADE_NO
+            var nonceStr = res.prePayReSign.nonceStr;
+            var packageStr = res.prePayReSign.packageStr;
+            var paySign = res.prePayReSign.paySign;
+            var signType = res.prePayReSign.signType;
+            var timeStamp = res.prePayReSign.timeStamp;
+            wx.requestPayment({
+              timeStamp: timeStamp,
+              nonceStr: nonceStr,
+              package: packageStr,
+              signType: signType,
+              paySign: paySign,
+              success: function (obj) {
+                util.sendRequest("/wechat/applet/user/activate_lsVSldq", {}, "POST", true, function (ldqRes) {
+                  console.log(ldqRes)
+                  if (ldqRes.hasErrors) {
+                    wx.showModal({
+                      content: ldqRes.errorMessage,
+                      showCancel: false,
+                      success: function (res) {
+                        if (res.confirm) {
+                        }
+                      }
+                    })
+                    return false;
+                  }
+                  if (ldqRes.data == '10004') {
+                    wx.showModal({
+                      content: '支付失败',
+                      showCancel: false,
+                      success: function (res) {
+                        if (res.confirm) {
+                        }
+                      }
+                    })
+                    return false
+                  }
+                  if (ldqRes.data == '10000') {
+                    // 更新session  
+                    var userInfo = wx.getStorageSync('userInfo')
+                    userInfo.VIP = '预约专家'
+                    wx.setStorageSync('userInfo', userInfo)
+                    // 弹窗提示
+                    wx.showModal({
+                      content: '支付成功',
+                      showCancel: false,
+                      success: function (res) {
+                        if (res.confirm) {
+                          wx.switchTab({
+                            url: '/pages/index/index'
+                          })
+                        }
+                      }
+                    })
+                  }
+                })
+              },
+            })
+          })
         }
       }
     })

@@ -9,6 +9,13 @@
     <text class="text1">编辑：铭邦小哥</text>　|　
     <text class="text2">时间：{{content.MODIFYTIME}}</text>
   </view>
+    <scroll-view class='gd_dialing' bindtap='gdDialing'>
+      <!-- <view>
+        <text style='color:#333;font-size:16rpx;'>客服电话:</text>
+        <text style='font-size:16rpx;'>0311-69053126</text>
+      </view> -->
+    </scroll-view> 
+  
   <view class="center">
    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>

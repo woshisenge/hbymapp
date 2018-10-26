@@ -10,3 +10,9 @@
   font-size:25rpx;
   color:#999999;
 }
+.gd_dialing{
+  position:fixed;
+  right:50rpx;
+  bottom:100rpx;
+  width:100rpx;
+}

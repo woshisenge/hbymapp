@@ -110,44 +110,80 @@ Page({
 			var paySign = res.prePayReSign.paySign;
 			var signType = res.prePayReSign.signType;
 			var timeStamp = res.prePayReSign.timeStamp;
+      console.log(1111)
 			wx.requestPayment({
 				timeStamp: timeStamp,
 				nonceStr: nonceStr,
-				package: packageStr,
+        package: packageStr,
 				signType: signType,
 				paySign: paySign,
 				success: function (obj) {
-					util.sendRequest("/wechat/applet/user/activate", { USER_ID: that.data.user_id, OUT_TRADE_NO: OUT_TRADE_NO }, "POST", false, function (obj) {
-						wx.showModal({
-							content: '支付完成',
-							showCancel: false,
-							confirmText: "确定",
-							success: function (res) {
-								// util.sendRequest("/wechat/applet/user/activate_lsVSldq", {}, "POST", false, function (ldqRes) {
-								// 	if (ldqRes.hasErrors) {
-								// 		showError(ldqRes.errorMessage);
-								// 		return false;
-								// 	}
-								// 	console.log(ldqRes)
-								// })
-								// 更新session
-								var userInfo = wx.getStorageSync('userInfo')
-								if (a == '13600') {
-									userInfo.VIP = '初级会员'
-								}
-								if (a == '29800') {
-									userInfo.VIP = '高级会员'
-								}
-								wx.setStorageSync('userInfo', userInfo)
-								if (res.confirm) {
-									wx.navigateBack({
-										delta: 1,
-									})
-								}
-							}
-						})
-					});
+          console.log(445566, obj)
+          console.log(2222)
+          util.sendRequest("/wechat/applet/user/activate_lsVSldq", {}, "POST", true, function (ldqRes) {
+            console.log(ldqRes)
+            if (ldqRes.hasErrors) {
+              wx.showModal({
+                content: ldqRes.errorMessage,
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                  }
+                }
+              })
+              return false;
+            }
+            if (ldqRes.data == '10004') {
+              wx.showModal({
+                content: '支付失败',
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                  }
+                }
+              })
+              return false
+            }
+            if (ldqRes.data == '10000') {
+              // 更新session  
+              var userInfo = wx.getStorageSync('userInfo')
+              if (a == '1') {
+                userInfo.VIP = '初级会员'
+              }
+              if (a == '29800') {
+                userInfo.VIP = '高级会员'
+              }
+              wx.setStorageSync('userInfo', userInfo)
+              // 弹窗提示
+              wx.showModal({
+                content: '支付成功',
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.switchTab({
+                      url: '/pages/index/index'
+                    })
+                  }
+                }
+              })
+            }
+          })
+
+          // 老接口
+                // util.sendRequest("/wechat/applet/user/activate", { USER_ID: that.data.user_id, OUT_TRADE_NO: OUT_TRADE_NO }, "POST", false, function (obj) {
+					// 	wx.showModal({
+					// 		content: '支付完成',
+					// 		showCancel: false,
+					// 		confirmText: "确定",
+					// 		success: function (res) {
+          //       console.log('115599')
+					// 		}
+					// 	})
+					// });
 				},
+        fail (res) {
+          console.log(19988,res)
+        }
 			})
 		},
 		function(res){

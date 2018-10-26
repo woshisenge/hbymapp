@@ -5,6 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    src1: util.setStaticUrl("/static/ymplant/ldq-img/gd_star.png"),
+    src: util.setStaticUrl("/static/ymplant/ldq-img/gd_test.jpg"),
+    //顶部图片
 		user_id: '',
     //用户头像
     headurl:"./img/nohead.png",
@@ -21,7 +24,9 @@ Page({
 		// 职位
 		jobtype: '',
     //VIP
-    vip:''
+    vip:'',
+    //工作年限
+    jobdate:''
   },
 
   /**
@@ -45,11 +50,14 @@ Page({
 			})
 		}
 		if (userInfo.ROLE_ID == 'm9bxdt9g36') {
+      console.log(util.setStaticUrl(userInfo.HEADURL))
 			this.setData({
 				nickname: userInfo.NICKNAME || '',
 				role_id: userInfo.ROLE_ID || '',
 				school_name: userInfo.SCHOOL_NAME || '',
-				jobtype: userInfo.JOBTYPE || ''
+				jobtype: userInfo.JOBTYPE || '',
+        headurl: util.setStaticUrl(userInfo.HEADURL),
+        jobdate: userInfo.JOBDATE,
 			})
 		}
   },
