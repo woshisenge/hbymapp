@@ -83,7 +83,7 @@
 .gd_Personal_Center{
   background-color: #fff;
   border-radius:5px;
-  margin-top: 150rpx;
+  margin-top: 160rpx;
   width: 90%;
   height: 200rpx;
   box-shadow: 0 2px 15px 5px rgba(8, 131, 118, 0.3);
@@ -112,18 +112,18 @@
   right: 0px;
   background-color: #45CFC0;
   height: 40rpx;
-  padding: 0 10rpx 0 5rpx;
+  padding: 0 10rpx 0 0;
 }
 .gd_star image{
-  margin-top: -7rpx;
+   vertical-align:top;
   height: 100%;
-  vertical-align: middle;
 }
 .vip-style{
   display: inline-block;
   height: 40rpx;
   line-height: 40rpx;
   padding: 0 5rpx 0 3rpx;
+  vertical-align: top; 
 }
 .ldq-flex {
   display: flex;

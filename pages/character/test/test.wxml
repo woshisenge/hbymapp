@@ -10,15 +10,25 @@
             <view class="weui-form-preview__hd">
                 <!-- <view class="weui-form-preview__label">哪一个答案能最贴切的描绘你一般的感受或行为？</view> -->
                 <view class="weui-form-preview__value_in-hd" style='font-size: 30rpx;text-align: left'>哪一个答案能最贴切的描绘你一般的感受或行为？</view>
+                <view class="page__bd page__bd_spacing">
+                    <view class="weui-progress">
+                        <view class="weui-progress__bar">
+                            <progress percent="{{curr_comp}}" stroke-width="3" />
+                        </view>
+                        <view style='margin-left: 15rpx;'>
+                          {{curr_id}} / {{curr_num}}
+                        </view>
+                    </view>
+                </view>
             </view>
             <view class="weui-form-preview__bd">
                 <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">{{curr_id}}、{{curr_title}}</view>
+                    <view class="weui-form-preview__label" style='color:#09bca8'>{{curr_id}}、{{curr_title}}</view>
                 </view>
                 <view class="weui-form-preview__item">
                     <view class="weui-form-preview__label">A、{{curr_A}}</view>
                 </view>
-                <view class="weui-form-preview__item">
+                <view class="weui-form-preview__item gd-weui-form-preview__item">
                     <view class="weui-form-preview__label">B、{{curr_B}}</view>
                 </view>
             </view>

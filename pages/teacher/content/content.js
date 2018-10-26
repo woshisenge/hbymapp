@@ -94,7 +94,7 @@ Page({
             }
           })
         } else {
-          util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: '1' }, "POST", true, function (res) {
+          util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: '160000' }, "POST", true, function (res) {
             console.log(res)
             if (res.errorMessage == "请君登录账号！") {
               wx.showModal({
@@ -148,10 +148,13 @@ Page({
                     return false
                   }
                   if (ldqRes.data == '10000') {
-                    // 更新session  
-                    var userInfo = wx.getStorageSync('userInfo')
-                    userInfo.VIP = '预约专家'
-                    wx.setStorageSync('userInfo', userInfo)
+                    util.sendRequest("/wechat/applet/user/wechat_getsession", {}, "POST", true, function (res) {
+                      if (res.hasErrors) {
+                        console.log(res.errorMessage);
+                        return false;
+                      }
+                      wx.setStorageSync('userInfo', res)
+                    })
                     // 弹窗提示
                     wx.showModal({
                       content: '支付成功',

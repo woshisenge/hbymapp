@@ -146,14 +146,13 @@ Page({
             }
             if (ldqRes.data == '10000') {
               // 更新session  
-              var userInfo = wx.getStorageSync('userInfo')
-              if (a == '1') {
-                userInfo.VIP = '初级会员'
-              }
-              if (a == '29800') {
-                userInfo.VIP = '高级会员'
-              }
-              wx.setStorageSync('userInfo', userInfo)
+              util.sendRequest("/wechat/applet/user/wechat_getsession", {}, "POST", true, function (res) {
+                if (res.hasErrors) {
+                  console.log(res.errorMessage);
+                  return false;
+                }
+                wx.setStorageSync('userInfo', res)        
+              })
               // 弹窗提示
               wx.showModal({
                 content: '支付成功',
