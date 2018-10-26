@@ -223,6 +223,19 @@ Page({
   // },
   issue:function(e){
     var id = e.currentTarget.id;
+    var userInfo = wx.getStorageSync('userInfo')
+    if (!userInfo.VIP) {
+      wx.showModal({
+        content: '该功能仅限会员使用',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            util.navigateTo("/pages/person/improve/improve", { id: '3', user_id: userInfo.USER_ID })
+          }
+        }
+      })
+      return false
+    }
 		util.navigateTo("/pages/teacher/issue_content/issue_content", { ASKS_ANSWERS_ID:id})
   },
   quiz:function(){
