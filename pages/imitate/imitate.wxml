@@ -15,7 +15,10 @@
       </view>
   </view>
   <view class="weui-tab__panel">
-      <view class="" hidden="{{list1.length == 5}}">
+      <view class="gd-to-index" hidden="{{list1.length == 5}}">
+        请在官网进行生成志愿表的操作,官网地址:www.gaokgh.com.cn
+      </view>
+      <view class="" hidden="{{true}}">
 				<form bindsubmit='b1Submit' hidden="{{activeIndex != 0}}">
 					<view class="weui-cells weui-cells_after-title">
 							<view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='selSchool' id='A'>
@@ -65,7 +68,14 @@
 					<button class="weui-btn" type="warn" bindtap="delB1">删除本一志愿</button>
 				</view>
 			</view>
-      <view class="" hidden="{{list2.length == 10}}">
+      <view class="gd-to-index" hidden="{{list2.length == 10}}">
+        <text>
+        请在官网进行生成志愿表的操作
+        </text>
+        <view></view>
+        官网地址:www.gaokgh.com.cn
+      </view>
+      <view class="" hidden="{{true}}">
         <form bindsubmit='b2Submit' hidden="{{activeIndex != 1}}">
           <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='selSchool' id='A'>

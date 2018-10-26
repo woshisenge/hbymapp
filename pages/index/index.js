@@ -91,6 +91,7 @@ Page({
     utils.navigateTo("/pages/consult/consult")
   },
   analog:function(){
+    utils.ldqCheckLogin()
 		utils.navigateTo("/pages/imitate/imitate");
 		return false
     var that = this;
