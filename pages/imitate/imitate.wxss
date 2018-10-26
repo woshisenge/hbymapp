@@ -84,6 +84,3 @@ page{
   color: #f00;
   font-size: 38rpx;
 }
-.gd-to-index text{
-  color: #888;
-}

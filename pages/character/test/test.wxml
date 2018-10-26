@@ -23,13 +23,13 @@
             </view>
             <view class="weui-form-preview__bd">
                 <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label" style='color:#09bca8'>{{curr_id}}、{{curr_title}}</view>
+                    <view class="weui-form-preview__label" style='color:#09bca8; font-size:34rpx;'>{{curr_id}}、{{curr_title}}</view>
                 </view>
                 <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">A、{{curr_A}}</view>
+                    <view class="weui-form-preview__label" style='font-size:28rpx;'>A、{{curr_A}}</view>
                 </view>
                 <view class="weui-form-preview__item gd-weui-form-preview__item">
-                    <view class="weui-form-preview__label">B、{{curr_B}}</view>
+                    <view class="weui-form-preview__label" style='font-size:28rpx;'>B、{{curr_B}}</view>
                 </view>
             </view>
         </view>
