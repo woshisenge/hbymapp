@@ -31,7 +31,7 @@
       </view>
       <view class='navigation' bindtap="analog">
         <image class="tpia" src='/images/05.png'></image>
-        <view class='navigation-text'>我的志愿</view>
+        <view class='navigation-text'>查看志愿</view>
       </view>
       <view class='navigation' bindtap="intelligence">
         <image class="tpia" src='/images/02.png'></image>

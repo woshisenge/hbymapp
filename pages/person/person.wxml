@@ -69,7 +69,7 @@
 				<view class="weui-cell__hd">
 					<image src="./img/vip2.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
 				</view>
-				<view class="weui-cell__bd">我的志愿</view>
+				<view class="weui-cell__bd">查看志愿</view>
 			</view>
 		</navigator>
 	</view>
