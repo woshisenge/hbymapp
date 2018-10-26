@@ -20,7 +20,7 @@ Page({
 		var userInfo = wx.getStorageSync('userInfo')
 		// console.log(userInfo)
 		// 判断是否登录
-		util.checkLogin()
+		util.ldqCheckLogin()
 		this.setData({
 			oldPhone: userInfo.PHONE
 		})
