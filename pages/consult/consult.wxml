@@ -37,9 +37,11 @@
 <!-- 院校列表 -->
 <!-- <block wx:for="{{schools}}" wx:key="SCHOOL_ID" wx:for-item="school">  -->
 <view class='mb-biankuang'>
-<block wx:for="{{sc}}" wx:key="SCHOOL_ID" wx:for-item="sc"> 
+<block wx:for="{{sc}}" wx:key="SCHOOL_ID" wx:for-item="sc" wx:for-index="i"> 
   <!-- <view class="flex-wrps1" bindtap='teacher' data-id="{{school.SCHOOL_ID}}" > -->
   <view class="flex-wrps1" bindtap='teacher' data-id="{{sc.SCHOOL_ID}}">
+   <view class='gd_ranking'>{{i+1}}</view>
+   <view class='gd_ranking' wx:if="{{i > 2}}" style='background-color: #AAA;'>{{i+1}}</view>
     <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
       <view id='view1' class="weui-media-box__hd weui-media-box__hd_in-appmsg">
         <!-- <image class="weui-media-box__thumb" src="{{school.HEADURL}}" /> -->

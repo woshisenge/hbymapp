@@ -69,7 +69,7 @@ Page({
         curr_num: res.MBTICOUNT,
         curr_comp: res.MBTI_ID / res.MBTICOUNT * 100
       })
-      console.log(this.data.curr_comp)
+      // console.log(this.data.curr_comp)
       if (res.data == '答题完毕等结果') {
         util.sendRequest("/plant/character/api/get_result", {}, "POST", false, (res) => {
           if (res.hasErrors) {
