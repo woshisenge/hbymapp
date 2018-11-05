@@ -17,7 +17,8 @@ Page({
     check:true,
     hidden:true,
     school_id:"",
-    MAJORTYPE: "r6j4mh69be"
+    MAJORTYPE: "r6j4mh69be",
+    id:"",
   },
 
   tabClick: function (e) {
@@ -58,16 +59,20 @@ Page({
         rule:res.data
       })
     });
-    util.sendRequest_s("/wechat/applet/major/getschoolmajorandplan", { SCHOOL_ID: id}, "POST", true, function (res) {
+    util.sendRequest_s("/plant/school/api/getschoolmajorandplan", { SCHOOL_ID: id}, "POST", true, function (res) {
       that.setData({
-        liberal:res.WEN,
-        science:res.Li
+        B1_Li: res.B1_Li,
+        B1_Wen: res.B1_Wen,
+        B2_Li: res.B2_Li,
+        B2_Wen: res.B2_Wen
       })
+      console.log(res)  
     })
     util.sendRequest_s("/wechat/applet/dictionary/get", { code:"MAJORTYPE"},"POST",true,function(res){
       that.setData({
-        array:res.data                
+        array:res.data          
       })
+      console.log(123, res.data)
     })
     util.sendRequest_s("/wechat/applet/school/getschoolscore", { SCHOOL_ID: id, MAJORTYPE_ID: 'r6j4mh69be'}, "POST", true, function (res) {
       var grade = res.data;
@@ -122,6 +127,7 @@ Page({
         grade: res.data,
         MAJORTYPE: id
       })
+      console.log(11,id)
     })
     that.setData({
       index: e.detail.value

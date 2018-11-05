@@ -180,11 +180,12 @@ picker{
   width:100%;
   padding:15rpx 0;
   font-size:28rpx;
-  display: flex;
+  /* display: flex; */
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border-top:1rpx solid #EEEEEE;
+  position: relative;
 }
 .plan-left{
   width:82%;
@@ -197,4 +198,26 @@ picker{
 .left-bottom{
   margin-top:10rpx;
   color:#666;
+}
+.gd_batch{
+  margin-right: 20rpx;
+  border: 1px solid #F36C70;
+  border-radius: 5rpx;
+  background-color: #FEF0F0;
+  color: #F66C6B;
+  position: absolute;
+  top:15rpx;
+  right: 20rpx;
+}
+.gd_schedule{
+  text-align: center;
+}
+.gd_schedule_text{
+  width: 20%;
+  display: inline-block;
+  /* border: 1px solid #666; */
+  margin-top: 20rpx;
+}
+.gd_font-color{
+  color: #777;
 }
