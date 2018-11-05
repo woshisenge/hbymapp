@@ -61,12 +61,10 @@ Page({
     });
     util.sendRequest_s("/plant/school/api/getschoolmajorandplan", { SCHOOL_ID: id}, "POST", true, function (res) {
       that.setData({
-        B1_Li: res.B1_Li,
-        B1_Wen: res.B1_Wen,
-        B2_Li: res.B2_Li,
-        B2_Wen: res.B2_Wen
+        Li:res.B1_Li.concat(res.B2_Li),
+        Wen:res.B1_Wen.concat(res.B2_Wen),
       })
-      console.log(res)  
+      console.log(res)
     })
     util.sendRequest_s("/wechat/applet/dictionary/get", { code:"MAJORTYPE"},"POST",true,function(res){
       that.setData({
@@ -127,17 +125,26 @@ Page({
         grade: res.data,
         MAJORTYPE: id
       })
-      console.log(11,id)
     })
     that.setData({
       index: e.detail.value
     })
   },
+  // gdSplicing:function(){
+  //   var that = this
+  //   var Li = this.data.Li;
+  //   var Wen = this.data.Wen;
+  //   that.setData({
+  //   Li : B1_Li.concat(B1_Li),
+  //   Wen : B1_Wen.concat(B2_Wen)
+  //   })
+  //   console.log(111,Li)
+  //   console.log(111,B1_Li)    
+  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
 
   /**
