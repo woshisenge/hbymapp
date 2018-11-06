@@ -127,6 +127,17 @@ Page({
       })
     })
   },
+  //跳转专家问答页
+  test: function () {
+    // util.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function (res) {
+    //   if (!res.data) {
+    //     utils.showError("请先登录账号");
+    //     return false;
+    //   }
+    util.navigateTo("/pages/teacher/teacher")
+    // });
+    // util.navigateTo("/pages/activity/activity")
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -44,7 +44,7 @@
     <image src="{{src}}" mode='widthFix' style='width:100%; margin-bottom:-12rpx;'></image>
     <view class="page__hd" style='position:absolute; top:0rpx; left:0rpx; width:100%; padding:40px 0;'>
         <view class="page__title" style='color:#fff; text-align:center;'>MBTI职业性格测试报告</view>
-        <view class="page__desc" style='color:#BEE3DE; text-align:center;'>根据测试分析得出，您属于{{test_title}}类型</view>
+        <view class="page__desc" style='color:#ddd; text-align:center;'>根据测试分析得出，您属于{{test_title}}类型</view>
     </view>
     <view class="page__bd" hidden='{{!finish}}'>
         <view class="weui-panel weui-panel_access">
@@ -97,6 +97,7 @@
                         <view class="weui-media-box__desc">{{PROPOSAL}}</view>
                     </view>
                 </view>
+                <button style='width:30%;margin-bottom:15px;' class="weui-btn" type="primary" bindtap='test'>咨询专家</button>
             </view>
         </view>
     </view>

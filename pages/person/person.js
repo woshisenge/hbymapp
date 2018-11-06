@@ -102,7 +102,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    
+    //this.getUserInfo();
   },
   /**
    * 获取用户基本信息
@@ -126,10 +126,12 @@ Page({
         vip: vip
       })
     })
-    util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res)     {      
+    util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res) {  
+      console.log(951,res)
       var role=res.data
       if(role==1){
         util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (obj) {
+          console.log(159,obj)
           that.setData({
             logo: util.setStaticUrl(obj.complete.HEADURL),
             region: obj.complete.EXAMAREA_VALUE ? obj.complete.EXAMAREA_VALUE : "暂无",

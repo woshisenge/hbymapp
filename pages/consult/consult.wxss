@@ -282,10 +282,12 @@ button[type="primary"] {
 }
 .gd_ranking{
   border-radius: 3px;
+  font-size: 26rpx;
+  line-height: 44rpx;
   text-align: center;
   color: #fff;
-  width: 20px;
-  height: 20px;
+  width: 44rpx;
+  height: 44rpx;
   background-color: #FA2B23;
   position: absolute;
   top: 50%;
