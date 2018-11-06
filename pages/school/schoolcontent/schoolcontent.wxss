@@ -215,9 +215,12 @@ picker{
 .gd_schedule_text{
   width: 20%;
   display: inline-block;
-  /* border: 1px solid #666; */
-  margin-top: 20rpx;
+  padding: 10rpx 0;
+  border-bottom: 1px solid #ddd;
 }
 .gd_font-color{
   color: #777;
+}
+.gd-border{
+  border-bottom: none;
 }

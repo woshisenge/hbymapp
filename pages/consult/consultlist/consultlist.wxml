@@ -120,22 +120,153 @@
                 <view class="weui-cell__bd">招生计划</view>
                 <view class="weui-cell__ft"></view>
             </view>
-            <view class='plan' wx:for="{{liberal}}" wx:key="" wx:if="{{MAJORTYPE == 'gjv044girc'}}">
+
+            <!-- 文科开始 -->
+            <block wx:if="{{MAJORTYPE == 'gjv044girc'}}">
+                <view class='plan' style='heigth:auto;' wx:for="{{Wen}}" wx:key="">
+                  <view class='plan-left' style='margin-bottom:10rpx;'>
+                    <view class='left-top'>
+                      <view style='width:70%;'>{{item.MJNAME}}</view>
+                      <view class='gd_batch'>
+                        <text wx:if="{{item.ARRANGMENT_ID=='hjj4e5vr0c'}}">本科一批</text>
+                        <text wx:else="">本科二批</text>
+                      </view>
+                    </view>
+                  </view>
+                  <view style='width:100%;'>
+                    <view class='gd_schedule' style='display:flew;'>
+                      <text class='gd_schedule_text gd_font-color'>年份</text>
+                      <text class='gd_schedule_text gd_font-color'>2018</text>
+                      <text class='gd_schedule_text gd_font-color'>2017</text>
+                      <text class='gd_schedule_text gd_font-color'>2016</text> 
+                    </view>
+                    <view class='gd_schedule' style='display:flew;'>
+                      <text class='gd_schedule_text gd_font-color'>最高分</text>
+                      <text class='gd_schedule_text' style='color:#78C64F' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.MAXSCORE}}</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<2}}">-</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<3}}">-</text> 
+                    </view>
+
+
+                    <view class='gd_schedule' style='display:flew;'>
+                      <text class='gd_schedule_text gd_font-color'>最低分</text>
+                      <text class='gd_schedule_text' style='color:#F36B6D' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.MINSCORE}}</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<2}}">-</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<3}}">-</text> 
+                    </view>
+
+
+                    <view class='gd_schedule' style='display:flew;'>
+                      <text class='gd_schedule_text gd_font-color'>平均分</text>
+                      <text class='gd_schedule_text' style='color:#E3A337' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.AVESCORE}}</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<2}}">-</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<3}}">-</text> 
+                    </view>
+
+
+                    <view class='gd_schedule' style='display:flew;'>
+                      <text class='gd_schedule_text gd_font-color'>计划数</text>
+                      <text class='gd_schedule_text' style='color:#3F9DFD' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.PLANCOUNT}}</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<2}}">-</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<3}}">-</text> 
+                    </view>
+
+
+                    <view class='gd_schedule' style='display:flew;'>
+                      <text class='gd_schedule_text gd_font-color gd_border'>录取数</text>
+                      <text class='gd_schedule_text gd_border' style='color:#F26DF1' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.ENTERCOUNT}}</text>
+                      <text class='gd_schedule_text gd_border' wx:if="{{item.mjscores.length<2}}">-</text>
+                      <text class='gd_schedule_text gd_border' wx:if="{{item.mjscores.length<3}}">-</text> 
+                    </view>
+                  </view>
+                </view>
+            </block>
+              <!-- 文科结束  理科开始 -->
+            <block wx:if="{{MAJORTYPE == 'r6j4mh69be'}}">
+                <view class='plan gd_hide' style='heigth:auto;' wx:for="{{Li}}" wx:key="">
+                  <view class='plan-left' style='margin-bottom:10rpx;'>
+                    <view class='left-top'>
+                      <view style='width:70%;'>{{item.MJNAME}}</view>
+                       <view class='gd_batch'>
+                        <text wx:if="{{item.ARRANGMENT_ID=='hjj4e5vr0c'}}">本科一批</text>
+                        <text wx:else="">本科二批</text>
+                       </view> 
+                    </view>
+                  </view>
+                  <view style='width:100%;'>
+                    <view class='gd_schedule' style='display:flew;'>
+                      <text class='gd_schedule_text gd_font-color'>年份</text>
+                      <text class='gd_schedule_text gd_font-color'>2018</text>
+                      <text class='gd_schedule_text gd_font-color'>2017</text>
+                      <text class='gd_schedule_text gd_font-color'>2016</text> 
+                    </view>
+                    <view class='gd_schedule' style='display:flew;'>
+                      <text class='gd_schedule_text gd_font-color'>最高分</text>
+                      <text class='gd_schedule_text' style='color:#78C64F' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.MAXSCORE}}</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<2}}">-</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<3}}">-</text> 
+                    </view>
+
+
+                    <view class='gd_schedule' style='display:flew;'>
+                      <text class='gd_schedule_text gd_font-color'>最低分</text>
+                      <text class='gd_schedule_text' style='color:#F36B6D' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.MINSCORE}}</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<2}}">-</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<3}}">-</text> 
+                    </view>
+
+
+                    <view class='gd_schedule' style='display:flew;'>
+                      <text class='gd_schedule_text gd_font-color'>平均分</text>
+                      <text class='gd_schedule_text' style='color:#E3A337' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.AVESCORE}}</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<2}}">-</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<3}}">-</text> 
+                    </view>
+
+
+                    <view class='gd_schedule' style='display:flew;'>
+                      <text class='gd_schedule_text gd_font-color'>计划数</text>
+                      <text class='gd_schedule_text' style='color:#3F9DFD' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.PLANCOUNT}}</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<2}}">-</text>
+                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<3}}">-</text> 
+                    </view>
+
+
+                    <view class='gd_schedule' style='display:flew;'>
+                      <text class='gd_schedule_text gd_border gd_font-color'>录取数</text>
+                      <text class='gd_schedule_text gd_border' style='color:#F26DF1' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.ENTERCOUNT}}</text>
+                      <text class='gd_schedule_text gd_border' wx:if="{{item.mjscores.length<2}}">-</text>
+                      <text class='gd_schedule_text gd_border' wx:if="{{item.mjscores.length<3}}">-</text> 
+                    </view>
+                  </view>
+                </view>
+            </block> 
+            
+            <!-- 理科结束   -->
+
+            
+            <!-- <view class='plan' wx:for="{{liberal}}" wx:key="" wx:if="{{MAJORTYPE == 'gjv044girc'}}">
               <view class='plan-left'>
                 <view class='left-top'>{{item.MJNAME}}</view>
-                <view class='left-bottom'>2018年计划数：{{item.PLANCOUNT}}人　</view>
+                <view class='left-bottom'>2018年计划数：{{item.PLANCOUNT}}人　</view> -->
                 <!-- <view class='left-bottom' style="color:#666">学费：3500　学制：4年</view> -->
-              </view>
+              <!-- </view>
               <view class='plan-right'>文科</view>
-            </view>   
-            <view class='plan' wx:for="{{science}}" wx:key="" wx:if="{{MAJORTYPE == 'r6j4mh69be'}}">
+            </view> -->
+
+
+
+            <!-- <view class='plan' wx:for="{{science}}" wx:key="" wx:if="{{MAJORTYPE == 'r6j4mh69be'}}">
               <view class='plan-left'>
                 <view class='left-top'>{{item.MJNAME}}</view>
-                <view class='left-bottom'>2018年计划数：{{item.PLANCOUNT}}人</view>
+                <view class='left-bottom'>2018年计划数：{{item.PLANCOUNT}}人</view> -->
                 <!-- <view class='left-bottom' style="color:#666">学费：3500　学制：4年</view> -->
-              </view>
+              <!-- </view>
               <view class='plan-right'>理科</view>
-            </view>  
+            </view> -->
+
+
+
             </view> 
     </view>
     <view class="weui-tab__content" hidden="{{activeIndex != 1}}">

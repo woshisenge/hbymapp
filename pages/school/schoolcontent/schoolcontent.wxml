@@ -121,7 +121,7 @@
                <!-- 文科开始 -->
             <block wx:if="{{MAJORTYPE == 'gjv044girc'}}">
                 <view class='plan' style='heigth:auto;' wx:for="{{Wen}}" wx:key="">
-                  <view class='plan-left'>
+                  <view class='plan-left' style='margin-bottom:10rpx;'>
                     <view class='left-top'>
                       <view style='width:70%;'>{{item.MJNAME}}</view>
                       <view class='gd_batch'>
@@ -170,10 +170,10 @@
 
 
                     <view class='gd_schedule' style='display:flew;'>
-                      <text class='gd_schedule_text gd_font-color'>录取数</text>
-                      <text class='gd_schedule_text' style='color:#F26DF1' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.ENTERCOUNT}}</text>
-                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<2}}">-</text>
-                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<3}}">-</text> 
+                      <text class='gd_schedule_text gd_font-color gd-border'>录取数</text>
+                      <text class='gd_schedule_text gd-border' style='color:#F26DF1' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.ENTERCOUNT}}</text>
+                      <text class='gd_schedule_text gd-border' wx:if="{{item.mjscores.length<2}}">-</text>
+                      <text class='gd_schedule_text gd-border' wx:if="{{item.mjscores.length<3}}">-</text> 
                     </view>
                   </view>
                 </view>
@@ -181,7 +181,7 @@
               <!-- 文科结束  理科开始 -->
             <block wx:if="{{MAJORTYPE == 'r6j4mh69be'}}">
                 <view class='plan gd_hide' style='heigth:auto;' wx:for="{{Li}}" wx:key="">
-                  <view class='plan-left'>
+                  <view class='plan-left' style='margin-bottom:10rpx;'>
                     <view class='left-top'>
                       <view style='width:70%;'>{{item.MJNAME}}</view>
                        <view class='gd_batch'>
@@ -230,16 +230,16 @@
 
 
                     <view class='gd_schedule' style='display:flew;'>
-                      <text class='gd_schedule_text gd_font-color'>录取数</text>
-                      <text class='gd_schedule_text' style='color:#F26DF1' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.ENTERCOUNT}}</text>
-                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<2}}">-</text>
-                      <text class='gd_schedule_text' wx:if="{{item.mjscores.length<3}}">-</text> 
+                      <text class='gd_schedule_text gd_font-color gd-border'>录取数</text>
+                      <text class='gd_schedule_text gd-border' style='color:#F26DF1' wx:for-item="ite" wx:key="" wx:for="{{item.mjscores}}">{{ite.ENTERCOUNT}}</text>
+                      <text class='gd_schedule_text gd-border' wx:if="{{item.mjscores.length<2}}">-</text>
+                      <text class='gd_schedule_text gd-border' wx:if="{{item.mjscores.length<3}}">-</text> 
                     </view>
                   </view>
                 </view>
             </block> 
-            
             <!-- 理科结束   -->
+            <button style='width:30%' class="weui-btn" type="primary" bindtap='test'>咨询专家</button>
             </view> 
     </view>
     <view class="weui-tab__content" hidden="{{activeIndex != 1}}">

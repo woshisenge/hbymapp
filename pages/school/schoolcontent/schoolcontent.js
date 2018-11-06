@@ -87,6 +87,17 @@ Page({
       })
     })
   },
+  //跳转专家问答页
+  test: function () {
+    // util.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function (res) {
+    //   if (!res.data) {
+    //     utils.showError("请先登录账号");
+    //     return false;
+    //   }
+    util.navigateTo("/pages/teacher/teacher")
+    // });
+    // util.navigateTo("/pages/activity/activity")
+  },
   rule:function(){
     var that =this;
     that.setData({
@@ -130,17 +141,6 @@ Page({
       index: e.detail.value
     })
   },
-  // gdSplicing:function(){
-  //   var that = this
-  //   var Li = this.data.Li;
-  //   var Wen = this.data.Wen;
-  //   that.setData({
-  //   Li : B1_Li.concat(B1_Li),
-  //   Wen : B1_Wen.concat(B2_Wen)
-  //   })
-  //   console.log(111,Li)
-  //   console.log(111,B1_Li)    
-  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

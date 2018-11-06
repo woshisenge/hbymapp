@@ -60,7 +60,7 @@
 
 <!-- 导航 链接 结束 -->
 <!-- 公告 开始 -->
-  <view class='notices'> 
+  <!-- <view class='notices'> 
     <image class="icon" src='/images/notice.png'></image> 
     <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
       <block wx:for="{{notice}}" wx:key="title">
@@ -74,7 +74,7 @@
       </block>
     </swiper>
     <text class="more1" bindtap="noticemore">更多></text> 
-  </view> 
+  </view>  -->
 <!-- 公告 结束-->
 <!-- 2018.7.2 ldq 增加高招会连接 -->
 <!-- <view class="ldq-meeting" data-id="qh87fnrr44" bindtap="noticecontent"> -->

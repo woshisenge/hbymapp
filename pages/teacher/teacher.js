@@ -22,6 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //判断是否登录
     util.ldqCheckLogin()
 		var userInfo = wx.getStorageSync('userInfo')
 		util.sendRequest("/wechat/applet/expert/api/askpro_datas", {}, "POST", false, (res) => {

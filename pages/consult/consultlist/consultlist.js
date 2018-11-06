@@ -46,11 +46,12 @@ Page({
   onLoad: function (options) {
     var that = this;
     var id = options.a;
-    util.sendRequest("/wechat/applet/major/getschoolmajorandplan", { SCHOOL_ID: id }, "POST", true, function (res) {
+    util.sendRequest("/plant/school/api/getschoolmajorandplan", { SCHOOL_ID: id }, "POST", true, function (res) {
       that.setData({
-        liberal: res.WEN,
-        science: res.Li 
+        Li: res.B1_Li.concat(res.B2_Li),
+        Wen: res.B1_Wen.concat(res.B2_Wen),
       })
+      console.log(456,res)
     })
     util.sendRequest("/wechat/applet/complete_tea/get", { SCHOOL_ID: id }, "POST", true, function (res) {
       that.setData({
