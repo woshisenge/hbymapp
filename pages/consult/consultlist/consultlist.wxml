@@ -117,7 +117,7 @@
                 <view class="weui-cell__hd">
                     <image src="{{icon1}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
                 </view>
-                <view class="weui-cell__bd">招生计划<text style='font-size:12px; margin-left:15rpx;color:#f71d32'>(“0”：数据未更新 “-”：当前年度无计划)</text> </view>
+                <view class="weui-cell__bd">招生计划</view>
                 <view class="weui-cell__ft"></view>
             </view>
 
@@ -310,6 +310,10 @@
     </view>
   </view>
 </view>
+</view>
+<view>
+<view style='font-size:12px; margin-left:15rpx;color:#888'>“ 0 ”：数据未更新</view>
+  <view style='font-size:12px; margin-left:15rpx;color:#888'>“ - ”：当前年度无计划</view>
 </view>
 <view class="lines"></view>
 <!-- </scroll-view> -->
