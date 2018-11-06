@@ -243,7 +243,7 @@
             </block> 
             
             <!-- 理科结束   -->
-
+            <button style='width:30%' class="weui-btn" type="primary" bindtap='test'>咨询专家</button>
             
             <!-- <view class='plan' wx:for="{{liberal}}" wx:key="" wx:if="{{MAJORTYPE == 'gjv044girc'}}">
               <view class='plan-left'>

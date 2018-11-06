@@ -114,6 +114,17 @@ Page({
       checked: !that.data.checked
     })
   },
+  //跳转专家问答页
+  test: function () {
+    // util.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function (res) {
+    //   if (!res.data) {
+    //     utils.showError("请先登录账号");
+    //     return false;
+    //   }
+    util.navigateTo("/pages/teacher/teacher")
+    // });
+    // util.navigateTo("/pages/activity/activity")
+  },
   ruleContent: function (e) {
     var that = this;
     var id = e.currentTarget.id;
