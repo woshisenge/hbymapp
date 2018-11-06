@@ -73,6 +73,7 @@ var login = function () {
           // 把session_id存到本地
           wx.setStorageSync('session_id', obj.thirdSessionId)
           // console.log('session_id', wx.getStorageSync('session_id'))
+          
         });
       } else {
         showError("获取用户信息失败，请重试！")
@@ -89,14 +90,22 @@ var ldqCheckLogin = function () {
   login()
   // console.log(wx.getStorageSync('session_id'))
   sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
-    // console.log(222)
-    // console.log(res)
-    if (res.hasErrors && res.errorMessage == 'relogin') {
+     console.log(222)
+     console.log(res)
+    if (wx.getStorageSync('userInfo') == ''){
       wx.redirectTo({
         url: '/pages/login/login'
       })
       return false
     }
+
+
+    // if (res.hasErrors && res.errorMessage == 'relogin') {
+    //   wx.redirectTo({
+    //     url: '/pages/login/login'
+    //   })
+    //   return false
+    // }
   })
 }
 
