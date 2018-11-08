@@ -48,6 +48,7 @@ Page({
         school_id:res.SCHOOL_ID,
         address:res.ADDRESS
       })
+      console.log("gd:",res)
     })
     util.sendRequest_s("/wechat/applet/school/getintroduction", { SCHOOL_ID: id }, "POST", true, function (res) {
       var content = res.CONTENT;

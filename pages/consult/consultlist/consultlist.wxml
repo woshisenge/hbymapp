@@ -244,7 +244,12 @@
             
             <!-- 理科结束   -->
             <button style='width:30%' class="weui-btn" type="primary" bindtap='test'>咨询专家</button>
-            
+            <block wx:if="{{Wen.length != 0 || Li.length != 0}}">
+              <view style='padding:10px; color:#fa2131;'>
+                <view style='font-size:12px; margin-left:15rpx;'>“ 0 ”：数据未更新</view>
+                <view style='font-size:12px; margin-left:15rpx;'>“ - ”：当前年度无计划</view>
+              </view>
+            </block>
             <!-- <view class='plan' wx:for="{{liberal}}" wx:key="" wx:if="{{MAJORTYPE == 'gjv044girc'}}">
               <view class='plan-left'>
                 <view class='left-top'>{{item.MJNAME}}</view>
@@ -264,9 +269,6 @@
               <!-- </view>
               <view class='plan-right'>理科</view>
             </view> -->
-
-
-
             </view> 
     </view>
     <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
@@ -310,10 +312,6 @@
     </view>
   </view>
 </view>
-</view>
-<view>
-<view style='font-size:12px; margin-left:15rpx;color:#888'>“ 0 ”：数据未更新</view>
-  <view style='font-size:12px; margin-left:15rpx;color:#888'>“ - ”：当前年度无计划</view>
 </view>
 <view class="lines"></view>
 <!-- </scroll-view> -->
