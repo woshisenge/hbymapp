@@ -52,8 +52,8 @@
 			</view>
 		</block>
 	</view>
-	<view class="weui-btn-area">
+	<!-- <view class="weui-btn-area">
   	<button class="weui-btn" type="primary" bindtap='changeSchool'>换一批</button>
-  </view>
+  </view> -->
 </view>
 <view class='white'></view>

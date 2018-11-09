@@ -25,16 +25,16 @@
   <view bindtap='toProvince' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__bd">地区</view>
       <view class="weui-cell__ft weui-cell__ft_in-access">
-        <view>{{provinces != '' ? provinces : '不限'}}</view>
+        <view>{{provinces}}</view>
       </view>
   </view>
   <view bindtap='toSubjecttype' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__bd">院校类型</view>
       <view class="weui-cell__ft weui-cell__ft_in-access">
-        <view>{{subjecttypes != '' ? subjecttypes : '不限'}}</view>
+        <view>{{subjecttypes}}</view>
       </view>
   </view>
-  <view bindtap='toProperties' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <!-- <view bindtap='toProperties' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__bd">属性</view>
       <view class="weui-cell__ft weui-cell__ft_in-access">
         <view>{{properties != '' ? properties : '不限'}}</view> 
@@ -45,7 +45,7 @@
       <view class="weui-cell__ft weui-cell__ft_in-access">
         <view>{{majors != '' ? majors : '不限'}}</view>
       </view>
-  </view>
+  </view> -->
 </view>
 <view class="weui-btn-area">
 	<button class="weui-btn" type="primary" bindtap='result'>智能推荐</button>

@@ -4,14 +4,14 @@
     <view class="page__bd">
 		<view class="weui-cells weui-cells_after-title">
       <checkbox-group bindchange="serviceValChange">
-        <label class="weui-cell weui-check__label">
+        <!-- <label class="weui-cell weui-check__label">
           <checkbox class="weui-check" value="-1" checked="{{anyChecked}}"/>
           <view class="weui-cell__hd weui-check__hd_in-checkbox">
             <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!anyChecked}}"></icon>
             <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{anyChecked}}"></icon>
           </view>
           <view class="weui-cell__bd">不限</view>
-        </label>
+        </label> -->
         <label class="weui-cell weui-check__label" wx:for="{{mold}}" wx:key="DIC_ID">
           <checkbox class="weui-check" value="{{index}}" checked="{{item.checked}}"/>
           <view class="weui-cell__hd weui-check__hd_in-checkbox">

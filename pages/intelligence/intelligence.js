@@ -37,10 +37,18 @@ Page({
     });
   },
   result:function(){
-		if (!this.data.provinces_id || this.data.provinces_id.split(',').length > 5) {
-			util.showError("请选择 1 - 5 个城市")
-			return false
-		}
+    if ((!this.data.provinces_id && !this.data.subjecttypes_id) || this.data.provinces_id.split(',').length > 3 || this.data.subjecttypes_id.split(',').length > 2 ) { 
+      util.showError("请选择 1 - 3 个城市或1-2个院校类型")
+      return false
+     }
+		// if (!this.data.provinces_id || this.data.provinces_id.split(',').length > 3) {
+		// 	util.showError("请选择 1 - 3 个城市")
+		// 	return false
+		// }
+    // if (!this.data.subjecttypes_id || this.data.subjecttypes_id.split(',').length > 2) {
+    //   util.showError("请选择 1 - 2 个院校类型")
+    //   return false
+    // }
     var that = this;
 		var userInfo = wx.getStorageSync('userInfo')
 		var data = {
@@ -80,7 +88,7 @@ Page({
     })
 		// 类型
 		util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
-			// console.log(res)
+			console.log(111113,res)
       that.setData({
         // style: res.data
       })
