@@ -28,12 +28,12 @@
         <view>{{provinces}}</view>
       </view>
   </view>
-  <view bindtap='toSubjecttype' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+  <!-- <view bindtap='toSubjecttype' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__bd">院校类型</view>
       <view class="weui-cell__ft weui-cell__ft_in-access">
         <view>{{subjecttypes}}</view>
       </view>
-  </view>
+  </view> -->
   <!-- <view bindtap='toProperties' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__bd">属性</view>
       <view class="weui-cell__ft weui-cell__ft_in-access">
