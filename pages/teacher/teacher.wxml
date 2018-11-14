@@ -26,13 +26,17 @@
           <view class="weui-panel weui-panel_access">
             <view class="weui-panel__bd">
 							<view class="weui-media-box weui-media-box_text" wx:for="{{result}}" wx:key="" hidden="{{item.checked}}">
-								<view class="weui-media-box__title weui-media-box__title_in-text ldq-box">
-									<image src="{{item.HEADURL_STU}}" style="width: 70rpx;height: 70rpx;margin-right: 5px;border-radius:50%" />
-									<text>{{item.NICKNAME_STU}}：{{item.ASK_CONTENT}}</text>
+								<view class="weui-media-box__title weui-media-box__title_in-text ldq-box" style=' height: 145rpx;'>
+									<image src="{{item.HEADURL_STU}}" style="width: 70rpx;height: 70rpx;margin-right: 5px;border-radius:50%；" />
+                  <text style='white-space:pre-line; width:auto;'>
+                    <text style='color:#409eff'>{{item.NICKNAME_STU}}：</text><text>该年度在本省无招生计划该年度在本省无招生计划该年度在本省无招生计划该年度在本省无招生计划{{item.ASK_CONTENT}}</text>
+                  </text>
 								</view>
-								<view class="weui-media-box__desc ldq-box" hidden='{{!item.PRO_ID}}' style='padding-left: 20px'>
-									<image src="{{item.HEADURL_PRO}}" style="width: 50rpx;height: 50rpx;margin-right: 5px;border-radius:50%" />
-									<text class="s {{vip=='无' ? 'ldq-blur' : ''}}">{{item.NICKNAME_PRO}}回复：{{item.ANSWER_CONTENT}}</text>
+								<view class="weui-media-box__desc ldq-box" hidden='{{!item.PRO_ID}}' style='clear: both;padding-left: 20px'>
+									<image src="{{item.HEADURL_PRO}}" style="width: 50rpx;height: 50rpx;margin-right: 5px;border-radius:50%;" />
+									<text class="s {{vip=='无' ? 'ldq-blur' : ''}}">
+                    <text style='color:#f56c6c; font-weight: bold;'>{{item.NICKNAME_PRO}}回复：</text><text>{{item.ANSWER_CONTENT}}</text>
+                  </text>
 								</view>
 								<view style='position: relative' hidden="{{item.PRO_ID || role != 'wophbzohkh'}}">
 									<textarea placeholder='请输入' bindinput='bindContent' id='{{index}}'
@@ -56,7 +60,7 @@
 										<text>{{item.CREATETIME}}</text>
 									</view>
 									<view class='check_more'>
-										<text bindtap="issue" id="{{item.ASKS_ANSWERS_ID}}">查看更多</text>
+										<text bindtap="issue" id="{{item.ASKS_ANSWERS_ID}}">查看详情</text>
 									</view>
 									<!-- <view class='answer-item'>
 										<image src="/images/spot.png" style="height:30rpx;width:30rpx;"></image>

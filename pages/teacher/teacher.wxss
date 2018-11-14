@@ -108,13 +108,13 @@
   border-radius: 50%;
 }
 .ldq-box {
-	position: relative
+	position: relative;
 }
-.ldq-box text {
+ .ldq-box > text {
 	display: inline-block;
-	position: absolute;
+  position: absolute;  
 	top: 15rpx;
-}
+}   
 .ldq-blur {
 	filter: blur(3px);
 }

@@ -149,7 +149,7 @@
 			</view>
 		</block>
     <view style='padding:10px; color:#fa2131;'>
-      <view style='font-size:12px; margin-left:15rpx;'>“ 0 ”：数据未更新</view>
+      <view style='font-size:12px; margin-left:15rpx;'>“ 0 ”：数据未发布</view>
       <view style='font-size:12px; margin-left:15rpx;'>“ - ”：当前年度无计划</view>
     </view>
     <!-- <view class="page__bd page__bd_spacing">

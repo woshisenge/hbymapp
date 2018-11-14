@@ -246,7 +246,7 @@
             <button style='width:30%' class="weui-btn" type="primary" bindtap='test'>咨询专家</button>
             <block wx:if="{{Wen.length != 0 || Li.length != 0}}">
               <view style='padding:10px; color:#fa2131;'>
-                <view style='font-size:12px; margin-left:15rpx;'>“ 0 ”：数据未更新</view>
+                <view style='font-size:12px; margin-left:15rpx;'>“ 0 ”：数据未发布</view>
                 <view style='font-size:12px; margin-left:15rpx;'>“ - ”：当前年度无计划</view>
               </view>
             </block>

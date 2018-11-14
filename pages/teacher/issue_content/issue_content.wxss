@@ -82,3 +82,19 @@ textarea {
 	border: 1px solid #5AB4AA;
 	border-radius: 3px;
 }
+.gd_answer{
+  width:40px;
+  height: 25px;
+  line-height: 25px;
+  background-color: #67C23A;
+  text-align: center;
+  border-radius: 10px;
+}
+.gd_problem{
+  width:40px;
+  height: 25px;
+  line-height: 25px;
+  background-color: #F56C6C;
+  text-align: center;
+  border-radius: 10px;
+}
