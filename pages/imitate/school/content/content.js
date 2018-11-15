@@ -88,7 +88,6 @@ Page({
 					})
 					return false
 				}
-				console.log(res.errorMessage)
 				return false;
 			}
 			if (res.data == 10003) {

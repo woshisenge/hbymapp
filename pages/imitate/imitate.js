@@ -55,7 +55,6 @@ Page({
 				console.log(res.errorMessage)
 				return false
 			}
-			// console.log(res.data)
 			var list1 = []
 			var list2 = []
 			// 数据不合适, 写if过滤一下
@@ -104,7 +103,6 @@ Page({
 				this.setData({
 					list1: list1
 				})
-				console.log(list1)
 			}
 			if (res.data[0].VOLUNTEER_B2.length != 0) {
 				res.data[0].VOLUNTEER_B2.forEach(school => {
@@ -151,7 +149,6 @@ Page({
 				this.setData({
 					list2: list2
 				})
-				// console.log(list2)
 			}
 		})
     var that = this;

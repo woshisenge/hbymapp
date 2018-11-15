@@ -33,7 +33,6 @@ Page({
 		var data = e.detail.value
 		data.SEX = this.data.thisSex.key
 		data.JOBDATE = this.data.thisJobyear.key
-		console.log(data)
 		util.sendRequest("/plant/teacher/api/basic_new", data, "POST", true, function (res) {
 			if (res.hasErrors) {
         console.log(res.errorMessage)
@@ -108,7 +107,6 @@ Page({
 		that.setData({
 			thisSex: { key: that.data.sexs[e.detail.value].key, val: that.data.sexs[e.detail.value].val }
 		})
-		// console.log(that.data.thisSex)
 	},
 	changeJobyear: function (e) {
 		var that = this

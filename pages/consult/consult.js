@@ -138,35 +138,30 @@ Page({
     that.pullSchoolInfos();
     // 获取本一本二本三id值
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'ARRANGMENT' }, 'POST', false, function (res) {
-      // console.log(res.data)
       that.setData({
         arrangments: res.data
       })
     });
     // 获取小图标
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
-      // console.log(res.data)
       that.setData({
         properties: res.data
       })
     });
     // 获取专业类别
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
-      // console.log(res.data)
       that.setData({
         subjecttypes: res.data
       })
     });
     // 获取城市名称
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE' }, 'POST', false, function (res) {
-      // console.log(res.data)
       that.setData({
         provinces: res.data
       })
     });
     // ls:查询合作院校  回显于 院校咨询 广告位
     util.sendRequest('/wechat/applet/school/getcooperateschools', {}, 'POST', false, function (res) {
-      // console.log(res)
       that.setData({
         sc: that.setSc(res.data)
       })
@@ -219,7 +214,6 @@ Page({
       ldq: 2
     });
     this.pullSchoolInfos();
-    // console.log(this.data.ldq)
   },
   changeArrangment: function (e) {
     var that = this;
@@ -432,7 +426,6 @@ Page({
     param.SUBJECTTYPE = subjecttype_search;
     /* ldq-显示大专 */
     // 判断是否是第一次进入
-    // console.log(that.data.ldq)
     // if (that.data.ldq === 0) {
       // var arrangment_search = "8sqm1urq5w,";
     // } else {
@@ -505,7 +498,6 @@ Page({
   pullSchoolInfos: function(isClear) {
     var that = this;
     that.setSearchParam();
-    // console.log(this.data.searchParam)
     util.sendRequest('/wechat/applet/school/gethasteachers', that.data.searchParam, 'POST', false, function (res) {
       that.setData({
         schools: that.setResults(res.data.results, isClear),

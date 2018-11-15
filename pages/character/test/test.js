@@ -64,19 +64,16 @@ Page({
         console.log(res.errorMessage);
         return false;
       }
-      console.log(11223,res)
       this.setData({
         curr_num: res.MBTICOUNT,
         curr_comp: res.MBTI_ID / res.MBTICOUNT * 100
       })
-      // console.log(this.data.curr_comp)
       if (res.data == '答题完毕等结果') {
         util.sendRequest("/plant/character/api/get_result", {}, "POST", false, (res) => {
           if (res.hasErrors) {
             console.log(res.errorMessage);
             return false;
           }
-          console.log(res)
           var arr1 = []
           var arr2 = []
           res.ZMAJORSOUT.forEach(item => {

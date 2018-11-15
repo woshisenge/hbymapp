@@ -16,9 +16,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		// for (var i = 1; i <= 6; i++) {
-		// 	console.log(options.tempArr)
-		// }
     var that = this;
 		var arrId = ''
 		if (options.index == 0) {
@@ -31,16 +28,13 @@ Page({
 			ARRANGMENT_ID: arrId,
 			REPORT_TYPE: options.schoolType
 		}
-		// console.log(data)
 		util.sendRequest("/wechat/applet/report/getcollection_majors", data, "POST", true, (res) => {
 			if (res.hasErrors) {
 				console.log(res.errorMessage)
 				return false;
 			}
-			// console.log(res)
 			var major = res.data
 			var temp = options.tempArr.split(',')
-			console.log(major)
 			for (var i = 0; i < major.length; i++) {
 				for (var j = 0; j < temp.length; j++ ) {
 					if (major[i].MAJOR_ID == temp[j]) {
@@ -83,7 +77,6 @@ Page({
 		var curId = e.currentTarget.id
 		this.data.major.forEach(item => {
 			if (item.MAJOR_ID == curId) {
-				// console.log(item)
 				var majorIndex = this.data.majorIndex
 				var pages = getCurrentPages()
 				var prevPage = pages[pages.length - 2]
