@@ -225,7 +225,7 @@ Page({
   issue:function(e){
     var id = e.currentTarget.id;
     var userInfo = wx.getStorageSync('userInfo')
-    if (!userInfo.VIP) {
+    if (!userInfo.VIP && userInfo.ROLE_ID =='sja4gc59bg') {
       wx.showModal({
         content: '该功能仅限会员使用',
         showCancel: false,
