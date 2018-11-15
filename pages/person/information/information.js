@@ -10,37 +10,67 @@ Page({
 		county: '',
 		school_name: '',
 		examyear: '',
-		examscore: ''
+		examscore: '',
+    countries: ["本科一批", "本科二批"],
+    countryIndex: 0,
+    difference:0,
   },
   formSubmit: function(e) {
     var data = e.detail.value
-    if (data.EXAMSCORE > 750 || data.EXAMSCORE < 200) {
-      wx.showModal({
-        content: '分数不得超过750分, 或低于200分',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-          }
-        }
-      })
-      return false
+    var userInfo = wx.getStorageSync('userInfo')
+    if (data.DIFFERENCE != 0 ) {
+      if (userInfo.MAJORTYPE == 'r6j4mh69be' && data.COUNTRYINDEX == 0) {
+        this.setData({
+          examscore: Number(511) + Number(data.DIFFERENCE)
+        })
+        userInfo.EXAMSCORE = Number(511) + Number(data.DIFFERENCE)//本一理科
+      } else if (userInfo.MAJORTYPE == 'gjv044girc' && data.COUNTRYINDEX == 0) {
+        this.setData({
+          examscore: Number(559) + Number(data.DIFFERENCE)
+        })
+        userInfo.EXAMSCORE = Number(559) + Number(data.DIFFERENCE)//本一文科
+      } else if (userInfo.MAJORTYPE == 'r6j4mh69be' && data.COUNTRYINDEX == 1) {
+        this.setData({
+          examscore: Number(358) + Number(data.DIFFERENCE)
+        })
+        userInfo.EXAMSCORE = Number(358) + Number(data.DIFFERENCE)//本二理科
+      } else if (userInfo.MAJORTYPE == 'gjv044girc' && data.COUNTRYINDEX == 1) {
+        this.setData({
+          examscore: Number(441) + Number(data.DIFFERENCE)
+        })
+        userInfo.EXAMSCORE = Number(441) + Number(data.DIFFERENCE)//本二文科
+      }
     }
-		util.sendRequest('/wechat/applet/user/examineenew', data, "POST", true, function (res) {
-			// 更新session
-			wx.setStorageSync('userInfo', res)
-			wx.showModal({
-				content: '保存成功',
-				showCancel: false,
-				success: function (res) {
-					if (res.confirm) {
-						// 跳转
-						wx.switchTab({
-							url: '/pages/person/person'
-						})
-					}
-				}
-			})
-		})
+      if (data.EXAMSCORE > 750 || data.EXAMSCORE < 200) {
+        wx.showModal({
+          content: '分数不得超过750分, 或低于200分',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+            }
+          }
+        })
+        return false
+      }
+      // console.log("ls1:",userInfo)
+      // console.log("ls:",data);
+      util.sendRequest('/plant/user/api/xiancha', userInfo, "POST", true, function (res) {
+        console.log(333, res)
+        // 更新session
+        wx.setStorageSync('userInfo', res)
+        wx.showModal({
+          content: '保存成功',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              // 跳转
+              wx.switchTab({
+                url: '/pages/person/person'
+              })
+            }
+          }
+        })
+      })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -81,8 +111,8 @@ Page({
 				examyear: '2021'
 			})
 		}
+    console.log(123,this.majortype)
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
