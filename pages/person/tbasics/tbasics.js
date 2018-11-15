@@ -36,7 +36,7 @@ Page({
 		console.log(data)
 		util.sendRequest("/plant/teacher/api/basic_new", data, "POST", true, function (res) {
 			if (res.hasErrors) {
-				showError(res.errorMessage)
+        console.log(res.errorMessage)
 				return false
 			}
 			// 更新session
@@ -61,7 +61,7 @@ Page({
   onLoad: function (options) {
 		var userInfo = wx.getStorageSync('userInfo')
 		// 判断是否登录
-		util.checkLogin()
+    util.ldqCheckLogin()
 		this.setData({
 			nickname: userInfo.NICKNAME,
 			school_name: userInfo.SCHOOL_NAME,
