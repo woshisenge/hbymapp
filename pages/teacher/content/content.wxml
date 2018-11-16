@@ -2,9 +2,10 @@
 <!-- 预约页面 -->
 <view class='page'>
 <form bindsubmit='formSubmit'>
-   <view class='head'>
+<!-- 图片丢失 -->
+   <!-- <view class='head'>
     <image src="/images/banner.jpg"></image>
-   </view>
+   </view> -->
     <view class="page__bd">
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
