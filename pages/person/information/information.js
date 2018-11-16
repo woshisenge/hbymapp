@@ -11,9 +11,15 @@ Page({
 		school_name: '',
 		examyear: '',
 		examscore: '',
-    countries: ["本科一批", "本科二批"],
+    countries: [ "本科一批",  "本科二批"],
     countryIndex: 0,
     difference:0,
+  },
+  bindPickerChange: function (e) {
+    var that = this;
+    this.setData({
+      countryIndex: e.detail.value
+    });
   },
   formSubmit: function(e) {
     var data = e.detail.value

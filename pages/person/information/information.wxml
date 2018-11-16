@@ -58,7 +58,7 @@
         <view class="weui-label">本科批次</view>
     </view>
     <view class="weui-cell__bd">
-        <picker bindchange="bindCountryChange" name="COUNTRYINDEX" value="{{countryIndex}}" range="{{countries}}">
+        <picker bindchange="bindPickerChange" name="COUNTRYINDEX" value="{{countryIndex}}" range="{{countries}}">
             <view class="weui-select weui-select_in-select-after">{{countries[countryIndex]}}</view>
         </picker>
     </view>
