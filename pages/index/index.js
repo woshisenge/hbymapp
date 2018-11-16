@@ -171,7 +171,7 @@ Page({
 		// console.log(111)
 		// return false
 		utils.navigateTo("/pages/intelligence/intelligence");
-
+    
     // utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
     //   if (res.data != 1) {
     //     utils.showError("仅有学生身份才能使用该功能！");
