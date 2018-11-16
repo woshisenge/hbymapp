@@ -14,7 +14,7 @@ Page({
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner03.jpg"), url: "/pages/intelligence/intelligence" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner05.jpg"), url: "/pages/consult/consult" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner02.jpg"), url: "/pages/person/improve/improve" },
-      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"), url: "/pages/video/video" },
+      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"), url: "/pages/teacher/teacher" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_yxk.jpg"), url: "/pages/school/school" }
     ],
     indicatorDots: false,
@@ -44,19 +44,23 @@ Page({
     if (url == "/pages/intelligence/intelligence") {
       utils.ldqCheckLogin()
       utils.ldqCheckStudent()
+      utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     if (url == "/pages/consult/consult") {
       console.log(utils.ldqCheckLogin())
+      utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     if (url == "/pages/person/improve/improve") {
       utils.ldqCheckLogin()
       utils.ldqCheckStudent()
       utils.navigateTo(url, { user_id: user_id, id: '2'})
     }
-    if (url == "/pages/video/video") {
+    if (url == "/pages/teacher/teacher") {
       utils.ldqCheckLogin()
+      utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     if (url == "/pages/school/school") {
+      utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     // utils.navigateTo(url)
   },
