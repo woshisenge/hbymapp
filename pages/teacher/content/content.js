@@ -94,7 +94,7 @@ Page({
             }
           })
         } else {
-          util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: '160000' }, "POST", true, function (res) {
+          util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: '39800' }, "POST", true, function (res) {
             console.log(res)
             if (res.errorMessage == "请君登录账号！") {
               wx.showModal({
