@@ -41,7 +41,7 @@ Page({
         userInfo.EXAMSCORE = Number(441) + Number(data.DIFFERENCE)//本二文科
       }
     }
-      if (data.EXAMSCORE > 750 || data.EXAMSCORE < 200) {
+    if (data.EXAMSCORE > 750 || data.EXAMSCORE < 200 || userInfo.EXAMSCORE>750) {
         wx.showModal({
           content: '分数不得超过750分, 或低于200分',
           showCancel: false,
