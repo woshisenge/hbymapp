@@ -40,8 +40,18 @@ Page({
         })
         userInfo.EXAMSCORE = Number(441) + Number(data.DIFFERENCE)//本二文科
       }
-    }
-    if (data.EXAMSCORE > 750 || data.EXAMSCORE < 200 || userInfo.EXAMSCORE>750) {
+      if (data.DIFFERENCE<0){
+        wx.showModal({
+          content: '线差分不得小于0',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+            }
+          }
+        })
+        return false
+      }
+      if (userInfo.EXAMSCORE > 750) {
         wx.showModal({
           content: '分数不得超过750分, 或低于200分',
           showCancel: false,
@@ -54,8 +64,8 @@ Page({
       }
       // console.log("ls1:",userInfo)
       // console.log("ls:",data);
+      // examineenew
       util.sendRequest('/plant/user/api/xiancha', userInfo, "POST", true, function (res) {
-        console.log(333, res)
         // 更新session
         wx.setStorageSync('userInfo', res)
         wx.showModal({
@@ -71,6 +81,36 @@ Page({
           }
         })
       })
+    }else {
+      if (data.EXAMSCORE > 750 || data.EXAMSCORE < 200 ) {
+        wx.showModal({
+          content: '分数不得超过750分, 或低于200分',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+            }
+          }
+        })
+        return false
+      }
+      util.sendRequest('/plant/user/api/examineenew', data, "POST", true, function (res) {
+        console.log(123,res)
+        // 更新session
+        wx.setStorageSync('userInfo', res)
+        wx.showModal({
+          content: '保存成功',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              // 跳转
+              wx.switchTab({
+                url: '/pages/person/person'
+              })
+            }
+          }
+        })
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载

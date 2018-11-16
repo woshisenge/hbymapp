@@ -31,7 +31,7 @@
 								<view class="weui-media-box__title weui-media-box__title_in-text ldq-box" style=' height: 145rpx;'>
 									<image src="{{item.HEADURL_STU}}" style="width: 70rpx;height: 70rpx;margin-right: 5px;border-radius:50%；" />
                   <text style='white-space:pre-line; width:auto;'>
-                    <text style='color:#409eff'>{{item.NICKNAME_STU}}：</text><text>该年度在本省无招生计划该年度在本省无招生计划该年度在本省无招生计划该年度在本省无招生计划{{item.ASK_CONTENT}}</text>
+                    <text style='color:#409eff'>{{item.NICKNAME_STU}}：</text><text>{{item.ASK_CONTENT}}</text>
                   </text>
 								</view>
 								<view class="weui-media-box__desc ldq-box" hidden='{{!item.PRO_ID}}' style='clear: both;padding-left: 20px'>
