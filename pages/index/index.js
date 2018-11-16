@@ -14,7 +14,7 @@ Page({
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner03.jpg"), url: "/pages/intelligence/intelligence" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner05.jpg"), url: "/pages/consult/consult" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner02.jpg"), url: "/pages/person/improve/improve" },
-      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"), url: "/pages/teacher/teacher" },
+      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"), url: "/pages/video/video" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_yxk.jpg"), url: "/pages/school/school" }
     ],
     indicatorDots: false,
@@ -55,7 +55,7 @@ Page({
       utils.ldqCheckStudent()
       utils.navigateTo(url, { user_id: user_id, id: '2'})
     }
-    if (url == "/pages/teacher/teacher") {
+    if (url == "/pages/video/video") {
       utils.ldqCheckLogin()
       utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
@@ -171,7 +171,7 @@ Page({
 		// console.log(111)
 		// return false
 		utils.navigateTo("/pages/intelligence/intelligence");
-    
+
     // utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
     //   if (res.data != 1) {
     //     utils.showError("仅有学生身份才能使用该功能！");
