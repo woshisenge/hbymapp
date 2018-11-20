@@ -68,8 +68,6 @@ Page({
         })
         return false
       }
-      // console.log("ls1:",userInfo)
-      // console.log("ls:",data);
       // examineenew
       util.sendRequest('/plant/user/api/xiancha', userInfo, "POST", true, function (res) {
         // 更新session
@@ -100,7 +98,6 @@ Page({
         return false
       }
       util.sendRequest('/plant/user/api/examineenew', data, "POST", true, function (res) {
-        console.log(123,res)
         // 更新session
         wx.setStorageSync('userInfo', res)
         wx.showModal({
@@ -123,7 +120,6 @@ Page({
    */
   onLoad: function (options) {
 		var userInfo = wx.getStorageSync('userInfo')
-		// console.log(userInfo)
 		// 判断是否登录
 		util.ldqCheckLogin()
 		this.setData({
@@ -157,7 +153,6 @@ Page({
 				examyear: '2021'
 			})
 		}
-    console.log(123,this.majortype)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
