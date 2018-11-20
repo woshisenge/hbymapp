@@ -217,6 +217,7 @@ Page({
     param.EXAMYEAR = that.data.thisYear.uid
     console.log(param)
     util.sendRequest("/wechat/applet/api/toregist_third", param, "POST", true, function(res){
+      console.log(res)
       that.openAlert()
     });
   },
@@ -251,15 +252,26 @@ Page({
     var data = {
       PHONE: that.data.phone
     }
-    util.sendRequest("/wechat/applet/user/getsmscode", data, "POST", true, function (res) {
-      that.setData({
-        codeHidden: !that.data.codeHidden,  
-        timerNumber: 60
-        
-      });
+    util.sendRequest("/wechat/applet/api/toregist_third_phone",data,"POST",true,function(res){
+      console.log(res)
+      if(res.hasErrors){
+        util.showError("手机号已存在，请更换！");
+        return false;
+      }else{
+        util.sendRequest("/wechat/applet/user/getsmscode", data, "POST", true, function (res) {
+          that.setData({
+            codeHidden: !that.data.codeHidden,
+            timerNumber: 60
 
-      codeTimer = setInterval(that.codeTimerFn, 1000)
-    });
+          });
+
+          codeTimer = setInterval(that.codeTimerFn, 1000)
+        });
+
+      }
+      
+    })
+    
 
 
   },
