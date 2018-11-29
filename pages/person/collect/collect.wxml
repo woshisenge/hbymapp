@@ -2,8 +2,8 @@
 <!-- 收藏页面 -->
 <view class='page'>
 	<view class="page__hd">
-		<view class="page__title">我的收藏</view>
-		<view class="page__desc">生成志愿表在电脑端进行操作</view>
+		<view style='font-size:18px;'>我的收藏</view>
+		<view style='color:#999'>生成志愿表在电脑端进行操作</view>
 	</view>
   <view class='page_bd'>
     <view class="weui-cells__title">本一院校</view>
@@ -11,7 +11,7 @@
     <!-- <view class="weui-cells__title">冲（<text style="color:red">{{listchong.length}}</text>条） 稳（<text style="color:red">{{listwen.length}}</text>条） 保（<text style="color:red">{{listbao.length}}</text>条）</view> -->
     <view wx:if="{{!b1}}">
 			<!-- <image  src="/images/nodata3.png"></image> -->
-			<text>您暂无收藏记录！</text>
+			<text style='padding-left:15px;'>您暂无收藏记录！</text>
     </view>
     <view wx:else>
       <!--b1 开始  -->
@@ -163,7 +163,7 @@
     <!-- <view class="weui-cells__title">冲（<text style="color:red">{{listchong.length}}</text>条） 稳（<text style="color:red">{{listwen.length}}</text>条） 保（<text style="color:red">{{listbao.length}}</text>条）</view> -->
     <view wx:if="{{!b2}}">
 			<!-- <image  src="/images/nodata3.png"></image> -->
-			<text>您暂无收藏记录！</text>
+			<text style='padding-left:15px;'>您暂无收藏记录！</text>
     </view>
     <view wx:else>
       <!--b2 开始 -->

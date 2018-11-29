@@ -15,14 +15,14 @@
       </view>
   </view>
   <view class="weui-tab__panel">
-      <view class="gd-to-index" hidden="{{list1.length > 0 || activeIndex != 0}}">
+      <view class="gd-to-index" hidden="{{list1_1.length > 0 || activeIndex != 0 || list1_2.length > 0 }}">
         <text>
         请在官网进行生成志愿表的操作
         </text>
         <view></view>
         官网地址:www.gaokgh.com.cn
       </view>
-      <view class="" hidden="{{true}}">
+      <!-- <view class="" hidden="{{true}}">
 				<form bindsubmit='b1Submit' hidden="{{activeIndex != 0}}">
 					<view class="weui-cells weui-cells_after-title">
 							<view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='selSchool' id='A'>
@@ -58,9 +58,10 @@
 						<button class="button2" type="primary" bindtap='submit' style="background-color:rgb(90,180,170);color:white">生成本一志愿表</button>
 					</view>
 				</form>
-      </view>
-			<view class="" hidden="{{list1.length != 5 || activeIndex != 0}}">
-				<block wx:for="{{list1}}" wx:key="i" wx:for-index="i" wx:for-item="school">
+      </view> -->
+			<view class="" hidden="{{list1_1.length != 5 || activeIndex != 0}}" style='margin-top:20px;'>
+      <view style='font-size:18px;text-align: center;background-color: #67C23A;padding:5px 0;color:#fff'>本科一批志愿表（表一）</view>
+				<block wx:for="{{list1_1}}" wx:key="i" wx:for-index="i" wx:for-item="school">
 					<view class="weui-cells__title">第{{i + 1}}志愿 : {{school.SCHOOLNAME}}</view>
 					<view class="weui-cells weui-cells_after-title">
 						<view class="weui-cell" wx:for="{{school.MAJORS}}" wx:key="j" wx:for-index="j" wx:for-item="major">
@@ -69,17 +70,31 @@
 					</view>
 				</block>
 				<view class="page__bd page__bd_spacing" style='margin: 30rpx 0;'>
-					<button class="weui-btn" type="warn" bindtap="delB1">删除本一志愿</button>
+					<button class="weui-btn" type="warn" bindtap="delB1_1">删除本一(表一)志愿</button>
 				</view>
 			</view>
-      <view class="gd-to-index" hidden="{{list2.length > 0 || activeIndex != 1}}">
+      <view class="" hidden="{{list1_2.length != 5 || activeIndex != 0}}" style='margin-top:20px;'>
+      <view style='font-size:18px;text-align: center;background-color: #67C23A;padding:5px 0;color:#fff'>本科一批志愿表（表二）</view>
+				<block wx:for="{{list1_2}}" wx:key="i" wx:for-index="i" wx:for-item="school">
+					<view class="weui-cells__title">第{{i + 1}}志愿 : {{school.SCHOOLNAME}}</view>
+					<view class="weui-cells weui-cells_after-title">
+						<view class="weui-cell" wx:for="{{school.MAJORS}}" wx:key="j" wx:for-index="j" wx:for-item="major">
+							<view class="weui-cell__bd">专业{{j+1}} : {{major.MAJOR_NAME}}</view>
+						</view>
+					</view>
+				</block>
+				<view class="page__bd page__bd_spacing" style='margin: 30rpx 0;'>
+					<button class="weui-btn" type="warn" bindtap="delB1_2">删除本一(表二)志愿</button>
+				</view>
+			</view>
+      <view class="gd-to-index" hidden="{{list2_1.length > 0 || activeIndex != 1 || list2_2.length > 0}}">
         <text>
         请在官网进行生成志愿表的操作
         </text>
         <view></view>
         官网地址:www.gaokgh.com.cn
       </view>
-      <view class="" hidden="{{true}}">
+      <!-- <view class="" hidden="{{true}}">
         <form bindsubmit='b2Submit' hidden="{{activeIndex != 1}}">
           <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='selSchool' id='A'>
@@ -145,9 +160,10 @@
           <button class="button2" type="primary" bindtap='submit' style="background-color:rgb(90,180,170);color:white">生成本二志愿表</button>
         	</view>
         </form>
-      </view>
-			<view class="" hidden="{{list2.length != 10 || activeIndex != 1}}">
-				<block wx:for="{{list2}}" wx:key="i" wx:for-index="i" wx:for-item="school">
+      </view> -->
+			<view class="" hidden="{{list2_1.length != 10 || activeIndex != 1}}" style='margin-top:20px;'>
+        <view style='font-size:18px;text-align: center;background-color: #8BC2FA;padding:5px 0;color:#fff'>本科二批志愿表（表一）</view>
+				<block wx:for="{{list2_1}}" wx:key="i" wx:for-index="i" wx:for-item="school">
 					<view class="weui-cells__title">第{{i + 1}}志愿 : {{school.SCHOOLNAME}}</view>
 					<view class="weui-cells weui-cells_after-title">
 						<view class="weui-cell" wx:for="{{school.MAJORS}}" wx:key="j" wx:for-index="j" wx:for-item="major">
@@ -156,7 +172,21 @@
 					</view>
 				</block>
 				<view class="page__bd page__bd_spacing" style='margin: 30rpx 0;'>
-					<button class="weui-btn" type="warn" bindtap="delB2">删除本二志愿</button>
+					<button class="weui-btn" type="warn" bindtap="delB2_1">删除本二（表一）志愿</button>
+				</view>
+			</view>
+      <view class="" hidden="{{list2_2.length != 10 || activeIndex != 1}}" style='margin-top:20px;'>
+        <view style='font-size:18px;text-align: center;background-color: #8BC2FA;padding:5px 0;color:#fff'>本科二批志愿表（表二）</view>
+				<block wx:for="{{list2_2}}" wx:key="i" wx:for-index="i" wx:for-item="school">
+					<view class="weui-cells__title">第{{i + 1}}志愿 : {{school.SCHOOLNAME}}</view>
+					<view class="weui-cells weui-cells_after-title">
+						<view class="weui-cell" wx:for="{{school.MAJORS}}" wx:key="j" wx:for-index="j" wx:for-item="major">
+							<view class="weui-cell__bd">专业{{j+1}} : {{major.MAJOR_NAME}}</view>
+						</view>
+					</view>
+				</block>
+				<view class="page__bd page__bd_spacing" style='margin: 30rpx 0;'>
+					<button class="weui-btn" type="warn" bindtap="delB2_2">删除本二（表二）志愿</button>
 				</view>
 			</view>
     </view>

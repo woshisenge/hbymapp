@@ -112,6 +112,7 @@ Page({
   },
 	addSchool: function () {
 		util.sendRequest("/wechat/applet/report/checkcollection", {}, "POST", true, (res) => {
+      console.log("gaoda:",res)
 			if (res.hasErrors) {
 				console.log(res)
 				return false

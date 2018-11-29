@@ -190,7 +190,7 @@
 <!-- 线下活动 开始 -->
 <view class="notice">
   <image class='icon' src='../../images/line.png'></image>
-  <view style='font-size:30rpx;;'>线下活动</view>
+  <view style='font-size:36rpx;'>线下活动</view>
   <span class="more" style="font-size:25rpx;" bindtap="activitymore">更多></span>
 </view>
 <view class='flex-x' style='padding: 15rpx;'>

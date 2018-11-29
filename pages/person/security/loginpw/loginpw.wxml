@@ -3,8 +3,8 @@
 <view class='page'>
 <!-- title -->
 	<view class="page__hd">
-		<view class="page__title">修改密码</view>
-		<view class="page__desc">password</view>
+		<view style='font-size:18px;'>修改密码</view>
+		<!-- <view class="page__desc">password</view> -->
 	</view>
 <form bindsubmit="formSubmit">
 <view class="page__bd">

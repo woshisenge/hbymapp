@@ -118,6 +118,7 @@ Page({
   },
   school:function(e){
     var a = e.currentTarget.dataset.id;
+    console.log(a)    
     util.navigateTo('/pages/school/schoolcontent/schoolcontent', { a: a })
   },
   hot: function () {

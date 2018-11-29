@@ -79,3 +79,8 @@ button::after{
   font-size:30rpx;
   width:100%;
 }
+.page__hd{
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+   background-color: #fff; 
+}

@@ -72,7 +72,6 @@ Page({
     util.ldqCheckLogin()
     var that=this;
 		var userInfo = wx.getStorageSync('userInfo')
-		// console.log(userInfo)
 		this.setData({
 			EXAMSCORE: userInfo.EXAMSCORE,
 			MAJORTYPE_VALUE: userInfo. MAJORTYPE_VALUE,
@@ -81,21 +80,18 @@ Page({
 		})
 		// 城市
     util.sendRequest('/wechat/applet/dictionary/get', { code: 'PROVINCE' }, 'POST', false, function (res) {
-			// console.log(res)
       that.setData({
         // region: res.data
       })
     })
 		// 类型
 		util.sendRequest('/wechat/applet/dictionary/get', { code: 'SUBJECTTYPE' }, 'POST', false, function (res) {
-			console.log(111113,res)
       that.setData({
         // style: res.data
       })
     })
 		// 属性
 		util.sendRequest('/wechat/applet/dictionary/get', { code: 'SCPROPERTY' }, 'POST', false, function (res) {
-			// console.log(res)
       that.setData({
         // types: res.data
       })

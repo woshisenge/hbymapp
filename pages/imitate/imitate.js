@@ -2,8 +2,10 @@ var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 var util = require('../../utils/util')
 Page({
   data: {
-		list1: [],
-		list2: [],
+		list1_1: [],
+		list2_1: [],
+    list1_2: [],
+    list2_2: [],
     tabs: ["本一志愿表", "本二志愿表"],
 		b1school_name: '',
 		activeIndex: 0,
@@ -51,15 +53,18 @@ Page({
   onLoad: function () {
     util.ldqCheckLogin()
 		util.sendRequest("/wechat/applet/report/getvolunteer", {}, "POST", true, (res) => {
+      console.log("gaoda:",res)
 			if (res.hasErrors) {
 				console.log(res.errorMessage)
 				return false
 			}
-			var list1 = []
-			var list2 = []
+			var list1_1 = []
+			var list2_1 = []
+      var list1_2 = []
+      var list2_2 = []
 			// 数据不合适, 写if过滤一下
-			if (res.data[0].VOLUNTEER_B1.length != 0) {
-				res.data[0].VOLUNTEER_B1.forEach(school => {
+      if (res.data[0].VOLUNTEER_B1_1.length != 0) {
+				res.data[0].VOLUNTEER_B1_1.forEach(school => {
 					var arr = {
 						SCHOOLNAME: school.SCHOOLNAME,
 						SCHOOL_ID: school.SCHOOL_ID,
@@ -98,14 +103,60 @@ Page({
 							MAJOR_ID: school.MJ_ID6, MAJOR_NAME: school.MJ_NAME6
 						})
 					}
-					list1.push(arr)
+					list1_1.push(arr)
 				})
 				this.setData({
-					list1: list1
+					list1_1: list1_1
 				})
 			}
-			if (res.data[0].VOLUNTEER_B2.length != 0) {
-				res.data[0].VOLUNTEER_B2.forEach(school => {
+      if (res.data[0].VOLUNTEER_B1_2.length != 0) {
+        res.data[0].VOLUNTEER_B1_2.forEach(school => {
+          var arr = {
+            SCHOOLNAME: school.SCHOOLNAME,
+            SCHOOL_ID: school.SCHOOL_ID,
+            USER_ID: school.USER_ID,
+            VOLUNTEER_ID: school.VOLUNTEER_ID,
+            ZY_CODE: school.ZY_CODE,
+            MAJORS: []
+          }
+          if (school.MJ_NAME1 && school.MJ_ID1) {
+            arr.MAJORS.push({
+              MAJOR_ID: school.MJ_ID1, MAJOR_NAME: school.MJ_NAME1
+            })
+          }
+          if (school.MJ_NAME2 && school.MJ_ID2) {
+            arr.MAJORS.push({
+              MAJOR_ID: school.MJ_ID2, MAJOR_NAME: school.MJ_NAME2
+            })
+          }
+          if (school.MJ_NAME3 && school.MJ_ID3) {
+            arr.MAJORS.push({
+              MAJOR_ID: school.MJ_ID3, MAJOR_NAME: school.MJ_NAME3
+            })
+          }
+          if (school.MJ_NAME4 && school.MJ_ID4) {
+            arr.MAJORS.push({
+              MAJOR_ID: school.MJ_ID4, MAJOR_NAME: school.MJ_NAME4
+            })
+          }
+          if (school.MJ_NAME5 && school.MJ_ID5) {
+            arr.MAJORS.push({
+              MAJOR_ID: school.MJ_ID5, MAJOR_NAME: school.MJ_NAME5
+            })
+          }
+          if (school.MJ_NAME6 && school.MJ_ID6) {
+            arr.MAJORS.push({
+              MAJOR_ID: school.MJ_ID6, MAJOR_NAME: school.MJ_NAME6
+            })
+          }
+          list1_2.push(arr)
+        })
+        this.setData({
+          list1_2: list1_2
+        })
+      }
+      if (res.data[0].VOLUNTEER_B2_1.length != 0) {
+        res.data[0].VOLUNTEER_B2_1.forEach(school => {
 					var arr = {
 						SCHOOLNAME: school.SCHOOLNAME,
 						SCHOOL_ID: school.SCHOOL_ID,
@@ -144,12 +195,58 @@ Page({
 							MAJOR_ID: school.MJ_ID6, MAJOR_NAME: school.MJ_NAME6
 						})
 					}
-					list2.push(arr)
+          list2_1.push(arr)
 				})
 				this.setData({
-					list2: list2
+          list2_1: list2_1
 				})
 			}
+      if (res.data[0].VOLUNTEER_B2_2.length != 0) {
+        res.data[0].VOLUNTEER_B2_2.forEach(school => {
+          var arr = {
+            SCHOOLNAME: school.SCHOOLNAME,
+            SCHOOL_ID: school.SCHOOL_ID,
+            USER_ID: school.USER_ID,
+            VOLUNTEER_ID: school.VOLUNTEER_ID,
+            ZY_CODE: school.ZY_CODE,
+            MAJORS: []
+          }
+          if (school.MJ_NAME1 && school.MJ_ID1) {
+            arr.MAJORS.push({
+              MAJOR_ID: school.MJ_ID1, MAJOR_NAME: school.MJ_NAME1
+            })
+          }
+          if (school.MJ_NAME2 && school.MJ_ID2) {
+            arr.MAJORS.push({
+              MAJOR_ID: school.MJ_ID2, MAJOR_NAME: school.MJ_NAME2
+            })
+          }
+          if (school.MJ_NAME3 && school.MJ_ID3) {
+            arr.MAJORS.push({
+              MAJOR_ID: school.MJ_ID3, MAJOR_NAME: school.MJ_NAME3
+            })
+          }
+          if (school.MJ_NAME4 && school.MJ_ID4) {
+            arr.MAJORS.push({
+              MAJOR_ID: school.MJ_ID4, MAJOR_NAME: school.MJ_NAME4
+            })
+          }
+          if (school.MJ_NAME5 && school.MJ_ID5) {
+            arr.MAJORS.push({
+              MAJOR_ID: school.MJ_ID5, MAJOR_NAME: school.MJ_NAME5
+            })
+          }
+          if (school.MJ_NAME6 && school.MJ_ID6) {
+            arr.MAJORS.push({
+              MAJOR_ID: school.MJ_ID6, MAJOR_NAME: school.MJ_NAME6
+            })
+          }
+          list2_2.push(arr)
+        })
+        this.setData({
+          list2_2: list2_2
+        })
+      }
 		})
     var that = this;
     wx.getSystemInfo({
@@ -342,9 +439,10 @@ Page({
       activeIndex: e.currentTarget.id
     });
   },
-	delB1: function () {
+  //删除本科一批志愿表（表一）
+	delB1_1: function () {
 		var that = this
-		util.sendRequest("/wechat/applet/report/delete_volunteer", { ARRANGMENT_ID: 'B1'}, "POST", true, (res) => {
+    util.sendRequest("/wechat/applet/report/delete_volunteer", { ARRANGMENT_ID: 'B1', COUNT: 1}, "POST", true, (res) => {
 			if (res.hasErrors) {
 				console.log(res.errorMessage)
 				return false
@@ -352,12 +450,12 @@ Page({
 			console.log(res)
 			if (res.data == 10009) {
 				wx.showModal({
-					content: '删除成功',
+          content: '删除成功，如需重新添加请登录官网操作',
 					showCancel: false,
 					success: function (res) {
 						if (res.confirm) {
 							that.setData({
-								list1: []
+                list1_1: []
 							})
 						}
 					}
@@ -365,9 +463,34 @@ Page({
 			}
 		})
 	},
-	delB2: function () {
+  //删除本科一批志愿表（表一）
+  delB1_2: function () {
+    var that = this
+    util.sendRequest("/wechat/applet/report/delete_volunteer", { ARRANGMENT_ID: 'B1', COUNT: 2}, "POST", true, (res) => {
+      if (res.hasErrors) {
+        console.log(res.errorMessage)
+        return false
+      }
+      console.log(res)
+      if (res.data == 10009) {
+        wx.showModal({
+          content: '删除成功，如需重新添加请登录官网操作',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              that.setData({
+                list1_2: []
+              })
+            }
+          }
+        })
+      }
+    })
+  },
+  //删除本科二批志愿表（表二）
+	delB2_1: function () {
 		var that = this
-		util.sendRequest("/wechat/applet/report/delete_volunteer", { ARRANGMENT_ID: 'B2' }, "POST", true, (res) => {
+    util.sendRequest("/wechat/applet/report/delete_volunteer", { ARRANGMENT_ID: 'B2', COUNT:1 }, "POST", true, (res) => {
 			if (res.hasErrors) {
 				console.log(res.errorMessage)
 				return false
@@ -375,12 +498,12 @@ Page({
 			console.log(res)
 			if (res.data == 10009) {
 				wx.showModal({
-					content: '删除成功',
+          content: '删除成功，如需重新添加请登录官网操作',
 					showCancel: false,
 					success: function (res) {
 						if (res.confirm) {
 							that.setData({
-								list2: []
+                list2_1: []
 							})
 						}
 					}
@@ -388,6 +511,30 @@ Page({
 			}
 		})
 	},
+  //删除本科二批志愿表（表二）
+  delB2_2: function () {
+    var that = this
+    util.sendRequest("/wechat/applet/report/delete_volunteer", { ARRANGMENT_ID: 'B2', COUNT: 2 }, "POST", true, (res) => {
+      if (res.hasErrors) {
+        console.log(res.errorMessage)
+        return false
+      }
+      console.log(res)
+      if (res.data == 10009) {
+        wx.showModal({
+          content: '删除成功，如需重新添加请登录官网操作',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              that.setData({
+                list2_2: []
+              })
+            }
+          }
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

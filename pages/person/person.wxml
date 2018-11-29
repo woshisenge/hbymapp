@@ -36,7 +36,7 @@
 	<!-- 个人信息 -->
 	<view class="weui-cells__title" style='margin-top:135rpx; color:#22C5B3'>个人信息</view>
 	<view class="weui-cells weui-cells_after-title">
-		<navigator url="/pages/person/basics/basics" hover-class="navigator-hover" open-type='redirectTo'>
+		<navigator url="/pages/person/basics/basics" hover-class="navigator-hover" open-type='navigateTo'>
 			<view class="weui-cell" style='border-top: 1px solid #eee'>
 				<view class="weui-cell__hd">
 					<image src="./img/purple.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
@@ -44,7 +44,7 @@
 				<view class="weui-cell__bd">基本信息</view>
 			</view>
 		</navigator>
-		<navigator url="/pages/person/information/information" hover-class="navigator-hover" open-type='redirectTo'>
+		<navigator url="/pages/person/information/information" hover-class="navigator-hover" open-type='navigateTo'>
 			<view class="weui-cell">
 				<view class="weui-cell__hd">
 					<image src="./img/red.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
