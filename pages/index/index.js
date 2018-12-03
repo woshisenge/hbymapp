@@ -45,7 +45,7 @@ Page({
     if (url == "/pages/intelligence/intelligence") {
       var userInfo = wx.getStorageSync('userInfo')
       if (userInfo == '') {
-        wx.redirectTo({
+        wx.navigateTo({
           url: '/pages/login/login'
         })
         return false
@@ -60,7 +60,7 @@ Page({
     if (url == "/pages/person/improve/improve") {
       var userInfo = wx.getStorageSync('userInfo')
       if (userInfo == '') {
-        wx.redirectTo({
+        wx.navigateTo({
           url: '/pages/login/login'
         })
         return false
@@ -71,7 +71,7 @@ Page({
     if (url == "/pages/video/video") {
       var userInfo = wx.getStorageSync('userInfo')
       if (userInfo == '') {
-        wx.redirectTo({
+        wx.navigateTo({
           url: '/pages/login/login'
         })
         return false
@@ -112,7 +112,7 @@ Page({
     // utils.ldqCheckLogin()
     //验证登录
     if (userInfo == '') {
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/login/login'
       })
       return false
@@ -123,7 +123,7 @@ Page({
   analog:function(){
     var userInfo = wx.getStorageSync('userInfo')
     if (userInfo == '') {
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/login/login'
       })
       return false
@@ -192,7 +192,7 @@ Page({
     //  utils.ldqCheckLogin()
     console.log("12121",userInfo)
     if(userInfo == ''){
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/login/login'
       })
       return false
@@ -312,7 +312,7 @@ Page({
   test:function(){
     var userInfo = wx.getStorageSync('userInfo')
     if (userInfo == '') {
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/login/login'
       })
       return false

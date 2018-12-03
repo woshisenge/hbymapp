@@ -93,7 +93,7 @@ var ldqCheckLogin = function () {
      console.log(222)
      console.log(res)
     if (wx.getStorageSync('userInfo') == ''){
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/login/login'
       })
       return false
