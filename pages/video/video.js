@@ -48,8 +48,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    util.ldqCheckLogin()
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
 		var data = {
 			SUBTITLE: "专家视频"
 		}

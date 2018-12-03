@@ -55,6 +55,13 @@ Page({
     }
     if (url == "/pages/consult/consult") {
       console.log(utils.ldqCheckLogin())
+      var userInfo = wx.getStorageSync('userInfo')
+      if (userInfo == '') {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        })
+        return false
+      }
       utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     if (url == "/pages/person/improve/improve") {
@@ -84,6 +91,13 @@ Page({
     // utils.navigateTo(url)
   },
   toChar:function () {
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
     utils.navigateTo("/pages/character/character")
   },
   advantage:function(){
@@ -304,6 +318,13 @@ Page({
     utils.navigateTo("/pages/notice/notice")
   },
   phone:function(){
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
     utils.navigateTo("/pages/video/video")
   },
   teacher:function(){
