@@ -15,7 +15,8 @@ Page({
     hidden:false,
 		schoolId: '',
 		typec: '',
-		major: []
+		major: [],
+    ARRANGMENT_ID:'hjj4e5vr0c',
   },
 
   /**
@@ -24,7 +25,7 @@ Page({
   onLoad: function (options) {
     var that = this;
 		var datause = wx.getStorageSync('datause')
-		// console.log(2563,options)
+		console.log(2563,options)
 		datause.SCHOOL_ID = options.SCHOOL_ID
 		datause.TYPE = options.TYPE
 		if (options.MAJOR == 'null') {
@@ -63,6 +64,11 @@ Page({
     }
     var arrId = options.ARRANGMENT_ID;
     var style = "";
+    if (arrId == 'bdhsl11qtb') {
+      this.setData({
+        ARRANGMENT_ID: arrId
+      })
+    }
     if (arrId == "hjj4e5vr0c"){
       style = "本一"
     }
@@ -70,7 +76,7 @@ Page({
       style = "本二"
     }
     util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: options.SCHOOL_ID}, "POST", true, function (res) {
-      // console.log(res)
+      console.log('aaaa:',res)
 			that.setData({
         logo: util.setStaticUrl(res.HEADURL),
         name:res.NAME,
@@ -81,6 +87,7 @@ Page({
       });
     });
     util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID: options.SCHOOL_ID, MAJORTYPE_ID: options.MAJORTYPE},"POST",true,function(res){
+      console.log("ccc",res)
       var result = res.data;
       result.forEach(function(obj){
         if (obj.ARRANGMENT_ID == arrId){
@@ -111,43 +118,80 @@ Page({
     })
   },
 	addSchool: function () {
+    var that = this;
+    console.log(this.data.ARRANGMENT_ID)
 		util.sendRequest("/wechat/applet/report/checkcollection", {}, "POST", true, (res) => {
       console.log("gaoda:",res)
 			if (res.hasErrors) {
 				console.log(res)
 				return false
 			}
-			if (res.C.length + res.W.length + res.B.length >= 10) {
-				wx.showModal({
-					content: '您最多收藏10个院校',
-					showCancel: false,
-					success: function (res) {}
-				})
-				return false
-			}
-			for (var i = 0; i < res.C.length; i++) {
-				res.C[i].type = 'C'
-			}
-			for (var i = 0; i < res.W.length; i++) {
-				res.W[i].type = 'W'
-			}
-			for (var i = 0; i < res.B.length; i++) {
-				res.B[i].type = 'B'
-			}
-			var arr = res.C.concat(res.W, res.B)
-			for (var i = 0; i < arr.length; i++) {
-				var it = arr[i]
-				console.log(this.data.typec)
-				if (this.data.schoolId == it.SCHOOL_ID && this.data.typec == it.type) {
-					console.log(it.type)
-					wx.showModal({
-						content: '您已收藏过本院校',
-						showCancel: false,
-						success: function (res) {}
-					})
-					return false
-				}
-			}
+      console.log(591, this.data.ARRANGMENT_ID)
+      if (this.data.ARRANGMENT_ID =='hjj4e5vr0c') {
+        if (res.B1.C.length + res.B1.W.length + res.B1.B.length >= 20) {
+          wx.showModal({
+            content: '您最多收藏20个院校',
+            showCancel: false,
+            success: function (res) { }
+          })
+          return false
+        }
+        for (var i = 0; i < res.B1.C.length; i++) {
+          res.B1.C[i].type = 'C'
+        }
+        for (var i = 0; i < res.B1.W.length; i++) {
+          res.B1.W[i].type = 'W'
+        }
+        for (var i = 0; i < res.B1.B.length; i++) {
+          res.B1.B[i].type = 'B'
+        }
+        var arr = res.B1.C.concat(res.B1.W, res.B1.B)
+        for (var i = 0; i < arr.length; i++) {
+          var it = arr[i]
+          console.log(this.data.typec)
+          if (this.data.schoolId == it.SCHOOL_ID && this.data.typec == it.type) {
+            console.log(it.type)
+            wx.showModal({
+              content: '您已收藏过本院校',
+              showCancel: false,
+              success: function (res) { }
+            })
+            return false
+          }
+        }
+      } else if (this.data.ARRANGMENT_ID == 'bdhsl11qtb'){
+        if (res.B2.C.length + res.B2.W.length + res.B2.B.length >= 20) {
+          wx.showModal({
+            content: '您最多收藏20个本科二批院校',
+            showCancel: false,
+            success: function (res) { }
+          })
+          return false
+        }
+        for (var i = 0; i < res.B2.C.length; i++) {
+          res.B2.C[i].type = 'C'
+        }
+        for (var i = 0; i < res.B2.W.length; i++) {
+          res.B2.W[i].type = 'W'
+        }
+        for (var i = 0; i < res.B2.B.length; i++) {
+          res.B2.B[i].type = 'B'
+        }
+        var arr = res.B2.C.concat(res.B2.W, res.B2.B)
+        for (var i = 0; i < arr.length; i++) {
+          var it = arr[i]
+          console.log(this.data.typec)
+          if (this.data.schoolId == it.SCHOOL_ID && this.data.typec == it.type) {
+            console.log(it.type)
+            wx.showModal({
+              content: '您已收藏过本院校',
+              showCancel: false,
+              success: function (res) { }
+            })
+            return false
+          }
+        }
+      }
 			if (!this.data.datause.ARRANGMENT_ID) {
 				return false
 			}

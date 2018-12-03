@@ -71,7 +71,9 @@ Page({
 						USER_ID: school.USER_ID,
 						VOLUNTEER_ID: school.VOLUNTEER_ID,
 						ZY_CODE: school.ZY_CODE,
-						MAJORS: []
+						MAJORS: [],
+            EXAMSCORE: school.EXAMSCORE,
+            CREATETIME: school.CREATETIME,
 					}
 					if (school.MJ_NAME1 && school.MJ_ID1) {
 						arr.MAJORS.push({
@@ -103,11 +105,24 @@ Page({
 							MAJOR_ID: school.MJ_ID6, MAJOR_NAME: school.MJ_NAME6
 						})
 					}
+          arr.CREATETIME = new Date(arr.CREATETIME);
+          arr.year = arr.CREATETIME.getFullYear();
+          arr.month = arr.CREATETIME.getMonth() + 1;
+          arr.date = arr.CREATETIME.getDate();
+          arr.hours = arr.CREATETIME.getHours()
+          if (arr.CREATETIME.getHours() < 10) {
+            arr.hours = '0' + arr.CREATETIME.getHours()
+          }
+          arr.minutes = arr.CREATETIME.getMinutes()
+          if (arr.CREATETIME.getMinutes() < 10) {
+            arr.minutes = '0' + arr.CREATETIME.getMinutes()
+          }
 					list1_1.push(arr)
 				})
 				this.setData({
 					list1_1: list1_1
 				})
+        // console.log("高达", list1_1[0].CREATETIME.getFullYear())
 			}
       if (res.data[0].VOLUNTEER_B1_2.length != 0) {
         res.data[0].VOLUNTEER_B1_2.forEach(school => {
@@ -117,6 +132,8 @@ Page({
             USER_ID: school.USER_ID,
             VOLUNTEER_ID: school.VOLUNTEER_ID,
             ZY_CODE: school.ZY_CODE,
+            EXAMSCORE: school.EXAMSCORE,
+            CREATETIME: school.CREATETIME,
             MAJORS: []
           }
           if (school.MJ_NAME1 && school.MJ_ID1) {
@@ -148,6 +165,18 @@ Page({
             arr.MAJORS.push({
               MAJOR_ID: school.MJ_ID6, MAJOR_NAME: school.MJ_NAME6
             })
+          }
+          arr.CREATETIME = new Date(arr.CREATETIME);
+          arr.year = arr.CREATETIME.getFullYear();
+          arr.month = arr.CREATETIME.getMonth() + 1;
+          arr.date = arr.CREATETIME.getDate();
+          arr.hours = arr.CREATETIME.getHours()
+          if (arr.CREATETIME.getHours() < 10) {
+            arr.hours = '0' + arr.CREATETIME.getHours()
+          }
+          arr.minutes = arr.CREATETIME.getMinutes()
+          if (arr.CREATETIME.getMinutes() < 10) {
+            arr.minutes = '0' + arr.CREATETIME.getMinutes()
           }
           list1_2.push(arr)
         })
@@ -163,6 +192,8 @@ Page({
 						USER_ID: school.USER_ID,
 						VOLUNTEER_ID: school.VOLUNTEER_ID,
 						ZY_CODE: school.ZY_CODE,
+            EXAMSCORE: school.EXAMSCORE,
+            CREATETIME: school.CREATETIME,
 						MAJORS: []
 					}
 					if (school.MJ_NAME1 && school.MJ_ID1) {
@@ -195,6 +226,18 @@ Page({
 							MAJOR_ID: school.MJ_ID6, MAJOR_NAME: school.MJ_NAME6
 						})
 					}
+          arr.CREATETIME = new Date(arr.CREATETIME);
+          arr.year = arr.CREATETIME.getFullYear();
+          arr.month = arr.CREATETIME.getMonth() + 1;
+          arr.date = arr.CREATETIME.getDate();
+          arr.hours = arr.CREATETIME.getHours()
+          if (arr.CREATETIME.getHours() < 10) {
+            arr.hours = '0' + arr.CREATETIME.getHours()
+          }
+          arr.minutes = arr.CREATETIME.getMinutes()
+          if (arr.CREATETIME.getMinutes() < 10) {
+            arr.minutes = '0' + arr.CREATETIME.getMinutes()
+          }
           list2_1.push(arr)
 				})
 				this.setData({
@@ -209,6 +252,8 @@ Page({
             USER_ID: school.USER_ID,
             VOLUNTEER_ID: school.VOLUNTEER_ID,
             ZY_CODE: school.ZY_CODE,
+            EXAMSCORE: school.EXAMSCORE,
+            CREATETIME: school.CREATETIME,
             MAJORS: []
           }
           if (school.MJ_NAME1 && school.MJ_ID1) {
@@ -240,6 +285,18 @@ Page({
             arr.MAJORS.push({
               MAJOR_ID: school.MJ_ID6, MAJOR_NAME: school.MJ_NAME6
             })
+          }
+          arr.CREATETIME = new Date(arr.CREATETIME);
+          arr.year = arr.CREATETIME.getFullYear();
+          arr.month = arr.CREATETIME.getMonth() + 1;
+          arr.date = arr.CREATETIME.getDate();
+          arr.hours = arr.CREATETIME.getHours()
+          if (arr.CREATETIME.getHours() < 10) {
+            arr.hours = '0' + arr.CREATETIME.getHours()
+          }
+          arr.minutes = arr.CREATETIME.getMinutes()
+          if (arr.CREATETIME.getMinutes() < 10) {
+            arr.minutes = '0' + arr.CREATETIME.getMinutes()
           }
           list2_2.push(arr)
         })

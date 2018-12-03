@@ -47,7 +47,8 @@ Page({
 			MAJOR: options.MAJOR
 		})
 		util.sendRequest("/wechat/applet/report/reporting_onekey", options, "POST", true, function (res) {
-			console.log(wx.getStorageSync('session_id'))
+      console.log(res)
+			console.log(123,wx.getStorageSync('session_id'))
 			if (res.hasErrors) {
 				if (res.errorMessage == 'relogin') {
 					wx.showModal({

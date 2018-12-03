@@ -60,7 +60,15 @@
 				</form>
       </view> -->
 			<view class="" hidden="{{list1_1.length != 5 || activeIndex != 0}}" style='margin-top:20px;'>
-      <view style='font-size:18px;text-align: center;background-color: #67C23A;padding:5px 0;color:#fff'>本科一批志愿表（表一）</view>
+      <view style='font-size:18px;text-align: center;background-color: #67C23A;padding:5px 0;color:#fff'>本科一批志愿表（表一）
+        <view>
+          <text style='font-size:14px;'>分数：{{list1_1[0].EXAMSCORE}}</text>
+          <text style='font-size:14px;'>
+            <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;时间：</text>
+            <text>{{list1_1[0].year+'-'}}</text><text>{{list1_1[0].month+'-'}}</text><text>{{list1_1[0].date}}</text><text decode="{{true}}">&nbsp;&nbsp;{{list1_1[0].hours+":"}}</text><text>{{list1_1[0].minutes}}</text>
+          </text>
+        </view>
+      </view>
 				<block wx:for="{{list1_1}}" wx:key="i" wx:for-index="i" wx:for-item="school">
 					<view class="weui-cells__title">第{{i + 1}}志愿 : {{school.SCHOOLNAME}}</view>
 					<view class="weui-cells weui-cells_after-title">
@@ -74,7 +82,15 @@
 				</view>
 			</view>
       <view class="" hidden="{{list1_2.length != 5 || activeIndex != 0}}" style='margin-top:20px;'>
-      <view style='font-size:18px;text-align: center;background-color: #67C23A;padding:5px 0;color:#fff'>本科一批志愿表（表二）</view>
+      <view style='font-size:18px;text-align: center;background-color: #67C23A;padding:5px 0;color:#fff'>本科一批志愿表（表二）
+        <view>
+          <text style='font-size:14px;'>分数：{{list1_2[0].EXAMSCORE}}</text>
+          <text style='font-size:14px;'>
+            <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;时间：</text>
+            <text>{{list1_2[0].year+'-'}}</text><text>{{list1_2[0].month+'-'}}</text><text>{{list1_2[0].date}}</text><text decode="{{true}}">&nbsp;&nbsp;{{list1_2[0].hours+":"}}</text><text>{{list1_2[0].minutes}}</text>
+          </text>
+        </view>
+      </view>
 				<block wx:for="{{list1_2}}" wx:key="i" wx:for-index="i" wx:for-item="school">
 					<view class="weui-cells__title">第{{i + 1}}志愿 : {{school.SCHOOLNAME}}</view>
 					<view class="weui-cells weui-cells_after-title">
@@ -162,7 +178,15 @@
         </form>
       </view> -->
 			<view class="" hidden="{{list2_1.length != 10 || activeIndex != 1}}" style='margin-top:20px;'>
-        <view style='font-size:18px;text-align: center;background-color: #8BC2FA;padding:5px 0;color:#fff'>本科二批志愿表（表一）</view>
+        <view style='font-size:18px;text-align: center;background-color: #8BC2FA;padding:5px 0;color:#fff'>本科二批志愿表（表一）
+          <view>
+            <text style='font-size:14px;'>分数：{{list2_1[0].EXAMSCORE}}</text>
+            <text style='font-size:14px;'>
+              <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;时间：</text>
+              <text>{{list2_1[0].year+'-'}}</text><text>{{list2_1[0].month+'-'}}</text><text>{{list2_1[0].date}}</text><text decode="{{true}}">&nbsp;&nbsp;{{list2_1[0].hours+":"}}</text><text>{{list2_1[0].minutes}}</text>
+            </text>
+          </view>
+        </view>
 				<block wx:for="{{list2_1}}" wx:key="i" wx:for-index="i" wx:for-item="school">
 					<view class="weui-cells__title">第{{i + 1}}志愿 : {{school.SCHOOLNAME}}</view>
 					<view class="weui-cells weui-cells_after-title">
@@ -176,7 +200,15 @@
 				</view>
 			</view>
       <view class="" hidden="{{list2_2.length != 10 || activeIndex != 1}}" style='margin-top:20px;'>
-        <view style='font-size:18px;text-align: center;background-color: #8BC2FA;padding:5px 0;color:#fff'>本科二批志愿表（表二）</view>
+        <view style='font-size:18px;text-align: center;background-color: #8BC2FA;padding:5px 0;color:#fff'>本科二批志愿表（表二）
+          <view>
+            <text style='font-size:14px;'>分数：{{list2_2[0].EXAMSCORE}}</text>
+            <text style='font-size:14px;'>
+              <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;时间：</text>
+              <text>{{list2_2[0].year+'-'}}</text><text>{{list2_2[0].month+'-'}}</text><text>{{list2_2[0].date}}</text><text decode="{{true}}">&nbsp;&nbsp;{{list2_2[0].hours+":"}}</text><text>{{list2_2[0].minutes}}</text>
+            </text>
+          </view>
+        </view>
 				<block wx:for="{{list2_2}}" wx:key="i" wx:for-index="i" wx:for-item="school">
 					<view class="weui-cells__title">第{{i + 1}}志愿 : {{school.SCHOOLNAME}}</view>
 					<view class="weui-cells weui-cells_after-title">

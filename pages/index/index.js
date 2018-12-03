@@ -13,7 +13,8 @@ Page({
     imgUrls: [
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner03.jpg"), url: "/pages/intelligence/intelligence" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner05.jpg"), url: "/pages/consult/consult" },
-      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner02.jpg"), url: "/pages/person/improve/improve" },
+      //注释开通VIP
+      // { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner02.jpg"), url: "/pages/person/improve/improve" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"), url: "/pages/video/video" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_yxk.jpg"), url: "/pages/school/school" }
     ],
@@ -42,7 +43,13 @@ Page({
     var url = e.currentTarget.id;
     var userInfo = wx.getStorageSync('userInfo')
     if (url == "/pages/intelligence/intelligence") {
-      utils.ldqCheckLogin()
+      var userInfo = wx.getStorageSync('userInfo')
+      if (userInfo == '') {
+        wx.redirectTo({
+          url: '/pages/login/login'
+        })
+        return false
+      }
       utils.ldqCheckStudent()
       utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
@@ -51,12 +58,24 @@ Page({
       utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     if (url == "/pages/person/improve/improve") {
-      utils.ldqCheckLogin()
+      var userInfo = wx.getStorageSync('userInfo')
+      if (userInfo == '') {
+        wx.redirectTo({
+          url: '/pages/login/login'
+        })
+        return false
+      }
       utils.ldqCheckStudent()
       utils.navigateTo(url, { user_id: user_id, id: '2'})
     }
     if (url == "/pages/video/video") {
-      utils.ldqCheckLogin()
+      var userInfo = wx.getStorageSync('userInfo')
+      if (userInfo == '') {
+        wx.redirectTo({
+          url: '/pages/login/login'
+        })
+        return false
+      }
       utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     if (url == "/pages/school/school") {
@@ -90,12 +109,25 @@ Page({
   consultation:function(){
 		var userInfo = wx.getStorageSync('userInfo')
 		console.log(userInfo)
-    utils.ldqCheckLogin()
+    // utils.ldqCheckLogin()
+    //验证登录
+    if (userInfo == '') {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
     utils.ldqCheckStudent()
     utils.navigateTo("/pages/consult/consult")
   },
   analog:function(){
-    utils.ldqCheckLogin()
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
 		utils.navigateTo("/pages/imitate/imitate");
 		return false
     var that = this;
@@ -157,9 +189,18 @@ Page({
     var that = this;
 		var userInfo = wx.getStorageSync('userInfo')
 		// 判断是否登录
-    utils.ldqCheckLogin()
+    //  utils.ldqCheckLogin()
+    console.log("12121",userInfo)
+    if(userInfo == ''){
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
+
 		// 判断是否是学生
-		if (userInfo.ROLE_ID == 'm9bxdt9g36') {
+    if (userInfo.ROLE_ID != 'sja4gc59bg') {
+      
 			utils.showError("该功能只有学生可以使用");
 			return false
 		}
@@ -269,6 +310,13 @@ Page({
     utils.navigateTo("/pages/table/table")
   },
   test:function(){
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
     // utils.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function (res) {
     //   if (!res.data) {
     //     utils.showError("请先登录账号");

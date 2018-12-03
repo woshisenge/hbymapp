@@ -69,9 +69,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.ldqCheckLogin()
+    // util.ldqCheckLogin()
     var that=this;
 		var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
 		this.setData({
 			EXAMSCORE: userInfo.EXAMSCORE,
 			MAJORTYPE_VALUE: userInfo. MAJORTYPE_VALUE,
