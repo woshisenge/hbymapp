@@ -165,18 +165,19 @@ Page({
     var userInfo = wx.getStorageSync('userInfo')
     var random1 = Math.round(Math.random() * 4);
     var random2 = Math.round(Math.random() * 4);
+    console.log(random1)
     if (random1<=1) {
       var title ='智能匹配理想大学和专业 '
-    } else if (random1 = 2){
+    } else if (random1 == 2){
       var title = '专家问答，随时问随时答'
-    } else if (random1 = 3) {
+    } else if (random1 == 3) {
       var title = '孩子十几年的寒窗苦读，只为今朝圆理想的大学梦！'
-    } else if (random1 = 4) {
+    } else if (random1 == 4) {
       var title = '切勿因家长的疏忽让孩子与理性大学失之交臂'
     }
     if (random2 <= 1) {
       var imageUrl = '/static/ymplant/ldq-img/zhuanfa01.jpg'
-    } else if (random2 = 2) {
+    } else if (random2 == 2) {
       var imageUrl = '/static/ymplant/ldq-img/zhuanfa02.jpg'
     } else if (random2 >= 3) {
       var imageUrl = '/static/ymplant/ldq-img/zhuanfa03.jpg'
