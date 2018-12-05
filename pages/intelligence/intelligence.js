@@ -44,7 +44,7 @@ Page({
     // 判断是否是VIP，有没有使用次数
     var userInfo = wx.getStorageSync('userInfo')
     if (!userInfo.VIP && userInfo.SHAREGETVIP_COUNT <= 0) {
-			util.showError("该功能只有VIP用户可以使用,或点击右上角转发至群获得使用次数");
+			util.showError("该功能只有VIP用户可以使用,或在本页面点击右上角转发至群获得免费使用次数");
 			return false
 		}
     if (userInfo.ROLE_ID != 'sja4gc59bg') {

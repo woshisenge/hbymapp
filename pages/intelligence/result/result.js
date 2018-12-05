@@ -21,7 +21,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-		// console.log('run')
     var that = this;
 		var userInfo = wx.getStorageSync('userInfo')
 		if (!userInfo.USER_NAME) {
@@ -47,8 +46,6 @@ Page({
 			MAJOR: options.MAJOR
 		})
 		util.sendRequest("/wechat/applet/report/reporting_onekey", options, "POST", true, function (res) {
-      console.log(res)
-			console.log(123,wx.getStorageSync('session_id'))
 			if (res.hasErrors) {
 				if (res.errorMessage == 'relogin') {
 					wx.showModal({
@@ -87,7 +84,6 @@ Page({
 				MAJOR: res.datause.MAJOR,
 				number: 0
 			})
-			// console.log(that.data.MAJOR)
 		})
   },
 	changeSchool: function () {
@@ -98,9 +94,7 @@ Page({
 		}
 		this.data.options.NUMBER = this.data.number
     this.data.options.ldqCount = 1
-		// console.log(this.data.options)
 		util.sendRequest("/wechat/applet/report/reporting_onekey", this.data.options, "POST", true, function (res) {
-			// console.log(res)
 			that.setData({
 				listchong: res.listchong,
 				listwen: res.listwen,
@@ -162,7 +156,6 @@ Page({
     var img = e.currentTarget.dataset.name;
     var advice = e.currentTarget.dataset.class;
 		var type = e.currentTarget.dataset.type;
-		// console.log(this.data.datause)
 		wx.setStorageSync('datause', this.data.datause);
 		// return false
     // for(var i=0; i<major.length; i++){
