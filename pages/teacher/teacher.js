@@ -23,7 +23,13 @@ Page({
    */
   onLoad: function (options) {
     //判断是否登录
-    util.ldqCheckLogin()
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
 		var userInfo = wx.getStorageSync('userInfo')
 		util.sendRequest("/wechat/applet/expert/api/askpro_datas", {}, "POST", false, (res) => {
 			console.log(res)

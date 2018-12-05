@@ -21,7 +21,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.ldqCheckLogin();
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
     util.sendRequest("/plant/character/api/clean_character_begin", {}, "POST", true, (res) => {
       if (res.hasErrors) {
         console.log(res.errorMessage);

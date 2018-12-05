@@ -51,7 +51,13 @@ Page({
     consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_zyb.jpg"),
   },
   onLoad: function () {
-    util.ldqCheckLogin()
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
 		util.sendRequest("/wechat/applet/report/getvolunteer", {}, "POST", true, (res) => {
       console.log("gaoda:",res)
 			if (res.hasErrors) {
@@ -122,7 +128,6 @@ Page({
 				this.setData({
 					list1_1: list1_1
 				})
-        // console.log("高达", list1_1[0].CREATETIME.getFullYear())
 			}
       if (res.data[0].VOLUNTEER_B1_2.length != 0) {
         res.data[0].VOLUNTEER_B1_2.forEach(school => {
