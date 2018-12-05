@@ -37,6 +37,16 @@ Page({
     });
   },
   result:function(){
+    // 判断是否是VIP，有没有使用次数
+    var userInfo = wx.getStorageSync('userInfo')
+    if (!userInfo.VIP && userInfo.SHAREGETVIP_COUNT <= 0) {
+			util.showError("该功能只有VIP用户可以使用,或点击右上角转发至群获得使用次数");
+			return false
+		}
+    if (userInfo.ROLE_ID != 'sja4gc59bg') {
+      utils.showError("该功能只有学生可以使用");
+      return false
+    }
     if ((!this.data.provinces_id && !this.data.subjecttypes_id) || this.data.provinces_id.split(',').length > 3 || this.data.subjecttypes_id.split(',').length > 2 ) { 
       util.showError("请选择 1 - 3 个城市")
       return false
@@ -49,8 +59,10 @@ Page({
     //   util.showError("请选择 1 - 2 个院校类型")
     //   return false
     // }
+    userInfo.SHAREGETVIP_COUNT = userInfo.SHAREGETVIP_COUNT-1;
+    wx.setStorageSync('userInfo', userInfo);
+    var ls =wx.getStorageSync('userInfo');
     var that = this;
-		var userInfo = wx.getStorageSync('userInfo')
 		var data = {
 			MAJOR: that.data.majors_id,
 			PROVINCE: that.data.provinces_id,
@@ -149,8 +161,52 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function (res) {
+    var userInfo = wx.getStorageSync('userInfo')
+    var random1 = Math.round(Math.random() * 4);
+    var random2 = Math.round(Math.random() * 4);
+    if (random1<=1) {
+      var title ='智能匹配理想大学和专业 '
+    } else if (random1 = 2){
+      var title = '专家问答，随时问随时答'
+    } else if (random1 = 3) {
+      var title = '孩子十几年的寒窗苦读，只为今朝圆理想的大学梦！'
+    } else if (random1 = 4) {
+      var title = '切勿因家长的疏忽让孩子与理性大学失之交臂'
+    }
+    if (random2 <= 1) {
+      var imageUrl = '/static/ymplant/ldq-img/zhuanfa01.jpg'
+    } else if (random2 = 2) {
+      var imageUrl = '/static/ymplant/ldq-img/zhuanfa02.jpg'
+    } else if (random2 >= 3) {
+      var imageUrl = '/static/ymplant/ldq-img/zhuanfa03.jpg'
+    }
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+    return{
+      title:title,
+      imageUrl: imageUrl,
+      path: 'pages/index/index',
+      success: function (res) {
+        if (res.shareTickets){
+          if (userInfo.SHARECOUNT >= 3) {
+            util.showError("每天仅赠送三次推荐次数");
+            return false
+          }
+          util.showError("成功转发到群");
+          util.sendRequest('/wechat/applet/api/shareApplet', { USER_ID: userInfo.USER_ID}, "POST", true,   function(res){
+            wx.setStorageSync('userInfo', res)
+            if (res.hasErrors) {
+              console.log(res.errorMessage)
+              return false
+            }
+          })
+        }else{
+          util.showError("请转发至群");
+        }
+      } 
+    }
   },
   toProvince: function() {
     var that = this;

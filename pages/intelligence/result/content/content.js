@@ -16,7 +16,8 @@ Page({
 		schoolId: '',
 		typec: '',
 		major: [],
-    ARRANGMENT_ID:'hjj4e5vr0c',
+    ARRANGMENT_ID: 'hjj4e5vr0c',
+    src: util.setStaticUrl("/static/ymplant/ldq-img/tb.jpg"),
   },
 
   /**

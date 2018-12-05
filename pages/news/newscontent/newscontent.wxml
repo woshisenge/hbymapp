@@ -4,7 +4,7 @@
 
 <view class='content'>
   <view class="head">
-    <text>{{content.TITLE}}</text>
+    <text style='font-weight: bold;font-size:18px;'>{{content.TITLE}}</text>
   </view>
   <view class="heads">
     <text class="text1">编辑：铭邦小哥</text>　|　

@@ -119,3 +119,6 @@
   align-items: center;
   margin-top:170rpx;
 }
+.message_list{
+  background-color: #f8f8f8;
+}

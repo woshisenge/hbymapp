@@ -7,7 +7,8 @@ Page({
   data: {
     results: [],
     chance: 0,
-    hidden: false
+    hidden: false,
+    src: util.setStaticUrl("/static/ymplant/ldq-img/tb.jpg"),
   },
   /**
    * 生命周期函数--监听页面加载

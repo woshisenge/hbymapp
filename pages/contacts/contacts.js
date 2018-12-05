@@ -13,7 +13,8 @@ Page({
     checked:false,
     s_teacher:[],
     s_student:[],
-    wait: util.setStaticUrl("/static/ymplant/img/sye/banner/wait.png")
+    wait: util.setStaticUrl("/static/ymplant/img/sye/banner/wait.png"),
+    userInfo: '',
   },
   showInput: function () {
     this.setData({
@@ -70,6 +71,9 @@ Page({
       student: student
     });
   },
+  gd_signIn:function (){
+    util.ldqCheckLogin()
+  },
   // 监听下拉刷新
   onPullDownRefresh: function () {
     var that = this;
@@ -111,7 +115,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.ldqCheckLogin()
+    var that = this;
+    var userInfo = wx.getStorageSync('userInfo')
+    if(userInfo == '') {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
+    if (userInfo!='') {
+      this.setData({
+        userInfo: userInfo
+      })
+    }
   },
   setSearchStorage:function(){
     

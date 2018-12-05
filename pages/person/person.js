@@ -42,8 +42,6 @@ Page({
       return false
     }
 		var userInfo = wx.getStorageSync('userInfo')
-		console.log(userInfo)
-		// console.log(userInfo)
 		if (userInfo.ROLE_ID == 'sja4gc59bg') {
 			this.setData({
 				user_id: userInfo.USER_ID || '',
@@ -89,9 +87,7 @@ Page({
       sizeType: ['compressed'],
       sourceType: [type],
       success: function (res) {
-        console.log('112233',res)
         util.uploadFile("/wechat/applet/user/uploadhead", res.tempFilePaths[0], "HEADURL", {}, true, function(res){
-					console.log('223344',res)
           that.getUserInfo();
         });
       }
@@ -108,7 +104,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    //this.getUserInfo();
+    var userInfo = wx.getStorageSync('userInfo')
+    var user = wx.getStorageSync('userInfo')
+    wx.setStorageSync('userInfo', user)
+    if (userInfo.ROLE_ID == 'sja4gc59bg') {
+      this.setData({
+        user_id: userInfo.USER_ID || '',
+        nickname: userInfo.NICKNAME || '',
+        examscore: userInfo.EXAMSCORE || '',
+        majortype: userInfo.MAJORTYPE || '',
+        role_id: userInfo.ROLE_ID || '',
+        headurl: util.setStaticUrl(userInfo.HEADURL),
+        vip: userInfo.VIP
+      })
+    }
+    if (userInfo.ROLE_ID == 'm9bxdt9g36') {
+      console.log(util.setStaticUrl(userInfo.HEADURL))
+      this.setData({
+        nickname: userInfo.NICKNAME || '',
+        role_id: userInfo.ROLE_ID || '',
+        school_name: userInfo.SCHOOL_NAME || '',
+        jobtype: userInfo.JOBTYPE || '',
+        headurl: util.setStaticUrl(userInfo.HEADURL),
+        jobdate: userInfo.JOBDATE,
+      })
+    }
   },
   /**
    * 获取用户基本信息
@@ -133,11 +153,9 @@ Page({
       })
     })
     util.sendRequest("/wechat/applet/user/getrole", {}, "POST", false, function (res) {  
-      console.log(951,res)
       var role=res.data
       if(role==1){
         util.sendRequest("/wechat/applet/user/basic_student", {}, "POST", false, function (obj) {
-          console.log(159,obj)
           that.setData({
             logo: util.setStaticUrl(obj.complete.HEADURL),
             region: obj.complete.EXAMAREA_VALUE ? obj.complete.EXAMAREA_VALUE : "暂无",

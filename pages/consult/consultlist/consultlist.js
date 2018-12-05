@@ -10,6 +10,7 @@ Page({
     tabs: ["录取", "基本信息", "学校简介","问招办"],
     activeIndex: 0,
     index: 1,
+    src: util.setStaticUrl("/static/ymplant/ldq-img/tb.jpg"),
     ckecked: true,
     icon: "/images/address.png",
     array: [],

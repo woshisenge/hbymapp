@@ -15,30 +15,40 @@
     </label>
     </view>
     <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
-  </view>   
+  </view>
 <view  stytle=" overflow-x: hidden; overflow-y: auto; " wx:if="{{role == 1}}">
 <view class='contact_wait' wx:if="{{teacher.length == 0}}">
   <image src="{{wait}}" style="width:350rpx;height:350rpx"></image>
   <text>您还未与招办老师沟通，暂无信息！</text>
 </view>
   <view class="message_list" wx:else>
-    <block wx:for="{{teacher}}" wx:key="">
-      <view id='{{item.RUSER_ID}}' bindtap='toChat' hidden="{{item.checked}}">
-        <view class="item">
-          <view class="item-left">
-            <image src="{{item.TEAHEADURL}}" class="image"/>
-          </view>
-          <view class="item-middle">
-            <view><text class="title">{{item.school.NAME}}</text></view>
-            <view><text class="message">{{item.TEANICKNAME}}</text></view>
-          </view>
-          <view class="item_right">
-                <view><text class="time">{{item.timeList[0].CREATETIME}}</text></view>
-                <view class="mark" wx:if="{{item.count>0}}"><text class="text">{{item.count}}</text></view> 
+    <block wx:if="{{userInfo!=''}}">
+      <block wx:for="{{teacher}}" wx:key="">
+        <view id='{{item.RUSER_ID}}' bindtap='toChat' hidden="{{item.checked}}">
+          <view class="item">
+            <view class="item-left">
+              <image src="{{item.TEAHEADURL}}" class="image"/>
             </view>
+            <view class="item-middle">
+              <view><text class="title">{{item.school.NAME}}</text></view>
+              <view><text class="message">{{item.TEANICKNAME}}</text></view>
+            </view>
+            <view class="item_right">
+                  <view><text class="time">{{item.timeList[0].CREATETIME}}</text></view>
+                  <view class="mark" wx:if="{{item.count>0}}"><text class="text">{{item.count}}</text></view> 
+              </view>
+          </view>
         </view>
+        <view  class="line"></view>
+      </block>
+    </block>
+    <block wx:if="{{userInfo==''}}" style=''>
+      <view style='font-size:20px;color:#D51212;text-align: center;background-color: #F8F8F8;margin-top: 50%;'>
+          请登录后查看
       </view>
-      <view  class="line"></view>
+      <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="gd_signIn" style='width:30%'>点击登录</button>
+      </view>
     </block>
   </view>
 </view>
@@ -55,7 +65,7 @@
             <image src="{{item.HEADURL}}" class="image"/>
           </view>
           <view class="s_middle">
-             <text class="s_title">{{item.NICKNAME}}</text> 
+            <text class="s_title">{{item.NICKNAME}}</text> 
           </view>
           <view class="item_right">
                 <view><text class="time">{{item.timeList[0].CREATETIME}}</text></view>

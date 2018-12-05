@@ -3,7 +3,7 @@
 <import src="../../../wxParse/wxParse.wxml" />
 <!-- <scroll-view scroll-y style="height: 600px;" bindscrolltoupper="upper" bindscrolltolower="lower" scroll-top="{{scrollTop}}" upper-threshold="75px" bindscroll="scroll"> -->
 <view class="banner">
-  <image src='/images/tb.jpg'></image>
+  <image src="{{src}}"></image>
 </view>
 <view class='logo'>
   <view class='logo-left'>

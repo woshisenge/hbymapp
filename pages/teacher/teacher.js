@@ -214,7 +214,6 @@ Page({
         result[i].checked = true;
       }
     }
-
     that.setData({
       result: result
     });
@@ -225,34 +224,34 @@ Page({
   issue:function(e){
     var id = e.currentTarget.id;
     var userInfo = wx.getStorageSync('userInfo')
-    if (!userInfo.VIP && userInfo.ROLE_ID =='sja4gc59bg') {
-      wx.showModal({
-        content: '该功能仅限会员使用',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            util.navigateTo("/pages/person/improve/improve", { id: '3', user_id: userInfo.USER_ID })
-          }
-        }
-      })
-      return false
-    }
+    // if (!userInfo.VIP && userInfo.ROLE_ID =='sja4gc59bg') {
+    //   wx.showModal({
+    //     content: '该功能仅限会员使用',
+    //     showCancel: false,
+    //     success: function (res) {
+    //       if (res.confirm) {
+    //         util.navigateTo("/pages/person/improve/improve", { id: '3', user_id: userInfo.USER_ID })
+    //       }
+    //     }
+    //   })
+    //   return false
+    // }
 		util.navigateTo("/pages/teacher/issue_content/issue_content", { ASKS_ANSWERS_ID:id})
   },
   quiz:function(){
 		var userInfo = wx.getStorageSync('userInfo')
-		if (!userInfo.VIP) {
-			wx.showModal({
-				content: '该功能仅限会员使用',
-				showCancel: false,
-				success: function (res) {
-					if (res.confirm) {
-						util.navigateTo("/pages/person/improve/improve", { id: '3', user_id: userInfo.USER_ID })
-					}
-				}
-			})
-			return false
-		}
+		// if (!userInfo.VIP) {
+		// 	wx.showModal({
+		// 		content: '该功能仅限会员使用',
+		// 		showCancel: false,
+		// 		success: function (res) {
+		// 			if (res.confirm) {
+		// 				util.navigateTo("/pages/person/improve/improve", { id: '3', user_id: userInfo.USER_ID })
+		// 			}
+		// 		}
+		// 	})
+		// 	return false
+		// }
 		if (this.data.role != 'sja4gc59bg'){
 			util.showError("仅有学生身份才能提问！")
 		}else{

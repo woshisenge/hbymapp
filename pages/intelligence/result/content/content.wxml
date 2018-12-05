@@ -2,7 +2,7 @@
 <!-- 智能推荐结果详情页 -->
   <view class="page_bd">
     <view class="banner">
-      <image src='/images/tb.jpg'></image>
+      <image src='{{src}}'></image>
     </view>
     <view class="top">
       <view class="top-left">

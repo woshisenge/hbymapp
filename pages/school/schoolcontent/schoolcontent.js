@@ -19,6 +19,7 @@ Page({
     school_id:"",
     MAJORTYPE: "r6j4mh69be",
     id:"",
+    src: util.setStaticUrl("/static/ymplant/ldq-img/tb.jpg")
   },
 
   tabClick: function (e) {

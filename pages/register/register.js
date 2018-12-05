@@ -2,7 +2,6 @@
 var util = require('../../utils/util.js');
 var codeTimer = null;
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -30,7 +29,6 @@ Page({
   onLoad: function (options) {
     var that = this
     util.sendRequest("/wechat/applet/api/toregist_two", { DIC_ID: 'province3' }, "POST", true, function (res) {
-      // console.log(res)
       that.setData({
         city: res.datas
       })
@@ -105,7 +103,6 @@ Page({
       that.setData({
         county: res.datas
       })
-      // console.log(that.data.county)
     })
   },
   bindCountryChange2: function (e) {
@@ -124,7 +121,6 @@ Page({
       that.setData({
         school: res.datas
       })
-      // console.log(that.data.school)
     })
   },
   bindCountryChange3: function (e) {
@@ -138,7 +134,6 @@ Page({
   },
   bindAgreeChange: function(e) {
     var that = this;
-    
     if(e.detail.value.length > 0) {
       that.setData({
         isAgree: true
@@ -150,62 +145,64 @@ Page({
       });
     }
   },
- 
   radioChange:function(e){
-    
     var that = this;
     that.setData({
       style: e.detail.value
     })
   },
-	
   formSubmit: function(e) {
     var that = this;
-    
     if(!that.data.isAgree){
       util.showError("未同意遵守服务条款不可注册账号");
       return false;
     }
     var param = e.detail.value;
-    
     param.MAJORTYPE = that.data.style;
-    
-    if(param.USERNAME == ""){
-      util.showError("用户名不能为空");
-      return false;
-    }
-
-    if (param.EXAMSCORE == "") {
-      util.showError("预估分数不能为空");
-      return false;
-    }
-
-    if (param.EXAMSCORE < "200"){
-      util.showError("考试分数范围不正确");
-      return false;
-    }
-
-    if (param.EXAMSCORE > "750") {
-      util.showError("考试分数范围不正确");
-      return false;
-    }
-
-
     if (param.PHONE == "") {
       util.showError("手机号不能为空");
       return false;
     }
-
     if (param.CODE == "") {
       util.showError("验证码不能为空");
       return false;
     }
-
-    if (param.PASSWORD == "") {
-      util.showError("密码不能为空");
+    if (param.PASSWORD == "" || param.PASSWORD.length < 6) {
+      util.showError("密码不能为空,且长度为 6 ~ 16 位");
       return false;
     }
-
+    if (!param.CITY) {
+      util.showError("请选择城市");
+      return false;
+    }
+    if (!param.REGION) {
+      util.showError("请选择区域");
+      return false;
+    }
+    if (!param.SCHOOL) {
+      util.showError("请选择学校");
+      return false;
+    } 
+    if (param.USER_NAME == "" || param.USER_NAME.length < 2) {
+      util.showError("姓名不能为空,且长度为2~5位");
+      return false;
+    }
+    if (param.SUBJECT == "") {
+      util.showError("请选择文理科");
+      return false;
+    } 
+    if (!param.YEAR) {
+      util.showError("请选择考试年份");
+      return false;
+    }
+    if(param.USERNAME == ""){
+      util.showError("用户名不能为空");
+      return false;
+    }
+    if (param.EXAMSCORE == "" || param.EXAMSCORE < "200" || param.EXAMSCORE > "750") {
+      util.showError("预估分数不能为空，且不能大于750分，小于200分");
+      return false;
+    }
     if (param.REPASSWORD == "") {
       showError("确认密码不能为空");
       return false;
@@ -238,10 +235,7 @@ Page({
     var that = this
     // var _city = this.city[1].NAME
     // console.log(this.data.city)
-    
-    // console.log(that.data.c)
   },
-
   //获取短信验证码
   getSMSCode: function () {
     var that = this;
@@ -249,11 +243,15 @@ Page({
       util.showError("手机号码不能为空！");
       return false;
     }
+    var reg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+    if (!reg.test(that.data.phone)) {//如果手机号码的格式与正则的不符合，就提醒
+      util.showError("请检查获取验证码的手机号！");
+      return false;
+    }
     var data = {
       PHONE: that.data.phone
     }
     util.sendRequest("/wechat/applet/api/toregist_third_phone",data,"POST",true,function(res){
-      console.log(res)
       if(res.hasErrors){
         util.showError("手机号已存在，请更换！");
         return false;
@@ -262,18 +260,11 @@ Page({
           that.setData({
             codeHidden: !that.data.codeHidden,
             timerNumber: 60
-
           });
-
           codeTimer = setInterval(that.codeTimerFn, 1000)
         });
-
       }
-      
     })
-    
-
-
   },
   codeTimerFn: function () {
     var that = this;

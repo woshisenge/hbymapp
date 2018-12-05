@@ -101,6 +101,13 @@ Page({
     utils.navigateTo("/pages/character/character")
   },
   advantage:function(){
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
     utils.navigateTo("/pages/consult/consult");
   },
   noticecontent:function(e){
@@ -202,6 +209,7 @@ Page({
   intelligence:function(){
     var that = this;
 		var userInfo = wx.getStorageSync('userInfo')
+    console.log(userInfo)
 		// 判断是否登录
     //  utils.ldqCheckLogin()
     console.log("12121",userInfo)
@@ -214,17 +222,14 @@ Page({
 
 		// 判断是否是学生
     if (userInfo.ROLE_ID != 'sja4gc59bg') {
-      
 			utils.showError("该功能只有学生可以使用");
 			return false
 		}
 		// 判断是否是vip
-		if (!userInfo.VIP) {
-			utils.showError("该功能只有VIP用户可以使用");
-			return false
-		}
-		// console.log(111)
-		// return false
+		// if (!userInfo.VIP) {
+		// 	utils.showError("该功能只有VIP用户可以使用");
+		// 	return false
+		// }
 		utils.navigateTo("/pages/intelligence/intelligence");
 
     // utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
@@ -407,9 +412,10 @@ Page({
     //     role: res.data
     //   })
     // });
-
   },
   onShareAppMessage: function () {
-
+    // return{
+    //   imageUrl:"/images/gd.jpg",
+    // }
   },
 });

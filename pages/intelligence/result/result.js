@@ -67,7 +67,6 @@ Page({
 				console.log(res.errorMessage)
 				return false;
 			}
-			// console.log(res)
 			if (res.data == '222' || res.data == '333') {
 				util.showError("所选批次与分数不符")
 				return false
