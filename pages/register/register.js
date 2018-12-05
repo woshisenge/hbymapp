@@ -225,7 +225,7 @@ Page({
   },
   openAlert: function () {
     wx.showModal({
-      content: '注册成功',
+      content: '注册成功,请重新登录',
       showCancel: false,
       success: function (res) {
         if (res.confirm) {

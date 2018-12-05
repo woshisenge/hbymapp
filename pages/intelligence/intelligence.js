@@ -44,7 +44,7 @@ Page({
     // 判断是否是VIP，有没有使用次数
     var userInfo = wx.getStorageSync('userInfo')
     if (!userInfo.VIP && userInfo.SHAREGETVIP_COUNT <= 0) {
-			util.showError("该功能只有VIP用户可以使用,或在本页面点击右上角转发至群获得免费使用次数");
+			util.showError("方法1：该功能只有VIP用户可以使用方法2：在本页面点击右上角转发至群即可获得免费使用次数");
 			return false
 		}
     if (userInfo.ROLE_ID != 'sja4gc59bg') {
@@ -196,7 +196,7 @@ Page({
       success: function (res) {
         if (res.shareTickets){
           if (userInfo.SHARECOUNT >= 3) {
-            util.showError("每天仅赠送三次推荐次数");
+            util.showError("每天仅赠送三次免费使用次数，您可明天继续获得免费使用次数");
             return false
           }
           util.showError("成功转发到群");
