@@ -213,7 +213,12 @@ Page({
     param.SCHOOL_NAME = that.data.thisSchool.NAME
     param.EXAMYEAR = that.data.thisYear.uid
     console.log(param)
-    util.sendRequest("/wechat/applet/api/toregist_third", param, "POST", true, function(res){
+    util.sendRequest("/wechat/applet/api/toregist_third_wechat", param, "POST", true, function(res){
+      if (res.hasErrors) {
+        console.log(res.errorMessage);
+        util.showError(res.errorMessage);
+        return false;
+      }
       console.log(res)
       that.openAlert()
     });

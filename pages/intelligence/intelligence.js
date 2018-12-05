@@ -26,6 +26,10 @@ Page({
 		CITY_VALUE: '',
 		    //banner图
     consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_banner03.jpg"),
+    //转发图
+    imageUrl1: util.setStaticUrl("/static/ymplant/ldq-img/zhuanfa01.jpg"),
+    imageUrl2: util.setStaticUrl("/static/ymplant/ldq-img/zhuanfa02.jpg"),
+    imageUrl3: util.setStaticUrl("/static/ymplant/ldq-img/zhuanfa03.jpg"),
   },
   bindPickerChange: function (e) {
     var that = this;
@@ -176,11 +180,11 @@ Page({
       var title = '切勿因家长的疏忽让孩子与理性大学失之交臂'
     }
     if (random2 <= 1) {
-      var imageUrl = '/static/ymplant/ldq-img/zhuanfa01.jpg'
+      var imageUrl = this.data.imageUrl1
     } else if (random2 == 2) {
-      var imageUrl = '/static/ymplant/ldq-img/zhuanfa02.jpg'
+      var imageUrl = this.data.imageUrl2
     } else if (random2 >= 3) {
-      var imageUrl = '/static/ymplant/ldq-img/zhuanfa03.jpg'
+      var imageUrl = this.data.imageUrl3
     }
     wx.showShareMenu({
       withShareTicket: true
