@@ -71,3 +71,19 @@
   </view>
 </view>
 <view class='blank'></view>
+
+<!-- 自定义弹窗 -->
+
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask"/>
+  <view class="zan-dialog__container">
+    <view style='padding:100rpx; position:relative;'>
+    <view style='margin-top:-15px;'>
+      <text>方法1：点击<text style='color:#FB8608'>分享</text>至<text style='color:#FB8608'>家长群</text>或<text style='color:#FB8608'>同学群</text>即可免费使用一次。\n</text>
+      <text>方法2：充值VIP即可无限次使用。</text>
+    </view>
+    <button bindtap="toggleDialog" open-type='share' class="weui-btn mini-btn" type="primary" style='width:40%;position: absolute;top:222rpx;right:30rpx;'>分享</button>
+    <button bindtap="toggleDialog" class="weui-btn mini-btn" type="default" style='width:40%;position: absolute;top:222rpx;left:30rpx;'>取消</button>
+    </view>
+  </view>
+</view>

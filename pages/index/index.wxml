@@ -29,13 +29,13 @@
         <image class="tpia" src='/images/07.png'></image> 
         <view class='navigation-text'>专业库</view> 
       </view>
-      <view class='navigation' bindtap="analog">
-        <image class="tpia" src='/images/05.png'></image>
-        <view class='navigation-text'>查看志愿</view>
+      <view class='navigation' bindtap="toChar">
+        <image class="tpia" src='/images/char.png'></image>
+        <view class='navigation-text'>专业匹配</view>
       </view>
       <view class='navigation' bindtap="intelligence">
         <image class="tpia" src='/images/02.png'></image>
-        <view class='navigation-text'>一键填报</view>
+        <view class='navigation-text' style='color:#f00'>智能选大学</view>
       </view>
       <view class='navigation' bindtap='test'>
         <image class="tpia" src='/images/03.png'></image> 
@@ -49,9 +49,9 @@
   </swiper-item>
   <swiper-item>
     <view class='navigation-box'>
-      <view class='navigation' bindtap="toChar">
-        <image class="tpia" src='/images/char.png'></image>
-        <view class='navigation-text'>专业匹配</view>
+      <view class='navigation' bindtap="analog">
+        <image class="tpia" src='/images/05.png'></image>
+        <view class='navigation-text'>查看志愿</view>
       </view>
     </view>
   </swiper-item>
@@ -161,7 +161,7 @@
 <view class="notice">
   <image class='icon' src='../../images/dynamic.png'></image>
   <view style='font-size:36rpx;'>高考动态</view>
-  <span class="more" style="font-size:25rpx;" bindtap="newsmore">更多></span>
+  <span class="more" style="font-size:30rpx;color:#FE8402" bindtap="newsmore">查看更多></span>
 </view>
 <view style='padding:15rpx 0;'>
   <block wx:for="{{news}}" wx:key="">
@@ -190,8 +190,8 @@
 <!-- 线下活动 开始 -->
 <view class="notice">
   <image class='icon' src='../../images/line.png'></image>
-  <view style='font-size:36rpx;'>线下活动</view>
-  <span class="more" style="font-size:25rpx;" bindtap="activitymore">更多></span>
+  <view style='font-size:36rpx;'>招办见面会</view>
+  <span class="more" style="font-size:30rpx;color:#FE8402" bindtap="activitymore">查看更多></span>
 </view>
 <view class='flex-x' style='padding: 15rpx;'>
   <block wx:for="{{activity}}" wx:key="">

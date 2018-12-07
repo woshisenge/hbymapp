@@ -16,7 +16,8 @@ Page({
       //注释开通VIP
       // { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner02.jpg"), url: "/pages/person/improve/improve" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"), url: "/pages/video/video" },
-      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_yxk.jpg"), url: "/pages/school/school" }
+      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_yxk.jpg"), url: "/pages/school/school" },
+      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner_zf.jpg"),url:""},
     ],
     indicatorDots: false,
     autoplay: true,
@@ -413,9 +414,7 @@ Page({
     //   })
     // });
   },
-  onShareAppMessage: function () {
-    // return{
-    //   imageUrl:"/images/gd.jpg",
-    // }
+  onShareAppMessage: function (res) {
+    
   },
 });
