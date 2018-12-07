@@ -162,7 +162,7 @@ Page({
    */
   onShareAppMessage: function (res) {
     var that = this;
-    var random1 = 3;
+    var random1 = Math.round(Math.random() * 6);
     var random2 = Math.round(Math.random() * 4);
     if (random1 <= 1) {
       var title = '我是高三家长！正帮孩子智能匹配理想大学和专业，快来试试吧！'
