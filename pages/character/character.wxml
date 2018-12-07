@@ -30,7 +30,7 @@
   <view class="zan-dialog__container">
     <view style='padding:100rpx; position:relative;'>
     <view style='margin-top:-15px;'>
-      <text style='font-size:36rpx;'>点击<text style='color:#FB8608'>分享</text>至<text style='color:#FB8608'>家长群</text>或<text style='color:#FB8608'>同学群</text>即可去除弹窗。\n</text>
+      <text style='font-size:36rpx;'>点击<text style='color:#FB8608'>分享</text>至<text style='color:#FB8608'>家长群</text>或<text style='color:#FB8608'>同学群</text>即可使用专业匹配</text>
     </view>
     <button open-type='share' class="weui-btn mini-btn" type="primary" style='width:40%;margin-top:110rpx;'>分享</button>
     </view>
