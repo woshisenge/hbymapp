@@ -19,7 +19,7 @@ Page({
     color:true,
     scrolltop:1200,
     text:true,
-    showDialog: true,
+    showDialog: false,
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_yfyd.jpg"),
     //转发图
@@ -97,15 +97,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.popupShow()
     var that = this;
-    that.pullGradeInfos();
     var userInfo = wx.getStorageSync('userInfo')
-    // if (userInfo.VIP) {
-    //   that.setData({
-    //     showDialog: false
-    //   })
-    // }
+    that.pullGradeInfos();
+    if (!userInfo.VIP) {
+      var USER_ID = userInfo.USER_ID
+      util.sendRequest('/wechat/applet/api/wethereShare', { USER_ID: USER_ID }, "POST", true, (res) => {
+        if (res.hasErrors) {
+          console.log(res.errorMessage)
+          return false
+        }
+        var showDialog = true
+        if (res.data == '10000') {
+          that.setData({
+            showDialog: false
+          })
+        } else {
+          that.setData({
+            showDialog: true
+          })
+        }
+      })
+    }
   },
 
   /**

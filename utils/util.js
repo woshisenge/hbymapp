@@ -129,21 +129,25 @@ var ldqCheckStudent = function () {
 /**
  * gd 非一键填报  控制弹窗每天一次
  */
-var popupShow = function () {
+var popupShow = function (res) {
   var userInfo = wx.getStorageSync('userInfo')
+  var that = this
   var USER_ID = userInfo.USER_ID
   sendRequest('/wechat/applet/api/wethereShare', {USER_ID: USER_ID }, "POST", true, (res) => {
     if (res.hasErrors) {
       console.log(res.errorMessage)
       return false
     }
-    var showDialog= false;
-    if (res.data =='10000') {
-      showDialog: true
-    }else{
-      showDialog: false
-    }
-    console.log(res)
+    // var showDialog = true
+    // if (res.data=='10000') {
+    //   that.setData({
+    //     showDialog: false
+    //   })
+    // }else{
+    //   that.setData({
+    //     showDialog: true
+    //   })
+    // }
   })
 }
 /**
@@ -151,6 +155,7 @@ var popupShow = function () {
  */
 var gdForward = function (res) {
   var that = this;
+  var aaa =1;
   var random1 = Math.round(Math.random() * 6);
   var random2 = Math.round(Math.random() * 4);
   if (random1 <= 1) {
@@ -183,18 +188,19 @@ var gdForward = function (res) {
         var userInfo = wx.getStorageSync('userInfo')
         var USER_ID = userInfo.USER_ID
         sendRequest('/wechat/applet/api/wechatShare', {USER_ID: USER_ID}, "POST", true, (res) => {
-          console.log(123,res)
           if (res.hasErrors) {
             console.log(res.errorMessage)
             return false
           }
           console.log(res)
         })
+        console.log(123,aaa)
         var showDialog = true;
         if (!userInfo.VIP) {
             that.setData({
               showDialog: false
             })
+          console.log('成功',showDialog)
         }
       } else {
         showError("请转发至群");

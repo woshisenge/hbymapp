@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showDialog: true,
+    showDialog: false,
     src: util.setStaticUrl("/static/ymplant/ldq-img/character.jpg")
   },
   test:function(){
@@ -22,6 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     var userInfo = wx.getStorageSync('userInfo')
     if (userInfo == '') {
       wx.redirectTo({
@@ -36,12 +37,28 @@ Page({
       }
     })
     // 监测是否是VIP是VIP去除弹窗
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo.VIP) {
+    if (!userInfo.VIP) {
       this.setData({
         showDialog: false
       })
     }
+    var USER_ID = userInfo.USER_ID
+    util.sendRequest('/wechat/applet/api/wethereShare', { USER_ID: USER_ID }, "POST", true, (res) => {
+      if (res.hasErrors) {
+        console.log(res.errorMessage)
+        return false
+      }
+      var showDialog = true
+      if (res.data == '10000') {
+        that.setData({
+          showDialog: false
+        })
+      } else {
+        that.setData({
+          showDialog: true
+        })
+      }
+    })
   },
 
   /**

@@ -308,6 +308,13 @@ Page({
     // }
   },
   school:function(){
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
     var that = this;
     utils.navigateTo("/pages/school/school")
   },
@@ -334,6 +341,13 @@ Page({
     utils.navigateTo("/pages/video/video")
   },
   teacher:function(){
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
     utils.navigateTo("/pages/table/table")
   },
   test:function(){

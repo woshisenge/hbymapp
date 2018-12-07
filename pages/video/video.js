@@ -6,7 +6,7 @@ Page({
   // inputValue: '',
   data: {
     src: '',
-    showDialog: true,
+    showDialog: false,
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"),
   },
@@ -49,6 +49,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     var userInfo = wx.getStorageSync('userInfo')
     if (userInfo == '') {
       wx.redirectTo({
@@ -97,11 +98,25 @@ Page({
 				video: this.toDto(res.data)
 			})
 		})
+    
     // 监测是否是VIP是VIP去除弹窗
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo.VIP) {
-      this.setData({
-        showDialog: false
+    if (!userInfo.VIP) {
+      var USER_ID = userInfo.USER_ID
+      util.sendRequest('/wechat/applet/api/wethereShare', { USER_ID: USER_ID }, "POST", true, (res) => {
+        if (res.hasErrors) {
+          console.log(res.errorMessage)
+          return false
+        }
+        var showDialog = true
+        if (res.data == '10000') {
+          that.setData({
+            showDialog: false
+          })
+        } else {
+          that.setData({
+            showDialog: true
+          })
+        }
       })
     }
   },

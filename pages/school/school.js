@@ -23,7 +23,7 @@ Page({
     showView2: true,
     hot:null,
     grade:null,
-    showDialog: true,
+    showDialog: false,
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_yxk.jpg"),
   },
@@ -185,11 +185,28 @@ Page({
     })
     // 监测是否是VIP是VIP去除弹窗
     var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo.VIP) {
+    if (!userInfo.VIP) {
       that.setData({
-        showDialog: false
+        showDialog: true
       })
     }
+    var USER_ID = userInfo.USER_ID
+    util.sendRequest('/wechat/applet/api/wethereShare', { USER_ID: USER_ID }, "POST", true, (res) => {
+      if (res.hasErrors) {
+        console.log(res.errorMessage)
+        return false
+      }
+      var showDialog = true
+      if (res.data == '10000') {
+        that.setData({
+          showDialog: false
+        })
+      } else {
+        that.setData({
+          showDialog: true
+        })
+      }
+    })
   },
   changeArrow: function () {
     var that = this;

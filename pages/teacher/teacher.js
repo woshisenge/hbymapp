@@ -26,6 +26,7 @@ Page({
 
   onLoad: function (options) {
     //判断是否登录
+    var that = this;
     var userInfo = wx.getStorageSync('userInfo')
     if (userInfo == '') {
       wx.redirectTo({
@@ -33,10 +34,23 @@ Page({
       })
       return false
     }
-    if (!userInfo.VIP){
-      this.setData({
-        showDialog:true,
-        hasShare:1
+    if (!userInfo.VIP) {
+      var USER_ID = userInfo.USER_ID
+      util.sendRequest('/wechat/applet/api/wethereShare', { USER_ID: USER_ID }, "POST", true, (res) => {
+        if (res.hasErrors) {
+          console.log(res.errorMessage)
+          return false
+        }
+        var showDialog = true
+        if (res.data == '10000') {
+          that.setData({
+            showDialog: false
+          })
+        } else {
+          that.setData({
+            showDialog: true
+          })
+        }
       })
     }
 		var userInfo = wx.getStorageSync('userInfo')
