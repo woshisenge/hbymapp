@@ -71,6 +71,7 @@ button[type="primary"] {
 .width{
   width:85%;
 }
+/* 自定义弹窗开始 */
 .zan-dialog__mask {
   position: fixed;
   top: 0;
@@ -108,3 +109,4 @@ button[type="primary"] {
 .zan-dialog--show .zan-dialog__mask {
   display: block;
 }
+/* 自定义弹窗结束 */

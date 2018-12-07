@@ -54,7 +54,9 @@ Page({
 					showCancel: false,
 					success: function (res) {
 						if (res.confirm) {
-							util.navigateTo("/pages/teacher/teacher")
+              // 返回上一页
+              wx.navigateBack(-1)
+							// util.navigateTo("/pages/teacher/teacher")
 						}
 					}
 				})

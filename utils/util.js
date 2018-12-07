@@ -126,6 +126,82 @@ var ldqCheckStudent = function () {
     return false
   }
 }
+/**
+ * gd 非一键填报  控制弹窗每天一次
+ */
+var popupShow = function () {
+  var userInfo = wx.getStorageSync('userInfo')
+  var USER_ID = userInfo.USER_ID
+  sendRequest('/wechat/applet/api/wethereShare', {USER_ID: USER_ID }, "POST", true, (res) => {
+    if (res.hasErrors) {
+      console.log(res.errorMessage)
+      return false
+    }
+    var showDialog= false;
+    if (res.data =='10000') {
+      showDialog: true
+    }else{
+      showDialog: false
+    }
+    console.log(res)
+  })
+}
+/**
+ * gd 控制转发显示页面
+ */
+var gdForward = function (res) {
+  var that = this;
+  var random1 = Math.round(Math.random() * 6);
+  var random2 = Math.round(Math.random() * 4);
+  if (random1 <= 1) {
+    var title = '我是高三家长！正帮孩子智能匹配理想大学和专业，快来试试吧！'
+  } else if (random1 == 2) {
+    var title = '我是高三家长，正和大学招办老师聊天！同学家长你也可以哟！'
+  } else if (random1 == 3) {
+    var title = '有一种家长叫别人的家长，他们在为自己的孩子规划大学志愿！'
+  } else if (random1 == 4) {
+    var title = '1000多所大学在河北历年招生专业数据详情！总有你要报考的大学！'
+  } else if (random1 <= 5) {
+    var title = '大学招办说——同样成绩600分，为何别人被录取，你却没考上？'
+  }
+  if (random2 <= 1) {
+    var imageUrl = baseurl.content + "/static/ymplant/ldq-img/zhuanfa01.jpg"
+  } else if (random2 == 2) {
+    var imageUrl = baseurl.content +"/static/ymplant/ldq-img/zhuanfa02.jpg"
+  } else if (random2 >= 3) {
+    var imageUrl = baseurl.content +"/static/ymplant/ldq-img/zhuanfa03.jpg"
+  }
+  wx.showShareMenu({
+    withShareTicket: true
+  })
+  return {
+    title: title,
+    imageUrl: imageUrl,
+    path: 'pages/index/index',
+    success: function (res) {
+      if (res.shareTickets) {
+        var userInfo = wx.getStorageSync('userInfo')
+        var USER_ID = userInfo.USER_ID
+        sendRequest('/wechat/applet/api/wechatShare', {USER_ID: USER_ID}, "POST", true, (res) => {
+          console.log(123,res)
+          if (res.hasErrors) {
+            console.log(res.errorMessage)
+            return false
+          }
+          console.log(res)
+        })
+        var showDialog = true;
+        if (!userInfo.VIP) {
+            that.setData({
+              showDialog: false
+            })
+        }
+      } else {
+        showError("请转发至群");
+      }
+    }
+  }
+}
 
 /**
  * ldq 重新获取session
@@ -804,6 +880,8 @@ module.exports = {
   EmojiObj: EmojiObj,
   Emoji: Emoji,
   parseEmoji: parseEmoji,
-  wxPromisify: wxPromisify
+  wxPromisify: wxPromisify,
+  gdForward: gdForward,
+  popupShow:popupShow,
 }
 

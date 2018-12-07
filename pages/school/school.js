@@ -23,6 +23,7 @@ Page({
     showView2: true,
     hot:null,
     grade:null,
+    showDialog: true,
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_yxk.jpg"),
   },
@@ -182,7 +183,13 @@ Page({
         provinces: res.data
       })
     })
-
+    // 监测是否是VIP是VIP去除弹窗
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo.VIP) {
+      that.setData({
+        showDialog: false
+      })
+    }
   },
   changeArrow: function () {
     var that = this;
@@ -345,9 +352,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  },
+  onShareAppMessage: util.gdForward,
   //将页码置0
   clearCurPage: function () {
     var that = this;

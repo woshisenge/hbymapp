@@ -6,6 +6,7 @@ Page({
   // inputValue: '',
   data: {
     src: '',
+    showDialog: true,
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"),
   },
@@ -96,6 +97,13 @@ Page({
 				video: this.toDto(res.data)
 			})
 		})
+    // 监测是否是VIP是VIP去除弹窗
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo.VIP) {
+      this.setData({
+        showDialog: false
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面显示
@@ -134,7 +142,5 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  }
+  onShareAppMessage: util.gdForward,
 })

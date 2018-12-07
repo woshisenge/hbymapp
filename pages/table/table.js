@@ -19,13 +19,10 @@ Page({
     color:true,
     scrolltop:1200,
     text:true,
-    showDialog: false,
+    showDialog: true,
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_yfyd.jpg"),
     //转发图
-    imageUrl1: util.setStaticUrl("/static/ymplant/ldq-img/zhuanfa01.jpg"),
-    imageUrl2: util.setStaticUrl("/static/ymplant/ldq-img/zhuanfa02.jpg"),
-    imageUrl3: util.setStaticUrl("/static/ymplant/ldq-img/zhuanfa03.jpg"),
   },
   // 切换年份
   bindPickerChange: function (e) {
@@ -100,11 +97,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    util.popupShow()
     var that = this;
     that.pullGradeInfos();
-    this.setData({
-      showDialog: !this.data.showDialog
-    })
+    var userInfo = wx.getStorageSync('userInfo')
+    // if (userInfo.VIP) {
+    //   that.setData({
+    //     showDialog: false
+    //   })
+    // }
   },
 
   /**
@@ -117,7 +118,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function (res) {
 
   },
 
@@ -158,46 +159,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function (res) {
-    var that = this;
-    var random1 = Math.round(Math.random() * 6);
-    var random2 = Math.round(Math.random() * 4);
-    if (random1 <= 1) {
-      var title = '我是高三家长！正帮孩子智能匹配理想大学和专业，快来试试吧！'
-    } else if (random1 == 2) {
-      var title = '我是高三家长，正和大学招办老师聊天！同学家长你也可以哟！'
-    } else if (random1 == 3) {
-      var title = '有一种家长叫别人的家长，他们在为自己的孩子规划大学志愿！'
-    } else if (random1 == 4) {
-      var title = '1000多所大学在河北历年招生专业数据详情！总有你要报考的大学！'
-    } else if (random1 <= 5) {
-      var title = '大学招办说——同样成绩600分，为何别人被录取，你却没考上？'
-    }
-    if (random2 <= 1) {
-      var imageUrl = this.data.imageUrl1
-    } else if (random2 == 2) {
-      var imageUrl = this.data.imageUrl2
-    } else if (random2 >= 3) {
-      var imageUrl = this.data.imageUrl3
-    }
-    wx.showShareMenu({
-      withShareTicket: true
-    })
-    return {
-      title: title,
-      imageUrl: imageUrl,
-      path: 'pages/index/index',
-      success: function (res) {
-        if (res.shareTickets) {
-          that.setData({
-            showDialog: !that.data.showDialog
-          })
-        }else{
-          util.showError("请转发至群");
-        }
-      }
-    }
-  },
+  onShareAppMessage:util.gdForward,
   // 将页码置0
   clearCurPage: function () {
     var that = this;

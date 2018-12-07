@@ -203,9 +203,6 @@ Page({
       imageUrl: imageUrl,
       path: 'pages/index/index',
       success: function (res) {
-        this.setData({
-          showDialog:true
-        })
         if (res.shareTickets){
           console.log(123)
           if (userInfo.SHARECOUNT >= 3) {

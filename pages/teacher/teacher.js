@@ -16,11 +16,14 @@ Page({
     sliderLeft: 0,
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_zjwd.jpg"),
-    ex_list: []
+    showDialog: '',
+    hasShare: 0,
+    ex_list: [],
   },
   /**
    * 生命周期函数--监听页面加载
    */
+
   onLoad: function (options) {
     //判断是否登录
     var userInfo = wx.getStorageSync('userInfo')
@@ -29,6 +32,12 @@ Page({
         url: '/pages/login/login'
       })
       return false
+    }
+    if (!userInfo.VIP){
+      this.setData({
+        showDialog:true,
+        hasShare:1
+      })
     }
 		var userInfo = wx.getStorageSync('userInfo')
 		util.sendRequest("/wechat/applet/expert/api/askpro_datas", {}, "POST", false, (res) => {
@@ -272,7 +281,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
@@ -280,6 +289,25 @@ Page({
    */
   onShow: function () {
     var that = this;
+    // 刷新页面数据
+    var userInfo = wx.getStorageSync('userInfo')
+    util.sendRequest("/wechat/applet/expert/api/askpro_datas", {}, "POST", false, (res) => {
+      console.log(res)
+      if (res.hasErrors) {
+        console.log(res.errorMessage);
+        return false;
+      }
+      console.log(userInfo)
+      res.data.forEach(item => {
+        item.HEADURL_PRO = util.setStaticUrl(item.HEADURL_PRO)
+        item.HEADURL_STU = util.setStaticUrl(item.HEADURL_STU)
+      })
+      this.setData({
+        vip: userInfo.VIP,
+        role: userInfo.ROLE_ID,
+        result: res.data
+      })
+    })
     // util.sendRequest("/wechat/applet/expert/api/expert_home", {}, "POST", false, function (res) {
     //   that.setData({
     //     result: that.toDto(res.data)
@@ -323,7 +351,5 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  }
+  onShareAppMessage: util.gdForward,
 })

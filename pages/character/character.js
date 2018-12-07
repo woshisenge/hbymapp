@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showDialog: true,
     src: util.setStaticUrl("/static/ymplant/ldq-img/character.jpg")
   },
   test:function(){
@@ -34,6 +35,13 @@ Page({
         return false;
       }
     })
+    // 监测是否是VIP是VIP去除弹窗
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo.VIP) {
+      this.setData({
+        showDialog: false
+      })
+    }
   },
 
   /**
@@ -81,7 +89,5 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  }
+  onShareAppMessage: util.gdForward
 })
