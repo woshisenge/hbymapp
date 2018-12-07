@@ -91,7 +91,6 @@ Page({
   },
   // 
   scroll: function () {
-    console.log('!!!')
     var that = this;
     that.setData({
       color:!that.data.color
@@ -113,7 +112,6 @@ Page({
    */
   onReady: function () {
     // var that = this;
-    console.log(123)
   },
 
   /**
@@ -190,8 +188,6 @@ Page({
       imageUrl: imageUrl,
       path: 'pages/index/index',
       success: function (res) {
-        console.log('成功')
-        console.log('成功')
         if (res.shareTickets) {
           that.setData({
             showDialog: !that.data.showDialog
