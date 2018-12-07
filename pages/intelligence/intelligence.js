@@ -177,16 +177,16 @@ Page({
     var userInfo = wx.getStorageSync('userInfo')
     var random1 = Math.round(Math.random() * 6);
     var random2 = Math.round(Math.random() * 4);
-    if (random1<=1) {
-      var title = '我是高三家长！正帮孩子智能匹配理想大学和专业，快来试试吧！'
+    if (random1 <= 1) {
+      var title = '我是高三家长！正与大学招办老师聊天！你也来吧'
     } else if (random1 == 2) {
-      var title = '我是高三家长，正和大学招办老师聊天！同学家长你也可以哟！'
-    } else if (random1 == 3){
-      var title = '有一种别人的家长，他们在为自己的孩子规划大学志愿！'
+      var title = '我是高三家长！正帮孩子智能匹配大学，快试试吧'
+    } else if (random1 == 3) {
+      var title = '切勿因家长的疏忽让孩子与理想大学失之交臂！'
     } else if (random1 == 4) {
-      var title = '1000多所大学在河北历年招生专业数据详情！总有你要报考的大学！'
-    } else if (random1 <=5 ) {
-      var title = '大学招办说——同样成绩600分，为何别人被录取，你却没考上？'
+      var title = '传疯啦！80％河北高三家长都在用的智能选校系统'
+    } else if (random1 >= 5) {
+      var title = '报考大学，早规划！知己知彼！有的放矢！'
     }
     if (random2 <= 1) {
       var imageUrl = this.data.imageUrl1
