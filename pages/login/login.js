@@ -14,6 +14,9 @@ Page({
   start:function(){
     util.navigateTo("../register/register");
   },
+  forget: function () {
+    util.navigateTo("../forgetPassword/forgetPassword");
+  },
   bindUsername: function(e) {
     this.setData({
       phone: e.detail.value

@@ -2,8 +2,8 @@
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
 	<!-- title -->
 	<view class="page__hd">
-		<view class="page__title">用户登录</view>
-		<view class="page__desc">login</view>
+		<view style='font-size:18px;'>用户登录</view>
+		<!-- <view class="page__desc">login</view> -->
 	</view>
     <view class="page__bd">
         <view class="weui-cells weui-cells_after-title">
@@ -28,8 +28,9 @@
         <view class="weui-btn-area">
             <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
         </view>
-        <view class="weui-btn-area">
-            <button class="weui-btn" type="default" bindtap="start" style='background-color: red;color: #fff'>还没有账户？点此免费注册</button>
+        <view class="weui-btn-area" style='margin-top:25rpx;'>
+        <text  bindtap="forget" style='color:#409EFF;font-size:32rpx;'>忘记密码？</text>
+        <text bindtap="start" style='color:red;font-size:32rpx;float:right'>还没有账户？点此免费注册</text>
         </view>
     </view>
 </view>

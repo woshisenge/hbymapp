@@ -2,10 +2,10 @@
   width:100%;
   margin-top:20rpx;
 }
-text{
+/* text{
   text-align: center;
   display: block;
-}
+} */
 .flex-warp{
   display: flex;
   flex-direction:row;
@@ -16,5 +16,10 @@ text{
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.page__hd{
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  background-color: #fff;
 }
 
