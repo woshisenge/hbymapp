@@ -15,6 +15,8 @@
 		"pages/person/collect/lists/lists",
 		"pages/intelligence/intelligence",
 		"pages/login/login",
+    "pages/autonomousEnrollment/autonomousEnrollment",
+    "pages/singleRecruit/singleRecruit",
     "pages/register/register",
     "pages/intelligence/result/result",
     "pages/consult/consultlist/consultlist",

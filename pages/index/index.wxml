@@ -93,7 +93,7 @@
       <view class="weui-flex__item">
         <view class="placeholder" style="height:100%">
           <view class='adv_left'>
-            <text style="font-size:36rpx">本科一批</text>
+            <text style="font-size:36rpx">院校咨询</text>
             <!-- <text>网络咨询招生办</text> -->
             <text>院校信息，一览无遗</text>
             <text>大学详情，尽在这里</text>
@@ -106,12 +106,12 @@
       </view>
     </view>
   </view>
-  <view class="page__bd page__bd_spacing" bindtap="advantage">
+  <view class="page__bd page__bd_spacing" bindtap="advantage1">
     <view class="weui-flex">
       <view class="weui-flex__item">
         <view class="placeholder" style="height:100%;background-color:#0ddce4">
           <view class='adv_left'>
-            <text style="font-size:36rpx">本科二批</text>
+            <text style="font-size:36rpx">自主招生</text>
             <!-- <text>网络咨询招生办</text> -->
             <text>与你心仪大学的招办老师零距离沟通</text>
           </view>
@@ -122,12 +122,12 @@
       </view>
     </view>
   </view>
-  <view class="page__bd page__bd_spacing" bindtap="advantage">
+  <view class="page__bd page__bd_spacing" bindtap="advantage2">
     <view class="weui-flex">
       <view class="weui-flex__item">
         <view class="placeholder" style="height:100%;background-color:#c070f2">
           <view class='adv_left'>
-            <text style="font-size:36rpx">专科批次</text>
+            <text style="font-size:36rpx">高职单招</text>
             <!-- <text>网络咨询招生办</text> -->
             <text>答疑解惑，让你报考志愿有的放矢，不再迷茫</text>
           </view>
@@ -138,14 +138,14 @@
       </view>
     </view>
   </view>
-  <view class="page__bd page__bd_spacing" bindtap="advantage">
+  <!-- <view class="page__bd page__bd_spacing" bindtap="advantage">
     <view class="weui-flex">
       <view class="weui-flex__item">
         <view class="placeholder" style="height:100%;background-color:#2ef28f">
           <view class='adv_left'>
             <text style="font-size:36rpx">决胜千里</text>
             <!-- <text>整合信息资源</text>  -->
-            <text>网络招生咨询会</text>
+            <!-- <text>网络招生咨询会</text>
             <text>助力最后一站</text>
             <text>金榜题名  指日可待</text>
           </view>
@@ -155,7 +155,7 @@
         </view>
       </view>
     </view>
-  </view>
+  </view> -->
 <!-- 全国高校招生咨询平台  结束 -->
 <!-- 高考动态 开始 -->
 <view class="notice">

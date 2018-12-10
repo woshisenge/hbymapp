@@ -4,7 +4,7 @@
   <view class='banner'>
     <image src="{{single1}}"></image>
   </view>
-  <view class='btn' bindtap='pay' id="13600"><text class='text'>立即购买</text></view>
+  <view class='btn' bindtap='pay' id="1000"><text class='text'>立即购买</text></view>
 </view>
 <view wx:if="{{id == 2}}">
   <view class='banner'>

@@ -13,7 +13,6 @@ Page({
     imgUrls: [
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner03.jpg"), url: "/pages/intelligence/intelligence" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner05.jpg"), url: "/pages/consult/consult" },
-      //注释开通VIP
       // { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner02.jpg"), url: "/pages/person/improve/improve" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"), url: "/pages/video/video" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_yxk.jpg"), url: "/pages/school/school" },
@@ -101,7 +100,7 @@ Page({
     }
     utils.navigateTo("/pages/character/character")
   },
-  advantage:function(){
+  advantage: function () {
     var userInfo = wx.getStorageSync('userInfo')
     if (userInfo == '') {
       wx.navigateTo({
@@ -110,6 +109,27 @@ Page({
       return false
     }
     utils.navigateTo("/pages/consult/consult");
+  }, 
+  // 跳转自主招生
+  advantage1: function () {
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
+    utils.navigateTo("/pages/autonomousEnrollment/autonomousEnrollment");
+  },
+  advantage2: function () {
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
+    utils.navigateTo("/pages/singleRecruit/singleRecruit");
   },
   noticecontent:function(e){
     var a = e.currentTarget.dataset.id;
