@@ -123,7 +123,7 @@
           <text>地区：{{school.PROVINCE_VALUE}}</text>
         </view>
         <view class="weui-media-box__desc">
-          <image wx:for="{{school.subjecttypes}}" wx:key="" class='icon-subjecttype' src="/images/icon/{{item.DIC_ID}}.png"></image>
+          <image wx:for="{{school.subjecttypes}}" wx:key="" class='icon-subjecttype' src="/images/icon/{{item.DIC_ID}}.png"></image><text style='font-size:14px;color:#f00'>点击查看详情</text>
         </view>  
       </view>
     </view>

@@ -217,7 +217,7 @@ Page({
           })
         }else{
           wx.showModal({
-            title: '对不起：',
+            title: '对不起！',
             content: '您转发的是个人，请分享至家长群或同学群',
             showCancel: false,
           })
