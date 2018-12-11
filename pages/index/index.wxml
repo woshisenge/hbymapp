@@ -93,7 +93,7 @@
       <view class="weui-flex__item">
         <view class="placeholder" style="height:100%;background-color:#0ddce4">
           <view class='adv_left'>
-            <text style="font-size:36rpx;">2019年全国名牌大学<text style='color:#f00;'>自主招生</text>咨询会 <text style='margin-left:3px;color:#f00;'>入口</text></text>
+            <text style="font-size:36rpx;">2019年全国名牌大学<text style='color:#f00;'>自主招生</text>咨询会 <text style='margin-left:3px;color:#f00;background-color:#fff;padding:5rpx;border-radius: 10rpx;border: 1px solid #fff'>入口</text></text>
             <!-- <text>网络咨询招生办</text> -->
             <!-- <text>与你心仪大学的招办老师零距离沟通</text> -->
           </view>
@@ -109,7 +109,7 @@
       <view class="weui-flex__item">
         <view class="placeholder" style="height:100%;background-color:#c070f2">
           <view class='adv_left'>
-            <text style="font-size:36rpx">2019年河北省\n单招咨询会<text style='margin-left:80rpx;color:#000;'>入口</text></text>
+            <text style="font-size:36rpx">2019年河北高职院校\n单招咨询会<text style='margin-left:60rpx;color:#f00;background-color:#fff;padding:5rpx;border-radius: 10rpx;border: 1px solid #fff'>入口</text></text>
             <!-- <text>网络咨询招生办</text> -->
             <!-- <text>答疑解惑，让你报考志愿有的放矢，不再迷茫</text> -->
           </view>
