@@ -55,10 +55,10 @@
     <icon type="warn" size="23" color="#F43530"></icon><text>重要提示：</text>
   </view>
   <view class="footer2">
-    1、本系统提供高考志愿一键填报功能，不等同于实际的网上志愿填报。建议考生在填报志愿时，结合本系统的推荐来完善志愿表。
+    1、本系统提供高考志愿<text style='font-weight:bold;'>智能选大学</text>功能，不等同于实际的网上志愿填报。建议考生在填报志愿时，结合本系统的推荐来完善志愿表。
   </view>
   <view class="footer2">
-    2、您正在使用的是<text style='font-weight:bold;'>河北</text>考生志愿填报智能模拟系统，提供“普通类文理的本科一批、本科二批”的志愿一键填报功能，该功能数据主要来源于各省（市）教育考试院和各大学官网历年的招考录取人数据。
+    2、您正在使用的是<text style='font-weight:bold;'>河北</text>考生志愿填报智能模拟系统，提供“普通类文理的本科一批、本科二批”的志愿<text style='font-weight:bold;'>智能选大学</text>功能，该功能数据主要来源于各省（市）教育考试院和各大学官网历年的招考录取人数据。
   </view>
   <view class="footer2">
     3、当前版本使用的数据已经更新至2018年最新数据（其他数据陆续更新中）。

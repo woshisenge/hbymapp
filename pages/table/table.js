@@ -22,7 +22,6 @@ Page({
     showDialog: false,
     //banner图
     consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_yfyd.jpg"),
-    //转发图
   },
   // 切换年份
   bindPickerChange: function (e) {

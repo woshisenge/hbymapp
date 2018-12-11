@@ -115,7 +115,8 @@
       <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
         <view>
           <text>{{school.NAME}}</text>
-          <image wx:for="{{school.properties}}" wx:key="" class='icon-property' src="/images/icon/{{item.DIC_ID}}.png"></image>
+          <!-- 高职单招无985 211 -->
+          <!-- <image wx:for="{{school.properties}}" wx:key="" class='icon-property' src="/images/icon/{{item.DIC_ID}}.png"></image> -->
         </view>
         <view class="weui-media-box__desc">
           <!-- <text>入驻人数：{{school.TEACOUNT}}人</text> -->

@@ -28,7 +28,7 @@ Page({
     /* ldq-显示大专 */
     ldq: 0,
     //banner图
-    consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_zzzs.jpg"),
+    consultation: util.setStaticUrl("/static/ymplant/ldq-img/wx_gzdz.jpg"),
   },
   upper: function (e) {
   },
