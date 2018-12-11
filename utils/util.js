@@ -203,7 +203,11 @@ var gdForward = function (res) {
           console.log('成功',showDialog)
         }
       } else {
-        showError("请转发至群");
+        wx.showModal({
+          title: '对不起：',
+          content: '您转发的是个人，请分享至家长群或同学群',
+          showCancel: false,
+        })
       }
     }
   }

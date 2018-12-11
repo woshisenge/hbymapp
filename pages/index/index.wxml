@@ -88,32 +88,14 @@
   <view style='font-size:45rpx;color:#FE4500;margin: 0 auto;'>全国高校招生咨询平台</view>
   <!-- <span class="more" style="font-size:25rpx;" bindtap="newsmore">更多></span> -->
 </view>
-  <view class="page__bd page__bd_spacing" bindtap="advantage">
-    <view class="weui-flex">
-      <view class="weui-flex__item">
-        <view class="placeholder" style="height:100%">
-          <view class='adv_left'>
-            <text style="font-size:36rpx">院校咨询</text>
-            <!-- <text>网络咨询招生办</text> -->
-            <text>院校信息，一览无遗</text>
-            <text>大学详情，尽在这里</text>
-          </view>
-          <view class='adv_right'>
-            <image src="{{index_1}}" style="width:260rpx;height:260rpx"></image>
-          </view>
-        </view>
-
-      </view>
-    </view>
-  </view>
   <view class="page__bd page__bd_spacing" bindtap="advantage1">
     <view class="weui-flex">
       <view class="weui-flex__item">
         <view class="placeholder" style="height:100%;background-color:#0ddce4">
           <view class='adv_left'>
-            <text style="font-size:36rpx">自主招生</text>
+            <text style="font-size:36rpx">2019年全国自主招生咨询会入口</text>
             <!-- <text>网络咨询招生办</text> -->
-            <text>与你心仪大学的招办老师零距离沟通</text>
+            <!-- <text>与你心仪大学的招办老师零距离沟通</text> -->
           </view>
           <view class='adv_right'>
             <image src="{{index_2}}" style="width:260rpx;height:260rpx"></image>
@@ -127,12 +109,29 @@
       <view class="weui-flex__item">
         <view class="placeholder" style="height:100%;background-color:#c070f2">
           <view class='adv_left'>
-            <text style="font-size:36rpx">高职单招</text>
+            <text style="font-size:36rpx">2019年河北省高职单招咨询会入口</text>
             <!-- <text>网络咨询招生办</text> -->
-            <text>答疑解惑，让你报考志愿有的放矢，不再迷茫</text>
+            <!-- <text>答疑解惑，让你报考志愿有的放矢，不再迷茫</text> -->
           </view>
           <view class='adv_right'>
             <image src="{{index_3}}" style="width:220rpx;height:220rpx"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="page__bd page__bd_spacing" bindtap="advantage">
+    <view class="weui-flex">
+      <view class="weui-flex__item">
+        <view class="placeholder" style="height:100%">
+          <view class='adv_left'>
+            <text style="font-size:36rpx">院校咨询</text>
+            <!-- <text>网络咨询招生办</text> -->
+            <text>院校信息，一览无遗</text>
+            <text>大学详情，尽在这里</text>
+          </view>
+          <view class='adv_right'>
+            <image src="{{index_1}}" style="width:260rpx;height:260rpx"></image>
           </view>
         </view>
       </view>

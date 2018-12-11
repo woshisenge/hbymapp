@@ -204,12 +204,10 @@ Page({
       path: 'pages/index/index',
       success: function (res) {
         if (res.shareTickets){
-          console.log(123)
           if (userInfo.SHARECOUNT >= 3) {
             util.showError("亲！请明天再来测试吧！今日免费次数已赠送完毕！");
             return false
           }
-          util.showError("成功转发到群");
           util.sendRequest('/wechat/applet/api/shareApplet', { USER_ID: userInfo.USER_ID}, "POST", true,   function(res){
             wx.setStorageSync('userInfo', res)
             if (res.hasErrors) {
@@ -218,7 +216,11 @@ Page({
             }
           })
         }else{
-          util.showError("请转发至群");
+          wx.showModal({
+            title: '对不起：',
+            content: '您转发的是个人，请分享至家长群或同学群',
+            showCancel: false,
+          })
         }
       } 
     }
