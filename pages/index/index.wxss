@@ -186,3 +186,7 @@
   transform: rotate(-20deg);
 }
 /* 2018.7.2 ldq 结束 */
+.gd_zzzs{
+  position: absolute;
+  right: 10rpx;
+}

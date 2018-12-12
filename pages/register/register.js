@@ -9,6 +9,7 @@ Page({
     codeHidden: true,
     timerNumber: 60,
     phone: "",
+    password:"",
     city: [],
     thisCity: { DIC_ID: '', NAME: '请选择城市' },
     county: [],
@@ -212,29 +213,57 @@ Page({
     param.SCHOOL_BELONG = that.data.thisSchool.DIC_ID
     param.SCHOOL_NAME = that.data.thisSchool.NAME
     param.EXAMYEAR = that.data.thisYear.uid
-    console.log(param)
+    that.setData({
+      phone: param.PHONE,
+      password: param.PASSWORD,
+    })
     util.sendRequest("/wechat/applet/api/toregist_third_wechat", param, "POST", true, function(res){
       if (res.hasErrors) {
         console.log(res.errorMessage);
         util.showError(res.errorMessage);
         return false;
       }
-      console.log(res)
-      that.openAlert()
+      // that.openAlert()
+      this.showTopTips()
     });
   },
   openAlert: function () {
     wx.showModal({
-      content: '注册成功,请重新登录',
+      content: '注册成功',
       showCancel: false,
-      success: function (res) {
-        if (res.confirm) {
-          wx.navigateBack({
-            delta: 1
-          })
-        }
+      success: function () {
       }
     });
+  },
+  showTopTips: function () {
+    var data = {
+      PHONE: this.data.phone,
+      PASSWORD: this.data.password
+    }
+    // 登录到数据库
+    util.sendRequest('/wechat/applet/api/tologin_new', data, "POST", true, function (res) {
+      // 关联登录
+      util.sendRequest('/wechat/applet/api/relation', data, 'POST', true, function (obj) {
+        if (res.hasErrors) {
+          wx.showModal({
+            content: res.errorMessage,
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                return false
+              }
+            }
+          })
+          return false;
+        }
+        // 把登录信息存到本地缓存
+        wx.setStorageSync('userInfo', res)
+        // console.log(res)
+        wx.switchTab({
+          url: '/pages/index/index'
+        })
+      })
+    })
   },
   getCity: function () {
     var that = this

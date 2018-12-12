@@ -15,6 +15,8 @@ Page({
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner02.jpg"), url: "/pages/person/improve/improve" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner03.jpg"), url: "/pages/intelligence/intelligence" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner05.jpg"), url: "/pages/consult/consult" },
+      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_zzzs.jpg"), url: "/pages/autonomousEnrollment/autonomousEnrollment" },
+      { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_gzdz.jpg"), url: "/pages/singleRecruit/singleRecruit" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"), url: "/pages/video/video" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_yxk.jpg"), url: "/pages/school/school" },
     ],
@@ -54,7 +56,26 @@ Page({
       utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     if (url == "/pages/consult/consult") {
-      console.log(utils.ldqCheckLogin())
+      var userInfo = wx.getStorageSync('userInfo')
+      if (userInfo == '') {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        })
+        return false
+      }
+      utils.navigateTo(url, { user_id: user_id, id: '2' })
+    }
+    if (url == "/pages/autonomousEnrollment/autonomousEnrollment") {
+      var userInfo = wx.getStorageSync('userInfo')
+      if (userInfo == '') {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        })
+        return false
+      }
+      utils.navigateTo(url, { user_id: user_id, id: '2' })
+    }
+    if (url == "/pages/singleRecruit/singleRecruit") {
       var userInfo = wx.getStorageSync('userInfo')
       if (userInfo == '') {
         wx.navigateTo({
@@ -133,7 +154,6 @@ Page({
   },
   noticecontent:function(e){
     var a = e.currentTarget.dataset.id;
-    // console.log(a)
       utils.navigateTo("/pages/notice/noticecontent/noticecontent",{a:a})
   },
   //事件处理函数
@@ -144,14 +164,11 @@ Page({
   },
   onLoad: function () {
     var userInfo = wx.getStorageSync('userInfo')
-    console.log(userInfo)
   },
   onReady: function() {
   },
   consultation:function(){
 		var userInfo = wx.getStorageSync('userInfo')
-		console.log(userInfo)
-    // utils.ldqCheckLogin()
     //验证登录
     if (userInfo == '') {
       wx.navigateTo({
@@ -230,10 +247,8 @@ Page({
   intelligence:function(){
     var that = this;
 		var userInfo = wx.getStorageSync('userInfo')
-    console.log(userInfo)
 		// 判断是否登录
     //  utils.ldqCheckLogin()
-    console.log("12121",userInfo)
     if(userInfo == ''){
       wx.navigateTo({
         url: '/pages/login/login'

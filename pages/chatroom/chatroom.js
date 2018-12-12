@@ -21,10 +21,8 @@ Page({
     suser_id: "",
     complete_info: {},
     role: 0,
-
     emoji: util.Emoji,
     emojiObj: util.EmojiObj,
-
     chatMsg: [],
     emojiStr: '',
     yourname: '',
