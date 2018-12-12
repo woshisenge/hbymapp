@@ -113,6 +113,7 @@ Page({
   },
   toChar:function () {
     var userInfo = wx.getStorageSync('userInfo')
+    console.log(userInfo)
     if (userInfo == '') {
       wx.navigateTo({
         url: '/pages/login/login'
