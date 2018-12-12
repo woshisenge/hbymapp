@@ -45,12 +45,13 @@ Page({
     // 判断是否是VIP，有没有使用次数
     var that=this;
     var userInfo = wx.getStorageSync('userInfo')
+    console.log(userInfo)
     if (!userInfo.VIP && userInfo.SHAREGETVIP_COUNT <= 0) {
       that.toggleDialog()
 			return false
 		}
     if (userInfo.ROLE_ID != 'sja4gc59bg') {
-      utils.showError("该功能只有学生可以使用"); 
+      util.showError("该功能只有学生可以使用"); 
       return false
     }
     if ((!this.data.provinces_id && !this.data.subjecttypes_id) || this.data.provinces_id.split(',').length > 3 || this.data.subjecttypes_id.split(',').length > 2 ) { 
