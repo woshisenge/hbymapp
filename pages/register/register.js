@@ -224,7 +224,7 @@ Page({
         return false;
       }
       // that.openAlert()
-      this.showTopTips()
+      that.showTopTips()
     });
   },
   openAlert: function () {
