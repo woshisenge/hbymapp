@@ -24,6 +24,7 @@
   <view class="message_list" wx:else>
     <block wx:if="{{userInf!=''}}">
       <block wx:for="{{teacher}}" wx:key="">
+      
         <view id='{{item.RUSER_ID}}' bindtap='toChat' hidden="{{item.checked}}">
           <view class="item">
             <view class="item-left">
