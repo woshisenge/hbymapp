@@ -45,6 +45,7 @@ Page({
     que_list:true,
     hid:false,
     cursor:"40",
+    teacherImg:'',
     autofocus:false
   },
   toDto: function (list) {
@@ -83,6 +84,7 @@ Page({
           //为学生
           that.setData({
             complete_info: res.complete_tea,
+            teacherImg: util.setStaticUrl(res.complete_tea.HEADURL),
             teaheadurl: res.complete_tea.HEADURL
           })
         }

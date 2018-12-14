@@ -202,4 +202,7 @@
 </view>
 <view class='footer'></view>
 <view class="page__desc"></view>
+<view>
+  <image src='{{huizhi}}' style='width:100%;'></image>
+</view>
 <!-- 线下活动 结束 -->

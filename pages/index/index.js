@@ -20,6 +20,7 @@ Page({
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"), url: "/pages/video/video" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_yxk.jpg"), url: "/pages/school/school" },
     ],
+    huizhi: utils.setStaticUrl("/static/ymplant/img/huizhi.jpg"),
     indicatorDots: false,
     autoplay: true,
     interval: 4000,

@@ -10,8 +10,10 @@
         </view>
     </view>
 <scroll-view scroll-y="true" class="scroll_view" class="{{ view }}" bindtap="cancelEmoji" scroll-into-view="{{ chatRecords.length > 0 ? 'rec_' + chatRecords[chatRecords.length - 1].REC_ID : '' }}"  >
-<view class="initial">
-  <text>欢迎咨询{{complete_info.NICKNAME}}</text>
+<view class="greetings">
+  <image src='{{teacherImg}}'></image>
+  <view>欢迎咨询{{complete_info.NICKNAME}}，请问有什么可以帮你的吗？
+  </view>
 </view>
     <view class="message" wx:for="{{ chatRecords }}" wx:key="" id="rec_{{ item.REC_ID }}">
       <view class="main" class="{{ item.style }}">
