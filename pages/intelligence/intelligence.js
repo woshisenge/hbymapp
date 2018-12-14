@@ -223,7 +223,7 @@ Page({
             showCancel: false,
           })
         }
-      } 
+      }
     }
   },
   toProvince: function() {

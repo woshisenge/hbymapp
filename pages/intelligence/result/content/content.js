@@ -26,27 +26,23 @@ Page({
   onLoad: function (options) {
     var that = this;
 		var datause = wx.getStorageSync('datause')
-		console.log(2563,options)
 		datause.SCHOOL_ID = options.SCHOOL_ID
 		datause.TYPE = options.TYPE
 		if (options.MAJOR == 'null') {
 			options.MAJOR = []
 		}
 		datause.MAJOR = options.MAJOR
-		// console.log('0', datause)
 		util.sendRequest("/wechat/applet/report/report_fitmajor", datause, "POST", true, function (res) {
 			if (res.hasErrors) {
 				console.log(res.errorMessage);
 				return false;
 			}
-			// console.log(8362, res)
 			that.setData({
 				data: res.data,
 				schoolId: datause.SCHOOL_ID,
 				typec: datause.TYPE,
 				datause: datause
 			})
-			// console.log(res.data)
 		})
     if(options.img == "chong"){
       that.setData({
@@ -77,7 +73,6 @@ Page({
       style = "本二"
     }
     util.sendRequest("/wechat/applet/school/getschoolinfo", { SCHOOL_ID: options.SCHOOL_ID}, "POST", true, function (res) {
-      console.log('aaaa:',res)
 			that.setData({
         logo: util.setStaticUrl(res.HEADURL),
         name:res.NAME,
@@ -88,7 +83,6 @@ Page({
       });
     });
     util.sendRequest("/wechat/applet/school/getschoolscore", { SCHOOL_ID: options.SCHOOL_ID, MAJORTYPE_ID: options.MAJORTYPE},"POST",true,function(res){
-      console.log("ccc",res)
       var result = res.data;
       result.forEach(function(obj){
         if (obj.ARRANGMENT_ID == arrId){
@@ -120,14 +114,11 @@ Page({
   },
 	addSchool: function () {
     var that = this;
-    console.log(this.data.ARRANGMENT_ID)
 		util.sendRequest("/wechat/applet/report/checkcollection", {}, "POST", true, (res) => {
-      console.log("gaoda:",res)
 			if (res.hasErrors) {
 				console.log(res)
 				return false
 			}
-      console.log(591, this.data.ARRANGMENT_ID)
       if (this.data.ARRANGMENT_ID =='hjj4e5vr0c') {
         if (res.B1.C.length + res.B1.W.length + res.B1.B.length >= 20) {
           wx.showModal({
@@ -149,9 +140,7 @@ Page({
         var arr = res.B1.C.concat(res.B1.W, res.B1.B)
         for (var i = 0; i < arr.length; i++) {
           var it = arr[i]
-          console.log(this.data.typec)
           if (this.data.schoolId == it.SCHOOL_ID && this.data.typec == it.type) {
-            console.log(it.type)
             wx.showModal({
               content: '您已收藏过本院校',
               showCancel: false,
@@ -181,9 +170,7 @@ Page({
         var arr = res.B2.C.concat(res.B2.W, res.B2.B)
         for (var i = 0; i < arr.length; i++) {
           var it = arr[i]
-          console.log(this.data.typec)
           if (this.data.schoolId == it.SCHOOL_ID && this.data.typec == it.type) {
-            console.log(it.type)
             wx.showModal({
               content: '您已收藏过本院校',
               showCancel: false,

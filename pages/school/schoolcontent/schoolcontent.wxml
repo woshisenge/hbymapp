@@ -239,7 +239,8 @@
                 </view>
             </block> 
             <!-- 理科结束   -->
-            <button style='width:30%;margin-bottom:20rpx;' class="weui-btn" type="primary" bindtap='test'>咨询专家</button>
+            <!-- 暂时注释咨询专家按钮 -->
+            <!-- <button style='width:30%;margin-bottom:20rpx;' class="weui-btn" type="primary" bindtap='test'>咨询专家</button> -->
             <block wx:if="{{Wen.length != 0 || Li.length != 0}}">
               <view style='padding:10px; color:#fa2131;'>
                 <view style='font-size:12px; margin-left:15rpx;'>“ 0 ”：数据未发布</view>
