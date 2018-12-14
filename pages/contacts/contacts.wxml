@@ -22,7 +22,7 @@
   <text>您还未与招办老师沟通，暂无信息！</text>
 </view>
   <view class="message_list" wx:else>
-    <block wx:if="{{userInfo!=''}}">
+    <block wx:if="{{userInf!=''}}">
       <block wx:for="{{teacher}}" wx:key="">
         <view id='{{item.RUSER_ID}}' bindtap='toChat' hidden="{{item.checked}}">
           <view class="item">
@@ -42,7 +42,7 @@
         <view  class="line"></view>
       </block>
     </block>
-    <block wx:if="{{userInfo==''}}" style=''>
+    <block wx:if="{{userInf==''}}" style=''>
       <view style='font-size:20px;color:#D51212;text-align: center;background-color: #F8F8F8;margin-top: 50%;'>
           请登录后查看
       </view>

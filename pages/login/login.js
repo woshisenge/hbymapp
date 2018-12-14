@@ -32,7 +32,6 @@ Page({
 			PHONE: this.data.phone,
 			PASSWORD: this.data.password
 		}
-		console.log(data)
 		// 登录到数据库
     util.sendRequest('/wechat/applet/api/tologin_new', data, "POST", true, function (res){
       // 关联登录
@@ -51,7 +50,6 @@ Page({
         }
         // 把登录信息存到本地缓存
         wx.setStorageSync('userInfo', res)
-        // console.log(res)
         wx.switchTab({
           url: '/pages/index/index'
         })

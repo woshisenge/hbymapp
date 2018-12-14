@@ -38,27 +38,24 @@ Page({
     })
     // 监测是否是VIP是VIP去除弹窗
     if (!userInfo.VIP) {
-      this.setData({
-        showDialog: false
+      var USER_ID = userInfo.USER_ID
+      util.sendRequest('/wechat/applet/api/wethereShare', { USER_ID: USER_ID }, "POST", true, (res) => {
+        if (res.hasErrors) {
+          console.log(res.errorMessage)
+          return false
+        }
+        var showDialog = true
+        if (res.data == '10000') {
+          that.setData({
+            showDialog: false
+          })
+        } else {
+          that.setData({
+            showDialog: true
+          })
+        }
       })
     }
-    var USER_ID = userInfo.USER_ID
-    util.sendRequest('/wechat/applet/api/wethereShare', { USER_ID: USER_ID }, "POST", true, (res) => {
-      if (res.hasErrors) {
-        console.log(res.errorMessage)
-        return false
-      }
-      var showDialog = true
-      if (res.data == '10000') {
-        that.setData({
-          showDialog: false
-        })
-      } else {
-        that.setData({
-          showDialog: true
-        })
-      }
-    })
   },
 
   /**

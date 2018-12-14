@@ -14,7 +14,7 @@ Page({
     s_teacher:[],
     s_student:[],
     wait: util.setStaticUrl("/static/ymplant/img/sye/banner/wait.png"),
-    userInfo: '',
+    userInf: '',
   },
   showInput: function () {
     this.setData({
@@ -125,7 +125,7 @@ Page({
     }
     if (userInfo!='') {
       this.setData({
-        userInfo: userInfo
+        userInf: userInfo
       })
     }
   },
@@ -193,7 +193,19 @@ Page({
       });
      
     })
-    
+    var that = this;
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo == '') {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
+    if (userInfo != '') {
+      this.setData({
+        userInf: userInfo
+      })
+    }
   },
 
   /**
