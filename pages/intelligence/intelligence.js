@@ -199,31 +199,43 @@ Page({
     wx.showShareMenu({
       withShareTicket: true
     })
+    if (userInfo.SHARECOUNT >= 3) {
+          util.showError("亲！请明天再来测试吧！今日免费次数已赠送完毕！");
+          return false
+        }
+    util.sendRequest('/wechat/applet/api/shareApplet', { USER_ID: userInfo.USER_ID }, "POST", true, function (res) {
+          wx.setStorageSync('userInfo', res)
+          if (res.hasErrors) {
+            console.log(res.errorMessage)
+            return false
+          }
+        })
     return{
       title:title,
       imageUrl: imageUrl,
       path: 'pages/index/index',
-      success: function (res) {
-        if (res.shareTickets){
-          if (userInfo.SHARECOUNT >= 3) {
-            util.showError("亲！请明天再来测试吧！今日免费次数已赠送完毕！");
-            return false
-          }
-          util.sendRequest('/wechat/applet/api/shareApplet', { USER_ID: userInfo.USER_ID}, "POST", true,   function(res){
-            wx.setStorageSync('userInfo', res)
-            if (res.hasErrors) {
-              console.log(res.errorMessage)
-              return false
-            }
-          })
-        }else{
-          wx.showModal({
-            title: '对不起！',
-            content: '您转发的是个人，请分享至家长群或同学群',
-            showCancel: false,
-          })
-        }
-      }
+      // 小程序更新暂时无法判断是否分享成功
+      // success: function (res) {
+      //   if (res.shareTickets){
+      //     if (userInfo.SHARECOUNT >= 3) {
+      //       util.showError("亲！请明天再来测试吧！今日免费次数已赠送完毕！");
+      //       return false
+      //     }
+      //     util.sendRequest('/wechat/applet/api/shareApplet', { USER_ID: userInfo.USER_ID}, "POST", true,   function(res){
+      //       wx.setStorageSync('userInfo', res)
+      //       if (res.hasErrors) {
+      //         console.log(res.errorMessage)
+      //         return false
+      //       }
+      //     })
+      //   }else{
+      //     wx.showModal({
+      //       title: '对不起！',
+      //       content: '您转发的是个人，请分享至家长群或同学群',
+      //       showCancel: false,
+      //     })
+      //   }
+      // }
     }
   },
   toProvince: function() {

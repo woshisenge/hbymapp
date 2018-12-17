@@ -178,6 +178,21 @@ var gdForward = function (res) {
   wx.showShareMenu({
     withShareTicket: true
   })
+  var userInfo = wx.getStorageSync('userInfo')
+  var USER_ID = userInfo.USER_ID
+  sendRequest('/wechat/applet/api/wechatShare', { USER_ID: USER_ID }, "POST", true, (res) => {
+    if (res.hasErrors) {
+      console.log(res.errorMessage)
+      return false
+    }
+  })
+  var showDialog = true;
+  if (!userInfo.VIP) {
+    that.setData({
+      showDialog: false
+    })
+    console.log('成功', showDialog)
+  }
   return {
     title: title,
     imageUrl: imageUrl,
