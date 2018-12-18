@@ -45,7 +45,7 @@ Page({
     // 判断是否是VIP，有没有使用次数
     var that=this;
     var userInfo = wx.getStorageSync('userInfo')
-    console.log(userInfo)
+    console.log(123,userInfo)
     if (!userInfo.VIP && userInfo.SHAREGETVIP_COUNT <= 0) {
       that.toggleDialog()
 			return false
@@ -201,6 +201,17 @@ Page({
     wx.showShareMenu({
       withShareTicket: true
     })
+    if (userInfo.SHARECOUNT < 3) {
+      util.sendRequest('/wechat/applet/api/shareApplet', { USER_ID: userInfo.USER_ID }, "POST", true, function (res) {
+        wx.setStorageSync('userInfo', res)
+        if (res.hasErrors) {
+          console.log(res.errorMessage)
+          return false
+        }
+      })
+    }else{
+      util.showError("亲！请明天再来测试吧！今日免费次数已赠送完毕！");
+    }
     return {
       title: title,
       imageUrl: imageUrl,
@@ -228,17 +239,6 @@ Page({
       //   }
       // }
     }
-    if (userInfo.SHARECOUNT >= 3) {
-          util.showError("亲！请明天再来测试吧！今日免费次数已赠送完毕！");
-          return false
-        }
-    util.sendRequest('/wechat/applet/api/shareApplet', { USER_ID: userInfo.USER_ID }, "POST", true, function (res) {
-          wx.setStorageSync('userInfo', res)
-          if (res.hasErrors) {
-            console.log(res.errorMessage)
-            return false
-          }
-        })
   },
   toProvince: function() {
     var that = this;
