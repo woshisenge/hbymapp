@@ -23,7 +23,7 @@
       </view>
       <view class='navigation' bindtap="school">
         <image class="tpia" src='/images/06.png'></image> 
-        <view class='navigation-text'>院校库</view>
+        <view class='navigation-text'>大学招录数据</view>
       </view>
       <view class='navigation' bindtap="major">
         <image class="tpia" src='/images/07.png'></image> 
@@ -158,7 +158,7 @@
 <!-- 全国高校招生咨询平台  结束 -->
 <!-- 高考动态 开始 -->
 <view class="notice">
-  <image class='icon' src='../../images/dynamic.png'></image>
+  <image class='icon' src='../../images/dynamic.png' style='margin-top:8rpx;margin-right:8rpx'></image>
   <view style='font-size:36rpx;'>高考动态</view>
   <span class="more" style="font-size:30rpx;color:#FE8402" bindtap="newsmore">查看更多></span>
 </view>
@@ -169,8 +169,8 @@
       <image src='{{item.IMGURL}}' style='width:100%;height:100%;'></image>
     </view>
     <view class='headlines'>
-      <view style='height:40px;'>{{item.TITLE}}</view>
-      <view class="flex-x" style='margin-top:40rpx;'>
+      <view style='height:42px;'>{{item.TITLE}}</view>
+      <view class="flex-x" style='margin-top:50rpx;'>
         <view class='flex-x' style='margin-right: 20rpx;'>
           <image class='icon' src='../../images/time.png'></image>
           <span class='time-t'>{{item.MODIFYTIME}}</span>
@@ -188,7 +188,7 @@
 <!-- 高考动态 结束 -->
 <!-- 线下活动 开始 -->
 <view class="notice">
-  <image class='icon' src='../../images/line.png'></image>
+  <image class='icon' src='../../images/line.png' style='margin-top:8rpx;margin-right:8rpx'></image>
   <view style='font-size:36rpx;'>招办见面会</view>
   <span class="more" style="font-size:30rpx;color:#FE8402" bindtap="activitymore">查看更多></span>
 </view>
