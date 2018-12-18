@@ -127,7 +127,6 @@ Page({
         // types: res.data
       })
     });
-    
   },
 
   /**
@@ -178,9 +177,7 @@ Page({
     var userInfo = wx.getStorageSync('userInfo')
     var random1 = Math.round(Math.random() * 6);
     var random2 = Math.round(Math.random() * 4);
-    console.log('成功')
     if (random1 <= 1) {
-      console.log('成功1')
       var title = '我是高三家长！正与大学招办老师聊天！你也来吧'
     } else if (random1 == 2) {
       var title = '我是高三家长！正帮孩子智能匹配大学，快试试吧'

@@ -431,6 +431,18 @@ Page({
     return list;
   },
   onShow:function(e) {
+    var userInfo = wx.getStorageSync('userInfo')
+    console.log(159,userInfo)
+    //更新session
+    if (userInfo!=''){
+      utils.sendRequest('/wechat/applet/api/refashSession', { USER_ID: userInfo.USER_ID }, "POST", true, function (res) {
+        wx.setStorageSync('userInfo', res)
+        if (res.hasErrors) {
+          console.log(res.errorMessage)
+          return false
+        }
+      })
+    }
     var that = this;
     
     utils.sendRequest_s('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {
