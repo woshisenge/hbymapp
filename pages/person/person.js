@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
     src1: util.setStaticUrl("/static/ymplant/ldq-img/gd_star.png"),
     src: util.setStaticUrl("/static/ymplant/ldq-img/gd_test.jpg"),
     //顶部图片

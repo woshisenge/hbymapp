@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
     batch: [{ DIC_ID: 'hjj4e5vr0c', NAME: '本一' }, { DIC_ID: 'bdhsl11qtb', NAME: '本二' }],
     index:0,
     provinces: "河北省",
