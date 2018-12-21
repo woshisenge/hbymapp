@@ -46,65 +46,34 @@ Page({
     var url = e.currentTarget.id;
     var userInfo = wx.getStorageSync('userInfo')
     if (url == "/pages/intelligence/intelligence") {
-      var userInfo = wx.getStorageSync('userInfo')
-      if (userInfo == '') {
-        wx.navigateTo({
-          url: '/pages/login/login'
-        })
-        return false
-      }
+      // var userInfo = wx.getStorageSync('userInfo')
+      // if (userInfo == '') {
+      //   wx.navigateTo({
+      //     url: '/pages/login/login'
+      //   })
+      //   return false
+      // }
       utils.ldqCheckStudent()
       utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     if (url == "/pages/consult/consult") {
-      var userInfo = wx.getStorageSync('userInfo')
-      if (userInfo == '') {
-        wx.navigateTo({
-          url: '/pages/login/login'
-        })
-        return false
-      }
+      utils.ldqCheckStudent()
       utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     if (url == "/pages/autonomousEnrollment/autonomousEnrollment") {
-      var userInfo = wx.getStorageSync('userInfo')
-      if (userInfo == '') {
-        wx.navigateTo({
-          url: '/pages/login/login'
-        })
-        return false
-      }
+      utils.ldqCheckStudent()
       utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     if (url == "/pages/singleRecruit/singleRecruit") {
-      var userInfo = wx.getStorageSync('userInfo')
-      if (userInfo == '') {
-        wx.navigateTo({
-          url: '/pages/login/login'
-        })
-        return false
-      }
+      utils.ldqCheckStudent()
       utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     if (url == "/pages/person/improve/improve") {
-      var userInfo = wx.getStorageSync('userInfo')
-      if (userInfo == '') {
-        wx.navigateTo({
-          url: '/pages/login/login'
-        })
-        return false
-      }
       utils.ldqCheckStudent()
       utils.navigateTo(url, { user_id: user_id, id: '2'})
     }
     if (url == "/pages/video/video") {
-      var userInfo = wx.getStorageSync('userInfo')
-      if (userInfo == '') {
-        wx.navigateTo({
-          url: '/pages/login/login'
-        })
-        return false
-      }
+      utils.ldqCheckStudent()
       utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
     if (url == "/pages/school/school") {
@@ -112,46 +81,23 @@ Page({
     }
     // utils.navigateTo(url)
   },
+
   toChar:function () {
-    var userInfo = wx.getStorageSync('userInfo')
-    console.log(userInfo)
-    if (userInfo == '') {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
+    utils.ldqCheckLogin()
     utils.navigateTo("/pages/character/character")
   },
   advantage: function () {
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
+    utils.ldqCheckLogin()
     utils.navigateTo("/pages/consult/consult");
   }, 
   // 跳转自主招生
   advantage1: function () {
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
+    utils.ldqCheckLogin()
     utils.navigateTo("/pages/autonomousEnrollment/autonomousEnrollment");
   },
+  // 跳转高职单招
   advantage2: function () {
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
+    utils.ldqCheckLogin()
     utils.navigateTo("/pages/singleRecruit/singleRecruit");
   },
   noticecontent:function(e){
@@ -165,101 +111,90 @@ Page({
     })
   },
   onLoad: function () {
-    var userInfo = wx.getStorageSync('userInfo')
+    // var userInfo = wx.getStorageSync('userInfo')
   },
   onReady: function() {
   },
+  //招办咨询 调用方法
   consultation:function(){
-		var userInfo = wx.getStorageSync('userInfo')
     //验证登录
-    if (userInfo == '') {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
-    utils.ldqCheckStudent()
+    utils.ldqCheckLogin()
     utils.navigateTo("/pages/consult/consult")
   },
+  //查看志愿 调用方法
   analog:function(){
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
+    utils.ldqCheckLogin()
 		utils.navigateTo("/pages/imitate/imitate");
 		return false
-    var that = this;
-    utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
-      if(res.data != 1){
-        utils.showError("仅有学生身份才能使用该功能！");
-        return false;
-      }
-      else{
-        utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
-          if (result.data){
-            utils.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
-              if (obj.DATA == "UC") {
-                utils.navigateTo("/pages/imitate/imitate");
-              }
-              else {
-                utils.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
-                  if (res.mntbk != 0) {
-                    utils.navigateTo("/pages/imitate/imitate");
-                  }
-                  else {
-                    wx.showModal({
-                      title: '提示',
-                      content: '您当前模拟填报次数为0,请激活已有会员卡或去充值升级会员',
-                      cancelText: '手动激活',
-                      confirmText: '去充值',
-                      success: function (res) {
-                        if (res.confirm) {
-                          utils.navigateTo("/pages/person/improve/improve", { id: 1, user_id: res.USER_ID })
-                        } else if (res.cancel) {
-                          utils.navigateTo("/pages/person/member/member")
-                        }
-                      },
-                      fail:function(){
+    // var that = this;
+    // utils.sendRequest("/wechat/applet/user/getrole", {}, "POST", true, function (res) {
+    //   if(res.data != 1){
+    //     utils.showError("仅有学生身份才能使用该功能！");
+    //     return false;
+    //   }
+    //   //
+    //   // else {
+    //   //   utils.sendRequest("/wechat/applet/user/isexamed", {}, "POST", false, function (result) {
+    //   //     if (result.data){
+    //   //       utils.sendRequest("/wechat/applet/user/getvip", {}, "POST", false, function (obj) {
+    //   //         if (obj.DATA == "UC") {
+    //   //           utils.navigateTo("/pages/imitate/imitate");
+    //   //         }
+    //   //         else {
+    //   //           utils.sendRequest("/wechat/applet/user/getbelongitems", {}, "POST", true, function (res) {
+    //   //             if (res.mntbk != 0) {
+    //   //               utils.navigateTo("/pages/imitate/imitate");
+    //   //             }
+    //   //             else {
+    //   //               wx.showModal({
+    //   //                 title: '提示',
+    //   //                 content: '您当前模拟填报次数为0,请激活已有会员卡或去充值升级会员',
+    //   //                 cancelText: '手动激活',
+    //   //                 confirmText: '去充值',
+    //   //                 success: function (res) {
+    //   //                   if (res.confirm) {
+    //   //                     utils.navigateTo("/pages/person/improve/improve", { id: 1, user_id: res.USER_ID })
+    //   //                   } else if (res.cancel) {
+    //   //                     utils.navigateTo("/pages/person/member/member")
+    //   //                   }
+    //   //                 },
+    //   //                 fail:function(){
                         
-                      }
-                    })
-                  }
-                })
-              }
-            })
-          }
-        	else{
-            wx.showModal({
-              title: '提示',
-              content: '请完善个人信息',
-              success: function (res) {
-                if (res.confirm) {
-                  util.navigateTo("/pages/person/information/information")
-                }
-              }
-            })
-        	}
-    		})
-      }
-    })
+    //   //                 }
+    //   //               })
+    //   //             }
+    //   //           })
+    //   //         }
+    //   //       })
+    //   //     }
+    //   //   	else{
+    //   //       wx.showModal({
+    //   //         title: '提示',
+    //   //         content: '请完善个人信息',
+    //   //         success: function (res) {
+    //   //           if (res.confirm) {
+    //   //             util.navigateTo("/pages/person/information/information")
+    //   //           }
+    //   //         }
+    //   //       })
+    //   //   	}
+    // 	// 	})
+    //   // }
+    // })
   },
   intelligence:function(){
+		// 判断是否登录
+    utils.ldqCheckLogin()
     var that = this;
 		var userInfo = wx.getStorageSync('userInfo')
-		// 判断是否登录
-    //  utils.ldqCheckLogin()
-    if(userInfo == ''){
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
-
+    // if(userInfo == ''){
+    //   wx.navigateTo({
+    //     url: '/pages/login/login'
+    //   })
+    //   return false
+    // }
 		// 判断是否是学生
-    if (userInfo.ROLE_ID != 'sja4gc59bg') {
+    if (userInfo.ROLE_ID && userInfo.ROLE_ID != 'sja4gc59bg') {
 			utils.showError("该功能只有学生可以使用");
 			return false
 		}
@@ -345,14 +280,7 @@ Page({
     // }
   },
   school:function(){
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
-    var that = this;
+    utils.ldqCheckLogin()
     utils.navigateTo("/pages/school/school")
   },
   major:function(){
@@ -368,41 +296,23 @@ Page({
     utils.navigateTo("/pages/notice/notice")
   },
   phone:function(){
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
+    utils.ldqCheckLogin()
     utils.navigateTo("/pages/video/video")
   },
   teacher:function(){
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
+    utils.ldqCheckLogin()
+    // var userInfo = wx.getStorageSync('userInfo')
+    // if (userInfo == '') {
+    //   wx.navigateTo({
+    //     url: '/pages/login/login'
+    //   })
+    //   return false
+    // }
     utils.navigateTo("/pages/table/table")
   },
   test:function(){
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
-    // utils.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, function (res) {
-    //   if (!res.data) {
-    //     utils.showError("请先登录账号");
-    //     return false;
-    //   }
+    utils.ldqCheckLogin()
       utils.navigateTo("/pages/teacher/teacher")
-    // });
-    // utils.navigateTo("/pages/activity/activity")
   },
   newsmore:function(){
       utils.navigateTo("/pages/news/news")
@@ -432,15 +342,29 @@ Page({
   },
   onShow:function(e) {
     var userInfo = wx.getStorageSync('userInfo')
-    console.log(159,userInfo)
-    //更新session
+    console.log("首页onshowe:",userInfo);
+    // 更新session
     if (userInfo!=''){
       utils.sendRequest('/wechat/applet/api/refashSession', { USER_ID: userInfo.USER_ID }, "POST", true, function (res) {
-        wx.setStorageSync('userInfo', res)
+        console.log(res)
         if (res.hasErrors) {
+          if (res.errorMessage == 'relogin') {
+            wx.showModal({
+              content: '请重新登录',
+              showCancel: false,
+              success: function (res) {
+                if (res.confirm) {
+                  wx.redirectTo({
+                    url: '/pages/login/login'
+                  })
+                }
+              }
+            })
+          }
           console.log(res.errorMessage)
           return false
         }
+        wx.setStorageSync('userInfo', res)
       })
     }
     var that = this;

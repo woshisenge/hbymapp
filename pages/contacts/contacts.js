@@ -116,13 +116,8 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    util.ldqCheckLogin()
     var userInfo = wx.getStorageSync('userInfo')
-    if(userInfo == '') {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
     if (userInfo!='') {
       this.setData({
         userInf: userInfo
@@ -195,12 +190,6 @@ Page({
     })
     var that = this;
     var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.navigateTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
     if (userInfo != '') {
       this.setData({
         userInf: userInfo

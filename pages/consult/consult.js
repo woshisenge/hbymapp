@@ -133,13 +133,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 判断登录
+    util.ldqCheckLogin()
     var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.redirectTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
     var that=this;
     that.pullSchoolInfos();
     // 获取本一本二本三id值

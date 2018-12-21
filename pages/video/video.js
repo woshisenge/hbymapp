@@ -49,14 +49,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    util.ldqCheckLogin()
     var that = this;
     var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.redirectTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
 		var data = {
 			SUBTITLE: "专家视频"
 		}
@@ -100,7 +95,7 @@ Page({
 		})
     
     // 监测是否是VIP是VIP去除弹窗
-    if (!userInfo.VIP) {
+    if (!userInfo.VIP && userInfo.ROLE_ID == 'sja4gc59bg') {
       var USER_ID = userInfo.USER_ID
       util.sendRequest('/wechat/applet/api/wethereShare', { USER_ID: USER_ID }, "POST", true, (res) => {
         if (res.hasErrors) {

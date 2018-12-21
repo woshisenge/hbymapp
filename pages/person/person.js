@@ -34,13 +34,22 @@ Page({
    */
   onLoad: function (options) {
     // 判断是否登录
-    var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.redirectTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
+    util.gdCheckLogin()
+    // util.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
+    //   console.log(3)
+    //   if (wx.getStorageSync('userInfo') == '') {
+    //     wx.redirectTo({
+    //       url: '/pages/login/login'
+    //     })
+    //     return false
+    //   }
+    //   if (res.hasErrors && res.errorMessage == 'relogin') {
+    //     wx.redirectTo({
+    //       url: '/pages/login/login'
+    //     })
+    //     return false
+    //   }
+    // })
 		var userInfo = wx.getStorageSync('userInfo')
 		if (userInfo.ROLE_ID == 'sja4gc59bg') {
 			this.setData({
@@ -104,6 +113,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    // util.gdCheckLogin()
+    // util.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
+    //   console.log(3)
+    //   if (wx.getStorageSync('userInfo') == '') {
+    //     wx.redirectTo({
+    //       url: '/pages/login/login'
+    //     })
+    //     return false
+    //   }
+    //   if (res.hasErrors && res.errorMessage == 'relogin') {
+    //     wx.redirectTo({
+    //       url: '/pages/login/login'
+    //     })
+    //     return false
+    //   }
+    // })
     var userInfo = wx.getStorageSync('userInfo')
     var user = wx.getStorageSync('userInfo')
     wx.setStorageSync('userInfo', user)

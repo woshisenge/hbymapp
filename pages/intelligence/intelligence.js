@@ -45,7 +45,6 @@ Page({
     // 判断是否是VIP，有没有使用次数
     var that=this;
     var userInfo = wx.getStorageSync('userInfo')
-    console.log(123,userInfo)
     if (!userInfo.VIP && userInfo.SHAREGETVIP_COUNT <= 0) {
       that.toggleDialog()
 			return false
@@ -94,15 +93,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // util.ldqCheckLogin()
+    util.ldqCheckLogin()
     var that=this;
 		var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo == '') {
-      wx.redirectTo({
-        url: '/pages/login/login'
-      })
-      return false
-    }
 		this.setData({
 			EXAMSCORE: userInfo.EXAMSCORE,
 			MAJORTYPE_VALUE: userInfo. MAJORTYPE_VALUE,

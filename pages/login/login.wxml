@@ -29,8 +29,8 @@
             <button class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
         </view>
         <view class="weui-btn-area" style='margin-top:25rpx;'>
-        <text  bindtap="forget" style='color:#409EFF;font-size:32rpx;'>忘记密码？</text>
-        <text bindtap="start" style='color:red;font-size:32rpx;float:right'>还没有账户？点此免费注册</text>
+        <text  bindtap="forget" style='color:#409EFF;font-size:32rpx;margin-left:20rpx;'>忘记密码？</text>
+        <text bindtap="start" style='color:red;font-size:32rpx;float:right;margin-right:20rpx;'>还没有账户？点此免费注册</text>
         </view>
     </view>
 </view>

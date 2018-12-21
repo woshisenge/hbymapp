@@ -85,35 +85,52 @@ var login = function () {
  * ldq 判断是否登录
  */
 var ldqCheckLogin = function () {
-  // console.log(111)
   login()
-  // console.log(wx.getStorageSync('session_id'))
   sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
-     console.log(222)
-     console.log(res)
-    if (wx.getStorageSync('userInfo') == ''){
-      wx.navigateTo({
+    if (!wx.getStorageSync('userInfo').USER_ID){
+      // 暂时登录无返回按钮
+      wx.redirectTo({
         url: '/pages/login/login'
       })
       return false
     }
-
-
-    // if (res.hasErrors && res.errorMessage == 'relogin') {
-    //   wx.redirectTo({
-    //     url: '/pages/login/login'
-    //   })
-    //   return false
-    // }
+    if (res.hasErrors && res.errorMessage == 'relogin') {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
   })
 }
-
+/**
+ * gd 判断是否登录无返回按钮
+ */
+var gdCheckLogin = function () {
+  console.log(2)
+  login()
+  // console.log(wx.getStorageSync('session_id'))
+  sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
+    console.log(3)
+    if (wx.getStorageSync('userInfo') == '') {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
+    if (res.hasErrors && res.errorMessage == 'relogin') {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false
+    }
+  })
+}
 /**
  * ldq 判断是否是学生身份
  */
 var ldqCheckStudent = function () {
   var userInfo = wx.getStorageSync('userInfo')
-  if (userInfo.ROLE_ID != 'sja4gc59bg') {
+  if (userInfo.ROLE_ID && userInfo.ROLE_ID != 'sja4gc59bg') {
     wx.showModal({
       content: '该功能仅限学生使用',
       showCancel: false,
@@ -883,6 +900,7 @@ module.exports = {
   getInfoFromStorage: getInfoFromStorage,
   setInfoToStorage: setInfoToStorage,
   ldqCheckLogin: ldqCheckLogin,
+  gdCheckLogin: gdCheckLogin,
   ldqCheckStudent: ldqCheckStudent,
   toComplete: toComplete,
   setStaticUrl: setStaticUrl,
