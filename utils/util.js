@@ -106,11 +106,9 @@ var ldqCheckLogin = function () {
  * gd 判断是否登录无返回按钮
  */
 var gdCheckLogin = function () {
-  console.log(2)
   login()
   // console.log(wx.getStorageSync('session_id'))
   sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
-    console.log(3)
     if (wx.getStorageSync('userInfo') == '') {
       wx.redirectTo({
         url: '/pages/login/login'
@@ -208,7 +206,6 @@ var gdForward = function (res) {
     that.setData({
       showDialog: false
     })
-    console.log('成功', showDialog)
   }
   return {
     title: title,
@@ -223,7 +220,6 @@ var gdForward = function (res) {
             console.log(res.errorMessage)
             return false
           }
-          console.log(res)
         })
         console.log(123,aaa)
         var showDialog = true;
@@ -231,7 +227,6 @@ var gdForward = function (res) {
             that.setData({
               showDialog: false
             })
-          console.log('成功',showDialog)
         }
       } else {
         wx.showModal({

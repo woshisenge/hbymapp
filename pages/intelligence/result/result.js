@@ -46,6 +46,17 @@ Page({
 			MAJOR: options.MAJOR
 		})
 		util.sendRequest("/wechat/applet/report/reporting_onekey", options, "POST", true, function (res) {
+      var userInfo = wx.getStorageSync('userInfo')
+      if (res.data == "10005") {
+        wx.showModal({
+          title: '提示',
+          content: '您的可用次数为0',
+          showCancel: false,
+          success: function () {
+            util.navigateTo("/pages/person/improve/improve", { id: '2', user_id: userInfo.user_id })
+          }
+        })
+      }
 			if (res.hasErrors) {
 				if (res.errorMessage == 'relogin') {
 					wx.showModal({

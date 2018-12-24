@@ -114,7 +114,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    // util.gdCheckLogin()
+    util.gdCheckLogin()
     // util.sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
     //   console.log(3)
     //   if (wx.getStorageSync('userInfo') == '') {
