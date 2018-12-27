@@ -29,6 +29,7 @@
               <text class='vip-style' wx:elif="{{vip == '初级会员'}}">{{vip}} <text style='font-family:黑体'>></text></text>
               <text class='vip-style' wx:elif="{{vip == '体验版会员'}}">{{vip}} <text style='font-family:黑体'>></text></text>
               <text class='vip-style' wx:elif="{{vip == '预约专家'}}">{{vip}} <text style='font-family:黑体'>></text></text>
+              <text class='vip-style' wx:elif="{{vip == '高级体验会员'}}">{{vip}} <text style='font-family:黑体'>></text></text>
               <text class='vip-style' wx:else>普通用户 <text style='font-family:黑体'>></text></text>
             </view>
       </view>

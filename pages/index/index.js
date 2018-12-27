@@ -124,6 +124,11 @@ Page({
   //查看志愿 调用方法
   analog:function(){
     utils.ldqCheckLogin()
+    var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo.ROLE_ID != 'sja4gc59bg') {
+      utils.showError("仅有学生身份才能使用该功能！");
+      return false
+    }
 		utils.navigateTo("/pages/imitate/imitate");
 		return false
     // var that = this;
@@ -342,9 +347,11 @@ Page({
   },
   onShow:function(e) {
     var userInfo = wx.getStorageSync('userInfo')
+    console.log('首页',userInfo)
     // 更新session
-    if (userInfo!=''){
+    if (userInfo.USER_ID){
       utils.sendRequest('/wechat/applet/api/refashSession', { USER_ID: userInfo.USER_ID }, "POST", true, function (res) {
+        console.log(res)
         if (res.hasErrors) {
           if (res.errorMessage == 'relogin') {
             wx.showModal({
