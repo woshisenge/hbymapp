@@ -27,7 +27,9 @@ Page({
     //VIP
     vip:'',
     //工作年限
-    jobdate:''
+    jobdate:'',
+    // 控制开通VIP显示隐藏
+    hide:true,
   },
 
   /**
@@ -74,6 +76,20 @@ Page({
         jobdate: userInfo.JOBDATE,
 			})
 		}
+    util.sendRequest('/plant/item/api/get_totalfee', {}, "POST", true, (res) => {
+      console.log(res)
+      if (res.hasErrors) {
+        console.log(res.errorMessage)
+        return false
+      }
+      if (res.TOTAL != '' && res.TOTAL != null) {
+        this.setData({
+          hide: false
+        })
+        this.data.hide = false
+      }
+      console.log(this.data.hide)
+    })
   },
   chooseImageTap: function () {
     let _this = this;

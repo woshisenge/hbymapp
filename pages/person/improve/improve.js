@@ -23,12 +23,22 @@ Page({
    */
   onLoad: function (options) {
     util.ldqCheckLogin()
-		// console.log('111' ,options)
 		var that = this;
 		that.setData({
 			user_id:options.user_id,
 			id:options.id,
 		});
+    util.sendRequest('/plant/item/api/get_totalfee', {}, "POST", true, (res) => {
+      if (res.hasErrors) {
+        console.log(res.errorMessage)
+        return false
+      }
+      if (res.TOTAL != '' && res.TOTAL != null) {
+        this.setData({
+          total: res.TOTAL
+        })
+      }
+    })
   },
 	cardUp: function (e) {
 		var data = e.detail.value
@@ -87,9 +97,7 @@ Page({
   pay:function(e){
     var that = this;
     var a = e.currentTarget.id
-		console.log(a)
 		util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: a }, "POST", true, function (res) {
-			console.log(res)
 			if (res.errorMessage == "请先登录账号！") {
 				wx.showModal({
 					content: '请重新登录',
@@ -110,7 +118,6 @@ Page({
 			var paySign = res.prePayReSign.paySign;
 			var signType = res.prePayReSign.signType;
 			var timeStamp = res.prePayReSign.timeStamp;
-      console.log(1111)
 			wx.requestPayment({
 				timeStamp: timeStamp,
 				nonceStr: nonceStr,
@@ -118,10 +125,7 @@ Page({
 				signType: signType,
 				paySign: paySign,
 				success: function (obj) {
-          console.log(445566, obj)
-          console.log(2222)
           util.sendRequest("/wechat/applet/user/activate_lsVSldq", {}, "POST", true, function (ldqRes) {
-            console.log(ldqRes)
             if (ldqRes.hasErrors) {
               wx.showModal({
                 content: ldqRes.errorMessage,
