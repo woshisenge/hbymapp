@@ -12,6 +12,12 @@
   </view>
   <view class='btn' bindtap='pay' id="29800"><text class='text'>立即购买</text></view>
 </view>
+<view wx:if="{{id == 4}}">
+  <view class='banner'>
+    <image src="{{single2}}"></image>
+  </view>
+  <view class='btn' bindtap='pay' id="20000"><text class='text'>体验会员享受折上折 200￥ 购买</text></view>
+</view>
 <view wx:if="{{id == 3}}">
   <view class='banner'>
     <image src="{{single3}}"></image>

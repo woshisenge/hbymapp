@@ -113,6 +113,14 @@
 			<view class="weui-cell__bd">开通高级会员</view>
 		</view>
   </navigator>
+  <!-- <navigator url="" hover-class="navigator-hover" open-type='navigate'>
+		<view class="weui-cell" bindtap="single" id='2'>
+			<view class="weui-cell__hd">
+				<image src="./img/vip1.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+			</view>
+			<view class="weui-cell__bd">开通高级会员</view>
+		</view>
+  </navigator> -->
   <navigator url="" hover-class="navigator-hover" open-type='navigate'>
 		<view class="weui-cell" bindtap="single" id='4'>
 			<view class="weui-cell__hd">

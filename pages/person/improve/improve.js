@@ -90,7 +90,7 @@ Page({
 		console.log(a)
 		util.sendRequest("/plant/wxrecharge/addUnPayOrder", { TOTAL: a }, "POST", true, function (res) {
 			console.log(res)
-			if (res.errorMessage == "请君登录账号！") {
+			if (res.errorMessage == "请先登录账号！") {
 				wx.showModal({
 					content: '请重新登录',
 					showCancel: false,
