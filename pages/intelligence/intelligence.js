@@ -46,14 +46,25 @@ Page({
     // 判断是否是VIP，有没有使用次数
     var that=this;
     var userInfo = wx.getStorageSync('userInfo')
+    if (userInfo.ROLE_ID != 'sja4gc59bg') {
+      util.showError("该功能只有学生可以使用");
+      return false
+    }
+    if (userInfo.VIPCOUNT<=0) {
+      wx.showModal({
+        title: '提示',
+        content: '您的可用次数为0',
+        showCancel: false,
+        success: function () {
+          util.navigateTo("/pages/person/improve/improve", { id: '2', user_id: userInfo.user_id })
+        }
+      })
+      return false
+    }
     if (!userInfo.VIP && userInfo.SHAREGETVIP_COUNT <= 0) {
       that.toggleDialog()
 			return false
 		}
-    if (userInfo.ROLE_ID != 'sja4gc59bg') {
-      util.showError("该功能只有学生可以使用"); 
-      return false
-    }
     if ((!this.data.provinces_id && !this.data.subjecttypes_id) || this.data.provinces_id.split(',').length > 3 || this.data.subjecttypes_id.split(',').length > 2 ) { 
       util.showError("请选择 1 - 3 个城市")
       return false
@@ -134,6 +145,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var userInfo = wx.getStorageSync('userInfo')
+    // 更新session
+    if (userInfo.USER_ID) {
+      util.sendRequest('/wechat/applet/api/refashSession', { USER_ID: userInfo.USER_ID }, "POST", true, function (res) {
+        if (res.hasErrors) {
+          if (res.errorMessage == 'relogin') {
+            wx.showModal({
+              content: '请重新登录',
+              showCancel: false,
+              success: function (res) {
+                if (res.confirm) {
+                  wx.redirectTo({
+                    url: '/pages/login/login'
+                  })
+                }
+              }
+            })
+          }
+          console.log(res.errorMessage)
+          return false
+        }
+        wx.setStorageSync('userInfo', res)
+      })
+    }
   },
 
   /**
