@@ -13,7 +13,7 @@ Page({
 	play: function (e) {
 		var userInfo = wx.getStorageSync('userInfo')
 		console.log(userInfo)
-		if (userInfo.VIP != '体验版会员' || userInfo.VIP != '初级会员' || userInfo.VIP != '高级会员' || userInfo.VIP != '预约专家') {
+    if (userInfo.VIP != '体验版会员' || userInfo.VIP != '初级会员' || userInfo.VIP != '高级会员' || userInfo.VIP != '高级体验会员' || userInfo.VIP != '预约专家') {
 			if (e.currentTarget.dataset.isfree == '1') {
 				var userInfo = wx.getStorageSync('userInfo')
 				if (!userInfo.VIP) {

@@ -88,7 +88,6 @@ var ldqCheckLogin = function () {
   login()
   sendRequest("/wechat/applet/user/checklogin", {}, "POST", true, (res) => {
     if (!wx.getStorageSync('userInfo').USER_ID){
-      // 暂时登录无返回按钮
       wx.redirectTo({
         url: '/pages/login/login'
       })
@@ -221,7 +220,6 @@ var gdForward = function (res) {
             return false
           }
         })
-        console.log(123,aaa)
         var showDialog = true;
         if (!userInfo.VIP) {
             that.setData({

@@ -84,7 +84,7 @@ Page({
     console.log(data)
     util.sendRequest("wechat/applet/expert/api/appointment_expert",data,"POST",true,function(res){
       if (res.data == 10000) {
-        if (userInfo.VIP == '高级会员') {
+        if (userInfo.VIP == '高级会员' || userInfo.VIP == '高级体验会员') {
           wx.showModal({
             content: '预约成功, 请等待专家联系您',
             showCancel: false,

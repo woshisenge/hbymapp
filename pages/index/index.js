@@ -347,11 +347,9 @@ Page({
   },
   onShow:function(e) {
     var userInfo = wx.getStorageSync('userInfo')
-    console.log('首页',userInfo)
     // 更新session
     if (userInfo.USER_ID){
       utils.sendRequest('/wechat/applet/api/refashSession', { USER_ID: userInfo.USER_ID }, "POST", true, function (res) {
-        console.log(res)
         if (res.hasErrors) {
           if (res.errorMessage == 'relogin') {
             wx.showModal({
