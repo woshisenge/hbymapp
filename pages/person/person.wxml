@@ -19,6 +19,7 @@
           <text  wx:if="{{majortype == 'r6j4mh69be'}}" style='color:#333' class='ldq-child'>理科</text>
           <text style='color:#333;' class='ldq-child'>{{examscore}}分</text>
         </view>
+        
             <!-- 头像 -->
             <view class="weui-cell__hd gd_portrait" bindtap='chooseImageTap'>
               <image src="{{headurl}}" style="width: 60px; height: 60px;"/>
