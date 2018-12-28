@@ -35,7 +35,8 @@ Page({
       }
       if (res.TOTAL != '' && res.TOTAL != null) {
         this.setData({
-          total: res.TOTAL
+          total: res.TOTAL,
+          price: res.TOTAL/100
         })
       }
     })
