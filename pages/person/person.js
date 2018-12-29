@@ -76,8 +76,21 @@ Page({
         jobdate: userInfo.JOBDATE,
 			})
 		}
+    // 专家
+    if (userInfo.ROLE_ID == 'wophbzohkh') {
+      console.log(util.setStaticUrl(userInfo.HEADURL))
+      this.setData({
+        nickname: userInfo.NICKNAME || '',
+        role_id: userInfo.ROLE_ID || '',
+        school_name: userInfo.SCHOOL_NAME || '',
+        jobtype: userInfo.JOBTYPE || '',
+        headurl: util.setStaticUrl(userInfo.HEADURL),
+        jobdate: userInfo.JOBDATE,
+        sex:userInfo.SEX,
+        introduction: userInfo.INTRODUCTION
+      })
+    }
     util.sendRequest('/plant/item/api/get_totalfee', {}, "POST", true, (res) => {
-      console.log(res)
       if (res.hasErrors) {
         console.log(res.errorMessage)
         return false
@@ -88,7 +101,6 @@ Page({
         })
         this.data.hide = false
       }
-      console.log(this.data.hide)
     })
   },
   chooseImageTap: function () {

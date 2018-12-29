@@ -216,3 +216,37 @@
 		</navigator>
 	</view>
 </view>
+<!-- gd：专家 2018/12/29 -->
+<view class="page" wx-if="{{role_id == 'wophbzohkh'}}" style='background-color:#fff'>
+    <image src='{{src}}' style='width:100%' mode='widthFix'></image>
+    <view class="page__hd" style='position:absolute;left:0;top:0; width:100%;padding:0 5%;'>
+      <view class="page__title" style='color:#fff; position:absolute; top:30rpx; left:45%; transform:translateX(-50%)'>个人中心
+      </view>
+      <view class='gd_Personal_Center'>
+        <view class='ldq-flex' style='padding-top: 45px;'>
+          <text style='color:#14C4B0;' class='ldq-child'>姓名</text>
+          <text style='color:#14C4B0;' class='ldq-child'>性别</text>
+          <text style='color:#14C4B0;' class='ldq-child'>工作年限</text>
+        </view>
+        <view class='ldq-flex'>
+          <text style='color:#333;' class='ldq-child'>{{nickname}}</text>
+          <text  wx:if="{{sex == '11'}}" style='color:#333' class='ldq-child'>男</text>
+          <text  wx:if="{{sex == '12'}}" style='color:#333' class='ldq-child'>女</text>
+          <text  wx:if="{{jobdate == 'l7gru49ll3'}}" style='color:#333' class='ldq-child'>一年以内</text>
+          <text  wx:if="{{jobdate == 'q9q70meulf'}}" style='color:#333' class='ldq-child'>1到3年</text>
+          <text  wx:if="{{jobdate == 'g21h56sllq'}}" style='color:#333' class='ldq-child'>3到5年</text>
+          <text  wx:if="{{jobdate == 'lfs1lmt901'}}" style='color:#333' class='ldq-child'>5到10年</text>
+          <text  wx:if="{{jobdate == 'o5ayni47vh'}}" style='color:#333' class='ldq-child'>10年以上</text>
+        </view>
+        
+            <!-- 头像 -->
+            <view class="weui-cell__hd gd_portrait" bindtap='chooseImageTap'>
+              <image src="{{headurl}}" style="width: 60px; height: 60px;"/>
+            </view>
+      </view>
+	  </view>
+  <view class="weui-cells__title" style='margin-top:135rpx; color:#22C5B3'>个人简介</view>
+    <view class="weui-cells weui-cells_after-title" style='padding:10px;'>
+      <text style='margin-right:60rpx;'></text>{{introduction}}
+    </view>
+</view>

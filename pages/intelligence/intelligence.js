@@ -66,7 +66,7 @@ Page({
 			return false
 		}
     if ((!this.data.provinces_id && !this.data.subjecttypes_id) || this.data.provinces_id.split(',').length > 3 || this.data.subjecttypes_id.split(',').length > 2 ) { 
-      util.showError("请选择 1 - 3 个城市")
+      util.showError("每次仅限选择 1 - 3 个城市")
       return false
      }
 		// if (!this.data.provinces_id || this.data.provinces_id.split(',').length > 3) {
