@@ -13,7 +13,7 @@
       </view>
       <view class='time-count'>
         <image src='/images/browse.png' style="width:30rpx;height:30rpx"></image>
-        <text style='margin-left:10rpx;'>{{item.VIEWCOUNT}}</text>
+        <text style='margin-left:10rpx;'>{{item.VIEWCOUNT+36192}}</text>
       </view> 
     </view>
   </view>

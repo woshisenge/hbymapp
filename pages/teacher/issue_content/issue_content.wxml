@@ -52,6 +52,13 @@
 					<view class="weui-media-box weui-media-box_text" style='margin-left: 30rpx;'>
 						<view class="weui-media-box__title weui-media-box__title_in-text">{{item.ANSWER_CONTENT}}</view>
 					</view>
+          <!-- <view class="weui-panel__ft" style='position:relative'
+            hidden="{{!(role == 'wophbzohkh' && item.PRO_ID==userId)}}">
+            <textarea style='text-align: left; padding: 15rpx 20rpx;' bindinput='bindContent'></textarea>
+            <button class="weui-btn mini-btn" type="primary" size="mini" bindtap='modify'
+                style='background-color:#5AB4AA; position:absolute;bottom:0rpx;right:20rpx'>修改回答
+            </button>
+          </view> -->
 				</view>
 
 				<view class="weui-panel__ft" style='position:relative'

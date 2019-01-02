@@ -13,7 +13,8 @@
       </view>
       <view class='count'>
         <image src="/images/browse.png" style="width:34rpx;height:34rpx"></image>
-        <text class='text'>{{item.VIEWCOUNT}}</text>
+        <!-- 增加基础值25626 -->
+        <text class='text'>{{item.VIEWCOUNT+25626}}</text>
       </view>
 			<text hidden='{{item.ISFREE == 1}}' style='width: 100rpx'>免费</text>
 			<text hidden='{{item.ISFREE == 0}}' style='width: 100rpx'>会员</text>

@@ -29,6 +29,25 @@ Page({
     });
     return list;
   },
+  // 修改回答
+  modify:function(){
+    const data={
+      ASKS_ANSWERS_ID: this.data.list[this.data.list.length - 1].ASKS_ANSWERS_ID,
+      ANSWER_ID: this.data.list[this.data.list.length - 1].ANSWER_ID,
+      STU_ID: this.data.list[this.data.list.length - 1].STU_ID,
+      ANSWER_CONTENT:'测试错误',
+    }
+    console.log(data)
+    console.log(this.data.list)
+    // return false;
+    utils.sendRequest("/plant/expert/api/updatepro_answer", data, "POST", true, (res) => {
+      console.log(res)
+      if (res.hasErrors) {
+        console.log(res.errorMessage);
+        return false;
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -36,6 +55,7 @@ Page({
 		var userInfo = wx.getStorageSync('userInfo')
 		console.log(userInfo)
 		utils.sendRequest("wechat/applet/expert/api/getOneAll", options, "POST", true, (res) => {
+      console.log(res)
 			if (res.hasErrors) {
 				console.log(res.errorMessage);
 				return false;

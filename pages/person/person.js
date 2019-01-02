@@ -91,6 +91,7 @@ Page({
       })
     }
     util.sendRequest('/plant/item/api/get_totalfee', {}, "POST", true, (res) => {
+      console.log("gd:",res)
       if (res.hasErrors) {
         console.log(res.errorMessage)
         return false
@@ -99,7 +100,6 @@ Page({
         this.setData({
           hide: false
         })
-        this.data.hide = false
       }
     })
   },

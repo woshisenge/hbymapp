@@ -50,12 +50,10 @@ Page({
     }
 		var userInfo = wx.getStorageSync('userInfo')
 		util.sendRequest("/wechat/applet/expert/api/askpro_datas", {}, "POST", false, (res) => {
-			console.log(res)
 			if (res.hasErrors) {
 				console.log(res.errorMessage);
 				return false;
 			}
-			console.log(userInfo)
 			res.data.forEach(item => {
 				item.HEADURL_PRO = util.setStaticUrl(item.HEADURL_PRO)
 				item.HEADURL_STU = util.setStaticUrl(item.HEADURL_STU)
@@ -111,7 +109,6 @@ Page({
 			ASKS_ANSWERS_ID: e.currentTarget.dataset.pid,
 			CODE: '1'
 		}
-		console.log(data)
 		util.sendRequest("/wechat/applet/expert/api/pro_answer_stu", data, "POST", true, function (res) {
 			if (res.hasErrors) {
 				console.log(res.errorMessage);
@@ -161,7 +158,6 @@ Page({
           console.log(res.errorMessage);
           return false;
         }
-        console.log(res)
         res.data.forEach(item => {
           item.headurl = util.setStaticUrl(item.HEADURL)
         })
@@ -301,12 +297,10 @@ Page({
     // 刷新页面数据
     var userInfo = wx.getStorageSync('userInfo')
     util.sendRequest("/wechat/applet/expert/api/askpro_datas", {}, "POST", false, (res) => {
-      console.log(res)
       if (res.hasErrors) {
         console.log(res.errorMessage);
         return false;
       }
-      console.log(userInfo)
       res.data.forEach(item => {
         item.HEADURL_PRO = util.setStaticUrl(item.HEADURL_PRO)
         item.HEADURL_STU = util.setStaticUrl(item.HEADURL_STU)

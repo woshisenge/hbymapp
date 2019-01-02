@@ -10,7 +10,7 @@
         </view>
     </view>
 <scroll-view scroll-y="true" class="scroll_view" class="{{ view }}" bindtap="cancelEmoji" scroll-into-view="{{ chatRecords.length > 0 ? 'rec_' + chatRecords[chatRecords.length - 1].REC_ID : '' }}"  >
-<view class="greetings">
+<view class="greetings" wx:if='{{role==1}}'>
   <image src='{{teacherImg}}'></image>
   <view>欢迎咨询{{complete_info.NICKNAME}}，请问有什么可以帮你的吗？
   </view>

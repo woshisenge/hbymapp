@@ -240,7 +240,7 @@
         </view>
         
             <!-- 头像 -->
-            <view class="weui-cell__hd gd_portrait" bindtap='chooseImageTap'>
+            <view class="weui-cell__hd gd_portrait">
               <image src="{{headurl}}" style="width: 60px; height: 60px;"/>
             </view>
       </view>

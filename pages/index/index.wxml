@@ -177,7 +177,8 @@
         </view>
         <view class='flex-x'>
           <image class='icon' src='../../images/browse.png'></image>
-          <span class='time-t'>{{item.VIEWCOUNT}}</span>
+          <!-- 加上基础值36192 -->
+          <span class='time-t'>{{item.VIEWCOUNT+36192}}</span>
         </view>
       </view>
     </view>
@@ -189,7 +190,7 @@
 <!-- 线下活动 开始 -->
 <view class="notice">
   <image class='icon' src='../../images/line.png' style='margin-top:8rpx;margin-right:8rpx'></image>
-  <view style='font-size:36rpx;'>招办见面会</view>
+  <view style='font-size:36rpx;'>大学招办见面会</view>
   <span class="more" style="font-size:30rpx;color:#FE8402" bindtap="activitymore">查看更多></span>
 </view>
 <view class='flex-x' style='padding: 15rpx;'>
