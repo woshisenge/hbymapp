@@ -55,5 +55,6 @@ Page({
         })
       })
     })
-  }
+  },
+  onShareAppMessage: util.gdForward
 })

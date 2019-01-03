@@ -174,6 +174,7 @@ Page({
       inputMessage: ''
     })*/
   },
+  onShareAppMessage: util.gdForward,
   open_que:function(){
     var that = this;
     that.setData({

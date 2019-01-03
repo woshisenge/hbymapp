@@ -174,9 +174,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  },
+  onShareAppMessage: util.gdForward,
   noneSelected: function () {
     var that = this;
     var majors = that.data.majors;

@@ -289,9 +289,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  },
+  onShareAppMessage: util.gdForward,
   goods:function(){
     var that= this;
     var role = that.data.vip;

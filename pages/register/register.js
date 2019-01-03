@@ -79,9 +79,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  },
+  onShareAppMessage: util.gdForward,
   selYear: function (e) {
     var that = this
     that.setData({

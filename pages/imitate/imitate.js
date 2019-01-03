@@ -637,9 +637,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  },
+  onShareAppMessage: util.gdForward,
   b1Submit: function () {
     var that = this;
     if (that.data.b1Schools_1_id == ""

@@ -307,6 +307,7 @@ Page({
   onReachBottom: function () {
   
   },
+  onShareAppMessage: util.gdForward,
 
 	  data: {
 		x: 0,

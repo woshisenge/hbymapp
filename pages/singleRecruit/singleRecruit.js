@@ -383,9 +383,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  },
+  onShareAppMessage: util.gdForward,
   //将页码置0
   clearCurPage: function () {
     var that = this;

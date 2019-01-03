@@ -404,7 +404,5 @@ Page({
     //   })
     // });
   },
-  onShareAppMessage: function (res) {
-    
-  },
+  onShareAppMessage: utils.gdForward,
 });

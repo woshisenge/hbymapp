@@ -220,9 +220,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  },
+  onShareAppMessage: util.gdForward,
   toChat: function(e) {
     var id = e.currentTarget.id;
     util.navigateTo("/pages/chatroom/chatroom", {user_id: id});

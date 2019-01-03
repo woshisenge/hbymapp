@@ -162,9 +162,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  },
+  onShareAppMessage: util.gdForward,
   back:function(){
     var that = this;
     var valueStr = that.data.school_1;

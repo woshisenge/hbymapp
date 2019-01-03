@@ -50,17 +50,18 @@ Page({
       util.showError("该功能只有学生可以使用");
       return false
     }
-    if (userInfo.VIPCOUNT<=0) {
-      wx.showModal({
-        title: '提示',
-        content: '您的可用次数为0',
-        showCancel: false,
-        success: function () {
-          util.navigateTo("/pages/person/improve/improve", { id: '2', user_id: userInfo.user_id })
-        }
-      })
-      return false
-    }
+    // 初级会员以后会砍掉不需要考虑使用次数用完之后的问题
+    // if (userInfo.VIP!=null && userInfo.VIPCOUNT<=0) {
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '您的可用次数为0',
+    //     showCancel: false,
+    //     success: function () {
+    //       util.navigateTo("/pages/person/improve/improve", { id: '2', user_id: userInfo.user_id })
+    //     }
+    //   })
+    //   return false
+    // }
     if (!userInfo.VIP && userInfo.SHAREGETVIP_COUNT <= 0) {
       that.toggleDialog()
 			return false

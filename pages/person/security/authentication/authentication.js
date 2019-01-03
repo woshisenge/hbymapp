@@ -62,9 +62,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  },
+  onShareAppMessage: util.gdForward,
   //获取短信验证码
   getSMSCode: function () {
     var that = this;
