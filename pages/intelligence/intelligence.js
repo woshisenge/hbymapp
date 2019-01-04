@@ -80,7 +80,6 @@ Page({
     // }
     userInfo.SHAREGETVIP_COUNT = userInfo.SHAREGETVIP_COUNT-1;
     wx.setStorageSync('userInfo', userInfo);
-    var ls =wx.getStorageSync('userInfo');
     var that = this;
 		var data = {
 			MAJOR: that.data.majors_id,

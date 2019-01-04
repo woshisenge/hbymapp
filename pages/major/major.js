@@ -83,9 +83,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  },
+  onShareAppMessage: util.gdForward,
   show: function (e) {
     var that = this;
     var curId = e.currentTarget.dataset.id;
