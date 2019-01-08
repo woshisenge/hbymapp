@@ -46,6 +46,7 @@ Page({
     // 判断是否是VIP，有没有使用次数
     var that=this;
     var userInfo = wx.getStorageSync('userInfo')
+    console.log('ls',userInfo);
     if (userInfo.ROLE_ID != 'sja4gc59bg') {
       util.showError("该功能只有学生可以使用");
       return false
@@ -62,7 +63,7 @@ Page({
     //   })
     //   return false
     // }
-    if (!userInfo.VIP && userInfo.SHAREGETVIP_COUNT <= 0) {
+    if ((!userInfo.VIP && userInfo.SHAREGETVIP_COUNT <= 0) || (userInfo.VIP == '高级体验会员' && userInfo.SHAREGETVIP_COUNT <= 0) ) {
       that.toggleDialog()
 			return false
 		}
@@ -236,8 +237,19 @@ Page({
         }
       })
     }else{
-      util.showError("亲！请明天再来测试吧！今日免费次数已赠送完毕！");
-    }
+      if (userInfo.VIPCOUNT == 0 && userInfo.SHAREGETVIP_COUNT <= 0){
+        wx.showModal({
+          title: '提示',
+          content: ' 亲！请明天再来测试吧！今日免费次数已赠送完毕！您的可用次数为0;成为高级会员可不限次使用',
+          showCancel: false,
+          success: function () {
+            util.navigateTo("/pages/person/improve/improve", { id: '2', user_id: userInfo.user_id })
+          }
+        })
+      }else{
+        util.showError("亲！请明天再来测试吧！今日免费次数已赠送完毕！");
+      }
+     }
     return {
       title: title,
       imageUrl: imageUrl,

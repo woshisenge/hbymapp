@@ -50,7 +50,7 @@ Page({
       if (res.data == "10005") {
         wx.showModal({
           title: '提示',
-          content: '您的可用次数为0',
+          content: '您的可用次数为0,成为高级会员即可不限次使用',
           showCancel: false,
           success: function () {
             util.navigateTo("/pages/person/improve/improve", { id: '2', user_id: userInfo.user_id })
