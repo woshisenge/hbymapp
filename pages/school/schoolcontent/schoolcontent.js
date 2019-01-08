@@ -13,7 +13,7 @@ Page({
     icon:"/images/address.png",
     array:[],
     icon1: "/images/yuanxiao.png",
-    checked:true,
+    checked:false,
     check:true,
     hidden:true,
     school_id:"",

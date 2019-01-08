@@ -17,7 +17,7 @@ Page({
     icon1: "/images/yuanxiao.png",
     grade:[],
     vip:"",
-    checked: true,
+    checked: false,
     check: true,
     school_id: "",
     scrollTop:0,
