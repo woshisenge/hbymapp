@@ -243,8 +243,13 @@ Page({
           content: ' 亲！请明天再来测试吧！今日免费次数已赠送完毕！您的可用次数为0;成为高级会员可不限次使用',
           showCancel: false,
           success: function () {
-            util.navigateTo("/pages/person/improve/improve", { id: '2', user_id: userInfo.user_id })
-          }
+            if(userInfo.VIP == null){
+              util.navigateTo("/pages/person/improve/improve", { id: '2', user_id: userInfo.user_id })
+            }else{
+              util.navigateTo("/pages/person/improve/improve", { id: '4', user_id: userInfo.user_id })
+            }
+             
+            }
         })
       }else{
         util.showError("亲！请明天再来测试吧！今日免费次数已赠送完毕！");

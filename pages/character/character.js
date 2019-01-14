@@ -32,7 +32,8 @@ Page({
       }
     })
     // 监测是否是VIP是VIP去除弹窗
-    if (!userInfo.VIP && userInfo.ROLE_ID == 'sja4gc59bg') {
+    //LS：高级体验会员 也得每日一次转发一次才能 使用开源的 信息2019.1.8
+    if ((!userInfo.VIP || userInfo.VIP == '高级体验会员') && userInfo.ROLE_ID == 'sja4gc59bg') {
       var USER_ID = userInfo.USER_ID
       util.sendRequest('/wechat/applet/api/wethereShare', { USER_ID: USER_ID }, "POST", true, (res) => {
         if (res.hasErrors) {

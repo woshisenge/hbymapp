@@ -201,7 +201,7 @@ var gdForward = function (res) {
     }
   })
   var showDialog = true;
-  if (!userInfo.VIP) {
+  if (!userInfo.VIP || userInfo.VIP =='高级体验会员') {
     that.setData({
       showDialog: false
     })
@@ -221,7 +221,7 @@ var gdForward = function (res) {
           }
         })
         var showDialog = true;
-        if (!userInfo.VIP) {
+        if (!userInfo.VIP || userInfo.VIP == '高级体验会员') {
             that.setData({
               showDialog: false
             })
