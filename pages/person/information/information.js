@@ -120,6 +120,7 @@ Page({
    */
   onLoad: function (options) {
 		var userInfo = wx.getStorageSync('userInfo')
+    console.log(userInfo);
 		// 判断是否登录
 		util.ldqCheckLogin()
 		this.setData({

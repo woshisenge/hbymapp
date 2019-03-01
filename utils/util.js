@@ -163,6 +163,37 @@ var popupShow = function (res) {
     // }
   })
 }
+
+var ls_wxhelp = function(res){
+  var userInfo = wx.getStorageSync('userInfo')
+  var that = this;
+  var user_id = userInfo.USER_ID;
+  var title = '高考助力还差您一票，请助我一臂之力！（助力码：' + user_id +')';
+  var imageUrl = baseurl.content + "/static/ymplant/ldq-img/wxhelp_zf.jpg"
+  wx.showShareMenu({
+    withShareTicket: true
+  })
+
+  return {
+    title: title,
+    imageUrl: imageUrl,
+    path: 'pages/person/helpgk/helpgk',
+    success: function (res) {
+      if (res.shareTickets) {
+        //请求接口 返回助力进度结果
+      } else {
+        wx.showModal({
+          title: '对不起！',
+          content: '您转发的是个人，请分享至家长群或同学群',
+          showCancel: false,
+        })
+      }
+    }
+  }
+
+
+}
+
 /**
  * gd 控制转发显示页面
  */
@@ -914,5 +945,6 @@ module.exports = {
   wxPromisify: wxPromisify,
   gdForward: gdForward,
   popupShow:popupShow,
+  ls_wxhelp: ls_wxhelp,
 }
 

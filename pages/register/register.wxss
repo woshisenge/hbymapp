@@ -3,6 +3,17 @@ navigator{
   display: inline-block;
   color:rgb(90,180,170);
 }
+.mb-identity{
+  width: 100%;
+  height:40px; 
+  line-height: 40px;
+}
+.mb-identity2{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
 .mb-leixing{
   width: 100%;
   height:40px; 

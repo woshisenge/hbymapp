@@ -1,0 +1,58 @@
+<!--pages/person/helpgk/helpgk.wxml-->
+<!-- ls：2019.2.22 助力详情 开始   以图片形式说明 -->
+<view class='ls_helps'>
+  <view  style='width:100%;height:600rpx;'>
+    <image src="{{index_1}}" style="width: 100%;height: 100%;" ></image>
+  </view>
+<!-- 助力详情  结束 -->
+
+<!-- ls：助力进度 开始 -->
+<view class='ls_jindu' style='height:90rpx;font-size:44rpx;margin:50rpx 20rpx 0 20rpx; padding-top:23rpx;'> 
+   <text style='margin-left:30rpx; float:left;'>助力进度</text>
+   <text style='margin-right:30rpx;align-items:left; float:right;'>/{{TOTALCOUNT}}人</text>
+   <text style='margin-right:10rpx; color:#d85510; float:right;'>{{COUNTS}}</text>
+</view>
+<!-- ls: 助力进度 结束 -->
+
+<!-- ls：写个显示隐藏 区别登陆状态 -->
+<view wx:if="{{hide1}}">
+<view  class='ls_forhelp' style='margin-top:50rpx; color:#22C5B3;'>
+<!-- <text style='align-items:center;'>请求好友助力</text> -->
+<button class='ls_button1'  bindtap="forlogin" style='width:66%;font-size:44rpx;color:#d85510; '>登陆邀请助力</button>
+</view>
+</view>
+
+
+
+<!-- ls:2019.2.22  请求好友助力 / 为好友助力   二 选 一  js 识别用户openid 每人只能助力一次  开始  -->
+<view wx:if="{{hide2}}">
+<view class='ls_forhelp' style='margin-top:50rpx; color:#22C5B3; '>
+<!-- <text style='align-items:center;'>请求好友助力</text> -->
+<button class='ls_button1' open-type='share' bindtap="forhelp" style='width:66%;font-size:44rpx;color:#d85510;'>请求好友助力</button>
+</view>
+</view>
+
+<form bindsubmit='formSubmit'>
+<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+		
+		<view class="weui-cell__bd weui-cell_primary">
+			<input USER_ID  placeholder="请输入助力码" type='text' name='USER_ID' value='{{id}}' style="width:100%;padding:12rpx 0;text-align:center;color:#fff; " placeholder-style='color:#fff'/>
+		</view>
+</view>
+<view>
+    <button class='ls_button2' form-type='submit' style='width:66%;color:#fff;font-size:44rpx;margin-top:10rpx;'>助力好友</button>
+</view>
+</form>
+<!--  请求好友助力 / 为好友助力    结束 -->
+
+
+
+<!-- ls:2019.2.22 助力奖  介绍  以图片形式   开始 -->
+<view style='width:100%;height:600rpx;'>
+<image src="{{index_2}}" style='width:100%;height:100%;margin-top:50rpx;'></image>
+</view>
+<!-- 结束 -->
+</view>
+<!-- ls:弹框提示 -->
+
+

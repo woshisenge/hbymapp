@@ -10,7 +10,7 @@
 </swiper>
 <!-- 轮播图 结束 -->
 <swiper indicator-dots="{{true}}"
-  autoplay="{{false}}" interval="{{interval}}" duration="{{500}}">
+  autoplay="{{false}}" interval="{{interval}}" duration="{{500}}">`
   <swiper-item>
     <view class='navigation-box'>
       <view class='navigation' bindtap="consultation">
@@ -82,6 +82,20 @@
   <!-- <view>在河北省招生咨询行程安排<image src="../../images/mouse.png"></image></view> -->
 <!-- </view> -->
 <!-- 2018.7.2 ldq 结束 -->
+
+<!-- 2019.2.22 ls 助力高考活动 开始 -->
+<view class='help_gk'>
+<view style='font-size:45rpx;color:#FE4500;margin: 0 auto;'>助力高考活动</view>
+</view>
+<view class='weui-flex__item' >
+  <view class='weui-flex__item' bindtap="helpgk1">
+  <!-- ls:说明 此处放图片，说明助力高考活动 的详情    点击进入  跳转助力页面  为指定用户助力  助力完成获得相应 助力项 -->
+    <image src='{{index_5}}' style='width:92%; height:100%;margin:0 auto;position: relative;padding:0 18px;0 18px;'></image>
+  </view>
+</view>
+
+
+<!-- ls 助力高考活动 结束 -->
 <!-- 全国高校招生咨询平台 开始 -->
 <view class="notice">
   <image style='margin-top:8px' class='icon' src='../../images/01.png'></image>

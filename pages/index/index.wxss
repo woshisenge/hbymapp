@@ -59,6 +59,17 @@
   position: relative;
   background-color:white;
 }
+
+/* 助力高考 开始 */
+.help_gk{
+padding:10rpx 35rpx;
+border-top: 20rpx solid #F7F7F7;
+border-bottom: 20rpx solid #F7F7F7; 
+display: flex;
+flex-direction:row;
+justify-content: flex-start;
+background-color:white;
+}
 .notices{
   background-color:white;
   padding: 0rpx 35rpx;
@@ -148,6 +159,13 @@
   justify-content: space-between;
   align-items: center;
   background-color: #fe8402;
+}
+.ls_placeholder{
+  padding:0 50rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 .adv_left{
   display: flex;

@@ -32,6 +32,20 @@
                 <input password class="weui-input" placeholder="6-16位英文、数字、下划线" name="PASSWORD" maxlength='16'/>
             </view>
         </view>
+        <!-- LS：注册添加新元素  标识 注册者是 学生还是 家长  -->
+        <view class="weui-cell weui-cell_input mb-identity">
+          <view class="weui-cell__hd mb-identity1">
+            <view class="weui-label mb-identity2">
+            <text>学生/家长</text>
+              <radio-group class="radio-group" bindchange="identityChange" name='SUBJECT'>
+                  <label class="xuanxiang">
+                      <radio value="学生" id='checkbox1' name='MAJORTYPE'/>学生
+                      <radio value="家长" id='checkbox2' name='MAJORTYPE'/>家长
+                  </label>
+              </radio-group>
+            </view>
+          </view>
+        </view>
       </view>
       <view class="weui-cells__title">城市信息</view>
       <view class="weui-cells weui-cells_after-title">

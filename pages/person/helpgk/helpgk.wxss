@@ -1,0 +1,46 @@
+/* pages/person/helpgk/helpgk.wxss */
+.ls_forhelp{
+  font-size:28rpx;
+   align-items:center;
+}
+.weui-cell_primary{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  border:2px solid #fff;
+  border-radius: 5px; 
+  font-size: 44rpx;
+  justify-content: space-between;
+}
+.ls_helps{
+  
+  align-items: center;
+  background-color: #febb1c;
+}
+.ls_button1{
+height:90rpx;
+line-height: 90rpx;
+text-align: center;
+border-radius: 50px;
+}
+.ls_button2{
+height:90rpx;
+/* line-height:是行高设置 + 居中 （与高度一样则居中） */
+line-height: 90rpx;
+align-items: center;
+border-radius: 50px;
+background-color:#d85510;
+}
+.ls_jindu{
+  /* background-color:#ffdd8e; */
+  background-color: rgba(255, 255, 255, 0.5);
+  align-items: center;
+  /* border-radius:是圆角设置 */
+  border-radius: 10px;
+  overflow: hidden;
+}
+

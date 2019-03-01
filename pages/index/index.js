@@ -10,7 +10,9 @@ Page({
     // hasUserInfo: false,
     // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     // 首页轮播图 开始
-    imgUrls: [
+    imgUrls: [ 
+      //第一张banner 图是 志愿填报公益讲座
+       { src: utils.setStaticUrl("/static/ymplant/gd-img/pro_jz_wechat.jpg"), url: "/pages/news/newscontent/newscontent" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_zzzs.jpg"), url: "/pages/autonomousEnrollment/autonomousEnrollment" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner03.jpg"), url: "/pages/intelligence/intelligence" },
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_gzdz.jpg"), url: "/pages/singleRecruit/singleRecruit" },
@@ -34,6 +36,7 @@ Page({
     index_2: utils.setStaticUrl("/static/ymplant/img/sye/banner/index_4.png"),
     index_3: utils.setStaticUrl("/static/ymplant/img/sye/banner/index_5.png"),
     index_4: utils.setStaticUrl("/static/ymplant/img/sye/banner/index_6.png"),
+    index_5: utils.setStaticUrl("/static/ymplant/gd-img/ls_wxhelp1.jpg"),
     // 首页轮播图 开始
 
     // 公告 开始
@@ -79,13 +82,21 @@ Page({
     if (url == "/pages/school/school") {
       utils.navigateTo(url, { user_id: user_id, id: '2' })
     }
-    // utils.navigateTo(url)
+    // LS:2019.1.15 banner图 跳转到 文章 专家讲座 
+    if (url =="/pages/news/newscontent/newscontent"){
+      utils.navigateTo(url, { a:'vr96965l5s'})
+    }
   },
 
   toChar:function () {
     utils.ldqCheckLogin()
-    utils.navigateTo("/pages/character/character")
+    utils.navigateTo("/pages/character/character");
   },
+  // 2019.2.22 ls 助力高考 活动  方法  跳转新页面 为指定 用户助力  
+  helpgk1:function(){
+    utils.navigateTo("/pages/person/helpgk/helpgk");
+  },
+
   advantage: function () {
     utils.ldqCheckLogin()
     utils.navigateTo("/pages/consult/consult");
@@ -345,6 +356,8 @@ Page({
     });
     return list;
   },
+
+  //2019.2.25 因为这个方法的存在所以每次进入小程序都得登陆  这里需要改动一下 （未完成 ）
   onShow:function(e) {
     var userInfo = wx.getStorageSync('userInfo')
     // 更新session

@@ -54,6 +54,7 @@ Page({
     //   }
     // })
 		var userInfo = wx.getStorageSync('userInfo')
+    console.log(userInfo);
 		if (userInfo.ROLE_ID == 'sja4gc59bg') {
 			this.setData({
 				user_id: userInfo.USER_ID || '',

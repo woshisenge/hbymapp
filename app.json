@@ -64,7 +64,8 @@
     "pages/teacher/introduce/introduce",
     "pages/teacher/issue_content/issue_content",
     "pages/teacher/ask/ask",
-    "pages/teacher/answer/answer"
+    "pages/teacher/answer/answer",
+    "pages/person/helpgk/helpgk"
   ],
   "window": {
     "backgroundTextStyle": "light",

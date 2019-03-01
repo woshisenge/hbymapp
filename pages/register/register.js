@@ -10,6 +10,7 @@ Page({
     timerNumber: 60,
     phone: "",
     password:"",
+    identity:"",
     city: [],
     thisCity: { DIC_ID: '', NAME: '请选择城市' },
     county: [],
@@ -144,6 +145,13 @@ Page({
       });
     }
   },
+  // LS： 2019.1.15 添加注册新元素 家长学生 标识注册用户是家长还是学生 
+  identityChange:function(e){
+    var that = this;
+    that.setData({
+      identity:e.detail.value
+    })
+  },
   radioChange:function(e){
     var that = this;
     that.setData({
@@ -158,6 +166,7 @@ Page({
     }
     var param = e.detail.value;
     param.MAJORTYPE = that.data.style;
+    param.IDENTITY = that.data.identity;
     if (param.PHONE == "") {
       util.showError("手机号不能为空");
       return false;
@@ -168,6 +177,10 @@ Page({
     }
     if (param.PASSWORD == "" || param.PASSWORD.length < 6) {
       util.showError("密码不能为空,且长度为 6 ~ 16 位");
+      return false;
+    }
+    if(param.IDENTITY ==""){
+      util.showError("请选择注册用户身份：学生/家长");
       return false;
     }
     if (!param.CITY) {
