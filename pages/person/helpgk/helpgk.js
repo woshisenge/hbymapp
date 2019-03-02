@@ -6,16 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user_id:"",
-    USER_NAME:"",
-    HELPS:0,
-    COUNTS:0,
-    TOTALCOUNT:500,
+    user_id: "",
+    USER_NAME: "",
+    HELPS: 0,
+    COUNTS: 0,
+    TOTALCOUNT: 500,
     showDialog: false,
-    hide1:true,
-    hide2:false,
-    id:"",
-    code:"",
+    hide1: true,
+    hide2: false,
+    id: "",
+    code: "",
     consultation: utils.setStaticUrl("/static/ymplant/gd-img/ls_wxhelp1.jpg"),
     //助力转发图
     imageUrl: utils.setStaticUrl("/static/ymplant/ldq-img/wxhelp_zf.jpg"),
@@ -27,111 +27,108 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    var that =this;
-    if(options.id){
-      // that.setData({
-      //   id: options.id
-      // })
-      console.log("ls,id:", options.id);
-      utils.sendRequest('/wechat/applet/user/gethelp_countsbyid', {id:options.id}, "POST", true, (res) => {
-        console.log(res);
-        that.setData({
-          COUNTS: res.COUNTS + "9089",
-          id: options.id
-        });
-      },function(res){
-        that.setData({
-          // COUNTS: res.COUNTS + "9089",
-          id: options.id
-        });
-      })
-    }else{
+  onLoad: function(options) {
+    var that = this;
+    var userInfo = wx.getStorageSync('userInfo');
+    console.log(userInfo)
+    console.log(options)
+    if (options.id) {
+      console.log("---我走这个接口了---")
       that.setData({
-        id: "6kczg0sdt0"
+        COUNTS:options.counts,
+        id:options.id
       })
+      // utils.sendRequest('/wechat/applet/user/gethelp_counts', {
+      //   id: options.id
+      // }, "POST", true, (res) => {
+      //   console.log("登陆后获取请求数据", res);
+      //   that.setData({
+      //     COUNTS: res.COUNTS
+      //   })
+      //   // this.data.COUNTS= res.COUNTS; 
+      // })
+      
+    }else{
+      console.log("---为登陆----")
+      if (userInfo) {
+        utils.sendRequest('/wechat/applet/user/gethelp_countsbyid', {
+
+        }, "POST", true, (res) => {
+          console.log(res);
+          that.setData({
+            COUNTS: res.COUNTS
+          });
+        })
+        that.setData({
+          hide1: false,
+          hide2: true,
+        })
+      } 
       
     }
-    
-    var userInfo = wx.getStorageSync('userInfo');
-    if(userInfo){
-      //ls:2019.2.25  为 好友助力 点击助力 请求接口  并获取助力 返回值 
-      var that = this;
-    //   utils.sendRequest('/wechat/applet/user/gethelp_counts',{}, "POST", true, (res) => {
-    //     console.log("登陆后获取请求数据",res);
-    //     that.setData({
-    //         COUNTS: res.COUNTS
-    //     })
-    //  // this.data.COUNTS= res.COUNTS; 
-    //   })
-    }
-
-
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-    
-    
-
+  onReady: function() {
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    var userInfo = wx.getStorageSync('userInfo')
-    var that = this;
-    if(userInfo){
-      utils.sendRequest('/wechat/applet/user/gethelp_counts', {}, "POST", true, (res) => {
-        console.log("登陆后获取请求数据", res);
-        that.setData({
-          COUNTS: res.COUNTS
-        })
-        // this.data.COUNTS= res.COUNTS; 
-      })
-      this.setData({
-        hide1:false,
-        hide2:true,
-      })
-    }
+  onShow: function() {
+    // var userInfo = wx.getStorageSync('userInfo')
+    // console.log(userInfo)
+    // var that = this;
+    // if(userInfo){
+    //   utils.sendRequest('/wechat/applet/user/gethelp_counts', { id: userInfo.USER_ID}, "POST", true, (res) => {
+    //     console.log("登陆后获取请求数据", res);
+    //     that.setData({
+    //       COUNTS: res.COUNTS
+    //     })
+    //     // this.data.COUNTS= res.COUNTS; 
+    //   })
+    //   this.setData({
+    //     hide1:false,
+    //     hide2:true,
+    //   })
+    // }
   },
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     var userInfo = wx.getStorageSync('userInfo')
-    if(userInfo){
+    if (userInfo) {
       var that = this;
       var user_id = userInfo.USER_ID;
       var title = '高考助力还差您一票！（助力卡片)';
@@ -142,8 +139,8 @@ Page({
       return {
         title: title,
         imageUrl: imageUrl,
-        path: 'pages/person/helpgk/helpgk?id='+ user_id,
-        success: function (res) {
+        path: 'pages/person/helpgk/helpgk?counts=' + that.data.COUNTS + '&id=' + user_id,
+        success: function(res) {
           if (res.shareTickets) {
             //请求接口 返回助力进度结果
           } else {
@@ -155,57 +152,57 @@ Page({
           }
         }
       }
-    }else{
+    } else {
       wx.redirectTo({
         url: '/pages/login/login'
       })
     }
   },
   //ls：邀请好友助力方法  其实是转发 方法 并添加 发起者的USER_ID
-  forhelp:function(e){
+  forhelp: function(e) {
     //发送助力邀请需要 登陆
     utils.ldqCheckLogin()
     var userInfo = wx.getStorageSync('userInfo');
-    var that =this;
-    console.log("636363",userInfo);
+    var that = this;
+    console.log("636363", userInfo);
 
     wx.showShareMenu({
       withShareTicket: true
     })
 
     //ls：调用定制方法 转发请求助力 弹框提示 转发 即可参与活动
-    utils.sendRequest("/wechat/applet/user/wxhelpme", {}, "POST", true, function (res){
+    utils.sendRequest("/wechat/applet/user/wxhelpme", {}, "POST", true, function(res) {
       console.log(res);
-      if(!res.hasErrors){
+      if (!res.hasErrors) {
 
         wx.showModal({
           title: '提示',
-          content:res.data,
-          showCancel:false,
+          content: res.data,
+          showCancel: false,
           success(res) {
             if (res.confirm) {
-              
-            } 
+
+            }
           }
         })
         // utils.showDialog("邀请成功！");
       }
     })
   },
-  forlogin:function(e){
-      wx.redirectTo({
-        url: '/pages/login/login'
-      })
+  forlogin: function(e) {
+    wx.redirectTo({
+      url: '/pages/login/login'
+    })
   },
 
 
   //ls：2019.2.25 表单提交 需要验证 输入的助力码的 长度
-  formSubmit:function(e){
+  formSubmit: function(e) {
     var param = {};
     var USER_ID = e.detail.value;
     param.USER_ID = USER_ID.USER_ID;
     console.log(USER_ID);
-    if (!param.USER_ID){
+    if (!param.USER_ID) {
       utils.showError("助力码不能为空！");
       return false;
     }
@@ -215,47 +212,46 @@ Page({
     //       utils.showError("助力码输入不完整");
     //   }
     // }
-    else{
+    else {
       var that = this;
       wx.login({
-        success: function (res) {
+        success: function(res) {
           if (res.code) {
             console.log("ls_code1:", res.code);
             console.log("ls:param:", param);
-            param.code =res.code;
+            param.code = res.code;
             console.log("ls:param:", param);
-            utils.sendRequest("/wechat/applet/user/wxhelp_friend", param, "POST", true, function (res) {
-              if(res.hasErrors){
+            utils.sendRequest("/wechat/applet/user/wxhelp_friend", param, "POST", true, function(res) {
+              if (res.hasErrors) {
                 utils.showError(res.errorMessage)
                 return false
               }
-              console.log("12121212:",res);
+              console.log("12121212:", res);
               // if (res.hasErrors) {
               //   utils.showError(res.errorMessage);
               // } else {
-                wx.showModal({
-                  title: '提示',
-                  content: res.CODE,
-                  showCancel: false,
-                  success(res) {
-                    if (res.confirm) {
-                    }
-                  }
-                })
-                that.setData({
-                  COUNTS:res.COUNTS
-                })
+              wx.showModal({
+                title: '提示',
+                content: res.CODE,
+                showCancel: false,
+                success(res) {
+                  if (res.confirm) {}
+                }
+              })
+              that.setData({
+                COUNTS: res.COUNTS
+              })
 
               // }
             })
-            console.log("ls2:",that.data.code)
+            console.log("ls2:", that.data.code)
           }
         }
       })
-      
+
     }
   }
-  
+
 
 
 })
