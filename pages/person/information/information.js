@@ -71,19 +71,31 @@ Page({
       // examineenew
       util.sendRequest('/plant/user/api/xiancha', userInfo, "POST", true, function (res) {
         // 更新session
-        wx.setStorageSync('userInfo', res)
-        wx.showModal({
-          content: '保存成功',
-          showCancel: false,
-          success: function (res) {
-            if (res.confirm) {
-              // 跳转
-              wx.switchTab({
-                url: '/pages/person/person'
-              })
+        if(!res.hasErrors){
+          wx.setStorageSync('userInfo', res)
+          wx.showModal({
+            content: '保存成功',
+            showCancel: false,
+            confirmText:'知道了',
+            success: function (res) {
+              if (res.confirm) {
+                // 跳转
+                wx.switchTab({
+                  url: '/pages/person/person'
+                })
+              }
             }
-          }
-        })
+          })
+        }else{
+          wx.showModal({
+            content: res.errorMessage,
+            showCancel: false,
+            success: function (res) {
+
+            }
+          })
+        }
+        
       })
     }else {
       if (data.EXAMSCORE > 750 || data.EXAMSCORE < 200 ) {
@@ -99,19 +111,30 @@ Page({
       }
       util.sendRequest('/plant/user/api/examineenew', data, "POST", true, function (res) {
         // 更新session
-        wx.setStorageSync('userInfo', res)
-        wx.showModal({
-          content: '保存成功',
-          showCancel: false,
-          success: function (res) {
-            if (res.confirm) {
-              // 跳转
-              wx.switchTab({
-                url: '/pages/person/person'
-              })
+        if (res.hasErrors){
+          wx.showModal({
+            content:res.errorMessage,
+            showCancel: false,
+            confirmText: '知道了',
+            success: function (res){
+
             }
-          }
-        })
+          })
+        }else{
+          wx.setStorageSync('userInfo', res)
+          wx.showModal({
+            content: '保存成功',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                // 跳转
+                wx.switchTab({
+                  url: '/pages/person/person'
+                })
+              }
+            }
+          })
+        }
       })
     }
   },

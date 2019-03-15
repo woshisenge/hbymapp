@@ -92,6 +92,10 @@
   <!-- ls:说明 此处放图片，说明助力高考活动 的详情    点击进入  跳转助力页面  为指定用户助力  助力完成获得相应 助力项 -->
     <image src='{{index_5}}' style='width:92%; height:100%;margin:0 auto;position: relative;padding:0 18px;0 18px;'></image>
   </view>
+  
+</view>
+<view class='help_gk_text'>
+  <text style='color:#099e3a;'>点击<text style='color:#cf386a;'> 图片 </text>查看 <text style='color:#cf386a;'> 活动详情</text></text>
 </view>
 
 

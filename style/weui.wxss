@@ -397,6 +397,9 @@ icon {
 .weui-select_in-select-after {
   padding-left: 0;
 }
+.weui-select_in-select-after_wxhelp {
+  padding-left: 220rpx;
+}
 
 .weui-cell__bd_in-select-before, .weui-cell__hd_in-select-after {
   padding-left: 15px;

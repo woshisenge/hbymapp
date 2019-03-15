@@ -70,6 +70,17 @@ flex-direction:row;
 justify-content: flex-start;
 background-color:white;
 }
+.help_gk_text{
+  width: 100%;
+  /* padding-left: 20%; */
+  display: flex;    /*设置显示样式**/
+  align-items: right;    /**子view垂直居中*/
+  justify-content: center; /**内容居中*/
+  flex-direction:row; /*子view排列方式row--水平 column--垂直 */
+  font-size: 16px;
+  text-align: right;
+
+}
 .notices{
   background-color:white;
   padding: 0rpx 35rpx;

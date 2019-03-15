@@ -10,7 +10,7 @@ Page({
     USER_NAME: "",
     HELPS: 0,
     COUNTS: 0,
-    TOTALCOUNT: 500,
+    TOTALCOUNT: 126,
     showDialog: false,
     hide1: true,
     hide2: false,
@@ -19,9 +19,22 @@ Page({
     consultation: utils.setStaticUrl("/static/ymplant/gd-img/ls_wxhelp1.jpg"),
     //助力转发图
     imageUrl: utils.setStaticUrl("/static/ymplant/ldq-img/wxhelp_zf.jpg"),
+    //头部 ：助力高考 金榜题名 
     index_1: utils.setStaticUrl("/static/ymplant/ldq-img/ls_wxhelp_01.jpg"),
+    // 奖品区
     index_2: utils.setStaticUrl("/static/ymplant/ldq-img/ls_wxhelp_02.jpg"),
+    //实物详情
+    index_3: utils.setStaticUrl("/static/ymplant/ldq-img/ls_wxhelp_03.jpg"),
+    //专家简介
+    index_4: utils.setStaticUrl("/static/ymplant/ldq-img/ls_wxhelp_04.jpg"),
+    //领取方式 
+    index_5: utils.setStaticUrl("/static/ymplant/ldq-img/ls_wxhelp_05.jpg"),
+    //公众号二维码
+    index_6: utils.setStaticUrl("/static/ymplant/ldq-img/one_dimensional.jpg"),
 
+    // 设置奖品选项
+    prize: ["暂未选择","四等奖","三等奖","二等奖","一等奖"],
+    prizeIndex:0,
   },
 
   /**
@@ -51,7 +64,7 @@ Page({
     }else{
       console.log("---为登陆----")
       if (userInfo) {
-        utils.sendRequest('/wechat/applet/user/gethelp_countsbyid', {
+        utils.sendRequest('/wechat/applet/user/gethelp_counts', {
 
         }, "POST", true, (res) => {
           console.log(res);
@@ -128,35 +141,40 @@ Page({
    */
   onShareAppMessage: function() {
     var userInfo = wx.getStorageSync('userInfo')
-    if (userInfo) {
+    if (!userInfo) {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+      return false;
+    }
+    if (userInfo){
       var that = this;
       var user_id = userInfo.USER_ID;
       var title = '高考助力还差您一票！（助力卡片)';
       var imageUrl = this.data.imageUrl;
       wx.showShareMenu({
-        withShareTicket: true
+      //  withShareTicket: true
       })
       return {
         title: title,
         imageUrl: imageUrl,
         path: 'pages/person/helpgk/helpgk?counts=' + that.data.COUNTS + '&id=' + user_id,
         success: function(res) {
-          if (res.shareTickets) {
-            //请求接口 返回助力进度结果
-          } else {
-            wx.showModal({
-              title: '对不起！',
-              content: '您转发的是个人，请分享至家长群或同学群',
-              showCancel: false,
-            })
-          }
+          // if (res.shareTickets) {
+          //   //请求接口 返回助力进度结果
+          // } else {
+          //   wx.showModal({
+          //     title: '对不起！',
+          //     content: '您转发的是个人，请分享至家长群或同学群',
+          //     showCancel: false,
+          //   })
+          // }
         }
       }
-    } else {
-      wx.redirectTo({
-        url: '/pages/login/login'
-      })
-    }
+    } 
+    // else {
+      
+    // }
   },
   //ls：邀请好友助力方法  其实是转发 方法 并添加 发起者的USER_ID
   forhelp: function(e) {
@@ -165,9 +183,9 @@ Page({
     var userInfo = wx.getStorageSync('userInfo');
     var that = this;
     console.log("636363", userInfo);
-
     wx.showShareMenu({
-      withShareTicket: true
+      //  withShareTicket: true
+   
     })
 
     //ls：调用定制方法 转发请求助力 弹框提示 转发 即可参与活动
@@ -203,7 +221,7 @@ Page({
     param.USER_ID = USER_ID.USER_ID;
     console.log(USER_ID);
     if (!param.USER_ID) {
-      utils.showError("助力码不能为空！");
+      utils.showError("亲！你需要邀请好友助力哦！");
       return false;
     }
     // if(param.user_id){
@@ -250,7 +268,60 @@ Page({
       })
 
     }
+  },
+  bindPickerChange:function(e){
+    var userInfo = wx.getStorageSync('userInfo');
+    if(userInfo){
+     var that = this;
+     this.setData({
+       prizeIndex: e.detail.value,
+      });
+      // ["暂未选择","四等奖","三等奖","二等奖","一等奖"],  0 对应 暂未选择， 1 对应 四等奖， 2 三等奖  3 二等奖 4 一等奖
+     if(that.data.prizeIndex != 0){
+       utils.sendRequest("/wechat/applet/user/getprize_byindex", {PRIZEINDEX: that.data.prizeIndex}, "POST", true, function (res) {
+         console.log("123");
+         console.log(res);
+         if (res.hasErrors && res.errorMessage =="请重新登陆！"){
+           wx.showModal({
+              content: '请重新登录',
+              showCancel: false,
+              success: function (res) {
+                if (res.confirm) {
+                  wx.redirectTo({
+                    url: '/pages/login/login'
+                  })
+                }
+              }
+            })
+          }else{
+              utils.showError(res.errorMessage);
+          }
+        });
+      }
+    }else{
+      wx.redirectTo({
+        url:'/pages/login/login',
+      })
+    }
+  },
+  // 识别二维码 
+  // previewImage:function(e){
+  //   wx.previewImage({
+  //     urls: ['https://www.gaokgh.com.cn/static/ymplant/ldq-img/one_dimensional.jpg'],
+  //   })
+  //   // wx.getImageInfo({
+  //   //   src: 'https://www.gaokgh.com.cn/static/ymplant/ldq-img/gzh_ewm.jpg',
+  //   // })
+  // }
+  // ,
+  // LS： 返回首页按钮
+  goback:function(){
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
   }
+
+  
 
 
 

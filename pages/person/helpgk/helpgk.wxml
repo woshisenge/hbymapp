@@ -1,16 +1,16 @@
 <!--pages/person/helpgk/helpgk.wxml-->
 <!-- ls：2019.2.22 助力详情 开始   以图片形式说明 -->
 <view class='ls_helps'>
-  <view  style='width:100%;height:600rpx;'>
+  <view  style='width:100%;height:350rpx;'>
     <image src="{{index_1}}" style="width: 100%;height: 100%;" ></image>
   </view>
 <!-- 助力详情  结束 -->
 
 <!-- ls：助力进度 开始 -->
-<view class='ls_jindu' style='height:90rpx;font-size:44rpx;margin:50rpx 20rpx 0 20rpx; padding-top:23rpx;'> 
-   <text style='margin-left:30rpx; float:left;'>助力进度</text>
-   <text style='margin-right:30rpx;align-items:left; float:right;'>/{{TOTALCOUNT}}人</text>
-   <text style='margin-right:10rpx; color:#d85510; float:right;'>{{COUNTS}}</text>
+<view class='ls_jindu' style='height:97rpx;font-size:44rpx;margin:0 20rpx 0 20rpx; padding-top:23rpx;'> 
+   <text style='margin-left:110rpx; float:left;color:#fff;'>助力进度</text>
+   <text style='margin-right:110rpx;align-items:left; float:right;color:#fff;'>/{{TOTALCOUNT}}人</text>
+   <text style='margin-right:10rpx; color:#ffff00; float:right;'>{{COUNTS}}</text>
 </view>
 <!-- ls: 助力进度 结束 -->
 
@@ -18,7 +18,7 @@
 <view wx:if="{{hide1}}">
 <view  class='ls_forhelp' style='margin-top:50rpx; color:#22C5B3;'>
 <!-- <text style='align-items:center;'>请求好友助力</text> -->
-<button class='ls_button1'  bindtap="forlogin" style='width:66%;font-size:44rpx;color:#d85510; '>登陆邀请助力</button>
+<button class='ls_button1'  bindtap="forlogin" style='width:66%;font-size:44rpx;color: #ef194c; '>登陆邀请助力</button>
 </view>
 </view>
 
@@ -28,30 +28,103 @@
 <view wx:if="{{hide2}}">
 <view class='ls_forhelp' style='margin-top:50rpx; color:#22C5B3; '>
 <!-- <text style='align-items:center;'>请求好友助力</text> -->
-<button class='ls_button1' open-type='share' bindtap="forhelp" style='width:66%;font-size:44rpx;color:#d85510;'>请求好友助力</button>
+<button class='ls_button1' open-type='share' bindtap="forhelp" style='width:66%;font-size:44rpx;color: #ef194c;'>请求好友助力</button>
 </view>
 </view>
 
 <form bindsubmit='formSubmit'>
-<view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+<view hidden='true' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
 		
 		<view class="weui-cell__bd weui-cell_primary">
 			<input USER_ID  placeholder="请输入助力码" type='text' name='USER_ID' value='{{id}}' style="width:100%;padding:12rpx 0;text-align:center;color:#fff; " placeholder-style='color:#fff'/>
 		</view>
 </view>
-<view>
-    <button class='ls_button2' form-type='submit' style='width:66%;color:#fff;font-size:44rpx;margin-top:10rpx;'>助力好友</button>
+<view >
+    <button class='ls_button2' form-type='submit' style='width:66%;color:#fff;font-size:44rpx;margin-top:10rpx;'>为好友助力</button>
 </view>
 </form>
 <!--  请求好友助力 / 为好友助力    结束 -->
 
+<view style='font-size:18px:margin-top:200rpx;padding:50rpx 70rpx 0 50rpx;color:#fff;'>
+<text>助力说明：</text>
+<text>\n  @:发起助力须点击<text style='color:#ffff00;'>  登陆邀请助力 </text>登陆</text>
+<text>\n  @:登陆后点击<text style='color:#ffff00;'>  请求好友助力 </text>转发助力卡片</text>
+<text>\n  @:好友收到助力卡片后点击，即可进入当前页面，点击<text style='color:#ffff00;'>  为好友助力</text>，即可为邀请者完成一人次助力</text>
+<text>\n  @:赶快试试吧</text>
+</view>
 
 
 <!-- ls:2019.2.22 助力奖  介绍  以图片形式   开始 -->
-<view style='width:100%;height:600rpx;'>
+<view style='width:100%;height:1200rpx;'>
 <image src="{{index_2}}" style='width:100%;height:100%;margin-top:50rpx;'></image>
 </view>
 <!-- 结束 -->
+
+<!-- LS：显示可以领取奖品的 -->
+<view class='weui-tab__content_title' style='margin-top:50rpx;'>
+<text style='padding-left: 17px; color: #fff;'>领奖区</text>
+</view>
+<!-- <view>
+  <view class="prize_choose_title">
+      <view class="weui-label">选择奖项：</view>
+  </view>
+  <view class="prize_choose_choose">
+    <picker bindchange="bindCountryChange1" value="{{prizeIndex}}" name='CITY' range="{{prize}}">
+      <view class="weui-select weui-select_in-select-after">{{prize.name}}</view>
+    </picker>
+  </view>
+</view> -->
+
+
+<view class="weui-cell weui-cell_select">
+    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label" style='color:#ffff00; font-size:20px'>选择奖项：</view>
+    </view>
+    <view class="weui-cell__bd">
+        <picker bindchange="bindPickerChange" name="prize" value="{{prizeIndex}}" range="{{prize}}">
+            <view class="weui-select weui-select_in-select-after_wxhelp" style='font-size:18px;'>{{prize[prizeIndex]}}</view>
+        </picker>
+    </view>
+</view>
+
+<!-- LS: 实物 详情 开始-->
+<view style='width:100%;height:2400rpx;'>
+  <image src="{{index_3}}" style='width:100%;height:100%;margin-top:50rpx;'></image>
+</view>
+<!-- 结束 -->
+
+<!-- LS: 专家  简介 开始 -->
+  <view style='width:100%;height:1000rpx;'>
+    <image src="{{index_4}}" style='width:100%;height:100%;margin-top:50rpx;'></image>
+  </view>
+<!-- 结束 -->
+
+<!-- LS： 了解更多 跳转至首页 开始-->
+  <view style='margin-top:50rpx;'>
+    <button class='bttn'  bindtap="goback" type='warn'>了解更多>></button>
+  </view>
+<!-- 结束 -->
+
+<!-- ls: 领取方式  开始 -->
+  <view style='width:100%;height:400rpx;'>
+    <image src="{{index_5}}" style='width:100%;height:100%;margin-top:50rpx;'></image>
+  </view>
+<!--  结束 -->
+
+<!-- 二维码  开始 -->
+  <!-- <view  style='width:50%;height:350rpx; margin-bottom:50rpx;'>
+    <image src="{{index_6}}" bindtap='previewImage' style='width:100%;height:100%;margin:50rpx 100rpx 0 180rpx;'></image>
+  </view> -->
+<!-- 结束 -->
+<view class='weui-tab__content_title' style='padding-bottom:5rpx;'>
+  <text style='margin-items: center; color:#fff;align-items:center;'>微信搜索 <text style='color:#ffff00;'>“升学规划咨询平台”</text></text>
+</view>
+<view class='weui-tab__content_title3' >
+  <text style='margin-items: center; color:#fff;align-items:center;'>关注公众号了解更多资讯与服务</text>
+</view>
+<view class='weui-tab__content_title2' style='margin-top:30rpx;color:#ffff00;align-items:center;'>
+  <text>该活动最终解释权归本公司所有</text>
+</view>
 </view>
 <!-- ls:弹框提示 -->
 

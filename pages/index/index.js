@@ -13,13 +13,21 @@ Page({
     imgUrls: [ 
       //第一张banner 图是 志愿填报公益讲座
        { src: utils.setStaticUrl("/static/ymplant/gd-img/pro_jz_wechat.jpg"), url: "/pages/news/newscontent/newscontent" },
+    //  自主招生
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_zzzs.jpg"), url: "/pages/autonomousEnrollment/autonomousEnrollment" },
+    // 智能选大学
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner03.jpg"), url: "/pages/intelligence/intelligence" },
+      // 高职单招
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_gzdz.jpg"), url: "/pages/singleRecruit/singleRecruit" },
+      // 转发
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner_zf.jpg"),url:""},
+      // vip
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner02.jpg"), url: "/pages/person/improve/improve" },
+      // 招办咨询
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner05.jpg"), url: "/pages/consult/consult" },
+      // 专家讲座
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_banner01.jpg"), url: "/pages/video/video" },
+      // 院校库
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_yxk.jpg"), url: "/pages/school/school" },
     ],
     huizhi: utils.setStaticUrl("/static/ymplant/img/huizhi.jpg"),
@@ -361,28 +369,28 @@ Page({
   onShow:function(e) {
     var userInfo = wx.getStorageSync('userInfo')
     // 更新session
-    if (userInfo.USER_ID){
-      utils.sendRequest('/wechat/applet/api/refashSession', { USER_ID: userInfo.USER_ID }, "POST", true, function (res) {
-        if (res.hasErrors) {
-          if (res.errorMessage == 'relogin') {
-            wx.showModal({
-              content: '请重新登录',
-              showCancel: false,
-              success: function (res) {
-                if (res.confirm) {
-                  wx.redirectTo({
-                    url: '/pages/login/login'
-                  })
-                }
-              }
-            })
-          }
-          console.log(res.errorMessage)
-          return false
-        }
-        wx.setStorageSync('userInfo', res)
-      })
-    }
+    // if (userInfo.USER_ID){
+    //   utils.sendRequest('/wechat/applet/api/refashSession', { USER_ID: userInfo.USER_ID }, "POST", true, function (res) {
+    //     if (res.hasErrors) {
+    //       if (res.errorMessage == 'relogin') {
+    //         wx.showModal({
+    //           content: '请重新登录',
+    //           showCancel: false,
+    //           success: function (res) {
+    //             if (res.confirm) {
+    //               wx.redirectTo({
+    //                 url: '/pages/login/login'
+    //               })
+    //             }
+    //           }
+    //         })
+    //       }
+    //       console.log(res.errorMessage)
+    //       return false
+    //     }
+    //     wx.setStorageSync('userInfo', res)
+    //   })
+    // }
     var that = this;
     
     utils.sendRequest_s('/wechat/applet/news/get', { NEWSTYPE: "1es852a5gv", pageSize: "5" }, 'POST', false, function (res) {

@@ -11,7 +11,7 @@
   margin-right: 50px;
   margin-bottom: 5px;
   margin-top: 5px;
-  border:2px solid #fff;
+  border:1px solid #fff;
   border-radius: 5px; 
   font-size: 44rpx;
   justify-content: space-between;
@@ -19,7 +19,7 @@
 .ls_helps{
   
   align-items: center;
-  background-color: #febb1c;
+  background-color:  #ef194c;
 }
 .ls_button1{
 height:90rpx;
@@ -32,15 +32,57 @@ height:90rpx;
 /* line-height:是行高设置 + 居中 （与高度一样则居中） */
 line-height: 90rpx;
 align-items: center;
+border:1px solid #fff;
 border-radius: 50px;
-background-color:#d85510;
+background-color: #2e8b4d;
 }
 .ls_jindu{
   /* background-color:#ffdd8e; */
+  background-image: url("https://www.gaokgh.com.cn/static/ymplant/ldq-img/ls_wxhelp_zhuli.jpg");
+  background-size: 700rpx;
   background-color: rgba(255, 255, 255, 0.5);
   align-items: center;
   /* border-radius:是圆角设置 */
   border-radius: 10px;
   overflow: hidden;
+}
+.weui-tab__content_title{
+    display: flex;    /*设置显示样式**/
+    align-items: center;    /**子view垂直居中*/
+    vertical-align: center; /**垂直居中*/
+    justify-content: center; /**内容居中*/
+    flex-direction:row; /*子view排列方式row--水平 column--垂直 */
+    font-size: 20px;
+}
+.weui-tab__content_title2{
+    display: flex;    /*设置显示样式**/
+    align-items: center;    /**子view垂直居中*/
+    vertical-align: center; /**垂直居中*/
+    justify-content: center; /**内容居中*/
+    flex-direction:row; /*子view排列方式row--水平 column--垂直 */
+    font-size: 16px;
+}
+
+.weui-tab__content_title3{
+    display: flex;    /*设置显示样式**/
+    align-items: center;    /**子view垂直居中*/
+    vertical-align: center; /**垂直居中*/
+    justify-content: center; /**内容居中*/
+    flex-direction:row; /*子view排列方式row--水平 column--垂直 */
+    font-size: 20px;
+}
+.prize_choose_title{
+  width: 35%;
+  margin-left: 20rpx;
+}
+.prize_choose_choose{
+  width: 65%;
+  margin-left: 160px;
+}
+.bttn{
+  width: 90%;
+  margin-top: 30rpx;
+  background-color: #ef194c;
+  color: #FFF;
 }
 
