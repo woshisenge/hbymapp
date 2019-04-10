@@ -1,0 +1,14 @@
+/* pages/person/signday/details.wxss */
+.weui-tab__content_title{
+  display: flex;
+  align-items: center;
+  vertical-align: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.weui-cell_primary{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: flex-start;
+}

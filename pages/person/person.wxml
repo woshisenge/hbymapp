@@ -36,10 +36,10 @@
       </view>
 	</view>
 	<!-- 个人信息 -->
-	<view class="weui-cells__title" style='margin-top:135rpx; color:#22C5B3'>个人信息</view>
+	<view class="weui-cells__title" style='margin-top:135rpx; color:#22C5B3;font-size:30rpx;background-color:#f7f7f7;padding:5px 15px;font-weight:bold;margin-bottom:0;'>个人信息</view>
 	<view class="weui-cells weui-cells_after-title">
 		<navigator url="/pages/person/basics/basics" hover-class="navigator-hover" open-type='navigateTo'>
-			<view class="weui-cell" style='border-top: 1px solid #eee'>
+			<view class="weui-cell" style='width:50%;'>
 				<view class="weui-cell__hd">
 					<image src="./img/purple.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
 				</view>
@@ -55,11 +55,22 @@
 			</view>
 		</navigator>
 	</view>
+  <!-- 我的奖品 -->
+  <view class="weui-cells__title" style='margin-top:0;color:#22C5B3;font-size:30rpx;background-color:#f7f7f7;padding:5px 15px;font-weight:bold;border-bottom:1px solid #ddd;'>签到奖品</view>
+    <navigator url="/pages/person/signday/details" hover-class="navigator-hover" open-type='navigate'>
+			<view class="weui-cell" style=''>
+				<view class="weui-cell__hd">
+					<image src="./img/vip1.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+				</view>
+				<view class="weui-cell__bd">查看详情</view>
+			</view>
+		</navigator>
+  
 	<!-- 个人收藏 -->
-	<view class="weui-cells__title" style='color:#22C5B3'>个人收藏</view>
+	<view class="weui-cells__title" style='margin-top:0;color:#22C5B3;font-size:30rpx;background-color:#f7f7f7;padding:5px 15px;font-weight:bold;margin-bottom:0;'>个人收藏</view>
 	<view class="weui-cells weui-cells_after-title">
 		<navigator url="/pages/person/collect/collect" hover-class="navigator-hover" open-type='navigateTo'>
-			<view class="weui-cell" style='border-top: 1px solid #eee'>
+			<view class="weui-cell">
 				<view class="weui-cell__hd">
 					<image src="./img/yellow.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
 				</view>
@@ -76,10 +87,10 @@
 		</navigator>
 	</view>
 	<!-- 账户信息 -->
-	<view class="weui-cells__title" style='color:#22C5B3'>账户信息</view>
+	<view class="weui-cells__title" style='margin-top:0;margin-bottom:0;color:#22C5B3;font-size:30rpx;background-color:#f7f7f7;padding:5px 15px;font-weight:bold;'>账户信息</view>
 	<view class="weui-cells weui-cells_after-title">
 		<navigator url="/pages/person/security/loginpw/loginpw" hover-class="navigator-hover" open-type='navigate'>
-			<view class="weui-cell"  style='border-top: 1px solid #eee'>
+			<view class="weui-cell">
 				<view class="weui-cell__hd">
 					<image src="./img/blue.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
 				</view>
@@ -96,17 +107,17 @@
 		</navigator>
 	</view>
 	<!-- vip -->
-	<view class="weui-cells__title" style='color:#22C5B3'>开通 VIP</view>
+	<view class="weui-cells__title" style='margin-top:0;margin-bottom:0;color:#22C5B3;font-size:30rpx;background-color:#f7f7f7;padding:5px 15px;font-weight:bold;'>开通 VIP</view>
 	<view class="weui-cells weui-cells_after-title">
   <view wx:if="{{hide}}">
-    <navigator url="" hover-class="navigator-hover" open-type='navigate'>
+    <!-- <navigator url="" hover-class="navigator-hover" open-type='navigate'>
       <view class="weui-cell" bindtap="single" id='1' style='border-top: 1px solid #eee'>
         <view class="weui-cell__hd">
           <image src="./img/vip1.svg" style="margin-right: 5px; vertical-align: middle; width:20px; height: 20px;"></image>
         </view>
         <view class="weui-cell__bd">开通初级会员</view>
       </view>
-    </navigator>
+    </navigator> -->
     <navigator url="" hover-class="navigator-hover" open-type='navigate'>
       <view class="weui-cell" bindtap="single" id='2'>
         <view class="weui-cell__hd">
@@ -184,7 +195,7 @@
 		</view>
 	</view> -->
 	<!-- 个人信息 -->
-	<view class="weui-cells__title" style='margin-top:-50rpx'>个人信息</view>
+	<view class="weui-cells__title" style='margin-top:-50rpx; color:#22C5B3;font-size:30rpx;background-color:#f7f7f7;padding:5px 15px;font-weight:bold;margin-bottom:0;'>个人信息</view>
 	<view class="weui-cells weui-cells_after-title">
 		<navigator url="/pages/person/tbasics/tbasics" hover-class="navigator-hover" open-type='redirectTo'>
 			<view class="weui-cell" style='border-top: 1px solid #eee'>
@@ -195,8 +206,21 @@
 			</view>
 		</navigator>
 	</view>
+  <!-- 签到奖品 -->
+  <view class="weui-cells__title" style='margin-top:0;color:#22C5B3;font-size:30rpx;background-color:#f7f7f7;padding:5px 15px;font-weight:bold;margin-bottom:0;'>签到奖品</view>
+	<view class="weui-cells weui-cells_after-title">
+		<navigator url="/pages/person/signday/details" hover-class="navigator-hover" open-type='navigate'>
+			<view class="weui-cell" style='border-top: 1px solid #eee'>
+				<view class="weui-cell__hd">
+					<image src="./img/vip1.svg" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+				</view>
+				<view class="weui-cell__bd">奖品详情</view>
+			</view>
+		</navigator>    
+	</view>
+
 	<!-- 账户信息 -->
-	<view class="weui-cells__title">账户信息</view>
+	<view class="weui-cells__title" style='margin-top:0;color:#22C5B3;font-size:30rpx;background-color:#f7f7f7;padding:5px 15px;font-weight:bold;margin-bottom:0;'>账户信息</view>
 	<view class="weui-cells weui-cells_after-title">
 		<navigator url="/pages/person/security/loginpw/loginpw" hover-class="navigator-hover" open-type='navigate'>
 			<view class="weui-cell" style='border-top: 1px solid #eee'>

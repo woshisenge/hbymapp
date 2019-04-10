@@ -172,9 +172,7 @@ Page({
         }
       }
     } 
-    // else {
-      
-    // }
+    
   },
   //ls：邀请好友助力方法  其实是转发 方法 并添加 发起者的USER_ID
   forhelp: function(e) {

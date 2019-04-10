@@ -84,19 +84,29 @@
 <!-- 2018.7.2 ldq 结束 -->
 
 <!-- 2019.2.22 ls 助力高考活动 开始 -->
-<view class='help_gk'>
+<!-- <view class='help_gk'>
 <view style='font-size:45rpx;color:#FE4500;margin: 0 auto;'>助力高考活动</view>
-</view>
-<view class='weui-flex__item' >
+</view> -->
+<!-- ls:说明 此处放图片，说明助力高考活动 的详情    点击进入  跳转助力页面  为指定用户助力  助力完成获得相应 助力项 -->
+<!-- <view class='weui-flex__item' >
   <view class='weui-flex__item' bindtap="helpgk1">
-  <!-- ls:说明 此处放图片，说明助力高考活动 的详情    点击进入  跳转助力页面  为指定用户助力  助力完成获得相应 助力项 -->
     <image src='{{index_5}}' style='width:92%; height:100%;margin:0 auto;position: relative;padding:0 18px;0 18px;'></image>
   </view>
-  
-</view>
-<view class='help_gk_text'>
+</view> -->
+<!-- <view class='help_gk_text'>
   <text style='color:#099e3a;'>点击<text style='color:#cf386a;'> 图片 </text>查看 <text style='color:#cf386a;'> 活动详情</text></text>
+</view> -->
+
+<!-- LS：每日签到 开始 -->
+<view class='help_gk'style='overflow:hidden;display:block;'> 
+<view style='font-size:45rpx;color:#FE4500;margin-left:50rpx; float:left;'>每日签到领好礼</view>
+<view style='margin-right:20rpx; float:right; margin-top:5rpx;'>
+<button type='warn'bindtap="tosign" style='font-size:25rpx;'>去签到>></button>
 </view>
+</view>
+
+
+<!-- LS:每日签到 结束 -->
 
 
 <!-- ls 助力高考活动 结束 -->
@@ -193,11 +203,12 @@
           <image class='icon' src='../../images/time.png'></image>
           <span class='time-t'>{{item.MODIFYTIME}}</span>
         </view>
-        <view class='flex-x'>
-          <image class='icon' src='../../images/browse.png'></image>
+        <!-- LS:隐藏 点击量 -->
+        <!-- <view class='flex-x'>
+          <image class='icon' src='../../images/browse.png'></image> -->
           <!-- 加上基础值36192 -->
-          <span class='time-t'>{{item.VIEWCOUNT+36192}}</span>
-        </view>
+          <!-- <span class='time-t'>{{item.VIEWCOUNT+36192}}</span>
+        </view> -->
       </view>
     </view>
   </view>

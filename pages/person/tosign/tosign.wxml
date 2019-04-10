@@ -1,0 +1,201 @@
+<!--pages/person/tosign/tosign.wxml-->
+<view class="page" style='background-color:#fff;position:relative;'>
+<view bindtap='backindex' style='position:fixed;right:0;top:5px;background:rgba(255,0,0,0.7);color:#fff;padding:5px;z-index:10;border-radius:3px;'>返回首页</view>
+<!-- <text>签到领好礼啦！</text> -->
+<view style='width:100%;position:relative;'>
+
+  <view style='position:absolute;left:90rpx;top:100rpx;width:80%;'>
+    <view style='float:left;display:inline-block;color:#f77505;font-size:22px;'>1积分/天</view>
+    <view style='float:right;display:inline-block;color:#888;font-size:22px;margin-left:5%;'>已签到{{days}}天</view>
+    <view style='clear:both;'></view>
+    <!-- <view style='color:#f77505;font-size:60rpx;margin-top:5%;margin-left:120rpx;text-align:center;'>2积分</view> -->
+    <view class='jf' style=''>{{jifen}}积分</view>
+  </view>
+
+  <image src='{{index_1}}' mode='widthFix' style='width:100%;height:100%;'></image>
+</view>
+<view style='width:100%;margin:10px auto 30px;'>
+  <button bindtap='tosigns'  style='width:50%;font-size:30rpx;color: #fff;background-color:#f77505;box-shadow:0px 6px 10px #999;'>今日签到</button>
+</view>
+<!-- LS：赚积分 -->
+<view style='position:relative;'>
+<image src='{{index_2}}' mode='widthFix' style='width:100%;height:100%;'></image>
+<button bindtap='getmore'  open-type='share' style='position:absolute;right:30px;top:25px;with:60%;height:30px;font-size:30rpx;border:1px solid #f77505;color:#fff;background-color:#f77505;line-height:30px;'>点击赚积分</button>
+</view>
+<!-- LS:兑奖情况 -->
+<view style='margin:25px 0 0 20px;'>
+<image src='{{index_3}}' mode='widthFix' style='height:100%;width:200rpx;'></image>
+</view>
+<!-- LS:overflow:hidden 是撑起来 -->
+<view style='overflow:hidden;border-radius:5px;background-color:#f7f7f7;width:95%;margin:10px auto;line-height:25px;padding:10px 0 10px;'>
+<!-- LS：左浮动  display:需要添加 不添加可能会出现兼容问题 -->
+  <view wx:if="{{duihuan.length == 0}}">
+      <view style='margin-left:10px;clear:left;float:left;display:inline-block;font-size:16px;'>暂无兑换商品</view>
+      <view style='float:right;display:inline-block;margin-right:20px;font-size:14px;color:#999;'>兑换时间：暂无</view>
+  </view> 
+  <view wx:else>
+    <view wx:for="{{duihuan}}"  wx:key="" >
+      <view style='margin-left:10px;clear:left;float:left;display:inline-block;font-size:16px;'>已兑换<text style='color:#f77505;padding-left:10px;'>{{item.GOODNAME}}</text></view>
+    <view style='float:right;display:inline-block;margin-right:20px;font-size:14px;color:#999;'>兑换时间：<text>{{item.CREATETIME}}     </text></view>
+    </view>
+  </view>  
+</view>
+
+<!-- LS：活动规则： 开始 -->
+<view style='margin:25px 0 0 20px;'>
+  <image src='{{index_4}}' mode='widthFix' style='height:100%;width:200rpx;' ></image>
+</view>
+
+<view style='border-radius:5px;background-color:#f7f7f7;width:95%;margin:10px auto;padding:10px 0;'>
+  <view style='margin-left:20px;margin-top:10px;color:#85430a;'>
+    <text style='font-size:14px;font-weight:bold;'>每日签到:</text><text>可获得1积分</text><text style='margin-left:60px;'>1次/天</text>
+  </view>
+  <view style='margin-left:20px;margin-top:10px;color:#85430a;'>
+    <text style='font-size:14px;font-weight:bold;letter-spacing:4px;'>赚积分:</text><text>可获得3积分</text><text style='margin-left:60px;'>1次/天</text>
+  </view>
+  <view style='margin-left:20px;margin-top:20px;'>
+    <text style='font-size:16px;font-weight:bold;color:red;'>注:</text><text style='color:#85430a;'>以下礼品同一用户可多次兑换，积分年底清零</text>
+  </view>
+</view>
+<!-- LS:活动规则 结束 -->
+
+<!-- LS:奖品兑换 开始  -->
+<view style='margin:25px 0 0 20px;'>
+  <image src='{{index_5}}' mode='widthFix' style='height:100%;width:200rpx;' ></image>
+</view>
+<!-- LS：奖品列表  第一排 -->
+<view class='jplb' style=''>
+  <!-- LS:削皮刀 开始 -->
+  <view style='width:50%;'>
+    <image src='{{index_5_1}}' mode='widthFix' style='width:90%;margin-left:15px;'></image>
+      <view style='overflow:hidden;'>
+        <text style='float:left;padding-left:20px;color:#f77505;'>30积分</text><text style='float:right;margin-right:20px;'>削皮刀</text>
+      </view>
+      <!-- LS:开始兑换 -->
+      <view style='margin-top:10px;'>
+        <button bindtap='duihuan' id='1' style='line-height:25px;width:45%;height:25px;border:1px solid #f77505;font-size:25rpx;color:#f77505;background-color:#fff;'>开始兑换</button>
+      </view>
+  </view>
+  <!-- LS:削皮刀 结束 -->
+  <!-- LS:自拍杆 开始 -->
+  <view  style='width:50%;'>
+    <image src='{{index_5_2}}' mode='widthFix' style='width:90%;margin-right:15px;'></image>
+      <view style='overflow:hidden;'>
+        <text style='float:left;padding-left:20px;color:#f77505;'>30积分</text><text style='float:right;margin-right:20px;'>自拍杆</text>
+      </view>
+      <!-- LS:开始兑换 -->
+      <view style='margin-top:10px;'>
+        <button bindtap='duihuan' id='2' style='line-height:25px;width:45%;height:25px;border:1px solid #f77505;font-size:25rpx;color:#f77505;background-color:#fff;'>开始兑换</button>
+      </view>
+  <!-- LS:自拍杆 结束 -->    
+  </view>
+</view>
+<!-- LS：奖品列表  第二排 -->
+<view class='jplb' style='margin-top:20px;'>
+  <!-- LS:削皮刀 开始 -->
+  <view style='width:50%;'>
+    <image src='{{index_5_3}}' mode='widthFix' style='width:90%;height:180px;margin-left:15px;'></image>
+      <view style='overflow:hidden;'>
+        <text style='float:left;padding-left:20px;color:#f77505;'>30积分</text><text style='float:right;margin-right:20px;'>高考套装</text>
+      </view>
+      <!-- LS:开始兑换 -->
+      <view style='margin-top:10px;'>
+        <button  bindtap='duihuan' id='3' style='line-height:25px;width:45%;height:25px;border:1px solid #f77505;font-size:25rpx;color:#f77505;background-color:#fff;'>开始兑换</button>
+      </view>
+  </view>
+  <!-- LS:削皮刀 结束 -->
+  <!-- LS:自拍杆 开始 -->
+  <view  style='width:50%;'>
+    <image src='{{index_5_4}}' mode='widthFix' style='width:90%;margin-right:15px;'></image>
+      <view style='overflow:hidden;'>
+        <text style='float:left;padding-left:20px;color:#f77505;'>50积分</text><text style='float:right;margin-right:20px;'>小风扇</text>
+      </view>
+      <!-- LS:开始兑换 -->
+      <view style='margin-top:10px;'>
+        <button bindtap='duihuan' id='4' style='line-height:25px;width:45%;height:25px;border:1px solid #f77505;font-size:25rpx;color:#f77505;background-color:#fff;'>开始兑换</button>
+      </view>
+  <!-- LS:自拍杆 结束 -->    
+  </view>
+</view>
+
+<!-- LS：奖品列表  第三排 -->
+<view class='jplb' style='margin-top:20px;'>
+  <!-- LS:削皮刀 开始 -->
+  <view style='width:50%;'>
+    <image src='{{index_5_5}}' mode='widthFix' style='width:90%;margin-left:15px;'></image>
+      <view style='overflow:hidden;'>
+        <text style='float:left;padding-left:20px;color:#f77505;'>50积分</text><text style='float:right;margin-right:20px;'>运动水杯</text>
+      </view>
+      <!-- LS:开始兑换 -->
+      <view style='margin-top:10px;'>
+        <button bindtap='duihuan' id='5' style='line-height:25px;width:45%;height:25px;border:1px solid #f77505;font-size:25rpx;color:#f77505;background-color:#fff;'>开始兑换</button>
+      </view>
+  </view>
+  <!-- LS:削皮刀 结束 -->
+  <!-- LS:自拍杆 开始 -->
+  <view  style='width:50%;'>
+    <image src='{{index_5_6}}' mode='widthFix' style='width:90%;margin-right:15px;'></image>
+      <view style='overflow:hidden;'>
+        <text style='float:left;padding-left:20px;color:#f77505;'>80积分</text><text style='float:right;margin-right:20px;'>夏凉被</text>
+      </view>
+      <!-- LS:开始兑换 -->
+      <view style='margin-top:10px;'>
+        <button bindtap='duihuan' id='6' style='line-height:25px;width:45%;height:25px;border:1px solid #f77505;font-size:25rpx;color:#f77505;background-color:#fff;'>开始兑换</button>
+      </view>
+  <!-- LS:自拍杆 结束 -->    
+  </view>
+</view>
+
+<!-- LS：奖品列表  第四排 -->
+<view class='jplb' style='margin-top:20px;'>
+  <!-- LS:削皮刀 开始 -->
+  <view style='width:50%;'>
+    <image src='{{index_5_7}}' mode='widthFix' style='width:90%;margin-left:15px;'></image>
+      <view style='overflow:hidden;'>
+        <text style='float:left;padding-left:20px;color:#f77505;'>150积分</text><text style='float:right;margin-right:20px;'>双肩包</text>
+      </view>
+      <!-- LS:开始兑换 -->
+      <view style='margin-top:10px;'>
+        <button bindtap='duihuan' id='7' style='line-height:25px;width:45%;height:25px;border:1px solid #f77505;font-size:25rpx;color:#f77505;background-color:#fff;'>开始兑换</button>
+      </view>
+  </view>
+  <!-- LS:削皮刀 结束 -->
+  <!-- LS:自拍杆 开始 -->
+  <view  style='width:50%;'>
+    <image src='{{index_5_8}}' mode='widthFix' style='width:90%;margin-right:15px;'></image>
+      <view style='overflow:hidden;'>
+        <text style='float:left;padding-left:20px;color:#f77505;'>200积分</text><text style='float:right;margin-right:20px;'>行李箱</text>
+      </view>
+      <!-- LS:开始兑换 -->
+      <view style='margin-top:10px;'>
+        <button bindtap='duihuan' id='8' style='line-height:25px;width:45%;height:25px;border:1px solid #f77505;font-size:25rpx;color:#f77505;background-color:#fff;'>开始兑换</button>
+      </view>
+  <!-- LS:自拍杆 结束 -->    
+  </view>
+</view>
+<!-- LS:奖品兑换 结束 -->
+<!-- LS：联系方式 开始-->
+<view style='margin-top:25px;'>
+  <image src='{{index_6}}' mode='widthFix' style='height:100%;width:100%;' ></image>
+</view>
+<!-- LS:联系方式 结束 -->
+<view style='margin-top:25px;'>
+  <image src='{{index_7}}' mode='widthFix' style='height:100%;width:100%;' ></image>
+</view>
+<view wx:if="{{hidden2}}" style='margin:0 20px 20px 20px;'>
+<text style='color:#666;'>邮寄地址：{{address1}}</text>
+</view>
+<view wx:if="{{hidden1}}">
+<!-- <view>
+<input style='background-color:red;p'>请输入邮寄地址：</input>
+</view> -->
+
+    <view class="weui-cell__bd weui-cell_primary" style='padding:0 15px 20px;'>
+			<text style='font-size:40rpx;border-left:10rpx solid red;padding:2px 0 2px 5px;color:red;'>邮寄地址：</text>
+			<input  id='addres' name='ADDRESS' bindinput='inptaddress' value=''style="text-align:left;background-color：#eee;border:1px solid #f77505;width:98%;margin:10px auto;padding:2px 0 2px 2%;border-radius:3px;" placeholder='请在此输入邮寄地址'/>
+      <button bindtap='address' style='width:30%;font-size:30rpx;background-color:#f77505;color:#fff;border:none;'>确认地址</button>
+		</view>
+</view>
+
+</view>
+

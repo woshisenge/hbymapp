@@ -75,6 +75,7 @@ Page({
       console.log(123, res.data)
     })
     util.sendRequest_s("/wechat/applet/school/getschoolscore", { SCHOOL_ID: id, MAJORTYPE_ID: 'r6j4mh69be'}, "POST", true, function (res) {
+      console.log("ls123",res)
       var grade = res.data;
       grade.forEach(function(element){
         if (element.MinPM == null){
@@ -125,6 +126,7 @@ Page({
     var a = e.currentTarget.dataset.id
     var id = that.data.array[e.detail.value].DIC_ID
     util.sendRequest_s("/wechat/applet/school/getschoolscore", { SCHOOL_ID: a, MAJORTYPE_ID: id }, "POST", true, function (res) {
+     
       var grade = res.data;
       grade.forEach(function (element) {
         if (element.MinPM == null) {

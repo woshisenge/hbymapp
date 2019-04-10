@@ -30,6 +30,7 @@ Page({
     jobdate:'',
     // 控制开通VIP显示隐藏
     hide:true,
+    hidens:false,
   },
 
   /**

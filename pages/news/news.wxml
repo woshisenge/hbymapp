@@ -11,10 +11,11 @@
         <image src='/images/time.png' style="width:30rpx;height:30rpx"></image>
         <text style='margin-left:10rpx;'>{{item.MODIFYTIME}}</text>
       </view>
-      <view class='time-count'>
+      <!-- LS:隐藏点击量 -->
+      <!-- <view class='time-count'>
         <image src='/images/browse.png' style="width:30rpx;height:30rpx"></image>
         <text style='margin-left:10rpx;'>{{item.VIEWCOUNT+36192}}</text>
-      </view> 
+      </view>  -->
     </view>
   </view>
 </view>

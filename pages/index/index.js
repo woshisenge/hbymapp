@@ -12,7 +12,9 @@ Page({
     // 首页轮播图 开始
     imgUrls: [ 
       //第一张banner 图是 志愿填报公益讲座
-       { src: utils.setStaticUrl("/static/ymplant/gd-img/pro_jz_wechat.jpg"), url: "/pages/news/newscontent/newscontent" },
+        // { src: utils.setStaticUrl("/static/ymplant/gd-img/pro_jz_wechat.jpg"), url: "/pages/news/newscontent/newscontent" },
+    //每日签到积分 换好礼 banner 
+      { src: utils.setStaticUrl("/static/ymplant/gd-img/jifen_wechat.jpg"), url: "/pages/person/tosign/tosign" },
     //  自主招生
       { src: utils.setStaticUrl("/static/ymplant/ldq-img/wx_zzzs.jpg"), url: "/pages/autonomousEnrollment/autonomousEnrollment" },
     // 智能选大学
@@ -94,6 +96,11 @@ Page({
     if (url =="/pages/news/newscontent/newscontent"){
       utils.navigateTo(url, { a:'vr96965l5s'})
     }
+    // LS:2019.4.9 跳转到每日签到 活动页面
+    if (url =="/pages/person/tosign/tosign"){
+      utils.navigateTo(url, {})
+    }
+    
   },
 
   toChar:function () {
@@ -103,6 +110,12 @@ Page({
   // 2019.2.22 ls 助力高考 活动  方法  跳转新页面 为指定 用户助力  
   helpgk1:function(){
     utils.navigateTo("/pages/person/helpgk/helpgk");
+  },
+
+// 去签到 不进行登陆状态验证
+  tosign:function(){
+    // utils.ldqCheckLogin()
+    utils.navigateTo("/pages/person/tosign/tosign");
   },
 
   advantage: function () {

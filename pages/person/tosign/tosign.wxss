@@ -1,0 +1,44 @@
+/* pages/person/tosign/tosign.wxss */
+.jplb{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+.jf{
+    color:#f77505;font-size:60rpx;position:absolute;left:55%;top:110%;transform:translateX(-50%);text-align:center;
+  }
+
+@media screen and (max-width:1024px){
+  .jf{
+    top:350%;
+  }
+} 
+@media screen and (max-width:835px){
+  .jf{
+    top:300%;
+  }
+} 
+@media screen and (max-width:770px){
+  .jf{
+    top:280%;
+  }
+}
+@media screen and (max-width:450px){
+  .jf{
+    top:145%;
+  }
+}
+@media screen and (max-width:375px){
+  .jf{
+    top:130%;
+  }
+}
+@media screen and (max-width:320px){
+  .jf{
+    top:110%;
+  }
+}
+
+

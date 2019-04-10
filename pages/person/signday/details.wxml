@@ -1,0 +1,29 @@
+<!--pages/person/signday/details.wxml-->
+<!-- <text>pages/person/signday/details.wxml</text> -->
+<view  style='text-align:center;border-bottom:1px solid #eee;background-color:#fff;padding:10px 2% 0;'>
+	<text style='font-size:35rpx;'>邮寄地址</text>
+</view>
+<view>
+<textarea type='text' name='' value='{{address}}' style="width:96%;height:60px;color: #bbb;padding:5px 2% ;word-wrap:break-word;font-size:30rpx;color:#666;background-color:#fff;" disabled='true'> </textarea> 
+</view>
+<view class='.weui-tab__content_title' style='margin-top:10px;border-bottom:1px solid #eee;background-color:#fff;padding:10px 2% 0;'>
+<text style='text-align:ceter;font-size:35rpx;' >奖品列表</text>
+</view>
+<view style='background-color:#fff;padding-top:10px;'>
+<text style='color:red;align-item:center;font-size:28rpx;padding-left:20px;'>说明：同种奖品仅可领取一件</text>
+</view>
+
+<view style='overflow:hidden;border-radius:5px;background-color:#fff;width:95%;line-height:25px;padding:10px;'>
+<!-- LS：左浮动  display:需要添加 不添加可能会出现兼容问题 -->
+  <view wx:if="{{duihuan.length == 0}}">
+      <view style='margin-left:10px;clear:left;float:left;display:inline-block;font-size:16px;'>暂无兑换商品</view>
+      <view style='float:right;display:inline-block;margin-right:20px;font-size:14px;color:#999;'>兑换时间：暂无</view>
+  </view> 
+  <view wx:else>
+    <view wx:for="{{duihuan}}"  wx:key="" >
+      <view style='margin-left:10px;clear:left;float:left;display:inline-block;font-size:16px;'>已兑换<text style='color:#f77505;padding-left:10px;'>{{item.GOODNAME}}</text></view>
+    <view style='float:right;display:inline-block;margin-right:20px;font-size:14px;color:#999;'>兑换时间：<text>{{item.CREATETIME}}     </text></view>
+    </view>
+  </view>  
+</view>
+

@@ -70,7 +70,7 @@ Page({
   select: function () {
     var that = this;
     util.sendRequest_s('/wechat/applet/school/get', { NAME: that.data.inputVal }, 'POST', false, function (res) {
-
+      
       that.setData({
         schools: that.toDto(res.data.results)
       });

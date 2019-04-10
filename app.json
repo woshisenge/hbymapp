@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/person/person",
     "pages/character/character",
@@ -65,7 +66,10 @@
     "pages/teacher/issue_content/issue_content",
     "pages/teacher/ask/ask",
     "pages/teacher/answer/answer",
-    "pages/person/helpgk/helpgk"
+    "pages/person/tosign/tosign",
+    "pages/person/helpgk/helpgk",
+    "pages/person/signday/details"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
